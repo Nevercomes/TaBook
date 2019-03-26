@@ -1,7 +1,6 @@
-package com.nevercome.tabook.common.persistence.interceptor.interceptor;
+package com.nevercome.tabook.common.persistence.interceptor;
 
 import com.nevercome.tabook.common.persistence.Page;
-import com.nevercome.tabook.common.persistence.interceptor.BaseInterceptor;
 import com.nevercome.tabook.common.utils.Reflections;
 import com.nevercome.tabook.common.utils.StringUtils;
 import org.apache.ibatis.executor.Executor;

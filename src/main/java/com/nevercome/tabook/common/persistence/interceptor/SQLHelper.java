@@ -1,4 +1,4 @@
-package com.nevercome.tabook.common.persistence.interceptor.interceptor;
+package com.nevercome.tabook.common.persistence.interceptor;
 
 import com.nevercome.tabook.common.config.Global;
 import com.nevercome.tabook.common.persistence.Page;

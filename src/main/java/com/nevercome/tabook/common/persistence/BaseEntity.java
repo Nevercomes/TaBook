@@ -6,6 +6,7 @@ import com.nevercome.tabook.common.config.Global;
 import com.nevercome.tabook.common.utils.StringUtils;
 import com.nevercome.tabook.modules.sys.entity.User;
 import com.nevercome.tabook.modules.sys.utils.UserUtils;
+import lombok.Data;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import javax.xml.bind.annotation.XmlTransient;
@@ -18,6 +19,7 @@ import java.util.Map;
  * @author sun
  * @version  2019-03-25
  */
+@Data
 public abstract class BaseEntity<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 

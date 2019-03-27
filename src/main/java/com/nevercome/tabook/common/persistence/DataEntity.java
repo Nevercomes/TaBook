@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nevercome.tabook.common.utils.IdGen;
 import com.nevercome.tabook.modules.sys.entity.User;
 import com.nevercome.tabook.modules.sys.utils.UserUtils;
+import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.Date;
  * @author ThinkGem
  * @version 2014-05-16
  */
+@Data
 public abstract class DataEntity<T> extends BaseEntity<T> {
     private static final long serialVersionUID = 1L;
 

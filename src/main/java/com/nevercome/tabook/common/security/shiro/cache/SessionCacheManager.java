@@ -20,6 +20,7 @@ import java.util.Set;
 
 /**
  * 自定义授权缓存管理类
+ *
  * @author ThinkGem
  * @version 2014-7-21
  */
@@ -43,17 +44,17 @@ public class SessionCacheManager implements CacheManager {
             this.cacheKeyName = cacheKeyName;
         }
 
-        public Session getSession(){
+        public Session getSession() {
             Session session = null;
-            try{
+            try {
                 Subject subject = SecurityUtils.getSubject();
                 session = subject.getSession(false);
-                if (session == null){
+                if (session == null) {
                     session = subject.getSession();
                 }
-            }catch (InvalidSessionException e){
+            } catch (InvalidSessionException e) {
                 logger.error("Invalid session error", e);
-            }catch (UnavailableSecurityManagerException e2){
+            } catch (UnavailableSecurityManagerException e2) {
                 logger.error("Unavailable SecurityManager error", e2);
             }
             return session;
@@ -62,24 +63,24 @@ public class SessionCacheManager implements CacheManager {
         @SuppressWarnings("unchecked")
         @Override
         public V get(K key) throws CacheException {
-            if (key == null){
+            if (key == null) {
                 return null;
             }
 
             V v = null;
             HttpServletRequest request = Servlets.getRequest();
-            if (request != null){
-                v = (V)request.getAttribute(cacheKeyName);
-                if (v != null){
+            if (request != null) {
+                v = (V) request.getAttribute(cacheKeyName);
+                if (v != null) {
                     return v;
                 }
             }
 
             V value = null;
-            value = (V)getSession().getAttribute(cacheKeyName);
+            value = (V) getSession().getAttribute(cacheKeyName);
             logger.debug("get {} {} {}", cacheKeyName, key, request != null ? request.getRequestURI() : "");
 
-            if (request != null && value != null){
+            if (request != null && value != null) {
                 request.setAttribute(cacheKeyName, value);
             }
             return value;
@@ -87,13 +88,13 @@ public class SessionCacheManager implements CacheManager {
 
         @Override
         public V put(K key, V value) throws CacheException {
-            if (key == null){
+            if (key == null) {
                 return null;
             }
 
             getSession().setAttribute(cacheKeyName, value);
 
-            if (logger.isDebugEnabled()){
+            if (logger.isDebugEnabled()) {
                 HttpServletRequest request = Servlets.getRequest();
                 logger.debug("put {} {} {}", cacheKeyName, key, request != null ? request.getRequestURI() : "");
             }
@@ -106,7 +107,7 @@ public class SessionCacheManager implements CacheManager {
         public V remove(K key) throws CacheException {
 
             V value = null;
-            value = (V)getSession().removeAttribute(cacheKeyName);
+            value = (V) getSession().removeAttribute(cacheKeyName);
             logger.debug("remove {} {}", cacheKeyName, key);
 
             return value;

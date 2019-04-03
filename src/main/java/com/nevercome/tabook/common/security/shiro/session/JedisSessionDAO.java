@@ -55,7 +55,8 @@ public class JedisSessionDAO extends AbstractSessionDAO implements SessionDAO {
                 return;
             }
             // 手动控制不更新SESSION
-            if (Global.NO.equals(request.getParameter("updateSession"))) {
+            String updateSession = request.getParameter("updateSession");
+            if (Global.FALSE.equals(updateSession) || Global.NO.equals(updateSession)) {
                 return;
             }
         }

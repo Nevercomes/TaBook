@@ -13,7 +13,7 @@ public class Result {
 
     private String result;
     private String msg;
-    private Object obj;
+    private Object data;
     public static final String RESULT_SUCCESS = "success";
     public static final String RESULT_ERROR = "error";
 
@@ -41,7 +41,7 @@ public class Result {
      */
     public Result(Object obj) {
         this.result = RESULT_SUCCESS;
-        this.obj = obj;
+        this.data = obj;
     }
 
     /**
@@ -53,7 +53,7 @@ public class Result {
     public Result(String msg, Object object) {
         this.result = RESULT_SUCCESS;
         this.msg = msg;
-        this.obj = object;
+        this.data = object;
     }
 
     /**
@@ -77,6 +77,6 @@ public class Result {
     public Result(String result, String msg, Object object) {
         this.result = result;
         this.msg = msg;
-        this.obj = object;
+        this.data = object;
     }
 }

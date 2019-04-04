@@ -35,7 +35,11 @@ public class User extends DataEntity<User> {
     private String loginIp;	// 最后登陆IP
     private Date loginDate;	// 最后登陆日期
     private String loginFlag;	// 是否允许登陆
-    private String photo;	// 头像
+    private String avatar;	// 头像
+
+    // wx applet
+    private String openId;
+    private String sessionKey;
 
     private String oldLoginName;// 原登录名
     private String newPassword;	// 新密码
@@ -66,12 +70,12 @@ public class User extends DataEntity<User> {
         this.role = role;
     }
 
-    public String getPhoto() {
-        return photo;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getLoginFlag() {
@@ -292,6 +296,22 @@ public class User extends DataEntity<User> {
 
     public static boolean isAdmin(String id){
         return id != null && "1".equals(id);
+    }
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
+    }
+
+    public String getSessionKey() {
+        return sessionKey;
+    }
+
+    public void setSessionKey(String sessionKey) {
+        this.sessionKey = sessionKey;
     }
 
     @Override

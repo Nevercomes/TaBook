@@ -67,4 +67,10 @@ public interface UserDao extends CrudDao<User> {
      */
     int updateUserInfo(User user);
 
+    /**
+     * 根据openId获取用户
+     * @param openid
+     * @return
+     */
+    User findByOpenId(String openid);
 }

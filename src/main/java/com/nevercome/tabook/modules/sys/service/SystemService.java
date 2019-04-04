@@ -1,6 +1,7 @@
 package com.nevercome.tabook.modules.sys.service;
 
 import com.nevercome.tabook.common.config.Global;
+import com.nevercome.tabook.common.mapper.JsonMapper;
 import com.nevercome.tabook.common.persistence.Page;
 import com.nevercome.tabook.common.security.Digests;
 import com.nevercome.tabook.common.security.shiro.session.SessionDAO;
@@ -13,19 +14,23 @@ import com.nevercome.tabook.common.web.Servlets;
 import com.nevercome.tabook.modules.sys.dao.MenuDao;
 import com.nevercome.tabook.modules.sys.dao.RoleDao;
 import com.nevercome.tabook.modules.sys.dao.UserDao;
-import com.nevercome.tabook.modules.sys.entity.Menu;
-import com.nevercome.tabook.modules.sys.entity.Office;
-import com.nevercome.tabook.modules.sys.entity.Role;
-import com.nevercome.tabook.modules.sys.entity.User;
+import com.nevercome.tabook.modules.sys.entity.*;
+import com.nevercome.tabook.modules.sys.security.JwtConfig;
 import com.nevercome.tabook.modules.sys.security.SystemAuthorizingRealm;
 import com.nevercome.tabook.modules.sys.utils.LogUtils;
 import com.nevercome.tabook.modules.sys.utils.UserUtils;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.naming.AuthenticationException;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
@@ -39,7 +44,7 @@ import java.util.List;
  */
 @Service
 @Transactional(readOnly = true)
-public class SystemService extends BaseService implements InitializingBean{
+public class SystemService extends BaseService implements InitializingBean {
 
     public static final String HASH_ALGORITHM = "SHA-1";
     public static final int HASH_INTERATIONS = 1024;
@@ -53,8 +58,10 @@ public class SystemService extends BaseService implements InitializingBean{
     private MenuDao menuDao;
     @Autowired
     private SessionDAO sessionDao;
-//    @Autowired
-//    private SystemAuthorizingRealm systemRealm;
+    @Autowired
+    private JwtConfig jwtConfig;
+    @Autowired
+    private SystemAuthorizingRealm systemRealm;
 
     public SessionDAO getSessionDao() {
         return sessionDao;
@@ -62,6 +69,49 @@ public class SystemService extends BaseService implements InitializingBean{
 
 //    @Autowired
 //    private IdentityService identityService;
+
+
+    /**
+     * Login Service
+     */
+    public Token wxUserLogin(String code) throws Exception {
+        String code2SessionUrl = "https://api.weixin.qq.com/sns/jscode2session?" +
+                "appid=" + Global.getConfig("wx.applet.appid") +
+                "&secret=" + Global.getConfig("wx.applet.appsecret") +
+                "&js_code=" + code +
+                "&grant_type=authorization_code";
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Request okRequest = new Request.Builder().url(code2SessionUrl).build();
+        Call call = okHttpClient.newCall(okRequest);
+        try {
+            Response okResponse = call.execute();
+            String resJson = okResponse.body().string();
+            Code2SessionResponse response = (Code2SessionResponse) JsonMapper.fromJsonString(resJson, Code2SessionResponse.class);
+            if (!response.getErrcode().equals("0")) { // 不为0为错误
+                throw new AuthenticationException("code2session failed：" + response.getErrmsg());
+            } else {
+                // 判断用户是否存在
+//                User user = userDao.findByOpenId(response.getOpenid());
+//                if (user != null) {
+//                    user.setOpenId(response.getOpenid());
+//                    user.setSessionKey(response.getSession_key());
+////                    userDao.insert(user);
+//                } else {
+//                    // 更新登录状态等操作
+//                    User newUser = new User();
+//                    userDao.update(newUser);
+//                }
+                User user1 = new User();
+                user1.setOpenId(response.getOpenid());
+                user1.setSessionKey(response.getSession_key());
+                String token = jwtConfig.createToken(user1);
+                return new Token(token);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     //-- User Service --//
 
@@ -111,7 +161,7 @@ public class SystemService extends BaseService implements InitializingBean{
     /**
      * 通过部门ID获取用户列表，仅返回用户id和name（树查询用户时用）
      *
-     * @param user
+     * @param officeId
      * @return
      */
     @SuppressWarnings("unchecked")

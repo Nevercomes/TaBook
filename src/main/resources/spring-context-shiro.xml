@@ -12,11 +12,13 @@
     <!-- Shiro权限过滤过滤器定义 -->
     <bean name="shiroFilterChainDefinitions" class="java.lang.String">
         <constructor-arg>
+            <!--所有的请求都要通过jwt-->
             <value>
                 /static/** = anon
                 /userfiles/** = anon
                 ${adminPath}/cas = cas
                 ${adminPath}/login = authc
+                /** = jwt
                 ${adminPath}/logout = logout
                 ${adminPath}/** = user
                 /act/editor/** = user
@@ -34,7 +36,9 @@
         <property name="filters">
             <map>
                 <entry key="cas" value-ref="casFilter"/>
-                <entry key="authc" value-ref="formAuthenticationFilter"/>
+                <!--<entry key="authc" value-ref="formAuthenticationFilter"/>-->
+                <!--更换登录的Filter为JWT的Filter-->
+                <entry key="authc" value-ref="jwtFilter"/>
             </map>
         </property>
         <property name="filterChainDefinitions">

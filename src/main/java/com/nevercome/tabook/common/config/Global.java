@@ -86,6 +86,13 @@ public class Global {
     }
 
     /**
+     * 获取context根路径
+     */
+    public static String getContextRoot() {
+        return getConfig("contextRoot");
+    }
+
+    /**
      * 获取管理端根路径
      */
     public static String getAdminPath() {

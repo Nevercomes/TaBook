@@ -16,9 +16,6 @@ public class Result {
     private Object obj;
     public static final String RESULT_SUCCESS = "success";
     public static final String RESULT_ERROR = "error";
-    public static final String RESULT_NO_AUTHORITY = "no authority";
-    public static final String RESULT_NO_ACCOUNT = "no account";
-    public static final String RESULT_WRONG_PASSWORD = "wrong password";
 
     /**
      * 默认请求成功 不返回任何消息和 数据

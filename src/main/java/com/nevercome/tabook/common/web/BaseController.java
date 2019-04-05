@@ -5,6 +5,7 @@ import com.nevercome.tabook.common.mapper.JsonMapper;
 import com.nevercome.tabook.common.utils.DateUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authz.AuthorizationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,26 +73,31 @@ public class BaseController {
     /**
      * 参数绑定异常
      */
-    @ExceptionHandler({BindException.class, ConstraintViolationException.class, ValidationException.class})
-    public String bindException() {
-        return "error/400";
-    }
 //    @ExceptionHandler({BindException.class, ConstraintViolationException.class, ValidationException.class})
-//    public ResponseEntity bindException() {
-//        return new ResponseEntity<>(new Result("请求参数绑定异常"), HttpStatus.BAD_REQUEST);
+//    public String bindException() {
+//        return "error/400";
 //    }
+    @ExceptionHandler({BindException.class, ConstraintViolationException.class, ValidationException.class})
+    public ResponseEntity bindException() {
+        return new ResponseEntity<>(new Result("请求参数绑定异常"), HttpStatus.BAD_REQUEST);
+    }
 
     /**
      * 授权登录异常
      */
-    @ExceptionHandler({AuthenticationException.class})
-    public String authenticationException() {
-        return "error/500";
-    }
 //    @ExceptionHandler({AuthenticationException.class})
-//    public ResponseEntity authenticationException() {
-//        return new ResponseEntity<>(new Result("操作权限不足，请进行实名认证"), HttpStatus.FORBIDDEN);
+//    public String authenticationException() {
+//        return "error/500";
 //    }
+    @ExceptionHandler({AuthenticationException.class})
+    public ResponseEntity authenticationException() {
+        return new ResponseEntity<>(new Result("need login"), HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler({AuthorizationException.class})
+    public ResponseEntity authorizationException() {
+        return new ResponseEntity<>(new Result("need identify"), HttpStatus.FORBIDDEN);
+    }
 
     /**
      * 服务端参数有效性验证

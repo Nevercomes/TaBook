@@ -1,5 +1,6 @@
 package com.nevercome.tabook.common.security.shiro.cache;
 
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.nevercome.tabook.common.utils.JedisUtils;
 import com.nevercome.tabook.common.web.Servlets;
@@ -13,6 +14,7 @@ import redis.clients.jedis.Jedis;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -30,8 +32,6 @@ public class JedisCacheManager implements CacheManager {
 
     /**
      * 自定义授权缓存管理类
-     * @author ThinkGem
-     * @version 2014-7-20
      */
     public class JedisCache<K, V> implements Cache<K, V> {
 
@@ -45,7 +45,7 @@ public class JedisCacheManager implements CacheManager {
 //				Map<String, Object> map = Maps.newHashMap();
 //				JedisUtils.setObjectMap(cacheKeyName, map, 60 * 60 * 24);
 //			}
-//			logger.debug("Init: cacheKeyName {} ", cacheKeyName);
+			logger.debug("Init: cacheKeyName {} ", cacheKeyName);
         }
 
         @SuppressWarnings("unchecked")
@@ -178,7 +178,7 @@ public class JedisCacheManager implements CacheManager {
         @SuppressWarnings("unchecked")
         @Override
         public Collection<V> values() {
-            Collection<V> vals = Collections.emptyList();;
+            Collection<V> vals = Collections.emptyList();
             Jedis jedis = null;
             try {
                 jedis = JedisUtils.getResource();

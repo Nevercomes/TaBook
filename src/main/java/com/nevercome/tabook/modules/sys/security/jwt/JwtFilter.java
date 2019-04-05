@@ -1,4 +1,4 @@
-package com.nevercome.tabook.modules.sys.security;
+package com.nevercome.tabook.modules.sys.security.jwt;
 
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.springframework.http.HttpStatus;

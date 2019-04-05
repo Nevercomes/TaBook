@@ -1,4 +1,4 @@
-package com.nevercome.tabook.modules.sys.security;
+package com.nevercome.tabook.modules.sys.security.jwt;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

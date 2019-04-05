@@ -41,16 +41,13 @@ public class LoginController extends BaseController {
      */
     @RequestMapping(value = "${adminPath}/login")
     public ResponseEntity login(HttpServletRequest request, HttpServletResponse response) {
-        String username = request.getParameter("username");
-        System.err.println(username);
-        UsernamePasswordToken token = new UsernamePasswordToken(username, "");
+        String code = request.getParameter("code");
+        UsernamePasswordToken token = new UsernamePasswordToken(code, "");
         Subject subject = SecurityUtils.getSubject();
         subject.login(token);
         SystemAuthorizingRealm.Principal principal = UserUtils.getPrincipal();
-        System.err.println(request.getSession().getId());
         if (principal != null && UserUtils.getSession() != null) {
             Object sessionId = UserUtils.getSession().getId().toString();
-            System.err.println(sessionId.toString());
             return new ResponseEntity<>(new Result(sessionId), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(new Result(Result.RESULT_ERROR, "登录异常，请稍后重试！"), HttpStatus.BAD_REQUEST);

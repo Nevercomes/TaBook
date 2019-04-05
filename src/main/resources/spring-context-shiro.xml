@@ -45,7 +45,7 @@
     <!--Session管理配置-->
     <bean class="com.nevercome.tabook.common.security.shiro.session.SessionManager" id="sessionManager">
         <!--注入存储器-->
-        <!--<property name="sessionDAO" ref="jedisSessionDAO" />-->
+        <property name="sessionDAO" ref="jedisSessionDAO" />
 
         <!--session超时时间 这里设置得和wx得一样-->
         <property name="globalSessionTimeout" value="${session.sessionTimeout}" />

@@ -1,5 +1,6 @@
 package com.nevercome.tabook.common.web;
 
+import com.google.common.collect.Maps;
 import com.nevercome.tabook.common.config.Global;
 import com.nevercome.tabook.common.utils.StringUtils;
 import com.nevercome.tabook.modules.sys.security.SystemAuthorizingRealm;
@@ -8,9 +9,13 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Http与Servlet工具类.
+ *
  * @author calvin/thinkgem
  * @version 2014-8-19
  */
@@ -24,6 +29,7 @@ public class Servlets {
 
     /**
      * 是否是Ajax异步请求
+     *
      * @param request
      */
     public static boolean isAjaxRequest(HttpServletRequest request) {
@@ -40,6 +46,7 @@ public class Servlets {
 
     /**
      * 获取当前请求对象
+     *
      * @return
      */
     public static HttpServletRequest getRequest() {
@@ -52,6 +59,7 @@ public class Servlets {
 
     /**
      * 判断访问URI是否是静态文件请求
+     *
      * @throws Exception
      */
     public static boolean isStaticFile(String uri) {

@@ -44,8 +44,8 @@
     </typeAliases>
 
      <!--插件配置 -->
-    <plugins>
-        <plugin interceptor="com.nevercome.tabook.common.persistence.interceptor.PaginationInterceptor" />
-    </plugins>
+    <!--<plugins>-->
+        <!--<plugin interceptor="com.nevercome.tabook.common.persistence.interceptor.PaginationInterceptor" />-->
+    <!--</plugins>-->
 
 </configuration>

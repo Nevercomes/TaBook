@@ -1,1 +1,144 @@
 /* pages/me/me.wxss */
+/* pages/mine/mine.wxss */
+
+.container {
+  background-color: #f2f2f2;
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  background-color: #3c6;
+  width: 100%;
+  height: 350rpx;
+  margin-top: 0rpx;
+  padding-top: 0;
+}
+
+.userinfo {
+  flex-direction: row;
+}
+
+.userinfo button {
+  width: 128px;
+  height: 128rpx;
+  border-style: none;
+  border-radius: 50%;
+  margin: 20rpx;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userdesc {
+  flex-direction: column;
+  margin-left: 30rpx;
+  margin-top: 30rpx;
+}
+
+.userinfo-nickname {
+  color: #5e5e5e;
+}
+
+.credit-grades {
+  font-size: 26rpx;
+  margin-left: 200rpx;
+}
+
+.userverified {
+  width: 100%;
+  height: 30rpx;
+}
+
+.user-verified {
+  border-style: none;
+  font-size: 26rpx;
+  color: #5e5e5e;
+}
+
+.usermotto {
+  margin-top: 40rpx;
+}
+
+.user-motto {
+  font-size: 30rpx;
+}
+
+.motto-avatar {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 20rpx;
+}
+
+.Tools {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: -100rpx;
+  padding-top: 5%;
+  width: 80%;
+  height: 500rpx;
+  background-color: #fff;
+  align-items: center;
+}
+
+.item {
+  flex-direction: column;
+  margin-left: 10%;
+  width: 20%;
+  height: 180rpx;
+  align-content: center;
+}
+
+.item image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.item text {
+  margin-top: 15rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  text-align: center;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  width: 80%;
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+}
+
+.hr {
+  border: 1rpx solid #d7d7d7;
+}
+
+.creditdesc {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10rpx;
+  background-color: #fff;
+  height: 100rpx;
+  align-items: center;
+}
+
+.name {
+  position: absolute;
+  left: 15%;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  font-weight: bold;
+}
+
+.detail {
+  position: absolute;
+  right: 12%;
+  color: #888;
+  line-height: 80rpx;
+}

@@ -15,7 +15,18 @@ App({
             url: 'http://localhost:8080/tabook/a/login',
             method: 'post',
             data: {
-              code: res.code
+              username: res.code
+            },
+            success(res) {
+              // 获取sessionId 存入全部变量中 在后续所有的请求中带入sessionId
+              console.log(res.data.sessionId)
+              // wx.setStorage({
+              //   key: 'sessionId',
+              //   data: 'JSESSIONID=' + res.data.sessionId,
+              //   success: function (res) {
+              //     console.log(res)
+              //   }
+              // })
             }
           })
         } else {
@@ -32,7 +43,6 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -45,6 +55,10 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    // 默认的请求头
+    header: { 'Cookie': 'JSESSION=***' }
   }
 })
+
+// getApp().globalData.header.Cookie = 'JSESSIONID=' + sessionId;

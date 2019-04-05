@@ -5,7 +5,6 @@ import com.nevercome.tabook.common.servlet.ValidateCodeServlet;
 import com.nevercome.tabook.common.utils.Encodes;
 import com.nevercome.tabook.common.utils.SpringContextHolder;
 import com.nevercome.tabook.common.web.Servlets;
-import com.nevercome.tabook.modules.sys.entity.JwtToken;
 import com.nevercome.tabook.modules.sys.entity.Menu;
 import com.nevercome.tabook.modules.sys.entity.Role;
 import com.nevercome.tabook.modules.sys.entity.User;
@@ -14,36 +13,30 @@ import com.nevercome.tabook.modules.sys.utils.LogUtils;
 import com.nevercome.tabook.modules.sys.utils.UserUtils;
 import com.nevercome.tabook.modules.sys.web.LoginController;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.Permission;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
-import org.apache.shiro.realm.Realm;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.SimplePrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  * 系统安全认证实现类
- * <p>
- * 重写对JWT的支持
  *
  * @author sun
  * @author ThinkGem
@@ -51,51 +44,50 @@ import java.util.List;
  * @date 2019/4/4
  */
 @Service
-//@DependsOn({"userDao","roleDao","menuDao"})
 public class SystemAuthorizingRealm extends AuthorizingRealm {
 
-    @Resource
-    private JwtConfig jwtConfig;
+    private SystemService systemService;
 
     private Logger logger = LoggerFactory.getLogger(getClass());
-
-    private SystemService systemService;
 
     public SystemAuthorizingRealm() {
         this.setCachingEnabled(false);
     }
 
-    /**
-     * 注意坑点 : 必须重写此方法，不然Shiro会报错
-     * 因为创建了 JWTToken 用于替换Shiro原生 token,所以必须在此方法中显式的进行替换，否则在进行判断时会一直失败
-     */
     @Override
-    public boolean supports(AuthenticationToken token) {
-        return token instanceof JwtToken;
-    }
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) {
+        UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
 
-    /**
-     * 认证回调函数, 登录时调用
-     * 使用JWT进行登录验证
-     */
-    @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) {
-        String jwtToken = (String) token.getCredentials();
-        String openId = jwtConfig.getOpenIdByToken(jwtToken);
-        String sessionKey = jwtConfig.getSessionKeyByToken(jwtToken);
-        if (openId == null || openId.equals(""))
-            throw new AuthenticationException("user account not exits , please check your token");
-        if (sessionKey == null || sessionKey.equals(""))
-            throw new AuthenticationException("sessionKey is invalid , please check your token");
-        if (!jwtConfig.verifyToken(jwtToken))
-            throw new AuthenticationException("token is invalid , please check your token");
-        return new SimpleAuthenticationInfo(token, token, getName());
+//        int activeSessionSize = getSystemService().getSessionDao().getActiveSessions(false).size();
+//        if (logger.isDebugEnabled()) {
+//            logger.debug("login submit, active session size: {}, username: {}", activeSessionSize, token.getUsername());
+//        }
+
+        // 校验用户名密码
+        String code = token.getUsername();
+        System.err.println(code);
+        try {
+//            User user = getSystemService().wxUserLogin(code);
+            User user = getSystemService().retrieveUser("123", "123");
+            if (Global.NO.equals(user.getLoginFlag())) {
+                throw new AuthenticationException("msg:该帐号已禁止登录.");
+            }
+            // sun 不需要对密码进行加密和Hash
+            SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo();
+            simpleAuthenticationInfo.setPrincipals(new SimplePrincipalCollection(new Principal(user, true), getName()));
+            simpleAuthenticationInfo.setCredentials(credentialsMatcher());
+            return simpleAuthenticationInfo;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     /**
      * 获取权限授权信息，如果缓存中存在，则直接从缓存中获取，否则就重新获取， 登录成功后调用
      */
     protected AuthorizationInfo getAuthorizationInfo(PrincipalCollection principals) {
+        System.err.println("getAuthorizationInfo");
         if (principals == null) {
             return null;
         }
@@ -110,63 +102,13 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
         return info;
     }
 
-
-//    @Override
-//    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) {
-//        UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-//
-//        int activeSessionSize = getSystemService().getSessionDao().getActiveSessions(false).size();
-//        if (logger.isDebugEnabled()) {
-//            logger.debug("login submit, active session size: {}, username: {}", activeSessionSize, token.getUsername());
-//        }
-//
-//        // 校验登录验证码
-//        if (LoginController.isValidateCodeLogin(token.getUsername(), false, false)) {
-//            Session session = UserUtils.getSession();
-//            String code = (String) session.getAttribute(ValidateCodeServlet.VALIDATE_CODE);
-//            if (token.getCaptcha() == null || !token.getCaptcha().toUpperCase().equals(code)) {
-//                throw new AuthenticationException("msg:验证码错误, 请重试.");
-//            }
-//        }
-//
-//        // 校验用户名密码
-//        User user = getSystemService().getUserByLoginName(token.getUsername());
-//        if (user != null) {
-//            if (Global.NO.equals(user.getLoginFlag())) {
-//                throw new AuthenticationException("msg:该已帐号禁止登录.");
-//            }
-//            byte[] salt = Encodes.decodeHex(user.getPassword().substring(0, 16));
-//            return new SimpleAuthenticationInfo(new Principal(user, token.isMobileLogin()),
-//                    user.getPassword().substring(16), ByteSource.Util.bytes(salt), getName());
-//        } else {
-//            return null;
-//        }
-//    }
-
-
     /**
      * 授权查询回调函数, 进行鉴权但缓存中无用户的授权信息时调用
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        System.err.println("doGetAuthorizationInfo");
         Principal principal = (Principal) getAvailablePrincipal(principals);
-        // 获取当前已登录的用户
-        if (!Global.TRUE.equals(Global.getConfig("user.multiAccountLogin"))) {
-            Collection<Session> sessions = getSystemService().getSessionDao().getActiveSessions(true, principal, UserUtils.getSession());
-            if (sessions.size() > 0) {
-                // 如果是登录进来的，则踢出已在线用户
-                if (UserUtils.getSubject().isAuthenticated()) {
-                    for (Session session : sessions) {
-                        getSystemService().getSessionDao().delete(session);
-                    }
-                }
-                // 记住我进来的，并且当前用户已登录，则退出当前用户提示信息。
-                else {
-                    UserUtils.getSubject().logout();
-                    throw new AuthenticationException("msg:账号已在其它地方登录，请重新登录。");
-                }
-            }
-        }
         User user = getSystemService().getUserByLoginName(principal.getLoginName());
         if (user != null) {
             SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
@@ -191,7 +133,9 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
             LogUtils.saveLog(Servlets.getRequest(), "系统登录");
             return info;
         } else {
-            return null;
+            SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+            info.addStringPermission("user");
+            return info;
         }
     }
 
@@ -241,40 +185,13 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
      */
     @PostConstruct
     public void initCredentialsMatcher() {
-//        HashedCredentialsMatcher matcher = new HashedCredentialsMatcher(SystemService.HASH_ALGORITHM);
-//        matcher.setHashIterations(SystemService.HASH_INTERATIONS);
-//        setCredentialsMatcher(matcher);
         setCredentialsMatcher(credentialsMatcher());
     }
-    /**
-     * 注意坑点 : 密码校验 , 这里因为是JWT形式,就无需密码校验和加密,直接让其返回为true(如果不设置的话,该值默认为false,即始终验证不通过)
-     */
+
     private CredentialsMatcher credentialsMatcher() {
         return (token, info) -> true;
     }
 
-//	/**
-//	 * 清空用户关联权限认证，待下次使用时重新加载
-//	 */
-//	public void clearCachedAuthorizationInfo(Principal principal) {
-//		SimplePrincipalCollection principals = new SimplePrincipalCollection(principal, getName());
-//		clearCachedAuthorizationInfo(principals);
-//	}
-
-    /**
-     * 清空所有关联认证
-     *
-     * @Deprecated 不需要清空，授权缓存保存到session中
-     */
-    @Deprecated
-    public void clearAllCachedAuthorizationInfo() {
-//		Cache<Object, AuthorizationInfo> cache = getAuthorizationCache();
-//		if (cache != null) {
-//			for (Object key : cache.keys()) {
-//				cache.remove(key);
-//			}
-//		}
-    }
 
     /**
      * 获取系统业务对象
@@ -297,8 +214,6 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
         private String loginName; // 登录名
         private String name; // 姓名
         private boolean mobileLogin; // 是否手机登录
-
-//		private Map<String, Object> cacheMap;
 
         public Principal(User user, boolean mobileLogin) {
             this.id = user.getId();
@@ -323,14 +238,6 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
             return mobileLogin;
         }
 
-//		@JsonIgnore
-//		public Map<String, Object> getCacheMap() {
-//			if (cacheMap==null){
-//				cacheMap = new HashMap<String, Object>();
-//			}
-//			return cacheMap;
-//		}
-
         /**
          * 获取SESSIONID
          */
@@ -347,4 +254,42 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
             return id;
         }
     }
+
+//    /**
+//     * 注意坑点 : 必须重写此方法，不然Shiro会报错
+//     * 因为创建了 JWTToken 用于替换Shiro原生 token,所以必须在此方法中显式的进行替换，否则在进行判断时会一直失败
+//     */
+//    @Override
+//    public boolean supports(AuthenticationToken token) {
+//        return token instanceof JwtToken;
+//    }
+
+//    /**
+//     * 认证回调函数, 登录时调用
+//     * 使用JWT进行登录验证
+//     */
+//    @Override
+//    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) {
+//        System.err.println("doGetAuthenticationInfo");
+//        String jwtToken = (String) authcToken.getCredentials();
+//        String openId = jwtConfig.getOpenIdByToken(jwtToken);
+//        String sessionKey = jwtConfig.getSessionKeyByToken(jwtToken);
+//        if (openId == null || openId.equals(""))
+//            throw new AuthenticationException("user account not exits , please check your token");
+//        if (sessionKey == null || sessionKey.equals(""))
+//            throw new AuthenticationException("sessionKey is invalid , please check your token");
+//        if (!jwtConfig.verifyToken(jwtToken))
+//            throw new AuthenticationException("token is invalid , please check your token");
+//        User user = getSystemService().getUserByLoginName(openId);
+//        if (user != null) {
+//            if (Global.NO.equals(user.getLoginFlag())) {
+//                throw new AuthenticationException("msg:该已帐号禁止登录.");
+//            }
+//            return new SimpleAuthenticationInfo(new Principal(user, true), authcToken, getName());
+//        } else {
+//            // 若为新用户则直接创建以appId创建并返回
+//            User newUser = systemService.retrieveUser(openId);
+//            return new SimpleAuthenticationInfo(new Principal(newUser, true), authcToken, getName());
+//        }
+//    }
 }

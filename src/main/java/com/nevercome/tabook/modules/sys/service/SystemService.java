@@ -4,18 +4,19 @@ import com.nevercome.tabook.common.config.Global;
 import com.nevercome.tabook.common.mapper.JsonMapper;
 import com.nevercome.tabook.common.persistence.Page;
 import com.nevercome.tabook.common.security.Digests;
-import com.nevercome.tabook.common.security.shiro.session.SessionDAO;
+import com.nevercome.tabook.common.security.shiro.session.JedisSessionDAO;
 import com.nevercome.tabook.common.service.BaseService;
 import com.nevercome.tabook.common.service.ServiceException;
 import com.nevercome.tabook.common.utils.CacheUtils;
 import com.nevercome.tabook.common.utils.Encodes;
+import com.nevercome.tabook.common.utils.IdGen;
 import com.nevercome.tabook.common.utils.StringUtils;
 import com.nevercome.tabook.common.web.Servlets;
 import com.nevercome.tabook.modules.sys.dao.MenuDao;
 import com.nevercome.tabook.modules.sys.dao.RoleDao;
 import com.nevercome.tabook.modules.sys.dao.UserDao;
 import com.nevercome.tabook.modules.sys.entity.*;
-import com.nevercome.tabook.modules.sys.security.JwtConfig;
+import com.nevercome.tabook.modules.sys.security.Code2SessionResponse;
 import com.nevercome.tabook.modules.sys.security.SystemAuthorizingRealm;
 import com.nevercome.tabook.modules.sys.utils.LogUtils;
 import com.nevercome.tabook.modules.sys.utils.UserUtils;
@@ -33,7 +34,6 @@ import javax.naming.AuthenticationException;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -57,13 +57,14 @@ public class SystemService extends BaseService implements InitializingBean {
     @Autowired
     private MenuDao menuDao;
     @Autowired
-    private SessionDAO sessionDao;
-    @Autowired
-    private JwtConfig jwtConfig;
+    private JedisSessionDAO sessionDao;
+//    private SessionDAO sessionDao;
+//    @Autowired
+//    private JwtConfig jwtConfig;
     @Autowired
     private SystemAuthorizingRealm systemRealm;
 
-    public SessionDAO getSessionDao() {
+    public JedisSessionDAO getSessionDao() {
         return sessionDao;
     }
 
@@ -73,8 +74,9 @@ public class SystemService extends BaseService implements InitializingBean {
 
     /**
      * Login Service
+     * 抛弃使用JWT
      */
-    public Token wxUserLogin(String code) throws Exception {
+    public User wxUserLogin(String code) throws Exception {
         String code2SessionUrl = "https://api.weixin.qq.com/sns/jscode2session?" +
                 "appid=" + Global.getConfig("wx.applet.appid") +
                 "&secret=" + Global.getConfig("wx.applet.appsecret") +
@@ -87,31 +89,61 @@ public class SystemService extends BaseService implements InitializingBean {
             Response okResponse = call.execute();
             String resJson = okResponse.body().string();
             Code2SessionResponse response = (Code2SessionResponse) JsonMapper.fromJsonString(resJson, Code2SessionResponse.class);
+            System.err.println(resJson);
             if (!response.getErrcode().equals("0")) { // 不为0为错误
                 throw new AuthenticationException("code2session failed：" + response.getErrmsg());
             } else {
                 // 判断用户是否存在
-//                User user = userDao.findByOpenId(response.getOpenid());
-//                if (user != null) {
-//                    user.setOpenId(response.getOpenid());
-//                    user.setSessionKey(response.getSession_key());
-////                    userDao.insert(user);
-//                } else {
-//                    // 更新登录状态等操作
-//                    User newUser = new User();
-//                    userDao.update(newUser);
-//                }
-                User user1 = new User();
-                user1.setOpenId(response.getOpenid());
-                user1.setSessionKey(response.getSession_key());
-                String token = jwtConfig.createToken(user1);
-                return new Token(token);
+                User user = getUserByLoginName(response.getOpenid());
+                if (user != null) {
+                    return user;
+                } else {
+                    return retrieveUser(response.getOpenid(), response.getSession_key());
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
     }
+//    public Token wxUserLogin(String code) throws Exception {
+//        String code2SessionUrl = "https://api.weixin.qq.com/sns/jscode2session?" +
+//                "appid=" + Global.getConfig("wx.applet.appid") +
+//                "&secret=" + Global.getConfig("wx.applet.appsecret") +
+//                "&js_code=" + code +
+//                "&grant_type=authorization_code";
+//        OkHttpClient okHttpClient = new OkHttpClient();
+//        Request okRequest = new Request.Builder().url(code2SessionUrl).build();
+//        Call call = okHttpClient.newCall(okRequest);
+//        try {
+//            Response okResponse = call.execute();
+//            String resJson = okResponse.body().string();
+//            Code2SessionResponse response = (Code2SessionResponse) JsonMapper.fromJsonString(resJson, Code2SessionResponse.class);
+//            if (!response.getErrcode().equals("0")) { // 不为0为错误
+//                throw new AuthenticationException("code2session failed：" + response.getErrmsg());
+//            } else {
+//                // 判断用户是否存在
+////                User user = userDao.findByOpenId(response.getOpenid());
+////                if (user != null) {
+////                    user.setOpenId(response.getOpenid());
+////                    user.setSessionKey(response.getSession_key());
+//////                    userDao.insert(user);
+////                } else {
+////                    // 更新登录状态等操作
+////                    User newUser = new User();
+////                    userDao.update(newUser);
+////                }
+//                User user1 = new User();
+//                user1.setOpenId(response.getOpenid());
+//                user1.setSessionKey(response.getSession_key());
+//                String token = jwtConfig.createToken(user1);
+//                return new Token(token);
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 
     //-- User Service --//
 
@@ -462,6 +494,21 @@ public class SystemService extends BaseService implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
 
+    }
+
+    /**
+     * 登录时创建新用户并直接放回创建的用户对象
+     *
+     * @param openId
+     * @return
+     */
+    public User retrieveUser(String openId, String sessionKey) {
+        User user = new User();
+        user.setId(IdGen.uuid());
+        user.setLoginName(openId);
+        user.setOpenId(openId);
+        user.setSessionKey(sessionKey);
+        return user;
     }
 
     ///////////////// Synchronized to the Activiti //////////////////

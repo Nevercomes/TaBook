@@ -237,7 +237,6 @@ public class UserUtils {
             if (principal != null) {
                 return principal;
             }
-//			subject.logout();
         } catch (UnavailableSecurityManagerException e) {
 
         } catch (InvalidSessionException e) {

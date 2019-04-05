@@ -91,7 +91,7 @@ public class OfficeController extends BaseController {
     @RequestMapping(value = "save")
     public String save(Office office, Model model, RedirectAttributes redirectAttributes) {
         if(Global.isDemoMode()){
-            addMessage(redirectAttributes, "演示模式，不允许操作！");
+//            addMessage(redirectAttributes, "演示模式，不允许操作！");
             return "redirect:" + adminPath + "/sys/office/";
         }
         if (!beanValidator(model, office)){
@@ -113,7 +113,7 @@ public class OfficeController extends BaseController {
             }
         }
 
-        addMessage(redirectAttributes, "保存机构'" + office.getName() + "'成功");
+//        addMessage(redirectAttributes, "保存机构'" + office.getName() + "'成功");
         String id = "0".equals(office.getParentId()) ? "" : office.getParentId();
         return "redirect:" + adminPath + "/sys/office/list?id="+id+"&parentIds="+office.getParentIds();
     }
@@ -122,14 +122,14 @@ public class OfficeController extends BaseController {
     @RequestMapping(value = "delete")
     public String delete(Office office, RedirectAttributes redirectAttributes) {
         if(Global.isDemoMode()){
-            addMessage(redirectAttributes, "演示模式，不允许操作！");
+//            addMessage(redirectAttributes, "演示模式，不允许操作！");
             return "redirect:" + adminPath + "/sys/office/list";
         }
 //		if (Office.isRoot(id)){
 //			addMessage(redirectAttributes, "删除机构失败, 不允许删除顶级机构或编号空");
 //		}else{
         officeService.delete(office);
-        addMessage(redirectAttributes, "删除机构成功");
+//        addMessage(redirectAttributes, "删除机构成功");
 //		}
         return "redirect:" + adminPath + "/sys/office/list?id="+office.getParentId()+"&parentIds="+office.getParentIds();
     }

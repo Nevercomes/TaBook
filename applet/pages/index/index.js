@@ -42,6 +42,7 @@ Page({
         }
       })
     }
+    testGetData()
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -49,6 +50,23 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
+    })
+  },
+  testGetData: function(e) {
+    console.log(e)
+    wx.request({
+      url: 'http://localhost:8080/a/index',
+      header: getApp().globalData.header, 
+      data: {
+        data: 'Hello world!'
+      },
+      success(res) {
+        console.log(res)
+        console.log(res.data)
+      },
+      fail(xhr) {
+        console.log(xhr.msg)
+      }
     })
   }
 })

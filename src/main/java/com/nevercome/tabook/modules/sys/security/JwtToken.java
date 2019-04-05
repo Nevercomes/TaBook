@@ -1,4 +1,4 @@
-package com.nevercome.tabook.modules.sys.entity;
+package com.nevercome.tabook.modules.sys.security;
 
 import lombok.Data;
 import org.apache.shiro.authc.AuthenticationToken;

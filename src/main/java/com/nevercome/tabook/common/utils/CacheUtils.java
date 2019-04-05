@@ -10,6 +10,7 @@ import java.util.Set;
 
 /**
  * Cache工具类
+ *
  * @author ThinkGem
  * @version 2013-5-29
  */
@@ -22,6 +23,7 @@ public class CacheUtils {
 
     /**
      * 获取SYS_CACHE缓存
+     *
      * @param key
      * @return
      */
@@ -31,6 +33,7 @@ public class CacheUtils {
 
     /**
      * 获取SYS_CACHE缓存
+     *
      * @param key
      * @param defaultValue
      * @return
@@ -42,6 +45,7 @@ public class CacheUtils {
 
     /**
      * 写入SYS_CACHE缓存
+     *
      * @param key
      * @return
      */
@@ -51,6 +55,7 @@ public class CacheUtils {
 
     /**
      * 从SYS_CACHE缓存中移除
+     *
      * @param key
      * @return
      */
@@ -60,6 +65,7 @@ public class CacheUtils {
 
     /**
      * 获取缓存
+     *
      * @param cacheName
      * @param key
      * @return
@@ -70,6 +76,7 @@ public class CacheUtils {
 
     /**
      * 获取缓存
+     *
      * @param cacheName
      * @param key
      * @param defaultValue
@@ -82,6 +89,7 @@ public class CacheUtils {
 
     /**
      * 写入缓存
+     *
      * @param cacheName
      * @param key
      * @param value
@@ -92,6 +100,7 @@ public class CacheUtils {
 
     /**
      * 从缓存中移除
+     *
      * @param cacheName
      * @param key
      */
@@ -101,12 +110,13 @@ public class CacheUtils {
 
     /**
      * 从缓存中移除所有
+     *
      * @param cacheName
      */
     public static void removeAll(String cacheName) {
         Cache<String, Object> cache = getCache(cacheName);
         Set<String> keys = cache.keys();
-        for (Iterator<String> it = keys.iterator(); it.hasNext();){
+        for (Iterator<String> it = keys.iterator(); it.hasNext(); ) {
             cache.remove(it.next());
         }
         logger.info("清理缓存： {} => {}", cacheName, keys);
@@ -114,10 +124,11 @@ public class CacheUtils {
 
     /**
      * 获取缓存键名，多数据源下增加数据源名称前缀
+     *
      * @param key
      * @return
      */
-    private static String getKey(String key){
+    private static String getKey(String key) {
 //		String dsName = DataSourceHolder.getDataSourceName();
 //		if (StringUtils.isNotBlank(dsName)){
 //			return dsName + "_" + key;
@@ -127,13 +138,14 @@ public class CacheUtils {
 
     /**
      * 获得一个Cache，没有则显示日志。
+     *
      * @param cacheName
      * @return
      */
-    private static Cache<String, Object> getCache(String cacheName){
+    private static Cache<String, Object> getCache(String cacheName) {
         Cache<String, Object> cache = cacheManager.getCache(cacheName);
-        if (cache == null){
-            throw new RuntimeException("当前系统中没有定义“"+cacheName+"”这个缓存。");
+        if (cache == null) {
+            throw new RuntimeException("当前系统中没有定义“" + cacheName + "”这个缓存。");
         }
         return cache;
     }

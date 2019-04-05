@@ -10,6 +10,7 @@ import com.nevercome.tabook.common.service.ServiceException;
 import com.nevercome.tabook.common.utils.CacheUtils;
 import com.nevercome.tabook.common.utils.Encodes;
 import com.nevercome.tabook.common.utils.IdGen;
+
 import com.nevercome.tabook.common.utils.StringUtils;
 import com.nevercome.tabook.common.web.Servlets;
 import com.nevercome.tabook.modules.sys.dao.MenuDao;
@@ -17,6 +18,7 @@ import com.nevercome.tabook.modules.sys.dao.RoleDao;
 import com.nevercome.tabook.modules.sys.dao.UserDao;
 import com.nevercome.tabook.modules.sys.entity.*;
 import com.nevercome.tabook.modules.sys.security.Code2SessionResponse;
+
 import com.nevercome.tabook.modules.sys.security.SystemAuthorizingRealm;
 import com.nevercome.tabook.modules.sys.utils.LogUtils;
 import com.nevercome.tabook.modules.sys.utils.UserUtils;
@@ -34,6 +36,8 @@ import javax.naming.AuthenticationException;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
+
+
 import java.util.List;
 
 /**
@@ -90,6 +94,7 @@ public class SystemService extends BaseService implements InitializingBean {
             String resJson = okResponse.body().string();
             Code2SessionResponse response = (Code2SessionResponse) JsonMapper.fromJsonString(resJson, Code2SessionResponse.class);
             System.err.println(resJson);
+
             if (!response.getErrcode().equals("0")) { // 不为0为错误
                 throw new AuthenticationException("code2session failed：" + response.getErrmsg());
             } else {

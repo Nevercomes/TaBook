@@ -1,5 +1,9 @@
 <!--index.wxml-->
 <view class="container">
+
+  <view>
+    
+  </view>
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
@@ -9,5 +13,7 @@
   </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
+
+    <i-button type="primary" bind:click="handleClick">这是一个按钮</i-button>
   </view>
 </view>

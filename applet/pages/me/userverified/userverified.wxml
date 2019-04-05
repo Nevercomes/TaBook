@@ -1,0 +1,58 @@
+<!--pages/me/userverified/userverified.wxml-->
+<view class='container'>
+  <view class='prompt'>
+    <text>提示：只有实名认证后才能使用他书平台的全部功能哦！</text>
+  </view>
+  <view class='verifiedcontent'>
+    <form>
+      <view class='item'>
+        <view class='name'>
+          <text>真实姓名</text>
+        </view>
+        <view>
+          <input name="name" type="text"></input>
+        </view>
+      </view>
+      <view class='hr'></view>
+      <view class='item'>
+        <view class='name'>
+          <text>身份证号</text>
+        </view>
+        <view>
+          <input name="idcard" type='idcard'></input>
+        </view>
+      </view>
+      <view class='hr'></view>
+      <view class='item'>
+        <view class='name'>
+          <text>学校</text>
+        </view>
+        <view>
+          <input name="school" type="text"></input>
+        </view>
+      </view>
+      <view class='hr'></view>
+      <view class='item'>
+        <view class='name'>
+          <text>学号</text>
+        </view>
+        <view>
+          <input name="studentNumber" type="number"></input>
+        </view>
+      </view>
+      <view class='hr'></view>
+      <view class='item'>
+        <view class='name'>
+          <text>联系方式</text>
+        </view>
+        <view>
+          <input name="phone" type="text"></input>
+        </view>
+      </view>
+      <view class='btn'>
+      <button class='submit' form-type='submit' bindtap='bindSubmit'>确定</button>
+      <button class='reset' form-type='reset'>重置</button></view>
+      
+    </form>
+  </view>
+</view>

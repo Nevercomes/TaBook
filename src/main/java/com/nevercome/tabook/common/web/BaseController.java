@@ -5,13 +5,10 @@ import com.nevercome.tabook.common.mapper.JsonMapper;
 import com.nevercome.tabook.common.utils.DateUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authz.AuthorizationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.WebDataBinder;
@@ -71,35 +68,6 @@ public class BaseController {
     protected Validator validator;
 
     /**
-     * 参数绑定异常
-     */
-//    @ExceptionHandler({BindException.class, ConstraintViolationException.class, ValidationException.class})
-//    public String bindException() {
-//        return "error/400";
-//    }
-    @ExceptionHandler({BindException.class, ConstraintViolationException.class, ValidationException.class})
-    public ResponseEntity bindException() {
-        return new ResponseEntity<>(new Result("请求参数绑定异常"), HttpStatus.BAD_REQUEST);
-    }
-
-    /**
-     * 授权登录异常
-     */
-//    @ExceptionHandler({AuthenticationException.class})
-//    public String authenticationException() {
-//        return "error/500";
-//    }
-    @ExceptionHandler({AuthenticationException.class})
-    public ResponseEntity authenticationException() {
-        return new ResponseEntity<>(new Result("need login"), HttpStatus.FORBIDDEN);
-    }
-
-    @ExceptionHandler({AuthorizationException.class})
-    public ResponseEntity authorizationException() {
-        return new ResponseEntity<>(new Result("need identify"), HttpStatus.FORBIDDEN);
-    }
-
-    /**
      * 服务端参数有效性验证
      *
      * @param object 验证的实体对象
@@ -112,7 +80,7 @@ public class BaseController {
         } catch (ConstraintViolationException ex) {
             List<String> list = BeanValidators.extractPropertyAndMessageAsList(ex, ": ");
             list.add(0, "数据验证失败：");
-//            addMessage(model, list.toArray(new String[]{}));
+            addMessage(model, list.toArray(new String[]{}));
             return false;
         }
         return true;
@@ -131,7 +99,7 @@ public class BaseController {
         } catch (ConstraintViolationException ex) {
             List<String> list = BeanValidators.extractPropertyAndMessageAsList(ex, ": ");
             list.add(0, "数据验证失败：");
-//            addMessage(redirectAttributes, list.toArray(new String[]{}));
+            addMessage(redirectAttributes, list.toArray(new String[]{}));
             return false;
         }
         return true;
@@ -146,6 +114,78 @@ public class BaseController {
      */
     protected void beanValidator(Object object, Class<?>... groups) {
         BeanValidators.validateWithException(validator, object, groups);
+    }
+
+    /**
+     * 添加Model消息
+     *
+     * @param messages
+     */
+    protected void addMessage(Model model, String... messages) {
+        StringBuilder sb = new StringBuilder();
+        for (String message : messages) {
+            sb.append(message).append(messages.length > 1 ? "<br/>" : "");
+        }
+        model.addAttribute("message", sb.toString());
+    }
+
+    /**
+     * 添加Flash消息
+     *
+     * @param messages
+     */
+    protected void addMessage(RedirectAttributes redirectAttributes, String... messages) {
+        StringBuilder sb = new StringBuilder();
+        for (String message : messages) {
+            sb.append(message).append(messages.length > 1 ? "<br/>" : "");
+        }
+        redirectAttributes.addFlashAttribute("message", sb.toString());
+    }
+
+    /**
+     * 客户端返回JSON字符串
+     *
+     * @param response
+     * @param object
+     * @return
+     */
+    protected String renderString(HttpServletResponse response, Object object) {
+        return renderString(response, JsonMapper.toJsonString(object), "application/json");
+    }
+
+    /**
+     * 客户端返回字符串
+     *
+     * @param response
+     * @param string
+     * @return
+     */
+    protected String renderString(HttpServletResponse response, String string, String type) {
+        try {
+            response.reset();
+            response.setContentType(type);
+            response.setCharacterEncoding("utf-8");
+            response.getWriter().print(string);
+            return null;
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    /**
+     * 参数绑定异常
+     */
+    @ExceptionHandler({BindException.class, ConstraintViolationException.class, ValidationException.class})
+    public String bindException() {
+        return "error/400";
+    }
+
+    /**
+     * 授权登录异常
+     */
+    @ExceptionHandler({AuthenticationException.class})
+    public String authenticationException() {
+        return "error/403";
     }
 
     /**
@@ -181,63 +221,4 @@ public class BaseController {
 //			}
         });
     }
-
-
-
-//    /**
-//     * 客户端返回字符串
-//     *
-//     * @param response
-//     * @param string
-//     * @return
-//     */
-//    protected String renderString(HttpServletResponse response, String string, String type) {
-//        try {
-//            response.reset();
-//            response.setContentType(type);
-//            response.setCharacterEncoding("utf-8");
-//            response.getWriter().print(string);
-//            return null;
-//        } catch (IOException e) {
-//            return null;
-//        }
-//    }
-
-//    /**
-//     * 客户端返回JSON字符串
-//     *
-//     * @param response
-//     * @param object
-//     * @return
-//     */
-//    protected String renderString(HttpServletResponse response, Object object) {
-//        return renderString(response, JsonMapper.toJsonString(object), "application/json");
-//    }
-
-//    /**
-//     * 添加Model消息
-//     *
-//     * @param messages
-//     */
-//    protected void addMessage(Model model, String... messages) {
-//        StringBuilder sb = new StringBuilder();
-//        for (String message : messages) {
-//            sb.append(message).append(messages.length > 1 ? "<br/>" : "");
-//        }
-//        model.addAttribute("message", sb.toString());
-//    }
-//
-//    /**
-//     * 添加Flash消息
-//     *
-//     * @param messages
-//     */
-//    protected void addMessage(RedirectAttributes redirectAttributes, String... messages) {
-//        StringBuilder sb = new StringBuilder();
-//        for (String message : messages) {
-//            sb.append(message).append(messages.length > 1 ? "<br/>" : "");
-//        }
-//        redirectAttributes.addFlashAttribute("message", sb.toString());
-//    }
-
 }

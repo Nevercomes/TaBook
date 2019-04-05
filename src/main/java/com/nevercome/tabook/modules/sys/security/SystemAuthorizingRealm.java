@@ -27,12 +27,14 @@ import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.Collection;
+
 import java.util.List;
 
 /**
@@ -107,6 +109,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         Principal principal = (Principal) getAvailablePrincipal(principals);
+
         User user = getSystemService().getUserByLoginName(principal.getLoginName());
         if (user != null) {
             SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
@@ -134,6 +137,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
             SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
             info.addStringPermission("user");
             return info;
+
         }
     }
 
@@ -186,6 +190,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
         setCredentialsMatcher(credentialsMatcher());
     }
 
+
     private CredentialsMatcher credentialsMatcher() {
         return (token, info) -> true;
     }
@@ -212,6 +217,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
         private String loginName; // 登录名
         private String name; // 姓名
         private boolean mobileLogin; // 是否手机登录
+
 
         public Principal(User user, boolean mobileLogin) {
             this.id = user.getId();
@@ -252,42 +258,4 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
             return id;
         }
     }
-
-//    /**
-//     * 注意坑点 : 必须重写此方法，不然Shiro会报错
-//     * 因为创建了 JWTToken 用于替换Shiro原生 token,所以必须在此方法中显式的进行替换，否则在进行判断时会一直失败
-//     */
-//    @Override
-//    public boolean supports(AuthenticationToken token) {
-//        return token instanceof JwtToken;
-//    }
-
-//    /**
-//     * 认证回调函数, 登录时调用
-//     * 使用JWT进行登录验证
-//     */
-//    @Override
-//    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) {
-//        System.err.println("doGetAuthenticationInfo");
-//        String jwtToken = (String) authcToken.getCredentials();
-//        String openId = jwtConfig.getOpenIdByToken(jwtToken);
-//        String sessionKey = jwtConfig.getSessionKeyByToken(jwtToken);
-//        if (openId == null || openId.equals(""))
-//            throw new AuthenticationException("user account not exits , please check your token");
-//        if (sessionKey == null || sessionKey.equals(""))
-//            throw new AuthenticationException("sessionKey is invalid , please check your token");
-//        if (!jwtConfig.verifyToken(jwtToken))
-//            throw new AuthenticationException("token is invalid , please check your token");
-//        User user = getSystemService().getUserByLoginName(openId);
-//        if (user != null) {
-//            if (Global.NO.equals(user.getLoginFlag())) {
-//                throw new AuthenticationException("msg:该已帐号禁止登录.");
-//            }
-//            return new SimpleAuthenticationInfo(new Principal(user, true), authcToken, getName());
-//        } else {
-//            // 若为新用户则直接创建以appId创建并返回
-//            User newUser = systemService.retrieveUser(openId);
-//            return new SimpleAuthenticationInfo(new Principal(newUser, true), authcToken, getName());
-//        }
-//    }
 }

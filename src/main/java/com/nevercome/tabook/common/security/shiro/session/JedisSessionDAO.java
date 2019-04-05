@@ -106,7 +106,7 @@ public class JedisSessionDAO extends AbstractSessionDAO {
 
     @Override
     public Collection<Session> getActiveSessions() {
-        return null;
+        return getActiveSessions(true);
     }
 
     /**
@@ -253,4 +253,5 @@ public class JedisSessionDAO extends AbstractSessionDAO {
     public void setSessionKeyPrefix(String sessionKeyPrefix) {
         this.sessionKeyPrefix = sessionKeyPrefix;
     }
+
 }

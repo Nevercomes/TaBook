@@ -1,0 +1,82 @@
+<!--pages/me/me.wxml-->
+<view class="container">
+  <view class='user'>
+    <view class="userinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 立即登录 </button>
+      <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      </block>
+    </view>
+    <view class='userdesc'>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text class='credit-grades'>信用分：{{usergrades}}分</text>
+      <view class='userverified'>
+        <text class='user-verified' wx:if="{{!hasVerified}}" bindtap='bindUserVerified'>未认证，点我实名认证</text>
+        <text class='user-verified' wx:else="{{hasVerified}}">已实名认证</text>
+      </view>
+      <view class="usermotto">
+        <text class="user-motto">{{motto}}</text>
+        <image class='motto-avatar' src='../../static/images/me/motto.png'></image>
+      </view>
+    </view>
+  </view>
+  <view class='Tools'>
+    <view class='item' bindtap='bindMyBorrow'>
+      <view>
+        <image src='../../static/images/me/borrow.png'></image>
+      </view>
+      <view>
+        <text>我的借书</text>
+      </view>
+    </view>
+    <view class='item' bindtap='bindMyBuy'>
+      <view>
+        <image src='../../static/images/me/buy.png'></image>
+      </view>
+      <view>
+        <text>我的买书</text>
+      </view>
+    </view>
+    <view class='item' bindtap='bindMyUpLoad'>
+      <view>
+        <image src='../../static/images/me/upload.png'></image>
+      </view>
+      <view>
+        <text>我的上传</text>
+      </view>
+    </view>
+    <view class='item' bindtap='bindMyCollect'>
+      <view>
+        <image src='../../static/images/me/collect.png'></image>
+      </view>
+      <view>
+        <text>我的收藏</text>
+      </view>
+    </view>
+    <view class='item' bindtap='bindMyApplication'>
+      <view>
+        <image src='../../static/images/me/application.png'></image>
+      </view>
+      <view>
+        <text>申请中心</text>
+      </view>
+    </view>
+  </view>
+  <view>
+  </view>
+  <view class="bottom">
+    <view class='creditdesc' bindtap=''>
+      <view class='name'>信用说明</view>
+      <view class='detail'>
+        <text>></text>
+      </view>
+    </view>
+    <view class='hr'></view>
+    <view class='creditdesc' bindtap=''>
+      <view class='name'>认证说明</view>
+      <view class='detail'>
+        <text>></text>
+      </view>
+    </view>
+  </view>
+</view>

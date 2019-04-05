@@ -10,7 +10,6 @@ import java.util.Set;
 
 /**
  * Cache工具类
- *
  * @author ThinkGem
  * @version 2013-5-29
  */
@@ -45,7 +44,6 @@ public class CacheUtils {
 
     /**
      * 写入SYS_CACHE缓存
-     *
      * @param key
      * @return
      */
@@ -55,7 +53,6 @@ public class CacheUtils {
 
     /**
      * 从SYS_CACHE缓存中移除
-     *
      * @param key
      * @return
      */
@@ -65,7 +62,6 @@ public class CacheUtils {
 
     /**
      * 获取缓存
-     *
      * @param cacheName
      * @param key
      * @return
@@ -76,7 +72,6 @@ public class CacheUtils {
 
     /**
      * 获取缓存
-     *
      * @param cacheName
      * @param key
      * @param defaultValue
@@ -89,7 +84,6 @@ public class CacheUtils {
 
     /**
      * 写入缓存
-     *
      * @param cacheName
      * @param key
      * @param value
@@ -100,7 +94,6 @@ public class CacheUtils {
 
     /**
      * 从缓存中移除
-     *
      * @param cacheName
      * @param key
      */
@@ -110,7 +103,6 @@ public class CacheUtils {
 
     /**
      * 从缓存中移除所有
-     *
      * @param cacheName
      */
     public static void removeAll(String cacheName) {
@@ -146,6 +138,7 @@ public class CacheUtils {
         Cache<String, Object> cache = cacheManager.getCache(cacheName);
         if (cache == null) {
             throw new RuntimeException("当前系统中没有定义“" + cacheName + "”这个缓存。");
+
         }
         return cache;
     }

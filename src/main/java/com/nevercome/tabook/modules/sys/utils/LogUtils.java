@@ -91,6 +91,7 @@ public class LogUtils {
             log.setException(Exceptions.getStackTraceAsString(ex));
             // 如果无标题并无异常日志，则不保存信息
             if (StringUtils.isBlank(log.getTitle()) && StringUtils.isBlank(log.getException())) {
+
                 return;
             }
             // 保存日志信息
@@ -120,6 +121,7 @@ public class LogUtils {
                         }
                         for (Menu m : menuList) {
                             if (m.getId().equals(id)) {
+
                                 namePathList.add(m.getName());
                                 break;
                             }

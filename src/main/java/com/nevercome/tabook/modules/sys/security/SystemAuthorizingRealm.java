@@ -87,7 +87,6 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
      * 获取权限授权信息，如果缓存中存在，则直接从缓存中获取，否则就重新获取， 登录成功后调用
      */
     protected AuthorizationInfo getAuthorizationInfo(PrincipalCollection principals) {
-        System.err.println("getAuthorizationInfo");
         if (principals == null) {
             return null;
         }
@@ -107,7 +106,6 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        System.err.println("doGetAuthorizationInfo");
         Principal principal = (Principal) getAvailablePrincipal(principals);
         User user = getSystemService().getUserByLoginName(principal.getLoginName());
         if (user != null) {

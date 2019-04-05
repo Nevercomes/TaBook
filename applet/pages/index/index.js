@@ -1,6 +1,11 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const Cookie = wx.getStorageSync('Cookie');
+let header = {}
+if(Cookie) {
+  header.Cookie = Cookie
+}
 
 Page({
   data: {
@@ -42,7 +47,7 @@ Page({
         }
       })
     }
-    testGetData()
+    this.testSession();
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -52,20 +57,19 @@ Page({
       hasUserInfo: true
     })
   },
-  testGetData: function(e) {
-    console.log(e)
+  testSession: function() {
+    // 权限测试
     wx.request({
-      url: 'http://localhost:8080/a/index',
-      header: getApp().globalData.header, 
+      url: 'http://localhost:8080/tabook/a/index',
+      header: header,
       data: {
         data: 'Hello world!'
       },
       success(res) {
-        console.log(res)
         console.log(res.data)
       },
       fail(xhr) {
-        console.log(xhr.msg)
+        // console.log(xhr.msg)
       }
     })
   }

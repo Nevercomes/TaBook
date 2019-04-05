@@ -15,18 +15,16 @@ App({
             url: 'http://localhost:8080/tabook/a/login',
             method: 'post',
             data: {
-              username: res.code
+              code: res.code
             },
             success(res) {
               // 获取sessionId 存入全部变量中 在后续所有的请求中带入sessionId
-              console.log(res.data.sessionId)
-              // wx.setStorage({
-              //   key: 'sessionId',
-              //   data: 'JSESSIONID=' + res.data.sessionId,
-              //   success: function (res) {
-              //     console.log(res)
-              //   }
-              // })
+              console.log(res.data)
+              if (res && res.data && res.data.data) {
+                //保存Cookie到Storage
+                let session = "tabook-shiro-session=" + res.data.data + "; Path=/; HttpOnly"
+                wx.setStorageSync('Cookie', session);
+              }
             }
           })
         } else {
@@ -57,8 +55,6 @@ App({
   globalData: {
     userInfo: null,
     // 默认的请求头
-    header: { 'Cookie': 'JSESSION=***' }
+    Cookie: "tabook-shiro-session="
   }
 })
-
-// getApp().globalData.header.Cookie = 'JSESSIONID=' + sessionId;

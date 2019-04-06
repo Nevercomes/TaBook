@@ -1,6 +1,5 @@
-package com.nevercome.tabook.log;
+package com.nevercome.tabook.test.log;
 
-import org.apache.ibatis.logging.LogFactory;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

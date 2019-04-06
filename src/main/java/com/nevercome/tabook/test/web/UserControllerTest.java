@@ -1,4 +1,4 @@
-package com.nevercome.tabook.web;
+package com.nevercome.tabook.test.web;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

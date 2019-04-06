@@ -69,8 +69,8 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
         String code = token.getUsername();
         System.err.println(code);
         try {
-//            User user = getSystemService().wxUserLogin(code);
-            User user = getSystemService().retrieveUser("123", "123");
+            User user = getSystemService().wxUserLogin(code);
+//            User user = getSystemService().retrieveUser("123", "123");
             if (Global.NO.equals(user.getLoginFlag())) {
                 throw new AuthenticationException("msg:该帐号已禁止登录.");
             }

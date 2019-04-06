@@ -1,4 +1,4 @@
-package com.nevercome.tabook.test;
+package com.nevercome.tabook;
 
 import com.nevercome.tabook.modules.sys.dao.UserDao;
 import org.junit.After;

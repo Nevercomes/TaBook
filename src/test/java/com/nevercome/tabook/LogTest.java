@@ -1,4 +1,4 @@
-package com.nevercome.tabook.test.log;
+package com.nevercome.tabook;
 
 import org.junit.Test;
 import org.slf4j.Logger;

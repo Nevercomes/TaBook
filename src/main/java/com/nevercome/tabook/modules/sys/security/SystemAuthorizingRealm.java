@@ -67,7 +67,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
 
         // 校验用户名密码
         String code = token.getUsername();
-        System.err.println(code);
+//        System.err.println(code);
         try {
             User user = getSystemService().wxUserLogin(code);
 //            User user = getSystemService().retrieveUser("123", "123");

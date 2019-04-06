@@ -2,10 +2,11 @@
 //获取应用实例
 const app = getApp()
 const Cookie = wx.getStorageSync('Cookie');
-let header = {}
-if(Cookie) {
-  header.Cookie = Cookie
+let header = {
+  "Cookie": Cookie,
+  "content-type": "application/x-www-form-urlencoded"
 }
+
 
 Page({
   data: {

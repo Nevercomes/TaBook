@@ -5,6 +5,7 @@ import com.nevercome.tabook.common.security.shiro.session.JedisSessionDAO;
 import com.nevercome.tabook.common.utils.CacheUtils;
 import com.nevercome.tabook.common.web.BaseController;
 import com.nevercome.tabook.common.web.Result;
+import com.nevercome.tabook.modules.sys.entity.User;
 import com.nevercome.tabook.modules.sys.security.SystemAuthorizingRealm;
 import com.nevercome.tabook.modules.sys.service.SystemService;
 import com.nevercome.tabook.modules.sys.utils.UserUtils;

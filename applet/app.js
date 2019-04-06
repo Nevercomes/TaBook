@@ -14,6 +14,12 @@ App({
           wx.request({
             url: 'http://localhost:8080/tabook/a/login',
             method: 'post',
+            // 说明：小程序的默认数据的请求格式为application/json 
+            // 在post方法下 无论是request.getParameter() 还是以setter的方式bean注入都无法获得参数
+            // 因为post方式不做url拼接，java后台无法处理不是key value格式的json字符串
+            // 所以对于post方式请在请求头header内加上
+            // 'content-type': 'application/x-www-form-urlencoded'
+            header: { 'content-type': 'application/x-www-form-urlencoded' },
             data: {
               code: res.code
             },

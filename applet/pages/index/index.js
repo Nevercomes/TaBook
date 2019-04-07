@@ -1,5 +1,6 @@
 //index.js
 //获取应用实例
+const WXAPI = require('../../wxapi/main.js')
 const app = getApp()
 const Cookie = wx.getStorageSync('Cookie');
 let header = {
@@ -10,15 +11,66 @@ let header = {
 
 Page({
   data: {
-    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    inputShowed:false,//是否显示搜索框
+    inputVal:"",//搜索框内容
+
+    autoplay:true,
+    interval:3000,
+    duration: 1000,
+    indicatorDots:false,
+    circular:true,
+    imgUrls:[
+      '../../static/images/home/book1.jpg',
+      '../../static/images/home/book2.jpg',
+      '../../static/images/home/book3.jpg',
+    ],
+    swiperCurrent: 0,
+    currentTab:'tab1'
   },
+
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
+    })
+  },
+  //搜索框事件
+  showInput: function () {
+    this.setData({
+      inputShowed: true
+    });
+  },
+  hideInput: function () {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
+  },
+  clearInput: function () {
+    this.setData({
+      inputVal: ""
+    });
+  },
+  inputTyping: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
+  },
+  //轮播图事件
+  swiperchange: function (e) {
+    //console.log(e.detail.current)
+    this.setData({
+      swiperCurrent: e.detail.current
+    })
+  },
+  //tab标签页事件
+  handleChange:function({detail}){
+    console.log(detail.key)
+    this.setData({
+      currentTab: detail.key
     })
   },
   onLoad: function () {

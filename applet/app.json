@@ -18,20 +18,20 @@
     "borderStyle": "white",
     "list": [
       {
-        "selectedIconPath": "static/images/home-selected.png",
-        "iconPath": "static/images/home.png",
+        "selectedIconPath": "static/images/home/home-selected.png",
+        "iconPath": "static/images/home/home.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
-        "selectedIconPath": "static/images/message-selected.png",
-        "iconPath": "static/images/message.png",
+        "selectedIconPath": "static/images/home/message-selected.png",
+        "iconPath": "static/images/home/message.png",
         "pagePath": "pages/message/message",
         "text": "消息"
       },
       {
-        "selectedIconPath": "static/images/me-selected.png",
-        "iconPath": "static/images/me.png",
+        "selectedIconPath": "static/images/home/me-selected.png",
+        "iconPath": "static/images/home/me.png",
         "pagePath": "pages/me/me",
         "text": "我的"
       }

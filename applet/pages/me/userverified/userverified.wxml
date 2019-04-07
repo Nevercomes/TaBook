@@ -4,13 +4,13 @@
     <text>提示：只有实名认证后才能使用他书平台的全部功能哦！</text>
   </view>
   <view class='verifiedcontent'>
-    <form>
+    <form bindsubmit= "submitInfo" bindreset="resetInfo" >
       <view class='item'>
         <view class='name'>
           <text>真实姓名</text>
         </view>
         <view>
-          <input name="name" type="text"></input>
+          <input name="name" value="{{inputNameVal}}" bindinput="inputTypingName" cursor="2" type="text"></input>
         </view>
       </view>
       <view class='hr'></view>
@@ -19,7 +19,7 @@
           <text>身份证号</text>
         </view>
         <view>
-          <input name="idcard" type='idcard'></input>
+          <input name="idcard" value="{{inputIdVal}}" bindinput="inputTypingId" cursor='2' type='idcard'></input>
         </view>
       </view>
       <view class='hr'></view>
@@ -28,7 +28,7 @@
           <text>学校</text>
         </view>
         <view>
-          <input name="school" type="text"></input>
+          <input name="school" value="{{inputSchoolVal}}"  bindinput="inputTypingSchool" cursor="2" type="text"></input>
         </view>
       </view>
       <view class='hr'></view>
@@ -37,7 +37,7 @@
           <text>学号</text>
         </view>
         <view>
-          <input name="studentNumber" type="number"></input>
+          <input name="studentNumber" value="{{inputStudentNumVal}}" bindinput="inputTypingStuNum" cursor="2" type="number"></input>
         </view>
       </view>
       <view class='hr'></view>
@@ -46,13 +46,12 @@
           <text>联系方式</text>
         </view>
         <view>
-          <input name="phone" type="text"></input>
+          <input name="phone" value="{{inputPhoneVal}}" bindinput="inputTypingPhone" cursor="2" type="text"></input>
         </view>
       </view>
       <view class='btn'>
       <button class='submit' form-type='submit' bindtap='bindSubmit'>确定</button>
-      <button class='reset' form-type='reset'>重置</button></view>
-      
+      <button class='reset' form-type='reset'>重置</button></view>    
     </form>
   </view>
 </view>

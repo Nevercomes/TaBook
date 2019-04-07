@@ -51,12 +51,11 @@ Page({
       hasUserInfo: true
     })
   },
-  bindUserVerified: function () {
+  bindUserVerified: function (e) {
+    console.log(e.detail)
     wx.navigateTo({
       url: 'userverified/userverified',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
+      success: function (res) { }
     })
   },
   onReady: function () {

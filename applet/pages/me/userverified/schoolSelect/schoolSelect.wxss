@@ -1,0 +1,22 @@
+/* pages/me/userverified/schoolSelect/schoolSelect.wxss */
+.schoolSelect{
+  display: flex;
+  flex-direction: row;
+}
+.schoolSelect input{
+  border: 1rpx solid #ccc;
+  margin: 8%;
+  border-radius: 10rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+}
+.schoolSelect button{
+  width: 20%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  position: absolute;
+  margin-top: 8%;
+  right: 5%;
+}

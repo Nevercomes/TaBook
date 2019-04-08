@@ -4,7 +4,7 @@
     <text>提示：只有实名认证后才能使用他书平台的全部功能哦！</text>
   </view>
   <view class='verifiedcontent'>
-    <form bindsubmit= "submitInfo" bindreset="resetInfo" >
+    <form bindsubmit="submitFormInfo" bindreset="resetFormInfo">
       <view class='item'>
         <view class='name'>
           <text>真实姓名</text>
@@ -23,13 +23,14 @@
         </view>
       </view>
       <view class='hr'></view>
-      <view class='item'>
+      <view class='item' bindtap="bindSchoolSelect">
         <view class='name'>
           <text>学校</text>
         </view>
         <view>
-          <input name="school" value="{{inputSchoolVal}}"  bindinput="inputTypingSchool" cursor="2" type="text"></input>
+          <input name="school" value="{{inputSchoolVal}}" cursor="2" type="text"></input>
         </view>
+        <text class='detail'>></text>
       </view>
       <view class='hr'></view>
       <view class='item'>
@@ -50,8 +51,9 @@
         </view>
       </view>
       <view class='btn'>
-      <button class='submit' form-type='submit' bindtap='bindSubmit'>确定</button>
-      <button class='reset' form-type='reset'>重置</button></view>    
+        <button class='submit' form-type='submit'>确定</button>
+        <button class='reset' form-type='reset'>重置</button>
+      </view>
     </form>
   </view>
 </view>

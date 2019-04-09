@@ -60,5 +60,9 @@ form{
   font-size: 40rpx;
   margin-bottom: 20rpx; 
 }
+.detail{
+  position: absolute;
+  right: 15%;
+}
 
 

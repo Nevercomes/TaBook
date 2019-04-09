@@ -4,7 +4,8 @@
     "pages/message/message",
     "pages/me/me",
     "pages/logs/logs",
-    "pages/me/userverified/userverified"
+    "pages/me/userverified/userverified",
+    "pages/me/userverified/schoolSelect/schoolSelect"
   ],
   "window": {
     "backgroundTextStyle": "light",

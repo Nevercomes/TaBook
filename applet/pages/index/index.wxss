@@ -55,7 +55,7 @@ swiper-item image {
   margin: 0 8rpx;  
   width: 14rpx;  
   height: 14rpx;  
-  background: #fff;  
+  background:#fff;  
   border-radius: 50%;  
   transition: all .6s;  
   opacity: .5;
@@ -253,4 +253,8 @@ swiper-item image {
   position: absolute;
   right:30rpx;
   bottom: 10rpx;
+}
+.slide-image{
+  width: 750rpx;
+  height: 100%
 }

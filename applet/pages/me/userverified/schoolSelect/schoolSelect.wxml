@@ -1,7 +1,33 @@
 <!--pages/me/userverified/schoolSelect/schoolSelect.wxml-->
-<view class='schoolSelect'>
-<input type='text' class='school' bindinput='inputTyping' name ="school" value='{{schoolSelectVal}}' placeholder='搜索学校' confirm-type='search' focus="{{inputShowed}}"></input>
-<button class='cancel' bindtap="hideInput" hidden="{{!inputShowed}}">取消</button>
+<view class="weui-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="请输入搜索学校" value="{{searchSchoolVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindtap="showInput" confirm-type='search' bindconfirm="searchConfirm" />
+      <view class="weui-icon-clear" wx:if="{{searchSchoolVal.value.length > 0}}" bindtap="searchClear">
+        <icon type="clear" size="14"></icon>
+      </view>
+    </view>
+    <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+      <icon class="weui-icon-search" type="search" size="14"></icon>
+      <view class="weui-search-bar__text">搜索学校</view>
+    </label>
+  </view>
+  <view class="weui-search-bar__cancel-btn" hidden='{{!inputShowed}}' bindtap="clearInput">
+    <text data-key='back'>取消</text>
+  </view>
 </view>
-<view data-text='中南大学' class='school' bindtap='schoolSelect'>中南大学</view>
-<view data-text='中北大学' class='school' bindtap='schoolSelect'>中北大学</view>
+
+<view class="a-z">
+  <view wx:for="{{schoolAZ}}" wx:key="unique">
+    <view data-id="{{item.schoolName}}" bindtap="bindAZ">{{item.schoolName}}
+    </view>
+  </view>
+</view>
+<view class='school-item-content'>
+  <view wx:for="{{schoolResults}}" wx:key="unique" bindtap="schoolSelected" >
+    <view wx:if="{{item.school.PinYin.length>1}}" class = "school-item" data-schoolname = "{{item.schoolName}}" bindtap = "schoolSelected" >{{item.schoolName}}</view>
+    <view wx:else class='school-itme-A-Z' bindtap="schoolSelected"  data-schoolname='{{item.schoolName}}' >{{item.schoolName}}</view>
+
+  </view>
+</view>

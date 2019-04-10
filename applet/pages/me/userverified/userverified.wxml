@@ -28,7 +28,7 @@
           <text>学校</text>
         </view>
         <view>
-          <input name="school" value="{{inputSchoolVal}}" cursor="2" type="text"></input>
+          <input name="school" value="{{inputSchoolVal}}" cursor="2" type="text" ></input>
         </view>
         <text class='detail'>></text>
       </view>

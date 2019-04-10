@@ -31,22 +31,23 @@ form{
   border: 1rpx solid rgb(204, 204, 204);
 } */
 .name{
+  width: 20%;
   margin-left: 10%;
-  width: 25%;
+  
 }
 .item text{
   font-size: 36rpx;
   line-height: 100rpx;
 }
 .item input{
-  width: 100%;
+  width:95%;
   border: 1px solid #ccc;
   border-radius: 10rpx;
   font-size: 36rpx;
   line-height:80rpx;
   height: 80rpx;
+  padding-left: 40rpx;
   text-indent: 20rpx;
-  text-align: left;
 }
 .btn{
   flex-direction: row;
@@ -62,7 +63,8 @@ form{
 }
 .detail{
   position: absolute;
-  right: 15%;
+  right: 10%;
+  color: #ccc;
 }
 
 

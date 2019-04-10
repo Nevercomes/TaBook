@@ -15,8 +15,9 @@ Page({
     })
   },
   inputTypingSchool: function (e) {
+    console.log(e.detail.value)
     this.setData({
-      inputSchoolVal: e.detail.value
+      
     })
   },
   inputTypingId: function (e) {
@@ -32,6 +33,11 @@ Page({
   inputTypingStuNum: function (e) {
     this.setData({
       inputStudentNumVal: e.detail.value
+    })
+  },
+  changeData(school){
+    this.setData({
+      inputSchoolVal:school
     })
   },
   submitFormInfo: function (e) {
@@ -60,6 +66,7 @@ Page({
         },
         method: "POST",
         data: {
+          //e.detail.value
           name: e.detail.value.name,
           school: e.detail.value.school,
           idcard: e.detail.value.idcard,
@@ -98,7 +105,7 @@ Page({
   bindSchoolSelect: function (e) {
     console.log(e.detail.value),
       wx.navigateTo({
-        url: 'schoolSelect/schoolSelect',
+        url: 'schoolSelect/schoolSelect?school = inputSchoolVal',
         success: function (res) { }
       })
   },

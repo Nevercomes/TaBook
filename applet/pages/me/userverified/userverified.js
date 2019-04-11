@@ -35,13 +35,9 @@ Page({
       inputStudentNumVal: e.detail.value
     })
   },
-  changeData(school){
-    this.setData({
-      inputSchoolVal:school
-    })
-  },
   submitFormInfo: function (e) {
     console.log("form发生了提交事件，携带值为：", e.detail.value)
+
     let {
       inputNameVal,
       inputIdVal,
@@ -57,8 +53,8 @@ Page({
       })
       setTimeout(function () {
         wx.hideToast()
-      }, 2000)
-    } else {
+      }, 2000)}
+     else {
       wx.request({
         url: '',
         header: {
@@ -73,6 +69,7 @@ Page({
           studentNumber: e.detail.value.studentNumber,
           phone: e.detail.value.phone
         },
+        
         success: function (res) {
           console.log(res.data)
           if (res.data.status == 0) {
@@ -82,6 +79,11 @@ Page({
               duration: 1500
             })
           } else {
+            var pages = getCurrentPages();
+            var prePage = pages[pages.length - 2];
+            prePage.setData({
+              hasVerified: true
+            })    
             wx.showToast({
               title: "认证成功",
               icon: "success",
@@ -91,7 +93,6 @@ Page({
         }
       })
     }
-
   },
   resetFormInfo: function (e) {
     let {

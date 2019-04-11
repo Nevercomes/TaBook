@@ -3,9 +3,12 @@
     "pages/index/index",
     "pages/message/message",
     "pages/me/me",
-    "pages/logs/logs",
     "pages/me/userverified/userverified",
-    "pages/me/userverified/schoolSelect/schoolSelect"
+    "pages/me/myBorrow/myBorrow",
+    "pages/me/myBuy/myBuy",
+    "pages/me/myUpload/myUpload",
+    "pages/me/userverified/schoolSelect/schoolSelect" ,
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",

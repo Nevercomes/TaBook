@@ -58,6 +58,12 @@ Page({
       success: function (res) { }
     })
   },
+  bindMyBorrow:function(){
+    wx.navigateTo({
+      url: 'myBorrow/myBorrow',
+      duration:0
+    })
+  },
   onReady: function () {
 
   },

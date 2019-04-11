@@ -1,0 +1,71 @@
+/* pages/me/myBorrow/myBorrow.wxss */
+.hr{
+  border: 0.1rpx solid #ccc;
+  opacity: 0.5;
+  margin-bottom: 15rpx;
+}
+.top {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30rpx;
+  margin-bottom: 15rpx;
+}
+.borrowstatistics {
+  width: 33%;
+  font-size: 34rpx;
+  margin-left: 17%;
+  font-weight: bold;
+}
+.swiper-tab{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border-bottom: 1rpx solid #ccc;
+  text-align: center;
+  height: 88rpx;
+  line-height: 88rpx;
+  justify-content:space-between;
+}
+.swiper-tab-item{
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 30%;
+  font-size: 34rpx;
+}
+.active{
+  color:#09bb07;
+  border-bottom: 4rpx solid #09bb07
+}
+.swiper-item{
+  text-align: center;
+ 
+}
+.list{
+   display: flex;
+  flex-direction: column;
+  font-family: "Microsoft YaHei";
+}
+.bookInfo{
+  display: flex;
+  flex-direction: column;
+  width:100%;
+  padding-top: 20rpx;
+  font-size: 32rpx;
+  line-height: 65rpx;
+}
+.name{
+  font-weight: bold;
+  width: 80%;
+  margin-left: 20%;
+  color: #000;
+}
+.desc{
+  width: 80%;
+  margin-left: 20%;
+  color: #333;
+}
+.hr1{
+border: 1rpx solid #ccc;
+}
+
+

@@ -1,0 +1,23 @@
+<!--pages/me/myBorrow/myBorrow.wxml-->
+<view class='content'>
+  <view class='hr'></view>
+  <view class='top'>
+    <text class='borrowstatistics' decode="nbsp">累计借阅&nbsp;&nbsp;&nbsp;&nbsp;{{totalborrow}}</text>
+    <text class='borrowstatistics' decode="nbsp">在借中&nbsp;&nbsp;&nbsp;&nbsp;{{borrowing}}</text>
+    <!-- <view class='borrowstatistics'>{{totalborrow}}</view> -->
+    <!-- <view class='borrowstatistics'>在借中{{borrowing}}</view> -->
+  </view>
+  <view class="swiper-tab">
+
+    <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">在借图书</view>
+    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">借阅历史</view>
+  </view>
+  <swiper current="{{currentTab}}" bindchange="swiperTab">
+    <swiper-item>
+      <include src="borrowing.wxml"/>
+    </swiper-item>
+    <swiper-item>
+    <include src="totalBorrow.wxml"/>
+    </swiper-item>
+  </swiper>
+</view>

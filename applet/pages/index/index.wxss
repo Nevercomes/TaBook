@@ -101,7 +101,25 @@ swiper-item image {
    width: 339rpx;
    height: 339rpx;
 }
+.goods-box .goods-intro{
+  width: 280rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 24rpx;
+  padding: 24rpx 0 0rpx 0;
+  color:#000;
+  margin-left: 24rpx;
+}
 .goods-box .goods-title{
+  width: 600rpx;
+  overflow: hidden;
+  font-size: 24rpx;
+  padding: 24rpx 0;
+  color:#000;
+  margin-left: 24rpx;
+}
+.goods-box .goods-name{
   width: 280rpx;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -118,6 +136,21 @@ swiper-item image {
   padding: 24rpx 0;
   color:#e64340;
   margin-left: 24rpx;
+}
+.goods-box .like-num{
+  width: 280rpx;
+  overflow: hidden;
+  font-size: 24rpx;
+  padding: 24rpx 0;
+  color:#000;
+  margin-right: 0rpx;
+}
+.goods-box .goods-like .like-image{
+  width: 40rpx;
+  height: 40rpx;
+  overflow: hidden;
+  padding: 24rpx 0;
+  margin-right: 0rpx;
 }
 .no-more-goods{
   text-align: center;

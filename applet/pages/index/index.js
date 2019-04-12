@@ -28,7 +28,28 @@ Page({
       '../../static/images/home/book3.jpg',
     ],
     swiperCurrent: 0,
-    currentTab:'tab1'
+    currentTab:'tab1',
+    goods:[
+      'a',
+      'b',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+    ],
+    tab1Hidden:false,
+    tab2Hidden:true,
+    tab3Hidden:true,
+
   },
 
   //事件处理函数
@@ -68,9 +89,33 @@ Page({
   },
   //tab标签页事件
   handleChange:function({detail}){
-    console.log(detail.key)
+    // console.log(detail.key)
     this.setData({
       currentTab: detail.key
+    })
+  },
+  tab1Click:function(e){
+    // console.log(e.detail)
+    this.setData({
+      tab1Hidden:false,
+      tab2Hidden:true,
+      tab3Hidden:true,
+    })
+  },
+  tab2Click: function (e) {
+    // console.log(e.detail)
+    this.setData({
+      tab1Hidden: true,
+      tab2Hidden: false,
+      tab3Hidden: true,
+    })
+  },
+  tab3Click: function (e) {
+    // console.log(e.detail)
+    this.setData({
+      tab1Hidden: true,
+      tab2Hidden: true,
+      tab3Hidden: false,
     })
   },
   onLoad: function () {

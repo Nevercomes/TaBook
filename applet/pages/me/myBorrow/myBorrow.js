@@ -7,50 +7,77 @@ let header = {
 }
 Page({
   data: {
-    totalborrow:0,
-    borrowing:0,
+    books: [{
+      name: "平凡的世界",
+      author: "路遥",
+      press: "zndx",
+      bookOwner: "pj",
+      borrowTime: "2018",
+      givebackTime: "323",
+      operation: "我要还书"
+    }],
+    books: ['a', 'b', 'c', 'd', 'e'],
+    books2: ['a', 'b', 'c', 'd', 'e'],
+    totalborrow: 0,
+    borrowing: 0,
     currentTab: 0,
-    books:[],
+    disabled: false,
+
   },
-  handleChange: function ({ detail }) {
+  handleChange: function({
+    detail
+  }) {
     var that = this;
     console.log(detail.key)
     that.setData({
       currentTab: detail.key
     })
   },
-  clickTab:function(e){
+  clickTab: function(e) {
     var that = this;
-    if(this.data.currentTab===e.target.dataset.current){
+    if (this.data.currentTab === e.target.dataset.current) {
       return false;
-    }else{
+    } else {
       that.setData({
-        currentTab:e.target.dataset.current
+        currentTab: e.target.dataset.current
       })
     }
   },
-  swiperTab:function(e){
+  swiperTab: function(e) {
     var that = this;
     console.log(e.detail.value)
     that.setData({
-      currentTab:e.detail.value
+      currentTab: e.detail.value
     })
   },
-  onLoad: function (options) {
-    var that = this;
-    that.loadBooks();
+  onLoad: function(options) {
+    var that = this
+    that.setData({
+      totalborrow: that.data.books.length,
+      borrowing: that.data.books2.length
+    })
+    wx.getSystemInfo({
+      success: function(res) {
+        that.setData({
+          clientHeight: res.windowHeight
+        });
+      }
+    })
+    //  that.loadBooks();
+
   },
-  loadBooks:function(e){
+  loadBooks: function(e) {
     var that = this;
     wx.request({
       url: '',
-      method:"POST",
-      header:header,
-      success:function(res){
+      method: "POST",
+      header: header,
+      success: function(res) {
         var subjects = res.data.subjects;
         console.log(subjects);
         var books = new Array();
-        for(var i = 0;i<subjects.length;i++){
+        for (var i = 0; i < subjects.length; i++) {
+          totalborrow++;
           var subject = subjects[i];
           var book = new Object;
           book.name = subject.name;
@@ -67,36 +94,87 @@ Page({
           books.push(book)
         }
         that.setData({
-          books:books
+          books: books
         })
       }
     })
   },
-  giveBackBook:function(e){
-    this.setData({
-      operation:""
+  giveBackOperation: function(e) {
+    var index = e.currentTarget.dataset.index;
+    console.log(index);
+    var array = this.data.books;
+    var array2 = this.data.books2;
+    var index2 = array2.length
+    console.log(array2)
+    console.log(array)
+    var that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定要还书吗？',
+      success: function(res) {
+        if (res.confirm) {
+          var b =array[index-1];
+          array2.push(b);
+          that.data.books.splice(index, 1);
+          that.setData({
+            books: that.data.books,
+            borrowing: that.data.books.length,
+            books2: array2,
+            totalborrow: that.data.books2.length
+          })
+          // array.forEach((item, index, arr) => {
+          //   var sItme = "books[" + index + "].operation";
+          //   that.data.books.splice(index, 1);
+          //   that.setData({
+          //     [sItme]: "我已还书",
+          //     books: that.data.books,
+          //     borrowing: that.data.books.length,
+          //   })
+          // })
+          this.setData({
+            
+          })
+          //   array.forEach((item, index2, arr) => {
+          //   that.data.books2 = books[index].concat(that.data.books2);
+          //   that.setData({
+          //     books2: thta.data.books2,
+          //     totalborrow: that.data.books2.length
+          //   })
+
+          // })
+          // that.setData({
+          //   disabled:true,
+          //   operation:"已还书"
+          // })
+        } else if (res.cancel) {
+          that.setData({
+            
+          })
+
+        }
+      }
     })
   },
-  onReady: function () {
+  onReady: function() {
 
   },
-  onShow: function () {
+  onShow: function() {
 
   },
-  onHide: function () {
+  onHide: function() {
 
   },
-  onUnload: function () {
+  onUnload: function() {
 
   },
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

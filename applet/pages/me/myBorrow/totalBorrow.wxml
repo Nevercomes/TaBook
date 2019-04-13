@@ -1,6 +1,6 @@
 <view class="list">
-<block wx:for ="{{books}}">
-<view class="book" id="{{item.id}}"></view>
+<block wx:for-items ="{{books2}}" wx:key ="{{index}}">
+<!-- <view class="book" id="{{item.id}}"></view> -->
 <view class="bookInfo">
 <view class="name">书名：{{item.name}}</view>
 <view class="desc"> 作者：{{item.author}}</view>

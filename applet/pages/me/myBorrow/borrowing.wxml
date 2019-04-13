@@ -1,15 +1,19 @@
 <view class="list">
-<block wx:for ="{{books}}">
-<view class="book" id="{{item.id}}"></view>
-<view class="bookInfo">
-<view class="name">书名：{{item.name}}</view>
-<view class="desc"> 作者：{{item.author}}</view>
-<view class="desc">出版社：{{item.press}}</view>
-<view class="desc">所有者：{{item.bookOwner}}</view>
-<view class="desc">借出时间:{{item.borrowTime}}</view>
-<view class="desc">归还时间：{{item.givebackTime}}</view>
-<view class="desc" bindtap="giveBackBook">操作:{{item.operation}}</view>
-<view class="hr"></view>
-</view>
-</block>
+  <block wx:for="{{books}}" wx:for-item ="{{item}}" wx:key="{{index}}" data-id = "{{{item.id}}">
+    <view class="bookInfo">
+      <view class="name">书名：{{item.name}}</view>
+      <view class="desc"> 作者：{{item.author}}</view>
+      <view class="desc">出版社：{{item.press}}</view>
+      <view class="desc">所有者：{{item.bookOwner}}</view>
+      <view class="desc">借出时间:{{item.borrowTime}}</view>
+      <view class="desc">应还时间：{{item.givebackTime}}</view>
+      <view class="desc" >
+      <view class='operation'>操作</view>
+      <view>
+      <button hover-class='other-button-hover' hover-stay-time='1000' bindtap='giveBackOperation' disabled='{{disabled}}' data-index='{{index}}' data-operation='operation'>w{{item.operation}}</button>
+      </view>
+      </view>
+      <view class="hr"></view>
+    </view>
+  </block>
 </view>

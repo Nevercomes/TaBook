@@ -76,6 +76,10 @@ swiper-item image {
 .weui-loadmore {
   margin-bottom: 0px;
 }
+.a-gooods{
+    width: 100%;
+    overflow: hidden;
+}
 .goods-container{
   display: flex;
   justify-content: space-between;  
@@ -92,6 +96,21 @@ swiper-item image {
   margin-bottom: 24rpx;
   border-radius:5px;
 }
+.goods-box1{
+  width: 730rpx;
+  height: 200rpx;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+  border-radius:5px;
+  display: flex;
+  flex-direction: row;
+}
+.goods-box1 .img-box{
+  width: 200rpx;
+  height: 200rpx;
+  overflow: hidden;
+}
 .goods-box .img-box{
   width: 339rpx;
   height: 339rpx;
@@ -101,7 +120,11 @@ swiper-item image {
    width: 339rpx;
    height: 339rpx;
 }
-.goods-box .goods-intro{
+.goods-box .img-box image_small{
+   width: 50rpx;
+   height:50rpx;
+}
+.goods-box .text-box.goods-intro{
   width: 280rpx;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -111,6 +134,29 @@ swiper-item image {
   color:#000;
   margin-left: 24rpx;
 }
+.goods-box1 .text-box{
+  width: 339rpx;
+  height: 339rpx;
+  overflow: hidden;
+}
+.goods-box1 .text-box .goods-intro{
+  width: 280rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 24rpx;
+  padding: 24rpx 0 0rpx 0;
+  color:#000;
+  margin-left: 24rpx;
+}
+.goods-box1 .text-box .goods-intro1{
+  width: 600rpx;
+  overflow: hidden;
+  font-size: 30rpx;
+  padding: 24rpx 0;
+  color:#000;
+  margin-left: 18rpx;
+}
 .goods-box .goods-title{
   width: 600rpx;
   overflow: hidden;
@@ -118,6 +164,14 @@ swiper-item image {
   padding: 24rpx 0;
   color:#000;
   margin-left: 24rpx;
+}
+.goods-box1 .goods-title{
+  width: 600rpx;
+  overflow: hidden;
+  font-size: 30rpx;
+  padding: 24rpx 0;
+  color:#000;
+  margin-left: 18rpx;
 }
 .goods-box .goods-name{
   width: 280rpx;
@@ -151,6 +205,111 @@ swiper-item image {
   overflow: hidden;
   padding: 24rpx 0;
   margin-right: 0rpx;
+}
+.goods-info{
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    padding: 0rpx 1rpx 0rpx 10rpx; 
+    width: 720rpx;
+    box-sizing: border-box;
+}
+.goods-info .img-box{
+    width: 160rpx;
+    height:160rpx;
+    overflow: hidden;
+    margin-right: 0rpx;
+    background-color: #d8d8d8;
+}
+.goods-info .text-box{
+    width: 500rpx;
+    position: relative;
+}
+.goods-info .text-box .goods-title{
+    font-size: 28rpx;
+    color:#000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 10rpx 20rpx 5rpx 0;
+}
+.goods-info .text-box .textarea{
+    font-size: 28rpx;
+    color:#000;
+    height: 80rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 10rpx 20rpx 5rpx 0;
+}
+.goods-info .text-box .goods-label{
+    font-size: 26rpx;
+    color:#999;
+    height: 38rpx;
+    line-height: 38rpx;
+    margin: 8rpx 0 25rpx 0;
+}
+.goods-info .text-box .goods-price{
+    font-size: 26rpx;
+    color:#e64340;
+}
+.goods-info .text-box .buy-num{
+    width: 164rpx;
+    height: 48rpx;
+    line-height: 48rpx;
+    position: absolute;
+    right: 30rpx;
+    bottom: 0;
+    display: flex;
+    /*justify-content: space-between;*/
+    font-size: 24rpx;
+    text-align: center
+}
+.goods-info .text-box .buy-num .jian-btn{
+    width: 48rpx;
+    height: 100%;
+    border-left: 1rpx solid #ccc;
+    border-bottom: 1rpx solid #ccc;
+    border-top: 1rpx solid #ccc;
+    border-bottom-left-radius: 6rpx;
+    border-top-left-radius: 6rpx;
+}
+.goods-info .text-box .buy-num .jian-btn.disabled{
+    background-color: #f5f5f9;
+    border-left: 1rpx solid #eee;
+    border-bottom: 1rpx solid #eee;
+    border-top: 1rpx solid #eee;
+    color: #ccc;
+}
+.goods-info .text-box .buy-num .jia-btn{
+    width: 48rpx;
+    height: 100%;
+    border-right: 1rpx solid #ccc;
+    border-bottom: 1rpx solid #ccc;
+    border-top: 1rpx solid #ccc;
+    border-bottom-right-radius: 6rpx;
+    border-top-right-radius: 6rpx;
+}
+.goods-info .text-box .buy-num .jia-btn.disabled{
+    background-color: #f5f5f9;
+    border-right: 1rpx solid #eee;
+    border-bottom: 1rpx solid #eee;
+    border-top: 1rpx solid #eee;
+    color: #ccc;
+}
+.goods-info .text-box .buy-num input{
+    width: 68rpx;
+    height: 48rpx;
+    min-height: 48rpx;
+    text-align: center;
+    font-size: 24rpx;
+    border: 1rpx solid #ccc;
+}
+
+.goods-info .img-box .img{
+    width: 160rpx;
+    height:160rpx;
 }
 .no-more-goods{
   text-align: center;

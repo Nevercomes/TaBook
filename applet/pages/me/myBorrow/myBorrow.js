@@ -63,7 +63,7 @@ Page({
         });
       }
     })
-    //  that.loadBooks();
+     that.loadBooks();
 
   },
   loadBooks: function(e) {
@@ -77,7 +77,6 @@ Page({
         console.log(subjects);
         var books = new Array();
         for (var i = 0; i < subjects.length; i++) {
-          totalborrow++;
           var subject = subjects[i];
           var book = new Object;
           book.name = subject.name;
@@ -100,20 +99,18 @@ Page({
     })
   },
   giveBackOperation: function(e) {
+    var that = this;
     var index = e.currentTarget.dataset.index;
     console.log(index);
     var array = this.data.books;
     var array2 = this.data.books2;
     var index2 = array2.length
-    console.log(array2)
-    console.log(array)
-    var that = this;
     wx.showModal({
       title: '提示',
       content: '确定要还书吗？',
       success: function(res) {
         if (res.confirm) {
-          var b =array[index-1];
+          var b =array[index];
           array2.push(b);
           that.data.books.splice(index, 1);
           that.setData({
@@ -122,30 +119,6 @@ Page({
             books2: array2,
             totalborrow: that.data.books2.length
           })
-          // array.forEach((item, index, arr) => {
-          //   var sItme = "books[" + index + "].operation";
-          //   that.data.books.splice(index, 1);
-          //   that.setData({
-          //     [sItme]: "我已还书",
-          //     books: that.data.books,
-          //     borrowing: that.data.books.length,
-          //   })
-          // })
-          this.setData({
-            
-          })
-          //   array.forEach((item, index2, arr) => {
-          //   that.data.books2 = books[index].concat(that.data.books2);
-          //   that.setData({
-          //     books2: thta.data.books2,
-          //     totalborrow: that.data.books2.length
-          //   })
-
-          // })
-          // that.setData({
-          //   disabled:true,
-          //   operation:"已还书"
-          // })
         } else if (res.cancel) {
           that.setData({
             

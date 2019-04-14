@@ -1,85 +1,110 @@
 /* pages/me/myBorrow/myBorrow.wxss */
-.content{
+
+.content {
   width: 100%;
   height: 100%;
+    background-color: #efeff4;
 }
-.hr{
+
+.hr {
   height: 1rpx;
   background-color: #ccc;
   opacity: 0.5;
 }
+
 .top {
   display: flex;
   flex-direction: row;
   margin-top: 30rpx;
-  margin-bottom: 15rpx;
+  margin-bottom: 5rpx;
+  background-color: rgb(133, 133, 216);
+  color: white;
+  height: 88rpx;
+  line-height: 88rpx;
 }
+
 .borrowstatistics {
   width: 33%;
   font-size: 34rpx;
   margin-left: 17%;
   font-weight: bold;
 }
-.swiper-tab{
+
+.detail {
+  width: 90%;
+  margin-left: 5%;
+  border: 1rpx solid #ccc;
+  box-shadow:6rpx, 6rpx, 6rpx, 6rpx, #ccc;
+  background-color: #fff;
+}
+
+.swiper-tab {
   display: flex;
   flex-direction: row;
   width: 100%;
-  border-bottom: 1rpx solid #ccc;
   text-align: center;
   height: 88rpx;
   line-height: 88rpx;
-  justify-content:space-between;
+  justify-content: space-between;
 }
-.swiper-tab-item{
+
+.swiper-tab-item {
   margin-left: 10%;
   margin-right: 10%;
   width: 30%;
   font-size: 34rpx;
 }
-.active{
-  color:#09bb07;
-  border-bottom: 4rpx solid #09bb07
+
+.active {
+  color: #09bb07;
+  border-bottom: 4rpx solid #09bb07;
 }
-.swiper-item{
+
+.swiper-item {
   height: 1000rpx;
   width: 100%;
 }
 
-.list{
-   display: flex;
-  flex-direction: column;
-  font-family: "Microsoft YaHei";
-}
-.bookInfo{
+.list {
   display: flex;
   flex-direction: column;
-  width:100%;
+  font-family: "Microsoft YaHei";
+
+}
+
+.bookInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   padding-top: 20rpx;
   font-size: 32rpx;
   line-height: 65rpx;
 }
-.name{
+
+.name {
   font-weight: bold;
-  width: 80%;
-  margin-left: 20%;
+  width: 90%;
+  margin-left: 10%;
   color: #000;
 }
-.desc{
+
+.desc {
   display: flex;
   flex-direction: row;
-  width: 80%;
-  margin-left: 20%;
+  width: 90%;
+  margin-left: 10%;
   color: #333;
 }
-.desc button{
-  margin-left:10%;
-  font-size: 32rpx;
-  width: 100%;
-}
-.desc button::after{
-  border: none;
-}
-.other-button-hover{
+
+.operation {
   font-size: 34rpx;
-  background-color: orange;
+  color: blue;
+}
+
+.xian {
+  width: 80%;
+  border-top: 5rpx;
+  border-bottom: 1rpx solid #ccc;
+  margin-left: 10%;
+
 }

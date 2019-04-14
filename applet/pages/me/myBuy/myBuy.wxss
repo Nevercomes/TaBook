@@ -1,1 +1,8 @@
 /* pages/me/myBuy/myBuy.wxss */
+@import "../myBorrow/myBorrow.wxss";
+.title{
+  font-size: 36rpx;
+  background-color: #fff;
+  justify-content: center;
+  text-align: center
+}

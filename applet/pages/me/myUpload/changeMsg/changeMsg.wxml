@@ -1,0 +1,14 @@
+<!--pages/me/myUpload/changeMsg/changeMsg.wxml-->
+<view class="content">
+  <form bindsubmit="submitMsgChange" bindreset='resetMsgChange'>
+    <view class="detail">
+      <label>旧的留言</label>
+      <text>{{oldMsg}}</text>
+    </view>
+    <view class='detail'>
+      <label>新的留言</label>
+      <input class="newMsg" name ="message" value="{{newMsg}}" type="text" bindinput="inputnewMsg"></input>
+    </view>
+    <button  class="sure" form-type='submit' bindtap="bindSure" >确定</button>
+  </form>
+</view>

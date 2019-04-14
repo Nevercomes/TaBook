@@ -1,1 +1,37 @@
 /* pages/me/myUpload/myUpload.wxss */
+@import "../myBorrow/myBorrow";
+
+.select-box {
+  background-color: #eee;
+  padding: 0 10rpx;
+  width: 20%;
+  position: relative;
+  float:right;
+  right: 0;
+  z-index: 1;
+  overflow: hidden;
+  animation: myfirst 0.5s;
+}
+.operation{
+font-size: 34rpx;
+  color: blue;
+}
+
+.change {
+  display: flex;
+  flex-direction: row;
+}
+.change button{
+  font-size: 32rpx;
+  background-color:rgb(160, 160, 236);
+  color:white;
+  width: 30%;
+  height:80rpx;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  margin-top: 10rpx;
+}
+.change button:hover{
+background-color: rgb(133, 133, 216);
+font-size: 34rpx
+}

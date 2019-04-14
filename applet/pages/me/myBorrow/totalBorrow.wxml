@@ -2,12 +2,12 @@
 <block wx:for-items ="{{books2}}" wx:key ="{{index}}">
 <!-- <view class="book" id="{{item.id}}"></view> -->
 <view class="bookInfo">
-<view class="name">书名：{{item.name}}</view>
+<view class="name">图书题名：{{item.name}}</view>
 <view class="desc"> 作者：{{item.author}}</view>
 <view class="desc">出版社：{{item.press}}</view>
 <view class="desc">所有者：{{item.bookOwner}}</view>
 <view class="desc">借出时间:{{item.borrowTime}}</view>
-<view class="hr"></view>
+<view class="xian"></view>
 </view>
 </block>
 </view>

@@ -1,2 +1,19 @@
 <!--pages/me/myBuy/myBuy.wxml-->
-<text>pages/me/myBuy/myBuy.wxml</text>
+<view class="content">
+  <view class="top">
+    <text class='borrowstatistics' decode="nbsp">累计买书&nbsp;&nbsp;&nbsp;&nbsp;{{totalBuy}}</text>
+  </view>
+  <view class="detail">
+    <block wx:for="{{books}}" wx:for-item="{{item}}" wx:key="{{index}}" data-id="{{{item.id}}">
+      <view class="bookInfo">
+        <view class="name">图书题名：{{item.name}}</view>
+        <view class="desc"> 作者：{{item.author}}</view>
+        <view class="desc">出版社：{{item.press}}</view>
+        <view class="desc">所有者：{{item.bookOwner}}</view>
+        <view class="desc">购买时间：{{item.buyTime}}</view>
+        <view class="desc">价格：{{item.price}}</view>
+        <view class="xian"></view>
+      </view>
+    </block>
+  </view>
+</view>

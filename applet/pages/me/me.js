@@ -64,6 +64,28 @@ Page({
       duration:0
     })
   },
+  bindMyBuy:function(){
+    wx.navigateTo({
+      url: 'myBuy/myBuy',
+      duration:0
+    })
+  },
+  bindMyUpLoad:function(){
+    wx.navigateTo({
+      url: 'myUpload/myUpload',
+      duration:0
+    })
+  },
+  bindMyCollect:function(){
+    wx.navigateTo({
+      url: '',
+      duration:0
+    })
+
+  },
+  bindMyApplication:function(){
+
+  },
   onReady: function () {
 
   },

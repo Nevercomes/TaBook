@@ -1,2 +1,38 @@
 <!--pages/me/myUpload/myUpload.wxml-->
-<text>pages/me/myUpload/myUpload.wxml</text>
+<view class="content">
+  <view class="top">
+    <text class='borrowstatistics' decode="nbsp">累计上传&nbsp;&nbsp;&nbsp;&nbsp;{{totalUpLoad}}</text>
+  </view>
+  <view class="detail">
+    <block wx:for="books" wx:for-index="{{index}}" wx:key="{{index}}">
+      <view class='bookInfo'>
+        <view class="desc">图书题目：{{item.name}}</view>
+        <view class="desc">作者{{item.name}}</view>
+        <view class="desc">出版社：{{item.press}}</view>
+        <view class="desc">价格：{{item.price}}</view>
+        <view class="desc">上传时间：{{item.upLoadTime}}</view>
+        <view class="desc">累借次数：{{item.borrowedCount}}</view>
+        <view class="desc">状态:{{item.status}}</view>
+        <view class="desc" >操作：
+        <view class=''></view>
+        <view bindtap='bindShowMsg' class=''>  
+        <text class='operation'>{{operation}} </text>
+        <image src='../../../static/images/me/select.png' style="height:40rpx;width:40rpx"></image>
+        </view>
+          <view class="select_box" wx:if="{{select}}" >
+            <view class="select_one" data-operation="上架借书" bindtap="mySelect"data-index="{{index}}">上架借书</view>
+            <view class="select_one" data-operation="上架买书" bindtap="mySelect"data-index="{{index}}">上架买书</view>
+            <view class="select_one" data-operation="下架" bindtap="mySelect"data-index="{{index}}">下架</view>
+
+          </view>
+        </view>
+        <view class="change">
+        <button bindtap="bindChangeMsg">更换留言</button>
+        <button bindtap="bindChangeBookImg">更换书籍图片</button>
+        </view>
+        
+        <view class="xian"></view>
+      </view>
+    </block>
+  </view>
+</view>

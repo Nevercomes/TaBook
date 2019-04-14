@@ -1,0 +1,39 @@
+/* pages/me/myUpload/changeMsg/changeMsg.wxss */
+.content{
+  border: 1rpx solid #ccc;
+margin: 5rpx;
+padding-bottom: 100rpx;
+height: 100%;
+}
+.detail{
+  display: flex;
+  flex-direction: row;
+  font-size: 34rpx;
+  margin-left: 5%;
+  margin-top: 50rpx;
+}
+label{
+  font-weight: bold;
+  padding-right: 5rpx;
+  width: 20%;
+}
+text{
+  font-size: 32rpx;
+  color: #333;
+}
+
+.newMsg{
+  width: 75%;
+  border: 1rpx solid #ccc;
+  border-radius: 10rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  
+}
+.sure{
+  margin-top: 40rpx;
+  width: 70%;
+  font-size: 36rpx;
+  background-color: rgb(160, 160, 236);
+  color: white;
+}

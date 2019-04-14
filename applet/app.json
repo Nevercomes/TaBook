@@ -7,6 +7,8 @@
     "pages/me/myBorrow/myBorrow",
     "pages/me/myBuy/myBuy",
     "pages/me/myUpload/myUpload",
+    "pages/me/myUpload/changeMsg/changeMsg",
+    "pages/me/myUpload/changeBookImg/changeBookImg",
     "pages/me/userverified/schoolSelect/schoolSelect" ,
     "pages/logs/logs"
   ],

@@ -5,6 +5,7 @@
     <text class='borrowstatistics' decode="nbsp">累计借阅&nbsp;&nbsp;&nbsp;&nbsp;{{totalborrow}}</text>
     <text class='borrowstatistics' decode="nbsp">在借中&nbsp;&nbsp;&nbsp;&nbsp;{{borrowing}}</text>
   </view>
+  <view class="detail">
   <view class="swiper-tab">
 
     <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">在借图书</view>
@@ -23,4 +24,5 @@
       </scroll-view>
     </swiper-item>
   </swiper>
+  </view>
 </view>

@@ -9,6 +9,10 @@ Page({
     
   },
   onLoad: function (options) {
+    var that = this;
+    that.setData({
+      totalUpLoad:that.data.books.length
+    })
 
   },
   bindShowMsg:function(e){

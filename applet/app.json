@@ -9,7 +9,10 @@
     "pages/me/myUpload/myUpload",
     "pages/me/myUpload/changeMsg/changeMsg",
     "pages/me/myUpload/changeBookImg/changeBookImg",
+    "pages/me/myUpload/uploadBook/uploadBook",
     "pages/me/userverified/schoolSelect/schoolSelect" ,
+    "pages/me/myFavorites/myFavorites",
+    "pages/me/applicationCentre/applicationCentre",
     "pages/logs/logs"
   ],
   "window": {

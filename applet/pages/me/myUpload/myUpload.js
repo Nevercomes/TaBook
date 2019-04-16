@@ -40,6 +40,12 @@ Page({
       duration:0
     })
   },
+  uploadBook:function(){
+    wx.navigateTo({
+      url: 'uploadBook/uploadBook',
+      duration:0
+    })
+  },
 
   onReady: function () {
 

@@ -4,7 +4,6 @@
 .container {
   background-color: #f2f2f2;
 }
-
 .user {
   display: flex;
   flex-direction: row;
@@ -20,12 +19,13 @@
 }
 
 .userinfo button {
-  width: 128px;
-  height: 128rpx;
+  width: 132rpx;
+  height: 132rpx;
   border-style: none;
   border-radius: 50%;
   margin: 20rpx;
 }
+
 
 .userinfo-avatar {
   width: 128rpx;

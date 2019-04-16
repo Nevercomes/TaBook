@@ -1,1 +1,52 @@
 /* pages/me/myUpload/changeBookImg/changeBookImg.wxss */
+
+.upload {
+  margin: 5%;
+  font-size: 34rpx;
+  font-weight: bold;
+  padding-right: 10%;
+  color: blue;
+}
+
+.detail {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 5%;
+}
+
+.block {
+  position: relative;
+}
+
+.delete {
+  width: 60rpx;
+  height: 60rpx;
+  position: relative;
+  margin-left: -60rpx;
+  background-color: rgba(0, 0, 0, 0.199);
+}
+
+.delete image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.detail button {
+  position: relative;
+  float: left;
+  left: 0;
+  margin-left: 5%;
+  margin-bottom: 3%;
+}
+
+.submit {
+  justify-content: center;
+}
+
+.submit button {
+  width: 90%;
+  background-color: #1aad19;
+  color: white;
+   font-size: 36rpx;
+}

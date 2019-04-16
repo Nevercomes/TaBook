@@ -9,6 +9,10 @@ Page({
     
   },
   onLoad: function (options) {
+    var that = this;
+    that.setData({
+      totalUpLoad:that.data.books.length
+    })
 
   },
   bindShowMsg:function(e){
@@ -33,6 +37,12 @@ Page({
   bindChangeBookImg:function(e){
     wx.navigateTo({
       url: 'changeBookImg/changeBookImg',
+      duration:0
+    })
+  },
+  uploadBook:function(){
+    wx.navigateTo({
+      url: 'uploadBook/uploadBook',
       duration:0
     })
   },

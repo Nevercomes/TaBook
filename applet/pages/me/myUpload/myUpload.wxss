@@ -35,3 +35,19 @@ font-size: 34rpx;
 background-color: rgb(133, 133, 216);
 font-size: 34rpx
 }
+.add-wrap{
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  justify-content: center;
+
+}
+.add-wrap image{
+  border-radius: 50%;
+  background-color: #4ad44a;
+  opacity: 0.9;
+  padding: 10rpx;
+  width: 84rpx;
+  height: 84rpx;
+}

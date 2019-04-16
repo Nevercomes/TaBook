@@ -29,10 +29,12 @@
         <view class="change">
         <button bindtap="bindChangeMsg">更换留言</button>
         <button bindtap="bindChangeBookImg">更换书籍图片</button>
-        </view>
-        
+        </view> 
         <view class="xian"></view>
       </view>
     </block>
   </view>
+  <view class="add-wrap"hover-class="plus-hover" bindtap="uploadBook">
+  <image src="../../../static/images/me/add.png "></image>
+</view>
 </view>

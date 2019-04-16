@@ -1,0 +1,43 @@
+<!--pages/bookInfo/bookInfo.wxml-->
+<view class="container">
+  <view class='book-box'>
+    <view class='img-box'>
+      <image src='../../static/images/home/book1.jpg' class="image" mode="aspectFill" lazy-load="true"></image>
+    </view>
+    <view class='text-box'>
+      <view class="text">书名</view>
+      <view class="text">作者 </view>
+      <view class="text">出版社</view>
+      <view class="text">空闲数</view>
+      <view class="text">累借 </view>
+      <view class="text">评分 </view>
+    </view>
+    <view class='text-box1'>
+      <view class="text">{{bookname}}</view>
+      <view class="text">{{authorname}}</view>
+      <view class="text">{{publishinghouse}}</view>
+      <view class="text">{{freebook}}</view>
+      <view class="text">{{borrowedbook}}</view>
+      <view class="text">{{score}}</view>
+    </view>
+  </view>
+    <view class='buttons'>
+      <button class='button'>收藏此书</button>
+      <button class='button'>我有此书</button>
+      <button class='button'>撰写书评</button>
+    </view>
+    <view class='comment-container'>
+      <view class='book-intro'>
+        <view class='intro-head'>图书简介</view>
+        <view class='intro-body'>这里是图书简介</view>
+      </view>
+      <view class='book-comment'>
+        <view class='comment-head'>书籍评价</view>
+        <view class='comment-body'></view>
+      </view>
+      <view class='borrowed-list'>
+        
+      </view>
+    </view>
+    
+</view>

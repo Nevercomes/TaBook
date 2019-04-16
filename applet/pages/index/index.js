@@ -88,6 +88,12 @@ Page({
     })
   },
   //tab标签页事件
+  toBookInfoTap: function () {
+    wx.navigateTo({
+      url: '../bookInfo/bookInfo',
+      duration: 0
+    })
+  },
   handleChange:function({detail}){
     // console.log(detail.key)
     this.setData({

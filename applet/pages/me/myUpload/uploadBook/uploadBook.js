@@ -9,6 +9,11 @@ Page({
   data: {
     searchBookVal: "",
     inputShowed: false,
+    inputNameVal:"",
+    inputAuthorVal:"",
+    inputPressVal:"",
+    inputScoreVal:"",
+
     imgUrlsarr: []
   },
   onLoad: function(options) {

@@ -1,1 +1,134 @@
 /* pages/me/applicationCentre/applicationCentre.wxss */
+
+page {
+  background-color: #efeff4;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+.hr {
+  height: 1rpx;
+  background-color: #ccc;
+  opacity: 0.5;
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-left: 10%;
+  height: 88rpx;
+  line-height: 88rpx;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  background-color: rgb(133, 133, 216);
+  color: white;
+  border-radius: 10rpx;
+}
+
+.handlingStatistics {
+  width: 33%;
+  font-size: 34rpx;
+  margin-left: 17%;
+  font-weight: bold;
+}
+
+.detail {
+  width: 100%;
+  border: 1rpx solid #ccc;
+  box-shadow: 6rpx, 6rpx, 6rpx, 6rpx, #ccc;
+  background-color: #fff;
+}
+
+.swiper-tab {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  text-align: center;
+  height: 88rpx;
+  line-height: 88rpx;
+  justify-content: space-between;
+}
+
+.swiper-tab-item {
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 30%;
+  font-size: 34rpx;
+}
+
+.active {
+  color: #09bb07;
+  border-bottom: 4rpx solid #09bb07;
+}
+
+.swiper-item {
+  height: 1000rpx;
+  width: 100%;
+}
+
+.listsProcessing {
+  background-color: #efeff4;
+}
+
+.handlingInfo {
+  display: flex;
+  flex-direction: row;
+  border: 1rpx solid #ccc;
+  border-radius: 5rpx;
+  background-color: #fff;
+  padding: 5%;
+}
+
+.desc {
+  margin-left: 5%;
+  width: 20%;
+}
+
+.desc image {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+}
+
+.desc2 {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+  width: 75%;
+}
+
+.desc3 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.nickname {
+  font-size: 32rpx;
+  font-weight: bold;
+  width: 50%;
+}
+
+.school {
+  font-size: 28rpx;
+  color: #ccc;
+}
+
+.name {
+  width:50%;
+  font-size: 34rpx;
+  padding: 10rpx;
+}
+
+.operation {
+  background-color:  #efeff4;
+  border-radius: 10rpx;
+  color: green;
+  font-size: 34rpx;
+  padding:10rpx;
+}

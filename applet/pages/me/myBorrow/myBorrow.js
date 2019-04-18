@@ -35,7 +35,7 @@ Page({
   },
   clickTab: function(e) {
     var that = this;
-    if (this.data.currentTab === e.target.dataset.current) {
+    if (that.data.currentTab === e.target.dataset.current) {
       return false;
     } else {
       that.setData({
@@ -63,7 +63,7 @@ Page({
         });
       }
     })
-     that.loadBooks();
+    that.loadBooks();
 
   },
   loadBooks: function(e) {
@@ -110,7 +110,7 @@ Page({
       content: '确定要还书吗？',
       success: function(res) {
         if (res.confirm) {
-          var b =array[index];
+          var b = array[index];
           array2.push(b);
           that.data.books.splice(index, 1);
           that.setData({
@@ -121,7 +121,7 @@ Page({
           })
         } else if (res.cancel) {
           that.setData({
-            
+
           })
 
         }

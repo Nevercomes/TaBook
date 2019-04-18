@@ -76,14 +76,18 @@ Page({
       duration:0
     })
   },
-  bindMyCollect:function(){
+   bindMyFavorites:function(){
     wx.navigateTo({
-      url: '',
+      url: 'myFavorites/myFavorites',
       duration:0
     })
 
   },
-  bindMyApplication:function(){
+  bindApplicationCentre:function(){
+    wx.navigateTo({
+      url: 'applicationCentre/applicationCentre',
+      duration:0
+    })
 
   },
   onReady: function () {

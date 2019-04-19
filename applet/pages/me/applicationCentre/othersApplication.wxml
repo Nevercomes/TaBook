@@ -12,13 +12,10 @@
         </view>
         <view class="desc3">
         <view class="name">{{name}}</view>
-        <view class="operation">{{operation}}</view>
+        <view class="operation" bindtap="handlethis" ><button hover-class='hover'data-index='{{index}}'>{{operationOther}}</button></view>
         </view>
       </view>
-
     </view>
-
-
   </block>
 
 </view>

@@ -4,12 +4,14 @@ Page({
   data: {
     processing:0,
     pending:0,
+    myTotalApplication:0,
     currentTab:0,
-    handlings:['a','b'],
+    handlings:['a','b','c','d','e','d','d','d'],
     nickname:"Daisy",
     school:"中南大学",
     name:"平凡的世界",
-    operation:"待处理"
+    operationOther:"待处理",
+    operationMy:"未处理"
   },
   onLoad: function (options) {
     var that = this;
@@ -38,6 +40,14 @@ Page({
     that.setData({
       currentTab: e.detail.value
     })
+  },
+  handlethis:function(){
+wx.navigateTo({
+  url: 'handleApplication/handleApplication',
+  success: function(res) {},
+  fail: function(res) {},
+  complete: function(res) {},
+})
   },
   onReady: function () {
 

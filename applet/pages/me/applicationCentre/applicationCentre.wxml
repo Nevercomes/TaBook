@@ -24,6 +24,9 @@
         </scroll-view>
       </swiper-item>
       <swiper-item>
+      <view class="top">
+    <text class='handlingStatistics' decode="nbsp">累计申请&nbsp;&nbsp;&nbsp;&nbsp;{{myTotalApplication}}</text>
+    </view>
         <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight+'px':'auto'}}" bindscrolltolower="scrollbot">
        <include src="myApplication"/>
         </scroll-view>

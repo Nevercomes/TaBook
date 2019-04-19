@@ -1,1 +1,21 @@
-<text>我是我的申请</text>
+
+<view class="listsProcessing">
+  <block wx:for="{{handlings}}" wx:key="{{index}}" wx:for-item="{{item}}">
+    <view class="handlingInfo">
+      <view class="desc">
+        <image src="../../../static/images/me/avatar.png"></image>
+      </view>
+      <view class="desc2" >
+        <view class="desc3">
+        <view class="nickname"> {{nickname}}</view>
+        <view class="school">{{school}}</view>
+        </view>
+        <view class="desc3">
+        <view class="name">{{name}}</view>
+        <view class="operation"><button hover-class='hover'>{{operationMy}}</button></view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+</view>

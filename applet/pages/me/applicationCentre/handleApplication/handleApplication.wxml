@@ -1,0 +1,36 @@
+<!--pages/me/applicationCentre/handleApplication/handleApplication.wxml-->
+<view class="content">
+<view class="table">
+  <block wx:for="{{listData}}" wx:key="{{title}}">
+    <view class="tr bg-g" wx:if="{{index%2==0}}">
+      <view class="td-1" selecttable="true">{{item.title}}</view>
+      <view class="td-2" selectable="true" scroll-y="true">
+        <text class="th-text" style="overflow-y:auto;overflow-x:scroll" selectable="true">{{item.text}}</text>
+      </view>
+    </view>
+    <view class="tr bg-g2" wx:else>
+      <view class="td-1" selectable="true">{{item.title}}</view>
+      <view class="td-2" selectable="true" scroll-y="true">
+        <text class="th-text" style="overflow-y:auto;overflow-x:scroll" selectable="true">{{item.text}}</text>
+      </view>
+    </view>
+  </block>
+</view>
+<form bindsubmit='formSubmit' bindreset=''>
+<view class="operation">
+<text>操作</text>
+<radio-group class="radio-group" bindchange="radioChange" name="radioChoose"> 
+<label class="radio" wx:for="{{items}}">
+<radio value="{{item.name}}" checked="{{item.checked}}" >{{item.value}}</radio>
+</label>
+</radio-group>
+</view>
+<view class="reason">
+<text>原因</text>
+<textarea placeholder="请输入您的原因" name="reason" value="{{inputReasonVal}}" bindinput="inputReason"></textarea>
+</view>
+<view class="submit">
+<button form-type='submit' bindtap="bindSubmit">确定</button>
+</view>
+</form>
+</view>

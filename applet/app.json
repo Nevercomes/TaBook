@@ -11,6 +11,7 @@
     "pages/me/myUpload/changeBookImg/changeBookImg",
     "pages/me/myUpload/uploadBook/uploadBook",
     "pages/me/applicationCentre/applicationCentre",
+    "pages/me/applicationCentre/handleApplication/handleApplication",
     "pages/me/myFavorites/myFavorites",
     "pages/me/userverified/schoolSelect/schoolSelect" ,
     "pages/logs/logs",

@@ -122,13 +122,23 @@ page {
 .name {
   width:50%;
   font-size: 34rpx;
-  padding: 10rpx;
+  padding-top: 10rpx;
 }
 
-.operation {
+
+.operation button{
   background-color:  #efeff4;
   border-radius: 10rpx;
-  color: green;
+  border:none;
+  color: lightgreen;
   font-size: 34rpx;
-  padding:10rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding:0rpx 15rpx;
+} 
+.hover{
+  font-size: 36rpx;
+  color: lightseagreen;
 }
+
+

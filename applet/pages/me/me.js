@@ -78,6 +78,7 @@ Page({
   },
    bindMyFavorites:function(){
     wx.navigateTo({
+      // url: 'myUpload/myUpload',
       url: 'myFavorites/myFavorites',
       duration:0
     })

@@ -1,0 +1,18 @@
+<view class="bookList">
+  <block wx:for="{{books}}" wx:key="{{index}}">
+    <view class="item">
+      <view class="image">
+        <image src="../../../static/images/home/book1.jpg"></image>
+      </view>
+      <view class="bookInfo">
+        <view class="desc2">
+          <view class="name">{{item.name}}</view>
+          <view class="time">{{item.time}}</view>
+        </view>
+        <view class="desc2">
+          <view class="bookIntro">{{item.bookIntro}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

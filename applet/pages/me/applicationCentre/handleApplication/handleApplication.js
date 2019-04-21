@@ -63,7 +63,8 @@ Page({
     // var index = prePage.currentTarget.dataset.index;
     // var operationOther = prePage.data.handlings[index].operationOther;
     prePage.setData({
-       operationOther: "已处理"
+       operationOther: "已处理",
+       disabled:true
     })
     wx.navigateBack({
       

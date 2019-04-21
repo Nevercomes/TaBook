@@ -32,11 +32,52 @@
         <view class='intro-body'>这里是图书简介</view>
       </view>
       <view class='book-comment'>
-        <view class='comment-head'>书籍评价</view>
-        <view class='comment-body'></view>
+        <view class='comment-head'>
+          <view class='comment-head1'>书籍评价</view>
+          <view class='comment-head2' bindtap='more_click1'>查看更多</view>
+        </view>
+        <view class='comment-body'>
+          <view class='comment-box' wx:for-items="{{usercomment}}">
+            <view class='img-box'>
+              <image class="userinfo-avatar" src='../../static/images/home/book1.jpg' mode="cover">
+              </image>
+            </view>
+            <view class='text-box'>
+              <view class='text-box1'>
+                <view class='username'>username</view>
+                <view class='time'>2019-1-11</view>
+              </view>
+              <view class='text-box2'>
+                <view class='comment'>这里是评论</view>
+              </view>
+             
+              
+            </view>
+          </view>
+        </view>
       </view>
       <view class='borrowed-list'>
-        
+        <view class='list-head'>
+          <view class='list-head1'>借阅列表</view>
+          <view class='list-head2' bindtap='more_click2'>查看更多</view>
+        </view>
+         <view class='comment-body'>
+          <view class='comment-box' wx:for-items="{{usercomment}}">
+            <view class='img-box'>
+              <image class="userinfo-avatar" src='../../static/images/home/book1.jpg' mode="cover">
+              </image>
+            </view>
+            <view class='text-box'>
+              <view class='text-box1'>
+                <view class='username'>username</view>
+                <view class='time'>2019-1-11</view>
+              </view>
+              <view class='text-box2'>
+                <view class='comment'>这里是评论</view>
+              </view>
+            </view>
+          </view>
+        </view>
       </view>
     </view>
     

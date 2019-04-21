@@ -106,3 +106,135 @@
   padding: 24rpx;
   background-color: #fff;
 }
+.comment-container .book-comment{
+  margin-top: 24rpx;
+}
+.comment-container .comment-head{
+  width: 100%;
+  height: 50rpx;
+  display: flex;
+}
+.comment-container .comment-head .comment-head2{
+  width: 200rpx;
+  margin-right: 5rpx;
+  overflow: hidden;
+  font-size: 35rpx;
+  padding-right:5rpx; 
+  font-weight: bold;
+  color:#000;
+}
+.comment-container .comment-head .comment-head1{
+  width: 500rpx;
+  margin-left: 5rpx;
+  overflow: hidden;
+  font-size: 35rpx;
+  padding-left:5rpx; 
+  font-weight: bold;
+  color:#000;
+}
+.comment-container .comment-body{
+  width: 700rpx;
+  height: 440rpx;
+  background-color: #f2f2f2;
+  overflow: hidden;
+  border-radius:5px;
+  flex-direction: row;
+}
+.comment-box{
+  width: 700rpx;
+  height: 200rpx;
+  background-color: #fff;
+  overflow: hidden;
+  margin-top: 12rpx;
+  border-radius:5px;
+  display: flex;
+  flex-direction: row;
+}
+.comment-box .img-box{
+  width: 200rpx;
+  height: 200rpx;
+  overflow: hidden;
+}
+.comment-box .text-box{
+  width: 500rpx;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.comment-box .text-box1{
+  width: 500rpx;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+.comment-box .text-box2{
+  width: 500rpx;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+.comment-box .text-box .text-box1 .username{
+  width: 300rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 30rpx;
+  padding: 24rpx 0 0rpx 0;
+  color:#000;
+  font-weight: bold;
+  margin-left: 24rpx;
+}
+.comment-box .text-box .text-box1  .time{
+  width: 200rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 24rpx;
+  padding: 24rpx 0 0rpx 0;
+  color:#000;
+  margin-left: 24rpx;
+}
+.comment-box .text-box .text-box2 .comment{
+  width: 400rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 24rpx;
+  padding: 24rpx 0 0rpx 0;
+  color:#000;
+  margin-left: 24rpx;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.comment-container .borrowed-list{
+  margin-top: 56rpx;
+}
+
+.comment-container .list-head{
+  width: 100%;
+  height: 50rpx;
+  display: flex;
+}
+.comment-container .list-head .list-head2{
+  width: 200rpx;
+  margin-right: 5rpx;
+  overflow: hidden;
+  font-size: 35rpx;
+  padding-right:5rpx; 
+  font-weight: bold;
+  color:#000;
+}
+.comment-container .list-head .list-head1{
+  width: 500rpx;
+  margin-left: 5rpx;
+  overflow: hidden;
+  font-size: 35rpx;
+  padding-left:5rpx; 
+  font-weight: bold;
+  color:#000;
+}

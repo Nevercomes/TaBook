@@ -21,12 +21,38 @@ var books = [{
     "name": "平凡的世界",
     "time": "2019-04-20",
     "bookIntro": "这是一个平凡的世界,一群平凡的人却成就了不平凡的人生,",
-  }]
+  }];
+  var comments =  [{
+    "nickname":"Daisy",
+    "time":"2019-04-21",
+    "name":"金粉世家",
+    "commentIntro":"Aliquam vitae felis a massa ultrices tincidunt. Aliquam aliquam iaculis risus sed maximus.",
+    "likeCounts":100
+  }, {
+      "nickname": "Daisy",
+      "time": "2019-04-21",
+      "name": "金粉世家",
+      "commentIntro": "Aliquam vitae felis a massa ultrices tincidunt. Aliquam aliquam iaculis risus sed maximus.",
+      "likeCounts": 100
+    }, {
+      "nickname": "Daisy",
+      "time": "2019-04-21",
+      "name": "金粉世家",
+      "commentIntro": "Aliquam vitae felis a massa ultrices tincidunt. Aliquam aliquam iaculis risus sed maximus.",
+      "likeCounts": 100
+    }, {
+      "nickname": "Daisy",
+      "time": "2019-04-21",
+      "name": "金粉世家",
+      "commentIntro": "Aliquam vitae felis a massa ultrices tincidunt. Aliquam aliquam iaculis risus sed maximus.",
+      "likeCounts": 100
+    }]
 Page({
 
   data: {
     currentTab: 0,
-    books: books
+    books: books,
+    comments:comments
   },
   onLoad: function(options) {
     var that = this
@@ -38,6 +64,7 @@ Page({
       }
     })
   loadBooks();
+  loadComments();
   },
   loadBooks:function(e){
     var that = this;
@@ -65,6 +92,34 @@ Page({
       },           
     })
   },
+  loadComments:function(e){
+    var that = this;
+    wx.request({
+      url: '',
+      method:"POST",
+      header:header,
+      data:{
+        comments:[]
+      },
+      success(res){
+        var subjects = res.data.comments;
+        for(var i = 0;i<subject.length;i++){
+          var subject = subjects[i];
+          var comment = new Object;
+          comment.time = subject.time;
+          comment.name = subject.name;
+          comment.commentIntro = subject.commentIntro;
+          comment.likeCount = subject.likeCount;
+          comments.push(comment);
+        }
+        that.setData({
+          comments:comments
+        })
+      },
+      
+    })
+
+  },
   clickTab: function(e) {
     console.log(e.detail.value)
     var that = this;
@@ -81,6 +136,19 @@ Page({
     console.log(e.detail.value)
     that.setData({
       currentTab: e.detail.value
+    })
+  },
+  toBookDetail:function(){
+    wx.navigateTo({
+      url: '../../bookInfo/bookInfo',
+      duration:0
+    })
+
+  },
+  commentDetail:function(){
+    wx.navigateTo({
+      url: '',
+      duration:0
     })
   },
   onReady: function() {

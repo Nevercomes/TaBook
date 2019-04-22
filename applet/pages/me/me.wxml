@@ -68,14 +68,14 @@
   <view>
   </view>
   <view class="bottom">
-    <view class='creditdesc' bindtap=''>
+    <view class='creditdesc' bindtap='bindAuthenticaitonStatement'>
       <view class='name'>信用说明</view>
       <view class='detail'>
         <text>></text>
       </view>
     </view>
     <view class='hr'></view>
-    <view class='creditdesc' bindtap=''>
+    <view class='creditdesc' bindtap='bindCreditStatement'>
       <view class='name'>认证说明</view>
       <view class='detail'>
         <text>></text>

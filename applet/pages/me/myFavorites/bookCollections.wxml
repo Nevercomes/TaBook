@@ -1,6 +1,6 @@
 <view class="bookList">
   <block wx:for="{{books}}" wx:key="{{index}}">
-    <view class="item">
+    <view class="item" bindtap="toBookDetail" bindlongtap="deleteCollection">
       <view class="image">
         <image src="../../../static/images/home/book1.jpg"></image>
       </view>

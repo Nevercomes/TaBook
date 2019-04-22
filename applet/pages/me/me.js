@@ -91,6 +91,19 @@ Page({
     })
 
   },
+  bindAuthenticaitonStatement:function(){
+  wx.navigateTo({
+    url: 'authenticationStatement/authenticationStatement/',
+    duration:0
+  })
+  },
+  bindCreditStatement:function(){
+    wx.navigateTo({
+      url: 'creditStatement/creditStatement',
+      duration:0
+    })
+
+  },
   onReady: function () {
 
   },

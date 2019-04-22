@@ -60,7 +60,6 @@
   height: 60rpx;
   font-size: 34rpx;
 }
-
 .time {
   width: 40%;
   height: 60rpx;
@@ -76,3 +75,71 @@
   line-height: 50rpx;
   overflow: hidden;
 }
+.item2 {
+  display: flex;
+  justify-content: center;
+
+  flex-direction: row;
+  width: 94%;
+  margin: 3%;
+  height: 300rpx;
+  border-radius: 15rpx;
+  background-color: #fff;
+}
+
+.img-box{
+  width: 30%;
+}
+.userInfo-avatar{
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+  margin-left: 20rpx;
+  margin-top: 40rpx;
+}
+.userinfo-comment-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width:70%;
+}
+.userinfo{
+  display: flex;
+  flex-direction: row;
+}
+.nickname{
+  width: 60%;
+  font-size: 34rpx;
+  font-weight: bold;
+
+}
+.bookname{
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.commentIntro{
+  font-size: 30rpx;
+  height: 100rpx;
+  line-height: 50rpx;
+  overflow: hidden;
+}
+.likes{
+  display: flex;
+  flex-direction: row;
+}
+.likeImg{
+  padding-right: 10rpx;
+}
+.like{
+  width: 40rpx;
+  height: 40rpx;
+}
+.likeCount{
+  font-size: 28rpx;
+  color: #999;
+  padding-top: 6rpx;
+}
+
+
+

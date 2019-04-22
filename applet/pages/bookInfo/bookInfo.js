@@ -19,11 +19,23 @@ Page({
   },
 
   //事件处理函数
+  more_click1:function(){
+    wx.navigateTo({
+      url: '../bookcomment/bookcomment',
+    })
+  },
+  more_click2: function () {
+    wx.navigateTo({
+      url: '../borrowedlist/borrowedlist',
+    })
+  },
+
   bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
+ 
   /**
    * 生命周期函数--监听页面加载
    */

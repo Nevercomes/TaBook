@@ -1,0 +1,34 @@
+<!--pages/bookcomment/bookcomment.wxml-->
+<view class='container'>
+  <!--tab bars-->
+  <i-tabs current="{{ currentTab }}" color="#00FF99" bindchange="handleChange">
+    <i-tab key="tab1" title="短评" bindtap="tab1Click"></i-tab>
+    <i-tab key="tab2" title="长评" bindtap="tab2Click"></i-tab>
+</i-tabs>
+
+  <!--短评(tab1)-->
+  <view class='short-container'>
+    <view class='short-header'>
+      <view class='text'>
+        全部评论   {{commentNum}}条
+      </view>
+    </view>
+
+    <view class='short-box' wx:for-items="{{shortboxes}}" wx:key="{{index}}"  data-id="{{item.id}}">
+      <view class="img-box">
+        <image src='../../static/images/home/book1.jpg' class="userinfo-avatar" mode="aspectFill" lazy-load="true" ></image>
+      </view>
+      <view class='text-box'>
+        <view class='text-box1'>
+          <view class='username'>username</view>
+          <view class='time'>2019-1-11</view>
+        </view>
+        <view class='text-box2'>
+          <view class='comment'>这里是评论</view>
+        </view>
+      </view>
+  
+  </view>
+  </view>
+
+</view>

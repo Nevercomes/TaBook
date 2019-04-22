@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "i-button": "../../dist/button/index",
+    "i-tabs": "../../dist/tabs/index",
+    "i-tab": "../../dist/tab/index",
+    "i-panel": "../../dist/panel/index"
+  },
+  "navigationBarTitleText": "书籍评价"
+}

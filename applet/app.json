@@ -15,7 +15,9 @@
     "pages/me/applicationCentre/applicationCentre",
     "pages/me/applicationCentre/handleApplication/handleApplication",
     "pages/logs/logs",
-    "pages/bookInfo/bookInfo"
+    "pages/bookInfo/bookInfo",
+    "pages/bookcomment/bookcomment",
+    "pages/borrrowedlist/borrowedlist"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -16,6 +16,7 @@
     "pages/me/authenticaitonStatement/authenticaitonStatement",
     "pages/me/applicationCentre/applicationCentre",
     "pages/me/applicationCentre/handleApplication/handleApplication",
+    "pages/me/userMotto/userMotto",
     "pages/logs/logs",
     "pages/bookInfo/bookInfo",
     "pages/bookcomment/bookcomment",

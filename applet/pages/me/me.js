@@ -7,7 +7,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     hasVerified: false,
-    usergrades: "0"
+    userCreditPoints: 0
   },
   bindViewTap: function () {
     wx.navigateTo({
@@ -103,6 +103,11 @@ Page({
       duration:0
     })
 
+  },
+  bindselfSignature:function(){
+    wx.navigateTo({
+      url: 'userMotto/userMotto',
+    })
   },
   onReady: function () {
 

@@ -34,6 +34,9 @@ Page({
     prevPage.setData({
       inputSchoolVal: e.currentTarget.dataset.schoolname,   
     })
+    wx.navigateBack({
+      
+    })
    
   },
   inputTyping:function(e){
@@ -87,10 +90,11 @@ Page({
     })
   },
   schoolSelect:function(e){
+    var that= this;
     console.log(e.target.dataset);
     var school = e.target.dataset;
     var text = school.text;
-    this.setData({
+    that.setData({
       schoolSelectVal:text
     })
   },

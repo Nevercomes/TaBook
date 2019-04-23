@@ -1,6 +1,0 @@
-/* pages/borrrowedlist/borrowedlist.wxss */
-.container {
-  background-color: #fff;
-  min-height: 100%;
-  display: block;
-}

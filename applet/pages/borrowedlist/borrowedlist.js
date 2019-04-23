@@ -1,11 +1,29 @@
-// pages/borrrowedlist/borrowedlist.js
+// pages/borrowedlist/borrowedlist.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    owners: 100,
+    available:3,
+    borrow: [
+      'a',
+      'b',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+      'c',
+    ],
   },
 
   /**

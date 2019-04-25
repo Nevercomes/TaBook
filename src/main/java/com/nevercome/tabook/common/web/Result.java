@@ -1,6 +1,7 @@
 package com.nevercome.tabook.common.web;
 
 import lombok.Data;
+import org.springframework.http.HttpStatus;
 
 /**
  * 结果Entity
@@ -11,16 +12,18 @@ import lombok.Data;
 @Data
 public class Result {
 
+    private HttpStatus status;
     private String result;
     private String msg;
     private Object data;
     public static final String RESULT_SUCCESS = "success";
-    public static final String RESULT_ERROR = "error";
+    public static final String RESULT_FAIL = "fail";
 
     /**
      * 默认请求成功 不返回任何消息和 数据
      */
     public Result() {
+        this.status = HttpStatus.OK;
         this.result = RESULT_SUCCESS;
     }
 
@@ -30,6 +33,7 @@ public class Result {
      * @param msg
      */
     public Result(String msg) {
+        this.status = HttpStatus.OK;
         this.result = RESULT_SUCCESS;
         this.msg = msg;
     }
@@ -40,6 +44,7 @@ public class Result {
      * @param obj
      */
     public Result(Object obj) {
+        this.status = HttpStatus.OK;
         this.result = RESULT_SUCCESS;
         this.data = obj;
     }
@@ -51,6 +56,7 @@ public class Result {
      * @param object
      */
     public Result(String msg, Object object) {
+        this.status = HttpStatus.OK;
         this.result = RESULT_SUCCESS;
         this.msg = msg;
         this.data = object;
@@ -59,10 +65,12 @@ public class Result {
     /**
      * 设置请求结果 返回的消息
      *
+     * @param httpStatus
      * @param result
      * @param msg
      */
-    public Result(String result, String msg) {
+    public Result(HttpStatus httpStatus, String result, String msg) {
+        this.status = httpStatus;
         this.result = result;
         this.msg = msg;
     }
@@ -74,7 +82,8 @@ public class Result {
      * @param msg
      * @param object
      */
-    public Result(String result, String msg, Object object) {
+    public Result(HttpStatus httpStatus, String result, String msg, Object object) {
+        this.status = httpStatus;
         this.result = result;
         this.msg = msg;
         this.data = object;

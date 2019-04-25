@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nevercome.tabook.modules.book.dao.add.BookInfoAddDao">
+    <sql id="bookInfoAddColumns">
+        a.id AS "id",
+        a.create_by AS "createBy",
+        a.update_by AS "updateBy",
+        a.create_time AS "createTime",
+        a.update_time AS "updateTime",
+        a.del_flag AS "delFlag",
+        a.remarks AS "remarks",
+        a.book_root_id AS "bookRootId",
+        a.book_class_id AS "bookClassId",
+        a.name AS "name",
+        a.author AS "author",
+        a.press AS "press",
+        a.year AS "year",
+        a.owner_comment AS "ownerComment",
+        a.type AS "type",
+        a.price AS "price"
+    </sql>
+
+    <sql id="bookInfoAddJoins">
+
+    </sql>
+
+    <select id="get" resultType="BookInfoAdd">
+        SELECT
+        <include refid="bookInfoAddColumns"/>
+        FROM book_info_add a
+        <include refid="bookInfoAddJoins"/>
+        WHERE a.id = #{id}
+    </select>
+
+    <select id="findList" resultType="">
+        SELECT
+        <include refid="bookInfoAddColumns"/>
+        FROM book_info_add a
+        <include refid="bookInfoAddJoins"/>
+        <where>
+            a.del_flag = 0
+        </where>
+        <choose>
+            <when test="page !=null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY ${page.orderBy}
+            </when>
+            <otherwise>
+                ORDER BY a.update_time DESC
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findAllList">
+        SELECT
+        <include refid="bookInfoAddColumns"/>
+        FROM book_info_add a
+        <include refid="bookInfoAddJoins"/>
+        <where>
+            a.del_flag = 0
+        </where>
+        ORDER BY a.update_time DESC
+    </select>
+
+    <insert id="insert">
+        INSERT INTO book_info_add (
+            id,
+            create_by,
+            update_by,
+            create_time,
+            update_time,
+            del_flag,
+            remarks,
+            book_root_id,
+            book_class_id,
+            `name`,
+            author,
+            press,
+            `year`,
+            ownerComment,
+            type,
+            price
+        ) VALUES (
+            #{id},
+            #{createBy},
+            #{createBy},
+            #{createTime},
+            #{updateTime},
+            #{delFlag},
+            #{remarks},
+            #{bookRootId},
+            #{bookClassId},
+            #{name},
+            #{author},
+            #{press},
+            #{year},
+            #{ownerComment},
+            #{type},
+            #{price}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE book_info_add
+        SET
+            update_by     = #{createBy},
+            update_time   = #{updateTime},
+            del_flag      = #{delFlag},
+            remarks       = #{remarks},
+            book_root_id  = #{bookRootId},
+            book_class_id = #{bookClassId},
+            `name`        = #{name},
+            author        = #{author},
+            press         = #{press},
+            `year`        = #{year},
+            ownerComment  = #{ownerComment},
+            type          = #{type},
+            price         = #{price}
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete">
+        UPDATE book_info_add
+        SET del_flag = 1
+        WHERE id = #{id}
+    </update>
+
+</mapper>

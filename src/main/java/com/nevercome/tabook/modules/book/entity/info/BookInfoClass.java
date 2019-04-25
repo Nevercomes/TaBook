@@ -7,8 +7,9 @@ import lombok.Data;
  * BookInfoClass实体类
  * @author sun
  */
-@Data
 public class BookInfoClass extends DataEntity<BookInfoClass> {
+
+    private static final long serialVersionUID = 1L;
 
     // 持久化数据
     private String bookRootId; // 上一级指针
@@ -27,4 +28,101 @@ public class BookInfoClass extends DataEntity<BookInfoClass> {
     private int copyNum; // 副本数目
 
     // 搜索参数
+
+
+    public String getBookRootId() {
+        return bookRootId;
+    }
+
+    public void setBookRootId(String bookRootId) {
+        this.bookRootId = bookRootId;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    public String getPress() {
+        return press;
+    }
+
+    public void setPress(String press) {
+        this.press = press;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public float getScore() {
+        return score;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getTotalBorrowed() {
+        return totalBorrowed;
+    }
+
+    public void setTotalBorrowed(int totalBorrowed) {
+        this.totalBorrowed = totalBorrowed;
+    }
+
+    public int getTotalBought() {
+        return totalBought;
+    }
+
+    public void setTotalBought(int totalBought) {
+        this.totalBought = totalBought;
+    }
+
+    public int getCopyNum() {
+        return copyNum;
+    }
+
+    public void setCopyNum(int copyNum) {
+        this.copyNum = copyNum;
+    }
 }

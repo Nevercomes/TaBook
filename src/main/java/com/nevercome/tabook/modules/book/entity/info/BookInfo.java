@@ -9,6 +9,7 @@ import lombok.Data;
  * @author sun
  */
 public class BookInfo extends DataEntity<BookInfo> {
+
     private BookInfoRoot bookRoot;
     private BookInfoClass bookClass;
     private BookInfoInstance bookInstance;

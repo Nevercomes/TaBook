@@ -4,19 +4,23 @@
     "pages/message/message",
     "pages/me/me",
     "pages/me/userverified/userverified",
+    "pages/me/userverified/schoolSelect/schoolSelect",
     "pages/me/myBorrow/myBorrow",
     "pages/me/myBuy/myBuy",
     "pages/me/myUpload/myUpload",
     "pages/me/myUpload/changeMsg/changeMsg",
     "pages/me/myUpload/changeBookImg/changeBookImg",
     "pages/me/myUpload/uploadBook/uploadBook",
+    "pages/me/myFavorites/myFavorites",
+    "pages/me/creditStatement/creditStatement",
+    "pages/me/authenticaitonStatement/authenticaitonStatement",
     "pages/me/applicationCentre/applicationCentre",
     "pages/me/applicationCentre/handleApplication/handleApplication",
-    "pages/me/myFavorites/myFavorites",
-    "pages/me/userverified/schoolSelect/schoolSelect" ,
+    "pages/me/userMotto/userMotto",
     "pages/logs/logs",
-    "pages/bookInfo/bookInfo"
-
+    "pages/bookInfo/bookInfo",
+    "pages/bookcomment/bookcomment",
+    "pages/borrowedlist/borrowedlist"
   ],
   "window": {
     "backgroundTextStyle": "light",

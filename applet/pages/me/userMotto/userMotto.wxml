@@ -1,0 +1,12 @@
+<!--pages/me/userMotto/userMotto.wxml-->
+<view class="motto-box">
+<form bindsubmit="submtitFormInfo" bindreset="resetFormInfo" >
+<view class="title">请输入您的个性标签</view>
+<view class="input-box">
+<input value="{{inputMottoVal}}" name="{{motto}}" bindinput="inputMotto"></input>
+</view>
+<view class="button-box">
+<button form-type='submit' bindtap='bindSubmit'>确定</button>
+</view>
+</form>
+</view>

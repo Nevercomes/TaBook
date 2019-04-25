@@ -1,5 +1,4 @@
 /* pages/me/applicationCentre/applicationCentre.wxss */
-
 page {
   background-color: #efeff4;
 }
@@ -78,7 +77,7 @@ page {
 .handlingInfo {
   display: flex;
   flex-direction: row;
-  border: 1rpx solid #ccc;
+  border-bottom: 1rpx solid #ccc;
   border-radius: 5rpx;
   background-color: #fff;
   padding: 5%;
@@ -116,7 +115,7 @@ page {
 
 .school {
   font-size: 28rpx;
-  color: #ccc;
+  color: #6B6B6B;
 }
 
 .name {
@@ -127,18 +126,14 @@ page {
 
 
 .operation button{
-  background-color:  #efeff4;
   border-radius: 10rpx;
-  border:none;
   color: lightgreen;
   font-size: 34rpx;
+  width: 150rpx;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
   height: 60rpx;
   line-height: 60rpx;
-  padding:0rpx 15rpx;
 } 
-.hover{
-  font-size: 36rpx;
-  color: lightseagreen;
-}
 
 

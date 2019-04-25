@@ -11,7 +11,8 @@ Page({
     school:"中南大学",
     name:"平凡的世界",
     operationOther:"待处理",
-    operationMy:"未处理"
+    operationMy:"未处理",
+    disabled:false
   },
   onLoad: function (options) {
     var that = this;

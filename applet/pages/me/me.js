@@ -7,7 +7,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     hasVerified: false,
-    usergrades: "0"
+    userCreditPoints: 0
   },
   bindViewTap: function () {
     wx.navigateTo({
@@ -78,6 +78,7 @@ Page({
   },
    bindMyFavorites:function(){
     wx.navigateTo({
+      // url: 'myUpload/myUpload',
       url: 'myFavorites/myFavorites',
       duration:0
     })
@@ -89,6 +90,24 @@ Page({
       duration:0
     })
 
+  },
+  bindAuthenticaitonStatement:function(){
+  wx.navigateTo({
+    url: 'authenticationStatement/authenticationStatement/',
+    duration:0
+  })
+  },
+  bindCreditStatement:function(){
+    wx.navigateTo({
+      url: 'creditStatement/creditStatement',
+      duration:0
+    })
+
+  },
+  bindselfSignature:function(){
+    wx.navigateTo({
+      url: 'userMotto/userMotto',
+    })
   },
   onReady: function () {
 

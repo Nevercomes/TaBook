@@ -24,20 +24,19 @@ Page({
 
   },
   schoolSelected: function (e) {
+    var that = this;
     var schoolNameTemp = e.target.dataset.schoolname
-
     var pages = getCurrentPages(); // 获取页面栈
     var prevPage = pages[pages.length - 2];
-    this.setData({
+    that.setData({
       searchSchoolVal: schoolNameTemp
     })
     prevPage.setData({
-      inputSchoolVal: e.currentTarget.dataset.schoolname,   
-    })
+      inputSchoolVal: schoolNameTemp   
+    }) 
     wx.navigateBack({
       
     })
-   
   },
   inputTyping:function(e){
     this.setData({
@@ -133,10 +132,8 @@ Page({
     })
   },
 
-
-
   searchConfirm: function (e) {
-console.log(e.detail.value)
+  console.log(e.detail.value)
   },
 
   onReady: function () {

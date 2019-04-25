@@ -1,4 +1,38 @@
 <!--pages/message/message.wxml-->
-<view class="container">
-  
+<view class="content">
+  <view class="hr"></view>
+  <view class="messages-box">
+    <view class="everyMsg">
+      <view class="img-box">
+        <image src="../../static/images/message/systemMsg.png"></image>
+      </view>
+      <view class="text-box">
+        <text>系统通知</text>
+      </view>
+    </view>
+    <view class="everyMsg">
+      <view class="img-box">
+        <image src="../../static/images/message/privateMsg.png"></image>
+      </view>
+      <view class="text-box">
+        <text>私信</text>
+      </view>
+    </view>
+    <view class="everyMsg">
+      <view class="img-box">
+        <image src="../../static/images/message/privateMsg.png"></image>
+      </view>
+      <view class="text-box">
+        <text>收到的赞</text>
+      </view>
+    </view>
+    <view class="everyMsg">
+      <view class="img-box">
+        <image src="../../static/images/message/privateMsg.png"></image>
+      </view>
+      <view class="text-box">
+        <text>收到的评论</text>
+      </view>
+    </view>
+  </view>
 </view>

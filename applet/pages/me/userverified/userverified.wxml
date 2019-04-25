@@ -1,6 +1,6 @@
 <!--pages/me/userverified/userverified.wxml-->
 <view class='container'>
-  <view class='prompt'>
+  <view class='tip-box'>
     <text>提示：只有实名认证后才能使用他书平台的全部功能哦！</text>
   </view>
   <view class='verifiedcontent'>

@@ -1,5 +1,10 @@
 // pages/me/userverified/userverified.js
-var app = getApp()
+const app = getApp()
+const Cookie = wx.getStorageSync('Cookie');
+let header = {
+  "Cookie": Cookie,
+  "content-type": "application/x-www-form-urlencoded"
+}
 Page({
   data: {
     inputNameVal: "",
@@ -35,6 +40,13 @@ Page({
       inputStudentNumVal: e.detail.value
     })
   },
+  bindSchoolSelect: function (e) {
+    console.log(e.detail.value),
+      wx.navigateTo({
+      url: 'schoolSelect/schoolSelect',
+
+      })
+  },
   submitFormInfo: function (e) {
     console.log("form发生了提交事件，携带值为：", e.detail.value)
 
@@ -57,9 +69,7 @@ Page({
      else {
       wx.request({
         url: '',
-        header: {
-          "content-type": "application/x-www-form-urlencoded"
-        },
+        header: header,
         method: "POST",
         data: {
           //e.detail.value
@@ -103,16 +113,11 @@ Page({
       inputPhoneVal
     } = ""
   },
-  bindSchoolSelect: function (e) {
-    console.log(e.detail.value),
-      wx.navigateTo({
-        url: 'schoolSelect/schoolSelect?school = inputSchoolVal',
-        success: function (res) { }
-      })
-  },
+
   onLoad: function (options) {
 
   },
+ 
   onReady: function () {
 
   },

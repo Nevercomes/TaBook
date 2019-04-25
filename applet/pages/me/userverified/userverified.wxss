@@ -1,6 +1,9 @@
 /* pages/me/userverified/userverified.wxss */
 /* pages/mine/userverified/userverified.wxss */
-.prompt{
+.container{
+  width: 100%;
+}
+.tip-box{
   display: flex;
   border: 1px solid #ccc;
   background-color:#ffc;
@@ -8,6 +11,7 @@
   margin-top: 5%;
   height: 100rpx;
   align-items: center;
+  width: 95%;
 }
 .verifiedcontent{
   display: flex;

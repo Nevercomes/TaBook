@@ -1,1 +1,2 @@
 /* pages/me/authenticaitonStatement/authenticaitonStatement.wxss */
+@import "../creditStatement/creditStatement.wxss";

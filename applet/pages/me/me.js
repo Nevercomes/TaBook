@@ -7,7 +7,9 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     hasVerified: false,
-    userCreditPoints: 0
+    userCreditPoints: 0,
+    showEditMotto:false,
+    showselfSignature:true
   },
   bindViewTap: function () {
     wx.navigateTo({
@@ -92,17 +94,16 @@ Page({
 
   },
   bindAuthenticaitonStatement:function(){
-  wx.navigateTo({
-    url: 'authenticationStatement/authenticationStatement/',
-    duration:0
-  })
-  },
-  bindCreditStatement:function(){
     wx.navigateTo({
       url: 'creditStatement/creditStatement',
-      duration:0
+      duration: 0
     })
-
+  },
+  bindCreditStatement:function(){
+  wx.navigateTo({
+    url: 'authenticaitonStatement/authenticaitonStatement',
+    duration:0
+  })
   },
   bindselfSignature:function(){
     wx.navigateTo({

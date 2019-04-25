@@ -28,7 +28,9 @@ Page({
     var prePage = pages[pages.length - 2];
     if(that.data.inputMottoVal.length>0){
     prePage.setData({
-      motto: that.data.inputMottoVal
+      motto: that.data.inputMottoVal,
+      showEditMotto:true,
+      showselfSignature:false
       })
       wx.navigateBack({
 

@@ -1,3 +1,9 @@
 <!--pages/me/creditStatement/creditStatement.wxml-->
+<view class="content">
+  <view class="hr"></view>
+  <view class="title">您的信用分将影响您对本平台的使用，请仔细阅读以下说明！</view>
+  <view class="detail">
+    您的信用分的多少代表了您可以使用本平台的最大限度。您的信用分的多少代表了您可以使用本平台的最大限度。您的信用分的多少代表了您可以使用本平台的最大限度。您的信用分的多少代表了您可以使用本平台的最大限度。您的信用分的多少代表了您可以使用本平台的最大限度。
+  </view>
 
-
+</view>

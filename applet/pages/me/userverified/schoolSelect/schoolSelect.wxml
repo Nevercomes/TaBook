@@ -26,8 +26,8 @@
 </view>
 <view class='school-item-content'>
   <view wx:for="{{schoolResults}}" wx:key="unique" bindtap="schoolSelected" >
-    <view wx:if="{{item.school.PinYin.length>1}}" class = "school-item" data-schoolname = "{{item.schoolName}}" bindtap = "schoolSelected" >{{item.schoolName}}</view>
-    <view wx:else class='school-itme-A-Z' bindtap="schoolSelected"  data-schoolname='{{item.schoolName}}' >{{item.schoolName}}</view>
+    <view wx:if="{{item.school.PinYin.length>1}}" class = "school-item" data-schoolname = "{{item.schoolName}}"  >{{item.schoolName}}</view>
+    <view wx:else class='school-itme-A-Z'   data-schoolname='{{item.schoolName}}' >{{item.schoolName}}</view>
 
   </view>
 </view>

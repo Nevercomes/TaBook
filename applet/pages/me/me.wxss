@@ -1,9 +1,11 @@
 /* pages/me/me.wxss */
 /* pages/mine/mine.wxss */
-
-.container {
-  background-color: #f2f2f2;
+page{
+  background-color: #efeff4;
 }
+/* .container {
+  background-color: #f2f2f2;
+} */
 .user {
   display: flex;
   flex-direction: row;
@@ -59,15 +61,16 @@
   font-size: 26rpx;
   color: #5e5e5e;
 }
+selfSignature{
+  margin-top: 40rpx;
+  font-size: 30rpx;
+
+}
 
 .usermotto {
   margin-top: 40rpx;
-}
-
-.user-motto {
   font-size: 30rpx;
 }
-
 .motto-avatar {
   width: 40rpx;
   height: 40rpx;

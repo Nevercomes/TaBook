@@ -7,8 +7,9 @@ import lombok.Data;
  * BookInfoInstance实体类
  * @author sun
  */
-@Data
 public class BookInfoInstance extends DataEntity<BookInfoInstance> {
+
+    private static final long serialVersionUID = 1L;
 
     // 持久化数据
     private String bookClassId;
@@ -25,4 +26,76 @@ public class BookInfoInstance extends DataEntity<BookInfoInstance> {
 
     // 搜索参数
 
+
+    public String getBookClassId() {
+        return bookClassId;
+    }
+
+    public void setBookClassId(String bookClassId) {
+        this.bookClassId = bookClassId;
+    }
+
+    public String getUserAddId() {
+        return userAddId;
+    }
+
+    public void setUserAddId(String userAddId) {
+        this.userAddId = userAddId;
+    }
+
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public String getHolderId() {
+        return holderId;
+    }
+
+    public void setHolderId(String holderId) {
+        this.holderId = holderId;
+    }
+
+    public String getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(String schoolId) {
+        this.schoolId = schoolId;
+    }
+
+    public String getCampusId() {
+        return campusId;
+    }
+
+    public void setCampusId(String campusId) {
+        this.campusId = campusId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getTotalBorrowed() {
+        return totalBorrowed;
+    }
+
+    public void setTotalBorrowed(int totalBorrowed) {
+        this.totalBorrowed = totalBorrowed;
+    }
+
+    public int getLikeNum() {
+        return likeNum;
+    }
+
+    public void setLikeNum(int likeNum) {
+        this.likeNum = likeNum;
+    }
 }

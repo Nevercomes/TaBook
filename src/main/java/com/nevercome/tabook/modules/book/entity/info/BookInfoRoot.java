@@ -7,8 +7,10 @@ import lombok.Data;
  * BookInfoRoot实体类
  * @author sun
  */
-@Data
 public class BookInfoRoot extends DataEntity<BookInfoRoot> {
+
+    private static final long serialVersionUID = 1L;
+
     // 持久化数据
     private String name;
     private String author;
@@ -23,4 +25,68 @@ public class BookInfoRoot extends DataEntity<BookInfoRoot> {
 
     // 搜索参数
 
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getSortSeq() {
+        return sortSeq;
+    }
+
+    public void setSortSeq(String sortSeq) {
+        this.sortSeq = sortSeq;
+    }
+
+    public String getRepresentId() {
+        return representId;
+    }
+
+    public void setRepresentId(String representId) {
+        this.representId = representId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public int getTotalBorrowed() {
+        return totalBorrowed;
+    }
+
+    public void setTotalBorrowed(int totalBorrowed) {
+        this.totalBorrowed = totalBorrowed;
+    }
+
+    public int getTotalBought() {
+        return totalBought;
+    }
+
+    public void setTotalBought(int totalBought) {
+        this.totalBought = totalBought;
+    }
+
+    public String getCopyNum() {
+        return copyNum;
+    }
+
+    public void setCopyNum(String copyNum) {
+        this.copyNum = copyNum;
+    }
 }

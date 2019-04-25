@@ -51,7 +51,7 @@ public class LoginController extends BaseController {
             Object sessionId = UserUtils.getSession().getId().toString();
             return new ResponseEntity<>(new Result(sessionId), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>(new Result(Result.RESULT_ERROR, "登录异常，请稍后重试！"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new Result(HttpStatus.BAD_REQUEST, Result.RESULT_FAIL, "登录异常，请稍后重试！"), HttpStatus.BAD_REQUEST);
         }
     }
 

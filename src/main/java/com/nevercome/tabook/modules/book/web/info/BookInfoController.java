@@ -4,7 +4,11 @@ import com.nevercome.tabook.common.utils.StringUtils;
 import com.nevercome.tabook.common.web.BaseController;
 import com.nevercome.tabook.common.web.Result;
 import com.nevercome.tabook.modules.book.entity.info.BookInfo;
+import com.nevercome.tabook.modules.book.entity.info.BookInfoRoot;
+import com.nevercome.tabook.modules.book.service.info.BookInfoClassService;
+import com.nevercome.tabook.modules.book.service.info.BookInfoRootService;
 import com.nevercome.tabook.modules.book.service.info.BookInfoService;
+import com.nevercome.tabook.modules.book.service.info.BookInstanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +27,12 @@ public class BookInfoController extends BaseController {
 
     @Autowired
     private BookInfoService bookInfoService;
+    @Autowired
+    private BookInfoRootService bookInfoRootService;
+    @Autowired
+    private BookInfoClassService bookInfoClassService;
+    @Autowired
+    private BookInstanceService bookInstanceService;
 
     @RequestMapping(value = "get")
     public ResponseEntity get(HttpServletRequest request) {

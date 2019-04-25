@@ -1,6 +1,7 @@
 package com.nevercome.tabook.modules.sys.entity;
 
 import com.nevercome.tabook.common.persistence.TreeEntity;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.hibernate.validator.constraints.Length;
 
 /**
@@ -87,6 +88,6 @@ public class Area extends TreeEntity<Area> {
 
     @Override
     public String toString() {
-        return name;
+        return ReflectionToStringBuilder.toString(this);
     }
 }

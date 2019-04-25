@@ -3,6 +3,7 @@ package com.nevercome.tabook.modules.sys.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nevercome.tabook.common.persistence.DataEntity;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
@@ -161,6 +162,6 @@ public class Menu extends DataEntity<Menu> {
 
     @Override
     public String toString() {
-        return name;
+        return ReflectionToStringBuilder.toString(this);
     }
 }

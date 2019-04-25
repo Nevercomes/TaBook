@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * Service基类
+ *
  * @author ThinkGem
  * @version 2014-05-16
  */
@@ -24,6 +25,7 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 
     /**
      * 获取单条数据
+     *
      * @param id
      * @return
      */
@@ -33,6 +35,7 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 
     /**
      * 获取单条数据
+     *
      * @param entity
      * @return
      */
@@ -42,6 +45,7 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 
     /**
      * 查询列表数据
+     *
      * @param entity
      * @return
      */
@@ -51,7 +55,8 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 
     /**
      * 查询分页数据
-     * @param page 分页对象
+     *
+     * @param page   分页对象
      * @param entity
      * @return
      */
@@ -63,14 +68,15 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 
     /**
      * 保存数据（插入或更新）
+     *
      * @param entity
      */
     @Transactional(readOnly = false)
     public void save(T entity) {
-        if (entity.getIsNewRecord()){
+        if (entity.getIsNewRecord()) {
             entity.preInsert();
             dao.insert(entity);
-        }else{
+        } else {
             entity.preUpdate();
             dao.update(entity);
         }
@@ -78,6 +84,7 @@ public abstract class CrudService<D extends CrudDao<T>, T extends DataEntity<T>>
 
     /**
      * 删除数据
+     *
      * @param entity
      */
     @Transactional(readOnly = false)

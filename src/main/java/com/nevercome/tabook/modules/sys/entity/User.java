@@ -6,6 +6,8 @@ import com.google.common.collect.Lists;
 import com.nevercome.tabook.common.config.Global;
 import com.nevercome.tabook.common.persistence.DataEntity;
 import com.nevercome.tabook.common.utils.Collections3;
+import com.nevercome.tabook.common.utils.Reflections;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
@@ -316,7 +318,7 @@ public class User extends DataEntity<User> {
 
     @Override
     public String toString() {
-        return id;
+        return ReflectionToStringBuilder.toString(this);
     }
 
 }

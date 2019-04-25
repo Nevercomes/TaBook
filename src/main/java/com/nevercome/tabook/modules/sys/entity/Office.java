@@ -1,6 +1,7 @@
 package com.nevercome.tabook.modules.sys.entity;
 
 import com.nevercome.tabook.common.persistence.TreeEntity;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
@@ -201,6 +202,6 @@ public class Office extends TreeEntity<Office> {
 
     @Override
     public String toString() {
-        return name;
+        return ReflectionToStringBuilder.toString(this);
     }
 }

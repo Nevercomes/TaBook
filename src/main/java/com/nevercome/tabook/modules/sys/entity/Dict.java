@@ -1,6 +1,7 @@
 package com.nevercome.tabook.modules.sys.entity;
 
 import com.nevercome.tabook.common.persistence.DataEntity;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotNull;
@@ -94,6 +95,6 @@ public class Dict extends DataEntity<Dict> {
 
     @Override
     public String toString() {
-        return label;
+        return ReflectionToStringBuilder.toString(this);
     }
 }

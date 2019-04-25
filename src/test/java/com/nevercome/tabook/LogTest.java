@@ -1,5 +1,6 @@
 package com.nevercome.tabook;
 
+import com.nevercome.tabook.modules.sys.entity.User;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,5 +21,12 @@ public class LogTest {
         logger.debug("I'm {} message", "debug");
         logger.warn("I'm {} message", "warn");
         logger.error("I'm {} message", "error");
+    }
+
+    @Test
+    public void printTest() {
+        User user = new User();
+        user.setLoginName("sun");
+        System.out.println(user);
     }
 }

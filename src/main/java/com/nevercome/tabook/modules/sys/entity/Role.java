@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.nevercome.tabook.common.config.Global;
 import com.nevercome.tabook.common.persistence.DataEntity;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.hibernate.validator.constraints.Length;
 
 import java.util.List;
@@ -264,4 +265,9 @@ public class Role extends DataEntity<Role> {
 //		}
 //		return StringUtils.join(menuNameList, ",");
 //	}
+
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this);
+    }
 }

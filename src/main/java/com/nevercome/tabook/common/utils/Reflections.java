@@ -18,8 +18,12 @@ public class Reflections {
     private static Logger logger = LoggerFactory.getLogger(Reflections.class);
 
     /**
-     * 调用Getter方法.
-     * 支持多级，如：对象名.对象名.方法
+     * 调用Getter方法
+     * 支持多级调用 对象名.对象名.方法
+     *
+     * @param obj 调用对象
+     * @param propertyName a.b.c
+     * @return
      */
     public static Object invokeGetter(Object obj, String propertyName) {
         Object object = obj;
@@ -76,7 +80,6 @@ public class Reflections {
         if (field == null) {
             throw new IllegalArgumentException("Could not find field [" + fieldName + "] on target [" + obj + "]");
         }
-
         try {
             field.set(obj, value);
         } catch (IllegalAccessException e) {
@@ -95,7 +98,6 @@ public class Reflections {
         if (method == null) {
             throw new IllegalArgumentException("Could not find method [" + methodName + "] on target [" + obj + "]");
         }
-
         try {
             return method.invoke(obj, args);
         } catch (Exception e) {
@@ -134,9 +136,9 @@ public class Reflections {
                 Field field = superClass.getDeclaredField(fieldName);
                 makeAccessible(field);
                 return field;
-            } catch (NoSuchFieldException e) {//NOSONAR
+            } catch (NoSuchFieldException e) {
                 // Field不在当前类定义,继续向上转型
-                continue;// new add
+                continue;
             }
         }
         return null;

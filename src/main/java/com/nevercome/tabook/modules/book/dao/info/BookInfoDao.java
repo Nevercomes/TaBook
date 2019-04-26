@@ -5,6 +5,9 @@ import com.nevercome.tabook.common.persistence.annotation.MyBatisDao;
 import com.nevercome.tabook.modules.book.entity.info.BookInfo;
 
 /**
+ * 正确的做法应该是
+ * 1. 在数据库建立视图？
+ * 2. 将经常被访问到的数据放入缓存
  * @author: sun
  * @date: 2019/4/25
  */

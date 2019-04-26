@@ -27,12 +27,6 @@ public class BookInfoController extends BaseController {
 
     @Autowired
     private BookInfoService bookInfoService;
-    @Autowired
-    private BookInfoRootService bookInfoRootService;
-    @Autowired
-    private BookInfoClassService bookInfoClassService;
-    @Autowired
-    private BookInstanceService bookInstanceService;
 
     @RequestMapping(value = "get")
     public ResponseEntity get(HttpServletRequest request) {

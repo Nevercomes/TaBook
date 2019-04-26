@@ -1,6 +1,7 @@
 package com.nevercome.tabook;
 
 import com.nevercome.tabook.modules.sys.dao.UserDao;
+import com.nevercome.tabook.modules.sys.entity.User;
 import com.nevercome.tabook.modules.sys.service.SystemService;
 import org.junit.After;
 import org.junit.Before;
@@ -32,8 +33,7 @@ public class BaseTest {
 
     @Test
     public void test() {
-        userDao.get("123");
-        systemService.getUser("1");
+
     }
 
 }

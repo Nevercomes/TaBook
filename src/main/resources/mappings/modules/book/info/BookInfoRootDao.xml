@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="">
-    <sql id="">
+<mapper namespace="com.nevercome.tabook.modules.book.dao.info.BookInfoRootDao">
+    <sql id="bookInfoRootColumns">
         a.id AS "id",
         a.create_by AS "createBy",
         a.update_by AS "updateBy",
@@ -9,54 +9,70 @@
         a.update_time AS "updateTime",
         a.del_flag AS "delFlag",
         a.remarks AS "remarks",
+        a.name AS "name"
+        a.author AS "author",
+        a.sort_seq AS "sortSeq",
+        a.represent_id AS "representId"
     </sql>
 
-    <sql id="">
+    <sql id="bookInfoRootJoins">
 
     </sql>
 
-    <select id="get" resultType="">
+    <select id="get" resultType="BookInfoRoot">
 
     </select>
 
-    <select id="findList" resultType="">
+    <select id="findList" resultType="BookInfoRoot">
 
     </select>
 
     <insert id="insert">
-        INSERT INTO (
-        id,
-        create_by,
-        update_by,
-        create_time,
-        update_time,
-        del_flag,
-        remarks,
+        INSERT INTO book_info_root (
+            id,
+            create_by,
+            update_by,
+            create_time,
+            update_time,
+            del_flag,
+            remarks,
+            `name`,
+            author,
+            sort_seq,
+            represent_id
         ) VALUES (
-        #{id},
-        #{createBy},
-        #{updateBy},
-        #{createTime},
-        #{updateTime},
-        #{delFlag},
-        #{remarks},
+            #{id},
+            #{createBy},
+            #{updateBy},
+            #{createTime},
+            #{updateTime},
+            #{delFlag},
+            #{remarks},
+            #{name},
+            #{author},
+            #{sortSeq},
+            #{representId}
         )
     </insert>
 
     <update id="update">
-        UPDATE
+        UPDATE book_info_root
         SET
-        update_by = #{createBy},
-        update_time = #{updateTime},
-        del_flag = #{delFlag},
-        remarks = #{remarks},
+            update_by    = #{createBy},
+            update_time  = #{updateTime},
+            del_flag     = #{delFlag},
+            remarks      = #{remarks},
+            `name`       = #{name},
+            author       = #{author},
+            sort_seq     = #{sortSeq},
+            represent_id = #{representId}
         WHERE id = #{id}
     </update>
 
     <update id="delete">
-        UPDATE
+        UPDATE book_info_root
         SET del_flag = 1
-        WHERE id=#{id}
+        WHERE id = #{id}
     </update>
 
 </mapper>

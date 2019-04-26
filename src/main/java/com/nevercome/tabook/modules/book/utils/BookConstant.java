@@ -106,4 +106,11 @@ public class BookConstant {
      * 特殊状态
      */
     public static final String BOOK_REQUEST_STATUS_RETURN_EXPIRE = "8";
+
+    /**
+     * 书籍Instance申请状态 从申请者的角度去看 取消
+     * 特殊状态
+     */
+    public static final String BOOK_REQUEST_STATUS_CANCEL = "9";
+
 }

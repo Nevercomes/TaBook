@@ -121,7 +121,57 @@
     </select>
 
     <select id="findList" resultType="BookInfo">
+        SELECT
+        <include refid="bookInfoColumns"/>
+        FROM book_instance a
+        <include refid="bookInfoJoins"/>
+        <where>
 
+        </where>
+        <choose>
+            <when test="page !=null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY ${page.orderBy}
+            </when>
+            <otherwise>
+
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findListRefBookClass" resultType="BookInfo">
+        SELECT
+        <include refid="bookInfoClassColumns"/>
+        FROM book_info_list b
+        <include refid="bookInfoClassJoins"/>
+        <where>
+
+        </where>
+        <choose>
+            <when test="page !=null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY ${page.orderBy}
+            </when>
+            <otherwise>
+
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findListRefBookRoot" resultType="BookInfo">
+        SELECT
+        <include refid="bookInfoRootColumns"/>
+        FROM book_info_list b
+        <include refid="bookInfoRootJoins"/>
+        <where>
+
+        </where>
+        <choose>
+            <when test="page !=null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY ${page.orderBy}
+            </when>
+            <otherwise>
+
+            </otherwise>
+        </choose>
     </select>
 
 </mapper>

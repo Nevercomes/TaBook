@@ -1,6 +1,10 @@
 package com.nevercome.tabook.modules.book.service.info;
 
+import com.google.common.collect.Lists;
+import com.nevercome.tabook.common.config.Global;
+import com.nevercome.tabook.common.persistence.Page;
 import com.nevercome.tabook.common.service.CrudService;
+import com.nevercome.tabook.common.utils.StringUtils;
 import com.nevercome.tabook.modules.book.dao.info.BookInfoDao;
 import com.nevercome.tabook.modules.book.entity.info.BookInfo;
 import com.nevercome.tabook.modules.book.entity.info.BookInfoClass;
@@ -8,6 +12,8 @@ import com.nevercome.tabook.modules.book.entity.info.BookInfoInstance;
 import com.nevercome.tabook.modules.book.entity.info.BookInfoRoot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author: sun
@@ -44,6 +50,21 @@ public class BookInfoService extends CrudService<BookInfoDao, BookInfo> {
         bookInfoRoot.setId(bookRootId);
         bookInfo.setBookRoot(bookInfoRoot);
         return bookInfoDao.getByBookRootId(bookInfo);
+    }
+
+    @Override
+    public Page<BookInfo> findPage(Page<BookInfo> page, BookInfo bookInfo) {
+        bookInfo.setPage(page);
+        List<BookInfo> bookInfoList;
+        if(Global.TRUE.equals(bookInfo.getIsBookClass())) {
+            bookInfoList = bookInfoDao.findListRefBookClass(bookInfo);
+        } else if(Global.TRUE.equals(bookInfo.getIsBookRoot())) {
+            bookInfoList = bookInfoDao.findListRefBookRoot(bookInfo);
+        } else {
+            bookInfoList = bookInfoDao.findList(bookInfo);
+        }
+        page.setList(bookInfoList);
+        return page;
     }
 
 }

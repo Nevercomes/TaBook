@@ -19,6 +19,11 @@ public class BookInfo extends DataEntity<BookInfo> {
     private BookInfoClassStatistics bookClassSta;
     private BookInfoRootStatistics bookRootSta;
 
+//    search begin
+    private String isBookClass;
+    private String isBookRoot;
+//    search end
+
     public BookInfoRoot getBookRoot() {
         return bookRoot;
     }
@@ -57,5 +62,21 @@ public class BookInfo extends DataEntity<BookInfo> {
 
     public void setBookRootSta(BookInfoRootStatistics bookRootSta) {
         this.bookRootSta = bookRootSta;
+    }
+
+    public String getIsBookClass() {
+        return isBookClass;
+    }
+
+    public void setIsBookClass(String isBookClass) {
+        this.isBookClass = isBookClass;
+    }
+
+    public String getIsBookRoot() {
+        return isBookRoot;
+    }
+
+    public void setIsBookRoot(String isBookRoot) {
+        this.isBookRoot = isBookRoot;
     }
 }

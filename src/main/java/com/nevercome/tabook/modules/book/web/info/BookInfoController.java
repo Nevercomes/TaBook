@@ -1,5 +1,7 @@
 package com.nevercome.tabook.modules.book.web.info;
 
+import com.google.common.collect.Lists;
+import com.nevercome.tabook.common.persistence.Page;
 import com.nevercome.tabook.common.utils.StringUtils;
 import com.nevercome.tabook.common.web.BaseController;
 import com.nevercome.tabook.common.web.Result;
@@ -16,6 +18,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @author: sun
@@ -49,6 +53,12 @@ public class BookInfoController extends BaseController {
                     Result.RESULT_FAIL, "未查找到书籍信息"), HttpStatus.OK);
         }
         return new ResponseEntity<>(new Result(bookInfo), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "list")
+    public ResponseEntity list(HttpServletRequest request, HttpServletResponse response, BookInfo bookInfo) {
+        Page<BookInfo> page = bookInfoService.findPage(new Page<>(request, response), bookInfo);
+        return new ResponseEntity<>(new Result(page), HttpStatus.OK);
     }
 
 }

@@ -16,6 +16,51 @@
     </block>
     </swiper>
   </view>
+  <!--tab1(短评)-->
+  <view hidden='{{tab1Hidden}}'>
+    <view class="weui-cells__title" style="color: #000">标题</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入文本" />
+        </view>
+      </view>
+    </view>
 
+    <view class="weui-cells__title" style="color: #000">内容</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+            <view class="weui-textarea-counter">{{currentNum}}/50</view>
+        </view>
+      </view>
+    </view>
+    <button class="weui-btn button" type="primary">提交</button>
+  </view>
+
+  <!--tab2(长评)-->
+  <view hidden='{{tab2Hidden}}'>
+    <view class="weui-cells__title" style="color: #000">标题</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="请输入文本" />
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-cells__title" style="color: #000">内容</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+            <view class="weui-textarea-counter">{{currentNum}}/200</view>
+        </view>
+      </view>
+    </view>
+    <button class="weui-btn button" type="primary">提交</button>
+  </view>
+  
 
 </view>

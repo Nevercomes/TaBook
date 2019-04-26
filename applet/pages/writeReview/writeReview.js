@@ -1,28 +1,22 @@
-// pages/bookcomment/bookcomment.js
+// pages/writeReview/writeReview.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
     currentTab: 'tab1',
-    commentNum:100,
-    shortboxes:[
-      'a',
-      'b',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-    ],
     tab1Hidden: false,
     tab2Hidden: true,
+    noticeList: [
+      "温馨提示：短评不可回复，长评可回复",
+      "温馨提示：短评不可回复，长评可回复",
+      "温馨提示：短评不可回复，长评可回复",
+      "温馨提示：短评不可回复，长评可回复",
+    ],
+    
   },
+
   //事件处理函数
   handleChange: function ({ detail }) {
     // console.log(detail.key)
@@ -30,29 +24,11 @@ Page({
       currentTab: detail.key
     })
   },
-  //tab标签页事件
-  tab1Click: function (e) {
-    // console.log(e.detail)
-    this.setData({
-      tab1Hidden: false,
-      tab2Hidden: true,
-      tab3Hidden: true,
-    })
-  },
-  tab2Click: function (e) {
-    // console.log(e.detail)
-    this.setData({
-      tab1Hidden: true,
-      tab2Hidden: false,
-      tab3Hidden: true,
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**

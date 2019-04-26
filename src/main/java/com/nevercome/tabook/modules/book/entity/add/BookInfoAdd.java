@@ -5,6 +5,7 @@ import lombok.Data;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * BookInfoAdd实体类
@@ -25,6 +26,11 @@ public class BookInfoAdd extends DataEntity<BookInfoAdd> {
     private String ownerComment; // 所有者对书籍的评价 也可以是他给借书者的留言
     private String type; // 上架类型 下架0 借书1 卖书2
     private float price; // type=2 表示卖书价格
+
+    private List<String> sortNameList; // 分类 名
+    private String sorts; // 分类的所有id
+    private List<String> tagNameList; // 所有的标签名
+    private String tags; // 所有的标签 id
 
     public String getBookRootId() {
         return bookRootId;
@@ -101,5 +107,37 @@ public class BookInfoAdd extends DataEntity<BookInfoAdd> {
     @Override
     public String toString() {
         return ReflectionToStringBuilder.toString(this);
+    }
+
+    public List<String> getSortNameList() {
+        return sortNameList;
+    }
+
+    public void setSortNameList(List<String> sortNameList) {
+        this.sortNameList = sortNameList;
+    }
+
+    public String getSorts() {
+        return sorts;
+    }
+
+    public void setSorts(String sorts) {
+        this.sorts = sorts;
+    }
+
+    public List<String> getTagNameList() {
+        return tagNameList;
+    }
+
+    public void setTagNameList(List<String> tagNameList) {
+        this.tagNameList = tagNameList;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 }

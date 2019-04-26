@@ -1,2 +1,4 @@
 <!--pages/message/commentMsg/commentMsg.wxml-->
-<text>pages/message/commentMsg/commentMsg.wxml</text>
+<view class="content">
+
+</view>

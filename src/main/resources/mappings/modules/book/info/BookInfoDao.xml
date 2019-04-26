@@ -3,10 +3,92 @@
 <mapper namespace="com.nevercome.tabook.modules.book.dao.info.BookInfoDao">
 
     <sql id="bookInfoColumns">
-
+        a.id AS "bookInstance.id",
+        a.remarks AS "bookInstance.remarks",
+        a.book_class_id AS "bookInstance.bookClassId",
+        a.user_add_id AS "bookInstance.userAddId",
+        a.owner_id AS "bookInstance.ownerId",
+        a.holder_id AS "bookInstance.holderId",
+        a.school_id AS "bookInstance.schoolId",
+        a.campus_id AS "bookInstance.campusId",
+        a.status AS "bookInstance.status",
+        a.like_num AS "bookInstance.likeNum",
+        a.total_borrowed AS "bookInstance.totalBorrowed",
+        a.new_percent AS "bookInstance.newPercent",
+        b.id AS "bookInfoClass.id",
+        b.remarks AS "bookInfoClass.remarks",
+        b.book_root_id AS "bookInfoClass.bookRootId",
+        b.ISBN AS "bookInfoClass.ISBN",
+        b.version AS "bookInfoClass.version",
+        b.press AS "bookInfoClass.press",
+        b.year AS "bookInfoClass.year",
+        b.score AS "bookInfoClass.score",
+        b.intro AS "bookInfoClass.intro",
+        b.img_url AS "bookInfoClass.imgUrl",
+        c.id AS "bookInfoRoot.id",
+        c.remarks AS "bookInfoRoot.remarks",
+        c.name AS "bookInfoRoot.name",
+        c.author AS "bookInfoRoot.author",
+        c.sort_seq AS "bookInfoRoot.sortSeq",
+        c.represent_id AS "bookInfoRoot.representId"
     </sql>
 
     <sql id="bookInfoJoins">
+        LEFT JOIN book_info_class b ON a.book_class_id = b.id
+        LEFT JOIN book_info_root c ON b.book_root_id = c.id
+    </sql>
+
+    <sql id="bookInfoClassColumns">
+        b.id AS "bookInfoClass.id",
+        b.remarks AS "bookInfoClass.remarks",
+        b.book_root_id AS "bookInfoClass.bookRootId",
+        b.ISBN AS "bookInfoClass.ISBN",
+        b.version AS "bookInfoClass.version",
+        b.press AS "bookInfoClass.press",
+        b.year AS "bookInfoClass.year",
+        b.score AS "bookInfoClass.score",
+        b.intro AS "bookInfoClass.intro",
+        b.img_url AS "bookInfoClass.imgUrl",
+        c.id AS "bookInfoRoot.id",
+        c.remarks AS "bookInfoRoot.remarks",
+        c.name AS "bookInfoRoot.name",
+        c.author AS "bookInfoRoot.author",
+        c.sort_seq AS "bookInfoRoot.sortSeq",
+        c.represent_id AS "bookInfoRoot.representId"
+    </sql>
+
+    <sql id="bookInfoClassJoins">
+        LEFT JOIN book_info_root c ON b.book_root_id = c.id
+    </sql>
+
+    <sql id="bookInfoRootColumns">
+        b.id AS "bookInfoClass.id",
+        b.remarks AS "bookInfoClass.remarks",
+        b.book_root_id AS "bookInfoClass.bookRootId",
+        b.ISBN AS "bookInfoClass.ISBN",
+        b.version AS "bookInfoClass.version",
+        b.press AS "bookInfoClass.press",
+        b.year AS "bookInfoClass.year",
+        b.score AS "bookInfoClass.score",
+        b.intro AS "bookInfoClass.intro",
+        b.img_url AS "bookInfoClass.imgUrl",
+        c.id AS "bookInfoRoot.id",
+        c.remarks AS "bookInfoRoot.remarks",
+        c.name AS "bookInfoRoot.name",
+        c.author AS "bookInfoRoot.author",
+        c.sort_seq AS "bookInfoRoot.sortSeq",
+        c.represent_id AS "bookInfoRoot.representId"
+    </sql>
+
+    <sql id="bookInfoRootJoins">
+        LEFT JOIN book_info_class b ON c.represent_id = b.id
+    </sql>
+
+    <sql id="bookClassStaColumns">
+
+    </sql>
+
+    <sql id="bookRootStaColumns">
 
     </sql>
 
@@ -14,8 +96,82 @@
 
     </select>
 
-    <select id="findList" resultType="BookInfo">
+    <select id="getByBookInstanceId" resultType="BookInfo">
+        SELECT
+        <include refid="bookInfoColumns"/>
+        FROM book_instance a
+        <include refid="bookInfoJoins"/>
+        WHERE a.id = #{bookInstance.id}
+    </select>
 
+    <select id="getByBookClassId" resultType="BookInfo">
+        SELECT
+        <include refid="bookInfoClassColumns"/>
+        FROM book_info_class b
+        <include refid="bookInfoClassJoins"/>
+        WHERE b.id = #{bookInfoClass.id}
+    </select>
+
+    <select id="getByBookRootId" resultType="BookInfo">
+        SELECT
+        <include refid="bookInfoRootColumns"/>
+        FROM book_info_root c
+        <include refid="bookInfoRootJoins"/>
+        WHERE c.id = #{bookInfoRoot.id}
+    </select>
+
+    <select id="findList" resultType="BookInfo">
+        SELECT
+        <include refid="bookInfoColumns"/>
+        FROM book_instance a
+        <include refid="bookInfoJoins"/>
+        <where>
+
+        </where>
+        <choose>
+            <when test="page !=null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY ${page.orderBy}
+            </when>
+            <otherwise>
+
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findListRefBookClass" resultType="BookInfo">
+        SELECT
+        <include refid="bookInfoClassColumns"/>
+        FROM book_info_list b
+        <include refid="bookInfoClassJoins"/>
+        <where>
+
+        </where>
+        <choose>
+            <when test="page !=null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY ${page.orderBy}
+            </when>
+            <otherwise>
+
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findListRefBookRoot" resultType="BookInfo">
+        SELECT
+        <include refid="bookInfoRootColumns"/>
+        FROM book_info_list b
+        <include refid="bookInfoRootJoins"/>
+        <where>
+
+        </where>
+        <choose>
+            <when test="page !=null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY ${page.orderBy}
+            </when>
+            <otherwise>
+
+            </otherwise>
+        </choose>
     </select>
 
 </mapper>

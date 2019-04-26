@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="">
-    <sql id="">
+<mapper namespace="com.nevercome.tabook.modules.book.dao.info.BookInstanceDao">
+    <sql id="bookInstanceColumns">
         a.id AS "id",
         a.create_by AS "createBy",
         a.update_by AS "updateBy",
@@ -20,52 +20,86 @@
         a.total_borrowed AS "totalBorrowed"
     </sql>
 
-    <sql id="">
+    <sql id="bookInstanceJoins">
 
     </sql>
 
-    <select id="get" resultType="">
+    <select id="get" resultType="BookInstance">
 
     </select>
 
-    <select id="findList" resultType="">
+    <select id="findList" resultType="BookInstance">
+
+    </select>
+
+    <select id="findAllList" resultType="BookInstance">
 
     </select>
 
     <insert id="insert">
-        INSERT INTO (
-        id,
-        create_by,
-        update_by,
-        create_time,
-        update_time,
-        del_flag,
-        remarks,
+        INSERT INTO book_instance (
+            id,
+            create_by,
+            update_by,
+            create_time,
+            update_time,
+            del_flag,
+            remarks,
+            book_class_id,
+            book_add_id,
+            owner_id,
+            holder_id,
+            school_id,
+            campus_id,
+            `status`,
+            like_num,
+            total_borrowed,
+            new_percent
         ) VALUES (
-        #{id},
-        #{createBy},
-        #{updateBy},
-        #{createTime},
-        #{updateTime},
-        #{delFlag},
-        #{remarks},
+            #{id},
+            #{createBy},
+            #{updateBy},
+            #{createTime},
+            #{updateTime},
+            #{delFlag},
+            #{remarks},
+            #{bookClassId},
+            #{bookAddId},
+            #{ownerId},
+            #{holderId},
+            #{schoolId},
+            #{campusId},
+            #{status},
+            #{likeNum},
+            #{totalBorrowed},
+            #{newPercent}
         )
     </insert>
 
     <update id="update">
-        UPDATE
+        UPDATE book_instance
         SET
-        update_by = #{updateBy},
-        update_time = #{updateTime},
-        del_flag = #{delFlag},
-        remarks = #{remarks},
+            update_by      = #{updateBy},
+            update_time    = #{updateTime},
+            del_flag       = #{delFlag},
+            remarks        = #{remarks},
+            book_class_id  = #{bookClassId},
+            book_add_id    = #{bookAddId},
+            owner_id       = #{ownerId},
+            holder_id      = #{holderId},
+            school_id      = #{schoolId},
+            campus_id      = #{campusId},
+            `status`       = #{status},
+            like_num       = #{likeNum},
+            total_borrowed = #{totalBorrowed},
+            new_percent    = #{newPercent}
         WHERE id = #{id}
     </update>
 
     <update id="delete">
-        UPDATE
-        SET del_flag = 1
-        WHERE id=#{id}
+        UPDATE book_instance
+            SET del_flag = 1
+        WHERE id = #{id}
     </update>
 
 </mapper>

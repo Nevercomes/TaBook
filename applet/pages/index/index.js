@@ -53,6 +53,11 @@ Page({
   },
 
   //事件处理函数
+  toDetailsTap:function(){
+    wx.navigateTo({
+      url:'../bookInfo/bookInfo'
+    })
+  },
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
@@ -87,7 +92,7 @@ Page({
       swiperCurrent: e.detail.current
     })
   },
-  //tab标签页事件
+  
   toBookInfoTap: function () {
     wx.navigateTo({
       url: '../bookInfo/bookInfo',
@@ -100,6 +105,7 @@ Page({
       currentTab: detail.key
     })
   },
+  //tab标签页事件
   tab1Click:function(e){
     // console.log(e.detail)
     this.setData({

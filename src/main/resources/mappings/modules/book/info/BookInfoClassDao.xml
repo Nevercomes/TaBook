@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="">
-    <sql id="">
+<mapper namespace="com.nevercome.tabook.modules.book.dao.info.BookInfoClassDao">
+    <sql id="bookInfoClassColumns">
         a.id AS "id",
         a.create_by AS "createBy",
         a.update_by AS "updateBy",
@@ -9,54 +9,84 @@
         a.update_time AS "updateTime",
         a.del_flag AS "delFlag",
         a.remarks AS "remarks",
+        a.book_root_id AS "bookRootId",
+        a.ISBN AS "ISBN",
+        a.version AS "version",
+        a.press AS "press",
+        a.year AS "year",
+        a.score AS "score",
+        a.intro AS "intro",
+        a.img_url AS "imgUrl"
     </sql>
 
-    <sql id="">
+    <sql id="bookInfoClassJoins">
 
     </sql>
 
-    <select id="get" resultType="">
+    <select id="get" resultType="BookInfoClass">
 
     </select>
 
-    <select id="findList" resultType="">
+    <select id="findList" resultType="BookInfoClass">
 
     </select>
 
     <insert id="insert">
-        INSERT INTO (
-        id,
-        create_by,
-        update_by,
-        create_time,
-        update_time,
-        del_flag,
-        remarks,
+        INSERT INTO book_info_class (
+            id,
+            create_by,
+            update_by,
+            create_time,
+            update_time,
+            del_flag,
+            remarks,
+            book_root_id,
+            ISBN,
+            version,
+            press,
+            `year`,
+            score,
+            intro,
+            img_url
         ) VALUES (
-        #{id},
-        #{createBy},
-        #{updateBy},
-        #{createTime},
-        #{updateTime},
-        #{delFlag},
-        #{remarks},
+            #{id},
+            #{createBy},
+            #{updateBy},
+            #{createTime},
+            #{updateTime},
+            #{delFlag},
+            #{remarks},
+            #{bookRootId},
+            #{ISBN},
+            #{version},
+            #{year},
+            #{score},
+            #{intro},
+            #{imgUrl}
         )
     </insert>
 
     <update id="update">
-        UPDATE
+        UPDATE book_info_class
         SET
-        update_by = #{createBy},
-        update_time = #{updateTime},
-        del_flag = #{delFlag},
-        remarks = #{remarks},
+            update_by    = #{createBy},
+            update_time  = #{updateTime},
+            del_flag     = #{delFlag},
+            remarks      = #{remarks},
+            book_root_id = #{bookRootId},
+            ISBN         = #{ISBN},
+            version      = #{version},
+            `year`       = #{year},
+            score        = #{score},
+            intro        = #{intro},
+            img_url      = #{imgUrl}
         WHERE id = #{id}
     </update>
 
     <update id="delete">
-        UPDATE
+        UPDATE book_info_class
         SET del_flag = 1
-        WHERE id=#{id}
+        WHERE id = #{id}
     </update>
 
 </mapper>

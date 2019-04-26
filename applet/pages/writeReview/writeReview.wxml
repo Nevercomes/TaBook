@@ -1,0 +1,21 @@
+<!--pages/writeReview/writeReview.wxml-->
+<view class='container'>
+  <!--tab bars-->
+  <i-tabs current="{{ currentTab }}" color="#00FF99" bindchange="handleChange">
+    <i-tab key="tab1" title="短评" bindtap="tab1Click"></i-tab>
+    <i-tab key="tab2" title="长评" bindtap="tab2Click"></i-tab>
+  </i-tabs>
+  <!--提示消息-->
+  <view class='notice'>
+    <image class='notice_icon' src='../../static/images/writeReview/notice.png'></image>
+    <swiper wx:if="{{noticeList}}" class="notice_swiper" vertical="true" autoplay="true" circular="true" interval="3000">
+    <block wx:for="{{noticeList}}"  wx:key="id">
+      <swiper-item>
+        <view class="notice_itemr">{{item}}</view>
+      </swiper-item>
+    </block>
+    </swiper>
+  </view>
+
+
+</view>

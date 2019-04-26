@@ -7,10 +7,35 @@
 </i-tabs>
 
   <!--短评(tab1)-->
-  <view class='short-container'>
+  <view class='short-container' hidden='{{tab1Hidden}}'>
     <view class='short-header'>
       <view class='text'>
-        全部评论   {{commentNum}}条
+        (短)全部评论   {{commentNum}}条
+      </view>
+    </view>
+
+    <view class='short-box' wx:for-items="{{shortboxes}}" wx:key="{{index}}"  data-id="{{item.id}}">
+      <view class="img-box">
+        <image src='../../static/images/home/book1.jpg' class="userinfo-avatar" mode="aspectFill" lazy-load="true" ></image>
+      </view>
+      <view class='text-box'>
+        <view class='text-box1'>
+          <view class='username'>username</view>
+          <view class='time'>2019-1-11</view>
+        </view>
+        <view class='text-box2'>
+          <view class='comment'>这里是评论</view>
+        </view>
+      </view>
+  
+  </view>
+  </view>
+
+  <!--长评(tab2)-->
+  <view class='short-container' hidden='{{tab2Hidden}}'>
+    <view class='short-header'>
+      <view class='text'>
+        （长）全部评论   {{commentNum}}条
       </view>
     </view>
 

@@ -21,6 +21,7 @@ public class BookInfoInstance extends DataEntity<BookInfoInstance> {
     private String status; // 书籍实体的状态 状态参数见BookConstant
     private int totalBorrowed; // 书籍累计借阅
     private int likeNum; // 书籍获赞数
+    private int newPercent; // 书籍新旧程度100%表示全新
 
     // 统计数据
 
@@ -97,5 +98,13 @@ public class BookInfoInstance extends DataEntity<BookInfoInstance> {
 
     public void setLikeNum(int likeNum) {
         this.likeNum = likeNum;
+    }
+
+    public int getNewPercent() {
+        return newPercent;
+    }
+
+    public void setNewPercent(int newPercent) {
+        this.newPercent = newPercent;
     }
 }

@@ -5,10 +5,15 @@ import com.nevercome.tabook.common.utils.StringUtils;
 import com.nevercome.tabook.modules.book.dao.add.BookInfoAddDao;
 import com.nevercome.tabook.modules.book.entity.add.BookInfoAdd;
 import com.nevercome.tabook.modules.book.entity.info.BookInfoClass;
+import com.nevercome.tabook.modules.book.entity.info.BookInfoInstance;
 import com.nevercome.tabook.modules.book.entity.info.BookInfoRoot;
 import com.nevercome.tabook.modules.book.entity.info.statistics.BookInfoClassStatistics;
+import com.nevercome.tabook.modules.book.entity.user.Student;
 import com.nevercome.tabook.modules.book.service.info.BookInfoClassService;
 import com.nevercome.tabook.modules.book.service.info.BookInfoRootService;
+import com.nevercome.tabook.modules.book.service.info.BookInstanceService;
+import com.nevercome.tabook.modules.sys.entity.User;
+import com.nevercome.tabook.modules.sys.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +29,8 @@ public class BookInfoAddService extends CrudService<BookInfoAddDao, BookInfoAdd>
     private BookInfoRootService bookInfoRootService;
     @Autowired
     private BookInfoClassService bookInfoClassService;
+    @Autowired
+    private BookInstanceService bookInstanceService;
 
     /**
      * 书籍信息的添加
@@ -51,12 +58,26 @@ public class BookInfoAddService extends CrudService<BookInfoAddDao, BookInfoAdd>
             bookInfoClass.setPress(bookInfoAdd.getPress());
             bookInfoClass.setYear(bookInfoAdd.getYear());
             bookInfoClassService.save(bookInfoClass);
-
+            bookInfoAdd.setBookClassId(bookInfoClass.getId());
         } else if (StringUtils.isBlank(bookClassId)) {
-
-        } else {
-
+            BookInfoClass bookInfoClass = new BookInfoClass();
+            bookInfoClass.setBookRootId(bookInfoAdd.getBookRootId());
+            bookInfoClass.setPress(bookInfoAdd.getPress());
+            bookInfoClass.setYear(bookInfoAdd.getYear());
+            bookInfoClassService.save(bookInfoClass);
+            bookInfoAdd.setBookClassId(bookInfoClass.getId());
         }
+        BookInfoInstance bookInfoInstance = new BookInfoInstance();
+        bookInfoInstance.setBookClassId(bookInfoAdd.getBookClassId());
+        Student student = UserUtils.getUser().getStudent();
+        bookInfoInstance.setCampusId(student.getCampusId());
+        bookInfoInstance.setSchoolId(student.getSchoolId());
+        bookInfoInstance.setOwnerId(student.getId());
+        bookInfoInstance.setUserAddId(student.getId());
+        bookInfoInstance.setNewPercent(bookInfoAdd.getNewPercent());
+        bookInfoInstance.setTagNameList(bookInfoAdd.getTagNameList());
+        bookInfoInstance.setTags(bookInfoAdd.getTags());
+        bookInstanceService.save(bookInfoInstance);
     }
 
 }

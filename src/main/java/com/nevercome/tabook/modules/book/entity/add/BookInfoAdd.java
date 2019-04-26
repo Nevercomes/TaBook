@@ -26,6 +26,7 @@ public class BookInfoAdd extends DataEntity<BookInfoAdd> {
     private String ownerComment; // 所有者对书籍的评价 也可以是他给借书者的留言
     private String type; // 上架类型 下架0 借书1 卖书2
     private float price; // type=2 表示卖书价格
+    private int newPercent;
 
     private List<String> sortNameList; // 分类 名
     private String sorts; // 分类的所有id
@@ -139,5 +140,13 @@ public class BookInfoAdd extends DataEntity<BookInfoAdd> {
 
     public void setTags(String tags) {
         this.tags = tags;
+    }
+
+    public int getNewPercent() {
+        return newPercent;
+    }
+
+    public void setNewPercent(int newPercent) {
+        this.newPercent = newPercent;
     }
 }

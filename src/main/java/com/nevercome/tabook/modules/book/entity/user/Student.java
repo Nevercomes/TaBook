@@ -12,6 +12,7 @@ public class Student extends DataEntity<Student> {
 
     // 持久化数据
     private String schoolId;
+    private String campusId;
     private String userId;
     private String name;
     private String QQ;

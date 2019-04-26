@@ -1,0 +1,7 @@
+<!--pages/message/systemMsg/systemMsg.wxml-->
+<view class="content">
+<view class="systemMsg-box">
+<swiper></swiper>
+<text>xitongxiaoxi</text>
+</view>
+</view>

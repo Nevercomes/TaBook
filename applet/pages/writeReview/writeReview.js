@@ -14,10 +14,24 @@ Page({
       "温馨提示：短评不可回复，长评可回复",
       "温馨提示：短评不可回复，长评可回复",
     ],
-    
+    currentNum:0,
   },
 
   //事件处理函数
+  tab1Click: function (e) {
+    // console.log(e.detail)
+    this.setData({
+      tab1Hidden: false,
+      tab2Hidden: true,
+    })
+  },
+  tab2Click: function (e) {
+    // console.log(e.detail)
+    this.setData({
+      tab1Hidden: true,
+      tab2Hidden: false,
+    })
+  },
   handleChange: function ({ detail }) {
     // console.log(detail.key)
     this.setData({

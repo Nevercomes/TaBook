@@ -35,3 +35,7 @@
   height: 80rpx;
   line-height: 80rpx;
 }
+.button{
+  width: 700rpx;
+  justify-content: center;
+}

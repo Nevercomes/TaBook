@@ -2,6 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/message/message",
+    "pages/message/systemMsg/systemMsg",
+    "pages/message/privateMsg/privateMsg",
+    "pages/message/commentMsg/commentMsg",
+    "pages/message/thump_upMsg/thump_upMsg",
     "pages/me/me",
     "pages/me/userverified/userverified",
     "pages/me/userverified/schoolSelect/schoolSelect",

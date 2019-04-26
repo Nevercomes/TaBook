@@ -7,7 +7,7 @@
       </view>
       <view class="desc2" >
         <view class="desc3">
-        <view class="nickname"> {{nickname}}</view>
+        <view class="nickname"> {{userInfo.nickname}}</view>
         <view class="school">{{school}}</view>
         </view>
         <view class="desc3">

@@ -23,9 +23,6 @@ public class BookInfoClass extends DataEntity<BookInfoClass> {
 
     // 统计数据
     private String status; // 书籍类目的状态 状态参数见BookConstant
-    private int totalBorrowed; // 书籍累计借阅 可按时段统计
-    private int totalBought; // 书籍累计买卖 可按时段统计
-    private int copyNum; // 副本数目
 
     // 搜索参数
 
@@ -100,29 +97,5 @@ public class BookInfoClass extends DataEntity<BookInfoClass> {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public int getTotalBorrowed() {
-        return totalBorrowed;
-    }
-
-    public void setTotalBorrowed(int totalBorrowed) {
-        this.totalBorrowed = totalBorrowed;
-    }
-
-    public int getTotalBought() {
-        return totalBought;
-    }
-
-    public void setTotalBought(int totalBought) {
-        this.totalBought = totalBought;
-    }
-
-    public int getCopyNum() {
-        return copyNum;
-    }
-
-    public void setCopyNum(int copyNum) {
-        this.copyNum = copyNum;
     }
 }

@@ -3,6 +3,8 @@ package com.nevercome.tabook.modules.book.entity.info;
 import com.nevercome.tabook.common.persistence.DataEntity;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * BookInfoRoot实体类
  * @author sun
@@ -17,14 +19,13 @@ public class BookInfoRoot extends DataEntity<BookInfoRoot> {
     private String sortSeq; // 排序序列
     private String representId; // bookClass代表root的id
 
+    private List<String> sortNameList; // 分类 名
+    private String sorts; // 分类 id ','分隔
+
     // 统计数据
     private String status; // root的当前状态 状态参数见BookConstant
-    private int totalBorrowed; // 书籍累计借阅 可按时段统计
-    private int totalBought; // 书籍累计买卖 可按时段统计
-    private String copyNum; // 副本数目
 
     // 搜索参数
-
 
     public String getName() {
         return name;
@@ -66,27 +67,19 @@ public class BookInfoRoot extends DataEntity<BookInfoRoot> {
         this.status = status;
     }
 
-    public int getTotalBorrowed() {
-        return totalBorrowed;
+    public List<String> getSortNameList() {
+        return sortNameList;
     }
 
-    public void setTotalBorrowed(int totalBorrowed) {
-        this.totalBorrowed = totalBorrowed;
+    public void setSortNameList(List<String> sortNameList) {
+        this.sortNameList = sortNameList;
     }
 
-    public int getTotalBought() {
-        return totalBought;
+    public String getSorts() {
+        return sorts;
     }
 
-    public void setTotalBought(int totalBought) {
-        this.totalBought = totalBought;
-    }
-
-    public String getCopyNum() {
-        return copyNum;
-    }
-
-    public void setCopyNum(String copyNum) {
-        this.copyNum = copyNum;
+    public void setSorts(String sorts) {
+        this.sorts = sorts;
     }
 }

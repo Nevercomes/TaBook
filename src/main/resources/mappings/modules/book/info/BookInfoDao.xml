@@ -84,6 +84,14 @@
         LEFT JOIN book_info_class b ON c.represent_id = b.id
     </sql>
 
+    <sql id="bookClassStaColumns">
+
+    </sql>
+
+    <sql id="bookRootStaColumns">
+
+    </sql>
+
     <select id="get" resultType="BookInfo">
 
     </select>

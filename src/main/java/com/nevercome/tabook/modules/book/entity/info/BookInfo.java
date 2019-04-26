@@ -1,6 +1,8 @@
 package com.nevercome.tabook.modules.book.entity.info;
 
 import com.nevercome.tabook.common.persistence.DataEntity;
+import com.nevercome.tabook.modules.book.entity.info.statistics.BookInfoClassStatistics;
+import com.nevercome.tabook.modules.book.entity.info.statistics.BookInfoRootStatistics;
 import lombok.Data;
 
 /***
@@ -13,6 +15,9 @@ public class BookInfo extends DataEntity<BookInfo> {
     private BookInfoRoot bookRoot;
     private BookInfoClass bookClass;
     private BookInfoInstance bookInstance;
+
+    private BookInfoClassStatistics bookClassSta;
+    private BookInfoRootStatistics bookRootSta;
 
     public BookInfoRoot getBookRoot() {
         return bookRoot;
@@ -36,5 +41,21 @@ public class BookInfo extends DataEntity<BookInfo> {
 
     public void setBookInstance(BookInfoInstance bookInstance) {
         this.bookInstance = bookInstance;
+    }
+
+    public BookInfoClassStatistics getBookClassSta() {
+        return bookClassSta;
+    }
+
+    public void setBookClassSta(BookInfoClassStatistics bookClassSta) {
+        this.bookClassSta = bookClassSta;
+    }
+
+    public BookInfoRootStatistics getBookRootSta() {
+        return bookRootSta;
+    }
+
+    public void setBookRootSta(BookInfoRootStatistics bookRootSta) {
+        this.bookRootSta = bookRootSta;
     }
 }

@@ -7,12 +7,12 @@ Page({
     myTotalApplication:0,
     currentTab:0,
     handlings:['a','b','c','d','e','d','d','d'],
-    nickname:"Daisy",
     school:"中南大学",
     name:"平凡的世界",
     operationOther:"待处理",
     operationMy:"未处理",
-    disabled:false
+    disabled:false,
+    userInfo:{}
   },
   onLoad: function (options) {
     var that = this;
@@ -23,6 +23,11 @@ Page({
         });
       }
     })
+    if(app.globalData.userInfo){
+      that.setData({
+        userInfo:app.globalData.userInfo
+      })
+    }
   },
 
   clickTab:function(e){

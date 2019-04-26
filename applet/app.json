@@ -20,7 +20,8 @@
     "pages/logs/logs",
     "pages/bookInfo/bookInfo",
     "pages/bookcomment/bookcomment",
-    "pages/borrowedlist/borrowedlist"
+    "pages/borrowedlist/borrowedlist",
+    "pages/writeReview/writeReview"
   ],
   "window": {
     "backgroundTextStyle": "light",

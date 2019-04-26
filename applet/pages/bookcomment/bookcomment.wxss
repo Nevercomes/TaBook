@@ -18,7 +18,7 @@
   justify-content: flex-start;
 }
 .short-container .short-header .text{
-  width: 200rpx;
+  width: 300rpx;
   font-size: 24rpx;
   right: 0rpx;
 }

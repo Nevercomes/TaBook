@@ -19,6 +19,11 @@ Page({
   },
 
   //事件处理函数
+  toWriteReview: function () {
+    wx.navigateTo({
+      url: '../writeReview/writeReview',
+    })
+  },
   more_click1:function(){
     wx.navigateTo({
       url: '../bookcomment/bookcomment',

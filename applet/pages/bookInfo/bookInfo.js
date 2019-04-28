@@ -24,6 +24,11 @@ Page({
       url: '../writeReview/writeReview',
     })
   },
+  toIHaveBook: function () {
+    wx.navigateTo({
+      url: '../iHaveBook/iHaveBook',
+    })
+  },
   more_click1:function(){
     wx.navigateTo({
       url: '../bookcomment/bookcomment',

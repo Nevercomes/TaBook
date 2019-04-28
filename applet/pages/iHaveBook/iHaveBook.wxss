@@ -1,0 +1,53 @@
+/* pages/iHaveBook/iHaveBook.wxss */
+.container {
+  background-color: #fff;
+  min-height: 100%;
+  display: block;
+}
+.book-box{
+  width: 730rpx;
+  height: 420rpx;
+  background-color: #fff;
+  overflow: hidden;
+  border-radius:5px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 2rpx;
+  margin-top: 10rpx;
+}
+.book-box .img-box{
+  width: 350rpx;
+  height: 400rpx;
+  overflow: hidden;
+  border-radius:5px;
+}
+.book-box .img-box image{
+  width: 350rpx;
+  height: 400rpx;
+}
+.book-box .text-box{
+  width: 120rpx;
+  height: 400rpx;
+  overflow: hidden;
+}
+.book-box .text-box .text{
+  width: 300rpx;
+  overflow: hidden;
+  font-size: 30rpx;
+  padding: 8rpx 0;
+  color:#000;
+  margin-left: 24rpx;
+}
+.book-box .text-box1{
+  width: 200rpx;
+  height: 400rpx;
+  overflow: hidden;
+}
+.book-box .text-box1 .text{
+  width: 300rpx;
+  overflow: hidden;
+  font-size: 30rpx;
+  padding: 8rpx 0;
+  color:#000;
+  margin-left: 24rpx;
+}

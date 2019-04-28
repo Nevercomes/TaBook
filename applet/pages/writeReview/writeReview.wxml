@@ -33,8 +33,8 @@
           <view class="weui-cell__bd">
             <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
             <view class="weui-textarea-counter">{{currentNum}}/50</view>
-        </view>
-      </view>
+          </view>
+         </view>
     </view>
     <button class="weui-btn button" type="primary">提交</button>
   </view>

@@ -3,6 +3,7 @@
     "i-button": "../../dist/button/index",
     "i-tabs": "../../dist/tabs/index",
     "i-tab": "../../dist/tab/index",
+    "i-toast": "../../dist/toast/index",
     "i-panel": "../../dist/panel/index"
   },
   "navigationBarTitleText": "撰写书评"

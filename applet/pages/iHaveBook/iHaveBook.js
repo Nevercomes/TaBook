@@ -12,13 +12,33 @@ Page({
     freebook: 1,
     borrowedbook: 9,
     score: 9.0,
-
+    currentNum:0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   //事件处理函数
+  inputs: function (e) {
+    // 获取输入框的内容
+    var value = e.detail.value;
+    console.log(value);
+    // 获取输入框内容的长度
+    var len = parseInt(value.length);
+    console.log(len);
+    if (len <= 50) {
+      this.setData({
+        currentNum: len
+      })
+    }
+    else {
+      $Toast({
+        content: '最多50字哦~',
+        type: 'warning'
+      });
+      return;
+    }
+  },
   btnClick:function(){
     wx.showModal({
       title: '提示',

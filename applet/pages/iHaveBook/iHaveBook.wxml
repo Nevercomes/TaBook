@@ -26,8 +26,9 @@
     <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell">
         <view class="weui-cell__bd">
-          <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+          <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em"  bindinput='inputs'/>
           <view class="weui-textarea-counter">{{currentNum}}/50</view>
+          <i-toast id="toast" />
         </view>
         </view>
   </view>

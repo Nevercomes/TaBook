@@ -1,4 +1,5 @@
 // pages/writeReview/writeReview.js
+const { $Toast } = require('../../dist/base/index');
 Page({
 
   /**
@@ -37,6 +38,46 @@ Page({
     this.setData({
       currentTab: detail.key
     })
+  },
+  inputs1:function(e){
+    // 获取输入框的内容
+    var value = e.detail.value;
+    console.log(value);
+    // 获取输入框内容的长度
+    var len = parseInt(value.length);
+    console.log(len);
+    if(len<=50){
+      this.setData({
+        currentNum: len
+      })
+    }
+    else{
+      $Toast({
+        content: '最多50字哦~',
+        type: 'warning'
+      });
+      return;
+    }
+  },
+  inputs2: function (e) {
+    // 获取输入框的内容
+    var value = e.detail.value;
+    console.log(value);
+    // 获取输入框内容的长度
+    var len = parseInt(value.length);
+    console.log(len);
+    if (len <= 200) {
+      this.setData({
+        currentNum: len
+      })
+    }
+    else {
+      $Toast({
+        content: '最多200字哦~',
+        type: 'warning'
+      });
+      return;
+    }
   },
   /**
    * 生命周期函数--监听页面加载

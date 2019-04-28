@@ -32,4 +32,5 @@
         </view>
   </view>
     <button class="weui-btn button" type="primary" bindtap='btnClick'>上传</button>
+    <i-toast id="toast" />
 </view>

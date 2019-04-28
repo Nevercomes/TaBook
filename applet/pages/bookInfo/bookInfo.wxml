@@ -22,9 +22,10 @@
     </view>
   </view>
     <view class='buttons'>
-      <button class='button' bindtap=''>收藏此书</button>
+      <button class='button' bindtap='myFavorites'>收藏此书</button>
       <button class='button' bindtap='toIHaveBook'>我有此书</button>
       <button class='button' bindtap='toWriteReview'>撰写书评</button>
+      <i-toast id="toast" />
     </view>
     <view class='comment-container'>
       <view class='book-intro'>

@@ -1,4 +1,5 @@
 // pages/iHaveBook/iHaveBook.js
+const { $Toast } = require('../../dist/base/index');
 Page({
 
   /**
@@ -25,11 +26,10 @@ Page({
       success:function(res){
         if(res.confirm){
           console.log("确定")
-          wx.showToast({
-            title: '成功',
-            icon:'success',
-            duration:2000
-          })
+          $Toast({
+            content: '成功加入我的上传',
+            icon: 'success'
+          });
         }
         else if(res.cancel){
           console.log("取消")

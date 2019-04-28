@@ -1,4 +1,5 @@
 // pages/bookInfo/bookInfo.js
+const { $Toast } = require('../../dist/base/index');
 Page({
 
   /**
@@ -19,6 +20,12 @@ Page({
   },
 
   //事件处理函数
+  myFavorites:function(){
+    $Toast({
+      content: '成功加入我的收藏',
+      icon: 'success'
+    });
+  },
   toWriteReview: function () {
     wx.navigateTo({
       url: '../writeReview/writeReview',

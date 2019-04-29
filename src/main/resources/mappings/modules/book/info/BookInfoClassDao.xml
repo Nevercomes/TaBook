@@ -50,8 +50,8 @@
             img_url
         ) VALUES (
             #{id},
-            #{createBy},
-            #{updateBy},
+            #{createBy.id},
+            #{updateBy.id},
             #{createTime},
             #{updateTime},
             #{delFlag},
@@ -59,6 +59,7 @@
             #{bookRootId},
             #{ISBN},
             #{version},
+            #{press},
             #{year},
             #{score},
             #{intro},
@@ -69,7 +70,7 @@
     <update id="update">
         UPDATE book_info_class
         SET
-            update_by    = #{createBy},
+            update_by    = #{updateBy.id},
             update_time  = #{updateTime},
             del_flag     = #{delFlag},
             remarks      = #{remarks},

@@ -10,4 +10,5 @@ import com.nevercome.tabook.modules.book.entity.info.BookInfoRoot;
  */
 @MyBatisDao
 public interface BookInfoRootDao extends CrudDao<BookInfoRoot> {
+    BookInfoRoot getByName(String name);
 }

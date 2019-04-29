@@ -16,7 +16,6 @@ public class BookInfoRoot extends DataEntity<BookInfoRoot> {
     // 持久化数据
     private String name;
     private String author;
-    private String sortSeq; // 排序序列
     private String representId; // bookClass代表root的id
 
     private List<String> sortNameList; // 分类 名
@@ -41,14 +40,6 @@ public class BookInfoRoot extends DataEntity<BookInfoRoot> {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public String getSortSeq() {
-        return sortSeq;
-    }
-
-    public void setSortSeq(String sortSeq) {
-        this.sortSeq = sortSeq;
     }
 
     public String getRepresentId() {

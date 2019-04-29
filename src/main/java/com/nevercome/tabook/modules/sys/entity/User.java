@@ -193,8 +193,8 @@ public class User extends DataEntity<User> {
         this.userType = userType;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreateTime() {
+        return createTime;
     }
 
     public String getLoginIp() {

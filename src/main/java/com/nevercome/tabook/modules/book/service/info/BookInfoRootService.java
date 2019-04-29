@@ -11,4 +11,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class BookInfoRootService extends CrudService<BookInfoRootDao, BookInfoRoot> {
+
+    public BookInfoRoot getByName(String name) {
+        return super.dao.getByName(name);
+    }
+
 }

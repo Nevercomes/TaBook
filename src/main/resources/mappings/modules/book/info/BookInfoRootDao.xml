@@ -9,9 +9,8 @@
         a.update_time AS "updateTime",
         a.del_flag AS "delFlag",
         a.remarks AS "remarks",
-        a.name AS "name"
+        a.name AS "name",
         a.author AS "author",
-        a.sort_seq AS "sortSeq",
         a.represent_id AS "representId"
     </sql>
 
@@ -21,6 +20,15 @@
 
     <select id="get" resultType="BookInfoRoot">
 
+    </select>
+
+    <select id="getByName" resultType="BookInfoRoot">
+        SELECT
+        <include refid="bookInfoRootColumns"/>
+        FROM book_info_root a
+        <include refid="bookInfoRootJoins"/>
+        WHERE a.del_flag = 0
+        AND a.name LIKE CONCAT('%', #{name}, '%')
     </select>
 
     <select id="findList" resultType="BookInfoRoot">
@@ -38,19 +46,17 @@
             remarks,
             `name`,
             author,
-            sort_seq,
             represent_id
         ) VALUES (
             #{id},
-            #{createBy},
-            #{updateBy},
+            #{createBy.id},
+            #{updateBy.id},
             #{createTime},
             #{updateTime},
             #{delFlag},
             #{remarks},
             #{name},
             #{author},
-            #{sortSeq},
             #{representId}
         )
     </insert>
@@ -58,13 +64,12 @@
     <update id="update">
         UPDATE book_info_root
         SET
-            update_by    = #{createBy},
+            update_by    = #{updateBy.id},
             update_time  = #{updateTime},
             del_flag     = #{delFlag},
             remarks      = #{remarks},
             `name`       = #{name},
             author       = #{author},
-            sort_seq     = #{sortSeq},
             represent_id = #{representId}
         WHERE id = #{id}
     </update>

@@ -15,15 +15,14 @@ import java.util.Date;
  * @author ThinkGem
  * @version 2014-05-16
  */
-@Data
 public abstract class DataEntity<T> extends BaseEntity<T> {
     private static final long serialVersionUID = 1L;
 
     protected String remarks;	// 备注
     protected User createBy;	// 创建者
-    protected Date createDate;	// 创建日期
+    protected Date createTime;	// 创建日期
     protected User updateBy;	// 更新者
-    protected Date updateDate;	// 更新日期
+    protected Date updateTime;	// 更新日期
     protected String delFlag; 	// 删除标记（0：正常；1：删除；2：审核）
 
     public DataEntity() {
@@ -49,8 +48,8 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
             this.updateBy = user;
             this.createBy = user;
         }
-        this.updateDate = new Date();
-        this.createDate = this.updateDate;
+        this.updateTime = new Date();
+        this.createTime = this.updateTime;
     }
 
     /**
@@ -62,7 +61,7 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
         if (StringUtils.isNotBlank(user.getId())){
             this.updateBy = user;
         }
-        this.updateDate = new Date();
+        this.updateTime = new Date();
     }
 
     public String getRemarks() {
@@ -83,12 +82,12 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
     }
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     @JsonIgnore
@@ -101,12 +100,12 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
     }
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    public Date getUpdateDate() {
-        return updateDate;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     @JsonIgnore

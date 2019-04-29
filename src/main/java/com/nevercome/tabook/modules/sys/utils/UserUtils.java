@@ -119,10 +119,16 @@ public class UserUtils {
             if (user != null) {
                 return user;
             }
-            return new User();
+//            return new User();
+            User inTest = new User();
+            inTest.setId("sun-0");
+            return inTest;
         }
         // 如果没有登录，则返回实例化空的User对象。
-        return new User();
+//        return new User();
+        User inTest = new User();
+        inTest.setId("sun-0");
+        return inTest;
     }
 
     /**

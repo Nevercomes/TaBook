@@ -32,7 +32,7 @@
         WHERE a.id = #{id}
     </select>
 
-    <select id="findList" resultType="">
+    <select id="findList" resultType="BookInfoAdd">
         SELECT
         <include refid="bookInfoAddColumns"/>
         FROM book_info_add a
@@ -50,7 +50,7 @@
         </choose>
     </select>
 
-    <select id="findAllList">
+    <select id="findAllList" resultType="BookInfoAdd">
         SELECT
         <include refid="bookInfoAddColumns"/>
         FROM book_info_add a

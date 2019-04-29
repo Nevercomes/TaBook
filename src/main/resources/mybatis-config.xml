@@ -43,9 +43,9 @@
         <typeAlias alias="Page" type="com.nevercome.tabook.common.persistence.Page" /><!--分页  -->
     </typeAliases>
 
-     <!--插件配置 -->
-    <!--<plugins>-->
-        <!--<plugin interceptor="com.nevercome.tabook.common.persistence.interceptor.PaginationInterceptor" />-->
-    <!--</plugins>-->
+     <!--插件配置-->
+    <plugins>
+        <plugin interceptor="com.nevercome.tabook.common.persistence.interceptor.PaginationInterceptor" />
+    </plugins>
 
 </configuration>

@@ -24,15 +24,15 @@
 
     </sql>
 
-    <select id="get" resultType="BookInstance">
+    <select id="get" resultType="BookInfoInstance">
 
     </select>
 
-    <select id="findList" resultType="BookInstance">
+    <select id="findList" resultType="BookInfoInstance">
 
     </select>
 
-    <select id="findAllList" resultType="BookInstance">
+    <select id="findAllList" resultType="BookInfoInstance">
 
     </select>
 

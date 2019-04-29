@@ -25,11 +25,11 @@
 
     </sql>
 
-    <select id="get" resultType="">
+    <select id="get" resultType="BookBorrowRecord">
 
     </select>
 
-    <select id="findList" resultType="">
+    <select id="findList" resultType="BookBorrowRecord">
 
     </select>
 

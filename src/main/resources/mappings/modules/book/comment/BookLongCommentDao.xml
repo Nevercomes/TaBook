@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nevercome.tabook.modules.book.dao.comment.BookCommentReplyDao">
-    <sql id="bookCommentReplyColumns">
+<mapper namespace="com.nevercome.tabook.modules.book.dao.comment.BookLongCommentDao">
+    <sql id="bookLongCommentColumns">
         a.id AS "id",
         a.create_by AS "createBy.id",
         a.update_by AS "updateBy.id",
@@ -9,32 +9,34 @@
         a.update_time AS "updateTime",
         a.del_flag AS "delFlag",
         a.remarks AS "remarks",
-        a.book_comment_id AS "bookCommentId",
-        a.like_num AS "likeNum",
-        a.schoold_id As "schoolId",
+        a.title AS "title",
         a.content AS "content",
+        a.score AS "score",
+        a.like_num AS "likeNum",
+        a.book_root_id AS "bookRootId",
+        a.school_id AS "schoolId",
         a.student_id AS "studentId"
     </sql>
 
-    <sql id="bookCommentReplyJoins">
+    <sql id="bookLongCommentJoins">
 
     </sql>
 
-    <select id="get" resultType="BookCommentReply">
+    <select id="get" resultType="BookLongComment">
         SELECT
-        <include refid="bookCommentReplyColumns"/>
+        <include refid="bookLongCommentColumns"/>
         FROM book_like_record a
-        <include refid="bookCommentReplyJoins"/>
+        <include refid="bookLongCommentJoins"/>
         WHERE a.id = #{id}
         AND a.del_flag = 0
     </select>
 
-    <select id="findList" resultType="BookCommentReply">
+    <select id="findList" resultType="BookLongComment">
 
     </select>
 
     <insert id="insert">
-        INSERT INTO book_comment_reply (
+        INSERT INTO book_comment_long (
             id,
             create_by,
             update_by,
@@ -42,10 +44,12 @@
             update_time,
             del_flag,
             remarks,
-            book_comment_id,
+            title,
+            content,
+            score,
             like_num,
             school_id,
-            content,
+            book_root_id,
             student_id
         ) VALUES (
             #{id},
@@ -55,31 +59,35 @@
             #{updateTime},
             #{delFlag},
             #{remarks},
-            #{bookCommnetId},
+            #{title},
+            #{content},
+            #{score},
             #{likeNum},
             #{schoolId},
-            #{content},
+            #{bookRootId},
             #{studentId}
         )
     </insert>
 
     <update id="update">
-        UPDATE book_comment_reply
+        UPDATE book_comment_long
         SET
-            update_by       = #{updateBy.id},
-            update_time     = #{updateTime},
-            del_flag        = #{delFlag},
-            remarks         = #{remarks},
-            book_comment_id = #{bookCommentId},
-            like_num        = #{likeNum},
-            school_id       = #{schoolId},
-            content         = #{content},
-            student_id      = #{studentId}
+            update_by    = #{updateBy.id},
+            update_time  = #{updateTime},
+            del_flag     = #{delFlag},
+            remarks      = #{remarks},
+            title        = #{title},
+            content      = #{content},
+            score        = #{score},
+            like_num     = #{likeNum},
+            school_id    = #{schoolId},
+            book_root_id = #{bookRootId},
+            student_id   = #{studentId}
         WHERE id = #{id}
     </update>
 
     <update id="delete">
-        UPDATE book_comment_reply
+        UPDATE book_comment_long
         SET del_flag = 1
         WHERE id = #{id}
     </update>

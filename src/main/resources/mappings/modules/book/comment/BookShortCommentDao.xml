@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nevercome.tabook.modules.book.dao.comment.BookShortCommentDao">
+    <sql id="bookShortCommentColumns">
+        a.id AS "id",
+        a.create_by AS "createBy.id",
+        a.update_by AS "updateBy.id",
+        a.create_time AS "createTime",
+        a.update_time AS "updateTime",
+        a.del_flag AS "delFlag",
+        a.remarks AS "remarks",
+        a.content AS "content",
+        a.score AS "score",
+        a.like_num AS "likeNum",
+        a.book_root_id AS "bookRootId",
+        a.school_id AS "schoolId",
+        a.student_id AS "studentId"
+    </sql>
+
+    <sql id="bookShortCommentJoins">
+
+    </sql>
+
+    <select id="get" resultType="BookShortComment">
+
+    </select>
+
+    <select id="findList" resultType="BookShortComment">
+
+    </select>
+
+    <insert id="insert">
+        INSERT INTO book_comment_short (
+            id,
+            create_by,
+            update_by,
+            create_time,
+            update_time,
+            del_flag,
+            remarks,
+            content,
+            score,
+            like_num,
+            school_id,
+            book_root_id,
+            student_id
+        ) VALUES (
+            #{id},
+            #{createBy.id},
+            #{updateBy.id},
+            #{createTime},
+            #{updateTime},
+            #{delFlag},
+            #{remarks},
+            #{content},
+            #{score},
+            #{likeNum},
+            #{schoolId},
+            #{bookRootId},
+            #{studentId}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE book_comment_short
+        SET
+            update_by   = #{updateBy.id},
+            update_time = #{updateTime},
+            del_flag    = #{delFlag},
+            remarks     = #{remarks},
+            content      = #{content},
+            score        = #{score},
+            like_num     = #{likeNum},
+            school_id    = #{schoolId},
+            book_root_id = #{bookRootId},
+            student_id   = #{studentId}
+            WHERE id = #{id}
+    </update>
+
+    <update id="delete">
+        UPDATE book_comment_short
+        SET del_flag = 1
+        WHERE id = #{id}
+    </update>
+
+</mapper>

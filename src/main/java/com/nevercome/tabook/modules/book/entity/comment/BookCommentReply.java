@@ -2,8 +2,7 @@ package com.nevercome.tabook.modules.book.entity.comment;
 
 import com.nevercome.tabook.common.persistence.DataEntity;
 import com.nevercome.tabook.modules.book.entity.info.BookInfo;
-import com.nevercome.tabook.modules.book.entity.user.Student;
-import lombok.Data;
+import com.nevercome.tabook.modules.book.entity.user.BookStudent;
 
 /**
  * BookCommentReply实体类
@@ -21,7 +20,7 @@ public class BookCommentReply extends DataEntity<BookCommentReply> {
     // 联结数据
     // 若需求字段少且固定 可根据客户端显示需求单独设置 在dao层直接查询 而不在service层单独添加
     private BookInfo bookInfo;
-    private Student student;
+    private BookStudent bookStudent;
 
     public String getBookCommentId() {
         return bookCommentId;
@@ -63,11 +62,11 @@ public class BookCommentReply extends DataEntity<BookCommentReply> {
         this.bookInfo = bookInfo;
     }
 
-    public Student getStudent() {
-        return student;
+    public BookStudent getBookStudent() {
+        return bookStudent;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setBookStudent(BookStudent bookStudent) {
+        this.bookStudent = bookStudent;
     }
 }

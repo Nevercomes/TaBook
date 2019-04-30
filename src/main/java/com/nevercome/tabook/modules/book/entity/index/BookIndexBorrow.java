@@ -2,7 +2,7 @@ package com.nevercome.tabook.modules.book.entity.index;
 
 import com.nevercome.tabook.common.persistence.DataEntity;
 import com.nevercome.tabook.modules.book.entity.info.BookInfo;
-import com.nevercome.tabook.modules.book.entity.user.Student;
+import com.nevercome.tabook.modules.book.entity.user.BookStudent;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -25,5 +25,5 @@ public class BookIndexBorrow extends DataEntity<BookIndexBorrow> {
     // 联结数据
     // 若需求字段少且固定 可根据客户端显示需求单独设置 在dao层直接查询 而不在service层单独添加
     private BookInfo bookInfo;
-    private Student student;
+    private BookStudent bookStudent;
 }

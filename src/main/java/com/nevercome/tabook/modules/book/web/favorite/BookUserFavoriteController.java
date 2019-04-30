@@ -10,7 +10,6 @@ import com.nevercome.tabook.modules.book.entity.info.BookInfo;
 import com.nevercome.tabook.modules.book.service.comment.BookLongCommentService;
 import com.nevercome.tabook.modules.book.service.favorite.BookUserFavoriteService;
 import com.nevercome.tabook.modules.book.service.info.BookInfoService;
-import com.nevercome.tabook.modules.book.service.info.BookInstanceService;
 import com.nevercome.tabook.modules.book.utils.BookConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  * @author: sun

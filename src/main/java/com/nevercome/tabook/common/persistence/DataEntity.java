@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nevercome.tabook.common.utils.IdGen;
 import com.nevercome.tabook.modules.sys.entity.User;
 import com.nevercome.tabook.modules.sys.utils.UserUtils;
-import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Date;
@@ -51,9 +50,9 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
         if (StringUtils.isNotBlank(user.getId())){
             this.updateBy = user;
             this.createBy = user;
-            this.studentId = user.getStudent().getStudentId();
-            this.schoolId = user.getStudent().getSchoolId();
-            this.campusId = user.getStudent().getCampusId();
+            this.studentId = user.getBookStudent().getStudentId();
+            this.schoolId = user.getBookStudent().getSchoolId();
+            this.campusId = user.getBookStudent().getCampusId();
         }
         this.updateTime = new Date();
         this.createTime = this.updateTime;

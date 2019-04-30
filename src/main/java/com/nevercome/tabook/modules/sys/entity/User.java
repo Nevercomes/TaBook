@@ -6,8 +6,7 @@ import com.google.common.collect.Lists;
 import com.nevercome.tabook.common.config.Global;
 import com.nevercome.tabook.common.persistence.DataEntity;
 import com.nevercome.tabook.common.utils.Collections3;
-import com.nevercome.tabook.common.utils.Reflections;
-import com.nevercome.tabook.modules.book.entity.user.Student;
+import com.nevercome.tabook.modules.book.entity.user.BookStudent;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -54,7 +53,7 @@ public class User extends DataEntity<User> {
 
     private List<Role> roleList = Lists.newArrayList(); // 拥有角色列表
 
-    private Student student;
+    private BookStudent bookStudent;
 
     public User() {
         super();
@@ -319,12 +318,12 @@ public class User extends DataEntity<User> {
         this.sessionKey = sessionKey;
     }
 
-    public Student getStudent() {
-        return student;
+    public BookStudent getBookStudent() {
+        return bookStudent;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setBookStudent(BookStudent bookStudent) {
+        this.bookStudent = bookStudent;
     }
 
     @Override

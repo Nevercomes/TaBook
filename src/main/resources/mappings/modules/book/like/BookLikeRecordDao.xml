@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nevercome.tabook.modules.book.dao.like.BookLikeRecordDao">
+    <sql id="bookLikeRecordColumns">
+        a.id AS "id",
+        a.create_by AS "createBy.id",
+        a.update_by AS "updateBy.id",
+        a.create_time AS "createTime",
+        a.update_time AS "updateTime",
+        a.del_flag AS "delFlag",
+        a.remarks AS "remarks",
+        a.type AS "type",
+        a.refer_id AS "referId"
+    </sql>
+
+    <sql id="bookLikeRecordJoins">
+
+    </sql>
+
+    <select id="get" resultType="BookLikeRecord">
+        SELECT
+        <include refid="bookLikeRecordColumns"/>
+        FROM book_like_record a
+        <include refid="bookLikeRecordJoins"/>
+        WHERE a.id = #{id}
+        AND a.del_flag = 0
+    </select>
+
+    <select id="findList" resultType="BookLikeRecord">
+
+    </select>
+
+    <insert id="insert">
+        INSERT INTO book_like_record (
+            id,
+            create_by,
+            update_by,
+            create_time,
+            update_time,
+            del_flag,
+            remarks,
+            type,
+            refer_id
+        ) VALUES (
+            #{id},
+            #{createBy.id},
+            #{updateBy.id},
+            #{createTime},
+            #{updateTime},
+            #{delFlag},
+            #{remarks},
+            #{type},
+            #{referId}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE book_like_record
+        SET
+            update_by   = #{updateBy.id},
+            update_time = #{updateTime},
+            del_flag    = #{delFlag},
+            remarks     = #{remarks},
+            type        = #{type},
+            refer_id    = #{referId}
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete">
+        UPDATE book_like_record
+        SET del_flag = 1
+        WHERE id = #{id}
+    </update>
+
+</mapper>

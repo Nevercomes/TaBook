@@ -3,8 +3,8 @@
 <mapper namespace="com.nevercome.tabook.modules.book.dao.info.BookInfoRootDao">
     <sql id="bookInfoRootColumns">
         a.id AS "id",
-        a.create_by AS "createBy",
-        a.update_by AS "updateBy",
+        a.create_by AS "createBy.id",
+        a.update_by AS "updateBy.id",
         a.create_time AS "createTime",
         a.update_time AS "updateTime",
         a.del_flag AS "delFlag",

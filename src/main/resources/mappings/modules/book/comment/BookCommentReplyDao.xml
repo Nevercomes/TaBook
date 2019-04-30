@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nevercome.tabook.modules.book.dao.comment.BookCommentReplyDao">
+    <sql id="bookCommentReplyColumns">
+        a.id AS "id",
+        a.create_by AS "createBy.id",
+        a.update_by AS "updateBy.id",
+        a.create_time AS "createTime",
+        a.update_time AS "updateTime",
+        a.del_flag AS "delFlag",
+        a.remarks AS "remarks",
+        a.book_comment_id AS "bookCommentId",
+        a.like_num AS "likeNum",
+        a.schoold_id As "schoolId",
+        a.content AS "content",
+        a.student_id AS "studentId"
+    </sql>
+
+    <sql id="bookCommentReplyJoins">
+
+    </sql>
+
+    <select id="get" resultType="BookCommentReply">
+
+    </select>
+
+    <select id="findList" resultType="BookCommentReply">
+
+    </select>
+
+    <insert id="insert">
+        INSERT INTO book_comment_reply (
+            id,
+            create_by,
+            update_by,
+            create_time,
+            update_time,
+            del_flag,
+            remarks,
+            book_comment_id,
+            like_num,
+            school_id,
+            content,
+            student_id
+        ) VALUES (
+            #{id},
+            #{createBy.id},
+            #{updateBy.id},
+            #{createTime},
+            #{updateTime},
+            #{delFlag},
+            #{remarks},
+            #{bookCommnetId},
+            #{likeNum},
+            #{schoolId},
+            #{content},
+            #{studentId}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE book_comment_reply
+        SET
+            update_by       = #{updateBy.id},
+            update_time     = #{updateTime},
+            del_flag        = #{delFlag},
+            remarks         = #{remarks},
+            book_comment_id = #{bookCommentId},
+            like_num        = #{likeNum},
+            school_id       = #{schoolId},
+            content         = #{content},
+            student_id      = #{studentId}
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete">
+        UPDATE book_comment_reply
+        SET del_flag = 1
+        WHERE id = #{id}
+    </update>
+
+</mapper>

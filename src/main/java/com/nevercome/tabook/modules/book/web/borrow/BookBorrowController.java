@@ -71,7 +71,6 @@ public class BookBorrowController extends BaseController {
 
     @RequestMapping(value = "list")
     public ResponseEntity list(HttpServletRequest request, HttpServletResponse response, BookBorrowRecord bookBorrowRecord) {
-
         return new ResponseEntity<>(new Result(), HttpStatus.OK);
     }
 

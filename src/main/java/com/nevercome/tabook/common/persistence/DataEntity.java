@@ -25,6 +25,10 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
     protected Date updateTime;	// 更新日期
     protected String delFlag; 	// 删除标记（0：正常；1：删除；2：审核）
 
+    protected String studentId;
+    protected String schoolId;
+    protected String campusId;
+
     public DataEntity() {
         super();
         this.delFlag = DEL_FLAG_NORMAL;
@@ -47,6 +51,9 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
         if (StringUtils.isNotBlank(user.getId())){
             this.updateBy = user;
             this.createBy = user;
+            this.studentId = user.getStudent().getStudentId();
+            this.schoolId = user.getStudent().getSchoolId();
+            this.campusId = user.getStudent().getCampusId();
         }
         this.updateTime = new Date();
         this.createTime = this.updateTime;
@@ -115,5 +122,29 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 
     public void setDelFlag(String delFlag) {
         this.delFlag = delFlag;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(String schoolId) {
+        this.schoolId = schoolId;
+    }
+
+    public String getCampusId() {
+        return campusId;
+    }
+
+    public void setCampusId(String campusId) {
+        this.campusId = campusId;
     }
 }

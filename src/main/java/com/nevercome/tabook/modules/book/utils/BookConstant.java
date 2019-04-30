@@ -113,4 +113,15 @@ public class BookConstant {
      */
     public static final String BOOK_REQUEST_STATUS_CANCEL = "9";
 
+
+    /**
+     * 收藏类型 书籍
+     */
+    public static final String BOOK_FAVORITE_BOOK = "1";
+
+    /**
+     * 收藏类型 长评
+     */
+    public static final String BOOK_FAVORITE_COMMENT = "2";
+
 }

@@ -22,6 +22,7 @@ public class BookInfo extends DataEntity<BookInfo> {
 //    search begin
     private String isBookClass;
     private String isBookRoot;
+    private String favoriteStudentId;
 //    search end
 
     public BookInfoRoot getBookRoot() {
@@ -78,5 +79,13 @@ public class BookInfo extends DataEntity<BookInfo> {
 
     public void setIsBookRoot(String isBookRoot) {
         this.isBookRoot = isBookRoot;
+    }
+
+    public String getFavoriteStudentId() {
+        return favoriteStudentId;
+    }
+
+    public void setFavoriteStudentId(String favoriteStudentId) {
+        this.favoriteStudentId = favoriteStudentId;
     }
 }

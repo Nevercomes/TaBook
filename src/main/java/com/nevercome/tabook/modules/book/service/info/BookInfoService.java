@@ -6,6 +6,7 @@ import com.nevercome.tabook.common.persistence.Page;
 import com.nevercome.tabook.common.service.CrudService;
 import com.nevercome.tabook.common.utils.StringUtils;
 import com.nevercome.tabook.modules.book.dao.info.BookInfoDao;
+import com.nevercome.tabook.modules.book.entity.favorite.BookUserFavorite;
 import com.nevercome.tabook.modules.book.entity.info.BookInfo;
 import com.nevercome.tabook.modules.book.entity.info.BookInfoClass;
 import com.nevercome.tabook.modules.book.entity.info.BookInfoInstance;
@@ -13,6 +14,8 @@ import com.nevercome.tabook.modules.book.entity.info.BookInfoRoot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -66,5 +69,4 @@ public class BookInfoService extends CrudService<BookInfoDao, BookInfo> {
         page.setList(bookInfoList);
         return page;
     }
-
 }

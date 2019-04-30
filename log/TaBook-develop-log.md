@@ -37,3 +37,9 @@
 1. 增加了标签和分类 删除了root当中的sort_seq字段
 2. 添加root与分类的映射关系和instance与标签的映射关系
 3. 添加了书籍信息单独查找的逻辑与用户添加书籍信息的逻辑
+
+##### 4.29-4.30
+1. fix some bug
+2. 添加了studentId schoolId campusId为父级属性
+3. 在一些studentId业务逻辑的地方不再使用createBy
+4. add book favorite

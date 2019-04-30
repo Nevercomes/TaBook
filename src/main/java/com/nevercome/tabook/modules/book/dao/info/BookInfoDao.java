@@ -2,6 +2,7 @@ package com.nevercome.tabook.modules.book.dao.info;
 
 import com.nevercome.tabook.common.persistence.CrudDao;
 import com.nevercome.tabook.common.persistence.annotation.MyBatisDao;
+import com.nevercome.tabook.modules.book.entity.favorite.BookUserFavorite;
 import com.nevercome.tabook.modules.book.entity.info.BookInfo;
 
 import java.util.List;
@@ -24,4 +25,6 @@ public interface BookInfoDao extends CrudDao<BookInfo> {
     List<BookInfo> findListRefBookClass(BookInfo bookInfo);
 
     List<BookInfo> findListRefBookRoot(BookInfo bookInfo);
+
+    List<BookInfo> findListByFavorite(BookUserFavorite bookUserFavorite);
 }

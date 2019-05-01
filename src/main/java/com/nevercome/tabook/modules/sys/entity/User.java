@@ -24,11 +24,11 @@ import java.util.List;
 public class User extends DataEntity<User> {
 
     private static final long serialVersionUID = 1L;
-    private Office company;	// 归属公司
-    private Office office;	// 归属部门
+    private Office company;	// 归属公司 所属学校
+    private Office office;	// 归属部门 所属校区
     private String loginName;// 登录名
     private String password;// 密码
-    private String no;		// 工号
+    private String no;		// 工号 学号
     private String name;	// 姓名
     private String email;	// 邮箱
     private String phone;	// 电话

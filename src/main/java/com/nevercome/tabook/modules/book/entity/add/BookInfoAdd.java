@@ -1,6 +1,7 @@
 package com.nevercome.tabook.modules.book.entity.add;
 
 import com.nevercome.tabook.common.persistence.DataEntity;
+import com.nevercome.tabook.modules.book.entity.info.BookInfo;
 import lombok.Data;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
@@ -19,6 +20,7 @@ public class BookInfoAdd extends DataEntity<BookInfoAdd> {
     // 持久化数据
     private String bookRootId;
     private String bookClassId;
+    private String bookInstanceId;
     private String name; // 若没有两者书籍id之一 则需要用户提交书籍的基本信息
     private String author;
     private String press;
@@ -32,6 +34,9 @@ public class BookInfoAdd extends DataEntity<BookInfoAdd> {
     private String sorts; // 分类的所有id
     private List<String> tagNameList; // 所有的标签名
     private String tags; // 所有的标签 id
+
+    // 表示层
+    private BookInfo bookInfo;
 
     public String getBookRootId() {
         return bookRootId;
@@ -47,6 +52,14 @@ public class BookInfoAdd extends DataEntity<BookInfoAdd> {
 
     public void setBookClassId(String bookClassId) {
         this.bookClassId = bookClassId;
+    }
+
+    public String getBookInstanceId() {
+        return bookInstanceId;
+    }
+
+    public void setBookInstanceId(String bookInstanceId) {
+        this.bookInstanceId = bookInstanceId;
     }
 
     public String getName() {
@@ -148,5 +161,13 @@ public class BookInfoAdd extends DataEntity<BookInfoAdd> {
 
     public void setNewPercent(int newPercent) {
         this.newPercent = newPercent;
+    }
+
+    public BookInfo getBookInfo() {
+        return bookInfo;
+    }
+
+    public void setBookInfo(BookInfo bookInfo) {
+        this.bookInfo = bookInfo;
     }
 }

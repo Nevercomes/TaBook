@@ -1,6 +1,7 @@
 package com.nevercome.tabook.modules.book.web.borrow;
 
 import com.nevercome.tabook.common.config.Global;
+import com.nevercome.tabook.common.persistence.Page;
 import com.nevercome.tabook.common.web.BaseController;
 import com.nevercome.tabook.common.web.Result;
 import com.nevercome.tabook.modules.book.entity.borrow.BookBorrowRecord;
@@ -26,7 +27,6 @@ public class BookBorrowController extends BaseController {
 
     @Autowired
     private BookBorrowRecordService bookBorrowRecordService;
-    @Autowired
 
     /**
      * 申请有两类
@@ -70,9 +70,13 @@ public class BookBorrowController extends BaseController {
         return new ResponseEntity<>(new Result(), HttpStatus.OK);
     }
 
+    /**
+     * 展示我的申请（借书）的地方
+     */
     @RequestMapping(value = "list")
     public ResponseEntity list(HttpServletRequest request, HttpServletResponse response, BookBorrowRecord bookBorrowRecord) {
-        return new ResponseEntity<>(new Result(), HttpStatus.OK);
+        Page<BookBorrowRecord> page = bookBorrowRecordService.findPage(new Page<>(request, response), bookBorrowRecord);
+        return new ResponseEntity<>(new Result(page), HttpStatus.OK);
     }
 
 }

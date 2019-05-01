@@ -47,10 +47,10 @@
         <where>
             a.del_flag = 0
             <if test="studentId != null and studentId != ''">
-                a.student_id = #{studentId}
+                AND a.student_id = #{studentId}
             </if>
             <if test="type != null and type != ''">
-                a.type = #{type}
+                AND a.type = #{type}
             </if>
         </where>
         <choose>

@@ -96,21 +96,7 @@ swiper-item image {
   margin-bottom: 24rpx;
   border-radius:5px;
 }
-.goods-box1{
-  width: 730rpx;
-  height: 200rpx;
-  background-color: #fff;
-  overflow: hidden;
-  margin-bottom: 24rpx;
-  border-radius:5px;
-  display: flex;
-  flex-direction: row;
-}
-.goods-box1 .img-box{
-  width: 200rpx;
-  height: 200rpx;
-  overflow: hidden;
-}
+
 .goods-box .img-box{
   width: 339rpx;
   height: 339rpx;
@@ -120,9 +106,10 @@ swiper-item image {
    width: 339rpx;
    height: 339rpx;
 }
+
 .goods-box .img-box image_small{
-   width: 50rpx;
-   height:50rpx;
+   width: 140rpx;
+   height:200rpx;
 }
 .goods-box .text-box.goods-intro{
   width: 280rpx;
@@ -134,28 +121,86 @@ swiper-item image {
   color:#000;
   margin-left: 24rpx;
 }
-.goods-box1 .text-box{
-  width: 339rpx;
-  height: 339rpx;
+.goods-box1{
+  width: 730rpx;
+  height: 200rpx;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 12rpx;
+  display: flex;
+  flex-direction: row;
+}
+.goods-box1 .img-box{
+  width: 160rpx;
+  height: 200rpx;
   overflow: hidden;
 }
-.goods-box1 .text-box .goods-intro{
-  width: 280rpx;
+.goods-box1 .img-box image{
+   width: 180rpx;
+   height: 200rpx;
+}
+
+.goods-box1 .body-box{
+  width:500rpx;
+  height:200rpx;
+  display: flex;
+  margin-left: 24rpx;
+  flex-direction: column;
+}
+.goods-box1 .body-box .comment-box{
+  width: 500rpx;
+  height:40rpx;
+  background-color: #F2f2f2;
+  font-size:24rpx; 
+  border-radius: 5rpx;
+  padding-left: 20rpx;
+}
+.goods-box1 .body-box .text-box{
+  width: 500rpx;
+  height: 150rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+.goods-box1  .body-box .text-box .icon-box {
+  margin-top: 25rpx;
+  width: 100rpx;
+  height: 100rpx;
+  padding-left:40rpx; 
+  border-left: solid 1px #f2f2f2;
+}
+.goods-box1 .body-box .text-box .icon-box .image{
+  width: 55rpx;
+  height: 55rpx;
+  justify-content: center; 
+}
+.goods-box1 .body-box .text-box .icon-box .text{
+  font-size: 24rpx;
+  color:orange;
+  justify-content: center; 
+  padding-left:2rpx; 
+}
+.goods-box1  .body-box .text-box .detail-box {
+  width: 400rpx;
+  height: 200rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.goods-box1  .body-box .text-box .detail-box .goods-intro1{
+  width: 400rpx;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   font-size: 24rpx;
-  padding: 24rpx 0 0rpx 0;
   color:#000;
-  margin-left: 24rpx;
 }
-.goods-box1 .text-box .goods-intro1{
-  width: 600rpx;
+.goods-box1 .body-box .text-box .detail-box .goods-title{
   overflow: hidden;
   font-size: 30rpx;
+  font-style: bold;
   padding: 24rpx 0;
   color:#000;
-  margin-left: 18rpx;
 }
 .goods-box .goods-title{
   width: 600rpx;
@@ -165,14 +210,7 @@ swiper-item image {
   color:#000;
   margin-left: 24rpx;
 }
-.goods-box1 .goods-title{
-  width: 600rpx;
-  overflow: hidden;
-  font-size: 30rpx;
-  padding: 24rpx 0;
-  color:#000;
-  margin-left: 18rpx;
-}
+
 .goods-box .goods-name{
   width: 280rpx;
   text-overflow: ellipsis;
@@ -447,6 +485,6 @@ swiper-item image {
   bottom: 10rpx;
 }
 .slide-image{
-  width: 750rpx;
-  height: 100%
+
+  height: 100%;
 }

@@ -25,7 +25,7 @@ Page({
     imgUrls:[
       '../../static/images/home/book1.jpg',
       '../../static/images/home/book2.jpg',
-      '../../static/images/home/book3.jpg',
+      '../../static/images/home/book4.jpg',
     ],
     swiperCurrent: 0,
     currentTab:'tab1',

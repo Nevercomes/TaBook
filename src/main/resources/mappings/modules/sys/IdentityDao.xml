@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nevercome.tabook.modules.sys.dao.IdentityDao">
+    <sql id="identityColumns">
+        a.id AS "id",
+        a.create_by AS "createBy.id",
+        a.update_by AS "updateBy.id",
+        a.create_time AS "createTime",
+        a.update_time AS "updateTime",
+        a.del_flag AS "delFlag",
+        a.remarks AS "remarks",
+        a.user_id AS "userId",
+        a.id_no AS "idNo",
+        a.school_no AS "schoolNo",
+        a.school_name AS "schoolName",
+        a.school_id AS "schoolId"
+    </sql>
+
+    <sql id="identityJoins">
+
+    </sql>
+
+    <select id="get" resultType="Identity">
+
+    </select>
+
+    <select id="findList" resultType="Identity">
+
+    </select>
+
+    <insert id="insert">
+        INSERT INTO sys_identity (
+            id,
+            create_by,
+            update_by,
+            create_time,
+            update_time,
+            del_flag,
+            remarks,
+            user_id,
+            real_name,
+            id_no,
+            school_no,
+            school_name,
+            school_id
+        ) VALUES (
+            #{id},
+            #{createBy.id},
+            #{updateBy.id},
+            #{createTime},
+            #{updateTime},
+            #{delFlag},
+            #{remarks},
+            #{userId},
+            #{realName},
+            #{idNo},
+            #{schoolNo},
+            #{schoolName},
+            #{schoolId}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE sys_identity
+        SET
+            update_by   = #{updateBy.id},
+            update_time = #{updateTime},
+            del_flag    = #{delFlag},
+            remarks     = #{remarks},
+            user_id     = #{userId},
+            real_name   = #{realName},
+            id_no       = #{idNo},
+            school_no   = #{school_no},
+            school_name = #{schoolName},
+            school_id   = #{schoolId}
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete">
+        UPDATE sys_identity
+        SET del_flag = 1
+        WHERE id = #{id}
+    </update>
+
+</mapper>

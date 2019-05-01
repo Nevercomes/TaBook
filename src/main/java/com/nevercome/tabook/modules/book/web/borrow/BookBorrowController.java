@@ -26,6 +26,7 @@ public class BookBorrowController extends BaseController {
 
     @Autowired
     private BookBorrowRecordService bookBorrowRecordService;
+    @Autowired
 
     /**
      * 申请有两类

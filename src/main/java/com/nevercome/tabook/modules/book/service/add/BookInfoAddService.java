@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @author: sun
  * @date: 2019/4/25
@@ -23,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class BookInfoAddService extends CrudService<BookInfoAddDao, BookInfoAdd> {
 
+    // service 注入
     @Autowired
     private BookInfoRootService bookInfoRootService;
     @Autowired
@@ -30,11 +33,13 @@ public class BookInfoAddService extends CrudService<BookInfoAddDao, BookInfoAdd>
     @Autowired
     private BookInstanceService bookInstanceService;
 
+
     /**
      * 书籍信息的添加
      * 1. 有rootId classId 那么所有的数据都是自动生成的 | 系统中有这本书
      * 2. 有rootId 没有classId 那么name和author是锁定的 其它信息根据用户的填写来生成一个新的bookClass节点
      * 3. 没有rootId 代表系统中根本没有任何该书的记录 则生成一个新的bookRoot节点和bookClass节点
+     * 4. 更新书籍添加的信息 包括ownerComment 新旧程度 标签
      */
     @Override
     @Transactional
@@ -64,18 +69,26 @@ public class BookInfoAddService extends CrudService<BookInfoAddDao, BookInfoAdd>
             bookInfoClass.setYear(bookInfoAdd.getYear());
             bookInfoClassService.save(bookInfoClass);
             bookInfoAdd.setBookClassId(bookInfoClass.getId());
+        } else if (StringUtils.isBlank(bookInfoAdd.getBookInstanceId())) {
+            BookInfoInstance bookInfoInstance = new BookInfoInstance();
+            bookInfoInstance.setBookClassId(bookInfoAdd.getBookClassId());
+            BookStudent bookStudent = UserUtils.getUser().getBookStudent();
+            bookInfoInstance.setCampusId(bookStudent.getCampusId());
+            bookInfoInstance.setSchoolId(bookStudent.getSchoolId());
+            bookInfoInstance.setOwnerId(bookStudent.getId());
+            bookInfoInstance.setUserAddId(bookStudent.getId());
+            bookInfoInstance.setTagNameList(bookInfoAdd.getTagNameList());
+            bookInfoInstance.setTags(bookInfoAdd.getTags());
+            bookInstanceService.save(bookInfoInstance);
+            bookInfoAdd.setBookInstanceId(bookInfoInstance.getId());
         }
-        BookInfoInstance bookInfoInstance = new BookInfoInstance();
-        bookInfoInstance.setBookClassId(bookInfoAdd.getBookClassId());
-        BookStudent bookStudent = UserUtils.getUser().getBookStudent();
-        bookInfoInstance.setCampusId(bookStudent.getCampusId());
-        bookInfoInstance.setSchoolId(bookStudent.getSchoolId());
-        bookInfoInstance.setOwnerId(bookStudent.getId());
-        bookInfoInstance.setUserAddId(bookStudent.getId());
-        bookInfoInstance.setNewPercent(bookInfoAdd.getNewPercent());
-        bookInfoInstance.setTagNameList(bookInfoAdd.getTagNameList());
-        bookInfoInstance.setTags(bookInfoAdd.getTags());
-        bookInstanceService.save(bookInfoInstance);
+        BookInfoInstance bookInfoInstance = bookInstanceService.get(bookInfoAdd.getBookInstanceId());
+        if (bookInfoInstance != null) {
+            bookInfoInstance.setTagNameList(bookInfoAdd.getTagNameList());
+            bookInfoInstance.setTags(bookInfoAdd.getTags());
+            bookInstanceService.save(bookInfoInstance);
+        }
+        super.save(bookInfoAdd);
     }
 
 }

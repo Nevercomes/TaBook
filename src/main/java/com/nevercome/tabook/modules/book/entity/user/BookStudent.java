@@ -19,6 +19,7 @@ public class BookStudent extends DataEntity<BookStudent> {
     private String creditScore;
 
     // 联结数据
+    private boolean isIdentified;
 
     // 统计数据
     private int totalUpload; // 累计上传书籍
@@ -122,5 +123,13 @@ public class BookStudent extends DataEntity<BookStudent> {
 
     public void setTotalLike(int totalLike) {
         this.totalLike = totalLike;
+    }
+
+    public boolean getIsIdentified() {
+        return isIdentified;
+    }
+
+    public void setIdentified(boolean identified) {
+        isIdentified = identified;
     }
 }

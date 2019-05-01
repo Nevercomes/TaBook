@@ -18,6 +18,11 @@
         a.owner_comment AS "ownerComment",
         a.type AS "type",
         a.price AS "price"
+        a.new_percent AS "newPercent"
+    </sql>
+
+    <sql id="bookInfoAddListColumns">
+
     </sql>
 
     <sql id="bookInfoAddJoins">
@@ -35,10 +40,18 @@
     <select id="findList" resultType="BookInfoAdd">
         SELECT
         <include refid="bookInfoAddColumns"/>
+        ,
+        <include refid="bookInfoAddListColumns"/>
         FROM book_info_add a
         <include refid="bookInfoAddJoins"/>
         <where>
             a.del_flag = 0
+            <if test="studentId != null and studentId != ''">
+                a.student_id = #{studentId}
+            </if>
+            <if test="type != null and type != ''">
+                a.type = #{type}
+            </if>
         </where>
         <choose>
             <when test="page !=null and page.orderBy != null and page.orderBy != ''">
@@ -78,7 +91,9 @@
             `year`,
             ownerComment,
             type,
-            price
+            price,
+            new_percent,
+            student_id
         ) VALUES (
             #{id},
             #{createBy},
@@ -95,26 +110,29 @@
             #{year},
             #{ownerComment},
             #{type},
-            #{price}
+            #{price},
+            #{newPercent},
+            #{studentId}
         )
     </insert>
 
     <update id="update">
         UPDATE book_info_add
         SET
-            update_by     = #{createBy},
-            update_time   = #{updateTime},
-            del_flag      = #{delFlag},
-            remarks       = #{remarks},
-            book_root_id  = #{bookRootId},
-            book_class_id = #{bookClassId},
-            `name`        = #{name},
-            author        = #{author},
-            press         = #{press},
-            `year`        = #{year},
-            ownerComment  = #{ownerComment},
-            type          = #{type},
-            price         = #{price}
+        update_by = #{createBy},
+        update_time = #{updateTime},
+        del_flag = #{delFlag},
+        remarks = #{remarks},
+        <!--book_root_id  = #{bookRootId},
+        book_class_id = #{bookClassId},
+        `name`        = #{name},
+        author        = #{author},
+        press         = #{press},
+        `year`        = #{year},-->
+        ownerComment = #{ownerComment},
+        type = #{type},
+        price = #{price},
+        new_percent = #{newPercent}
         WHERE id = #{id}
     </update>
 

@@ -48,19 +48,24 @@
   <view class='body-box'>
     <view class='text-box'>
       <view class='detail-box' bindtap="toBookInfoTap">
-        <view class="goods-title">高等数学</view>
-        <view class='stars'></view>
+        <view class="goods-title">傲慢与偏见</view>
+        <view class='stars'>
+          <image src='{{star1}}' class='img' mode='aspectFit'></image>
+          <image src='{{star2}}' class='img' mode='aspectFit'></image>
+          <image src='{{star3}}' class='img' mode='aspectFit'></image>
+          <image src='{{star4}}' class='img' mode='aspectFit'></image>
+          <image src='{{star5}}' class='img' mode='aspectFit'></image>
+          <view class='text'>{{score}}</view>
+        </view>
         <view class='goods-intro1'>Tom/2019/xxx出版社</view>
       </view>
       <view class='icon-box' bindtap='iconClick'>
         <image src='../../static/images/home/want.png' class="image" mode='aspectFill'></image>
-        <view class='text'>想读</view>
+        <view class='text'>空闲</view>
       </view>
     </view>
     <view class='comment-box' bindtap="toBookInfoTap">这里是相关评论</view>
   </view>
-  
-  
   </view>
 </view>
 

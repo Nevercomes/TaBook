@@ -49,7 +49,12 @@ Page({
     tab1Hidden:false,
     tab2Hidden:true,
     tab3Hidden:true,
-
+    star1: '../../static/images/home/star.png',
+    star2: '../../static/images/home/star.png',
+    star3: '../../static/images/home/star.png',
+    star4: '../../static/images/home/star.png',
+    star5: '../../static/images/home/star.png',
+    score:4,
   },
 
   //事件处理函数
@@ -130,35 +135,69 @@ Page({
       tab3Hidden: false,
     })
   },
+
+
   onLoad: function () {
-    if (app.globalData.userInfo) {
+    // console.log(this.data.score);
+    if(this.data.score < 1) {
       this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
+        star1: '../../static/images/home/star.png',
+        star2: '../../static/images/home/star.png',
+        star3: '../../static/images/home/star.png',
+        star4: '../../static/images/home/star.png',
+        star5: '../../static/images/home/star。png',
       })
     }
-    this.testSession();
+    else if (this.data.score < 2) {
+      this.setData({
+        star1: '../../static/images/home/star-a.png',
+        star2: '../../static/images/home/star.png',
+        star3: '../../static/images/home/star.png',
+        star4: '../../static/images/home/star.png',
+        star5: '../../static/images/home/star.png',
+      })
+    }
+    else if (this.data.score < 3) {
+      this.setData({
+        star1: '../../static/images/home/star-a.png',
+        star2: '../../static/images/home/star-a.png',
+        star3: '../../static/images/home/star.png',
+        star4: '../../static/images/home/star.png',
+        star5: '../../static/images/home/star.png',
+      })
+    }
+    else if (this.data.score < 4) {
+      this.setData({
+        star1: '../../static/images/home/star-a.png',
+        star2: '../../static/images/home/star-a.png',
+        star3: '../../static/images/home/star-a.png',
+        star4: '../../static/images/home/star.png',
+        star5: '../../static/images/home/star.png',
+      })
+    }
+    else if (this.data.score < 5) {
+      this.setData({
+        star1: '../../static/images/home/star-a.png',
+        star2: '../../static/images/home/star-a.png',
+        star3: '../../static/images/home/star-a.png',
+        star4: '../../static/images/home/star-a.png',
+        star5: '../../static/images/home/star.png',
+      })
+    }
+    else if (this.data.score == 5) {
+      this.setData({
+      star1: '../../static/images/home/star-a.png',
+      star2: '../../static/images/home/star-a.png',
+      star3: '../../static/images/home/star-a.png',
+      star4: '../../static/images/home/star-a.png',
+      star5: '../../static/images/home/star-a.png',
+      })
+      
+    }
   },
+  onReady: function () {
+  },
+  
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -184,3 +223,5 @@ Page({
     })
   }
 })
+
+

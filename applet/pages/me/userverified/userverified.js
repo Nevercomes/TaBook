@@ -4,7 +4,8 @@ const Cookie = wx.getStorageSync('Cookie');
 let header = {
   "Cookie": Cookie,
   "content-type": "application/x-www-form-urlencoded"
-}
+};
+const { $Toast } = require('../../../dist/base/index');
 Page({
   data: {
     inputNameVal: "",
@@ -58,9 +59,15 @@ Page({
       inputPhoneVal
     } = e.detail.value;
     if (e.detail.value.name.length == 0 || e.detail.value.idcard.length == 0 || e.detail.value.school.length == 0 || e.detail.value.studentNumber.length == 0 || e.detail.value.phone == 0) {
+    //   $Toast({
+    //     content: '数据不能为空',
+    //     type: 'warning'
+    //   });
+    //   return;
+    // }
       wx.showToast({
         title: "数据不能为空",
-        icon: "loadinng",
+        icon: "warning",
         duration: 3000
       })
       setTimeout(function () {

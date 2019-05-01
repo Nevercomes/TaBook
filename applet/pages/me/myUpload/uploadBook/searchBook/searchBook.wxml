@@ -1,0 +1,30 @@
+<!--pages/me/myUpload/uploadBook/searchBook/searchBook.wxml-->
+<view class="content">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="搜你想要上传的书籍" value="{{searchBookVal}}" focus="true" bindinput="inputTyping" confirm-type='search' bindconfirm="searchConfirm" />
+        <view class="weui-icon-clear" wx:if="{{searchBookVal.length > 0}}" bindtap="searchClear">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+    </view>
+    <view class="search"  bindtap="startSearch">
+      <text data-key='search'>搜索</text>
+    </view>
+  </view>
+  <view class="hot-search-box"  wx:if="{{searchBookVal.length==0}}" >
+  <view class="hot-search">热门搜索</view>
+  <block wx:for="{{hotBooks}}" wx:key="{{index}}">
+  <view class="hot-search-book">
+  <text>平凡的世界</text>
+  </view>
+  </block>
+  </view>
+  <view class="book-result-box">
+  <block wx:for = "{{bookResult}}" wx:key="{{index}}" bindtap="{{bookSelect}}">
+  <view class="book-result" data-name="{{item.name}}" >{{item.name}}</view>
+  </block>
+  </view>
+</view>

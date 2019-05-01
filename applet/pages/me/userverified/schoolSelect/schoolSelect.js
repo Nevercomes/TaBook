@@ -70,7 +70,6 @@ Page({
         if(!ifHas){
           schoolResultTemp.push(schools[i]);
         }
-
       }
     }
     this.setData({

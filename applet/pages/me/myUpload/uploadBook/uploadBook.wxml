@@ -1,22 +1,16 @@
 <!--pages/me/myUpload/uploadBook/uploadBook.wxml-->
 <view class="content">
-<view class="weui-search-bar">
+<view class="weui-search-bar"bindtap="toSearchBook">
   <view class="weui-search-bar__form">
     <view class="weui-search-bar__box">
       <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-      <input type="text" class="weui-search-bar__input" placeholder="搜你想要上传的" value="{{searchBookVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindtap="showInput" confirm-type='search' bindconfirm="searchConfirm" />
-      <view class="weui-icon-clear" wx:if="{{searchBookVal.value.length > 0}}" bindtap="searchClear">
-        <icon type="clear" size="14"></icon>
-      </view>
+      <input type="text" class="weui-search-bar__input"   disabled="disabled"/>
     </view>
-    <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+    <label class="weui-search-bar__label" >
       <icon class="weui-icon-search" type="search" size="14"></icon>
       <view class="weui-search-bar__text">搜索书籍</view>
     </label>
-  </view>
-  <view class="weui-search-bar__cancel-btn" hidden='{{!inputShowed}}' bindtap="clearInput">
-    <text data-key='back'>取消</text>
-  </view>
+  </view> 
 </view>
 <view class="tip">
  <text>提示：没有想要的？试试手动输入书籍信息吧！</text>

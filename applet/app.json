@@ -15,6 +15,7 @@
     "pages/me/myUpload/changeMsg/changeMsg",
     "pages/me/myUpload/changeBookImg/changeBookImg",
     "pages/me/myUpload/uploadBook/uploadBook",
+    "pages/me/myUpload/uploadBook/searchBook/searchBook",
     "pages/me/myFavorites/myFavorites",
     "pages/me/creditStatement/creditStatement",
     "pages/me/authenticaitonStatement/authenticaitonStatement",

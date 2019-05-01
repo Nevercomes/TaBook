@@ -4,7 +4,7 @@
     <view class="weui-search-bar__box">
       <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
       <input type="text" class="weui-search-bar__input" placeholder="请输入搜索学校" value="{{searchSchoolVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindtap="showInput" confirm-type='search' bindconfirm="searchConfirm" />
-      <view class="weui-icon-clear" wx:if="{{searchSchoolVal.value.length > 0}}" bindtap="searchClear">
+      <view class="weui-icon-clear" wx:if="{{searchSchoolVal.length > 0}}" bindtap="searchClear">
         <icon type="clear" size="14"></icon>
       </view>
     </view>
@@ -28,6 +28,5 @@
   <view wx:for="{{schoolResults}}" wx:key="unique" bindtap="schoolSelected" >
     <view wx:if="{{item.school.PinYin.length>1}}" class = "school-item" data-schoolname = "{{item.schoolName}}"  >{{item.schoolName}}</view>
     <view wx:else class='school-itme-A-Z'   data-schoolname='{{item.schoolName}}' >{{item.schoolName}}</view>
-
   </view>
 </view>

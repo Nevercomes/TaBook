@@ -28,7 +28,7 @@
         </view>
         <view class="change">
         <button bindtap="bindChangeMsg">更换留言</button>
-        <button bindtap="bindChangeBookImg">更换书籍图片</button>
+        <button bindtap="bindChangeBookImg">更换图片</button>
         </view> 
         <view class="xian"></view>
       </view>

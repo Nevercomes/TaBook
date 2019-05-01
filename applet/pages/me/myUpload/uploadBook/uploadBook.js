@@ -39,6 +39,11 @@ Page({
       searchBookVal: e.detail.value
     })
   },
+  toSearchBook:function(){
+    wx.navigateTo({
+      url: 'searchBook/searchBook',
+    })
+  },
   deleteImg: function(e) {
     var that = this;
     var index = e.currentTarget.dataset.index;

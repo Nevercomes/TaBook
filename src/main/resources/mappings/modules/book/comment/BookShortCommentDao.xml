@@ -11,22 +11,56 @@
         a.remarks AS "remarks",
         a.content AS "content",
         a.score AS "score",
-        a.like_num AS "likeNum",
         a.book_root_id AS "bookRootId",
         a.school_id AS "schoolId",
-        a.student_id AS "studentId"
+        a.student_id AS "studentId",
+        ( SELECT COUNT (1)
+        FROM book_like_record
+        WHERE del_flag = 0 AND refer_id = a.book_root_id) AS "likeNum"
+    </sql>
+
+    <sql id="bookShortCommentJoinColumns">
+        stu.name AS "bookStudent.name",
+        stu.avatar_url AS "bookStudent.avatarUrl"
     </sql>
 
     <sql id="bookShortCommentJoins">
-
+        LEFT JOIN book_user_info stu ON stu.id = a.student_id
     </sql>
 
     <select id="get" resultType="BookShortComment">
-
+        SELECT
+        <include refid="bookShortCommentColumns"/>,
+        <include refid="bookShortCommentJoinColumns"/>
+        FROM book_comment_short a
+        <include refid="bookShortCommentJoins"/>
+        WHERE a.id = #{id}
+        ADN a.del_flag = 0
     </select>
 
     <select id="findList" resultType="BookShortComment">
-
+        SELECT
+        <include refid="bookShortCommentColumns"/>,
+        <include refid="bookShortCommentJoinColumns"/>
+        FROM book_comment_short a
+        <include refid="bookShortCommentJoins"/>
+        <where>
+            a.del_flag = 0
+            <if test="bookRootId != null and bookRootId != ''">
+                AND a.book_root_id = #{bookRootId}
+            </if>
+            <if test="schoolId != null and schoolId != ''">
+                AND a.school_id = #{schooldId}
+            </if>
+        </where>
+        <choose>
+            <!--<when test="page != null and page.orderBy != null and page.orderBy != ''">-->
+            <!--ORDER BY #{page.orderBy}-->
+            <!--</when>-->
+            <!--<otherwise>-->
+            <!--ORDER BY likeNum DESC-->
+            <!--</otherwise>-->
+        </choose>
     </select>
 
     <insert id="insert">
@@ -40,7 +74,6 @@
             remarks,
             content,
             score,
-            like_num,
             school_id,
             book_root_id,
             student_id
@@ -54,7 +87,6 @@
             #{remarks},
             #{content},
             #{score},
-            #{likeNum},
             #{schoolId},
             #{bookRootId},
             #{studentId}
@@ -64,17 +96,16 @@
     <update id="update">
         UPDATE book_comment_short
         SET
-            update_by   = #{updateBy.id},
-            update_time = #{updateTime},
-            del_flag    = #{delFlag},
-            remarks     = #{remarks},
+            update_by    = #{updateBy.id},
+            update_time  = #{updateTime},
+            del_flag     = #{delFlag},
+            remarks      = #{remarks},
             content      = #{content},
             score        = #{score},
-            like_num     = #{likeNum},
             school_id    = #{schoolId},
             book_root_id = #{bookRootId},
             student_id   = #{studentId}
-            WHERE id = #{id}
+        WHERE id = #{id}
     </update>
 
     <update id="delete">

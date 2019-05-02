@@ -15,12 +15,13 @@ public class BookShortComment extends DataEntity<BookShortComment> {
     // 持久化数据
     private String content;
     private float score;
-    private int likeNum;
-    private String schoolId;
     private String bookRootId;
 
     // 联结数据
     // 若需求字段少且固定 可根据客户端显示需求单独设置 在dao层直接查询 而不在service层单独添加
+
+    private int likeNum;
+
     private BookInfo bookInfo;
     private BookStudent bookStudent;
 
@@ -46,14 +47,6 @@ public class BookShortComment extends DataEntity<BookShortComment> {
 
     public void setLikeNum(int likeNum) {
         this.likeNum = likeNum;
-    }
-
-    public String getSchoolId() {
-        return schoolId;
-    }
-
-    public void setSchoolId(String schoolId) {
-        this.schoolId = schoolId;
     }
 
     public String getBookRootId() {

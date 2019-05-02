@@ -4,6 +4,8 @@ import com.nevercome.tabook.common.persistence.DataEntity;
 import com.nevercome.tabook.modules.book.entity.info.BookInfo;
 import com.nevercome.tabook.modules.book.entity.user.BookStudent;
 
+import java.util.Date;
+
 /**
  * BookUserFavorite实体类
  * 包括收藏的图书、长书评
@@ -22,6 +24,11 @@ public class BookUserFavorite extends DataEntity<BookUserFavorite> {
     // 若需求字段少且固定 可根据客户端显示需求单独设置 在dao层直接查询 而不在service层单独添加
     private BookInfo bookInfo;
     private BookStudent bookStudent;
+
+    // search begin
+    private Date startTime;
+    private Date endTime;
+    // search end
 
     public String getType() {
         return type;
@@ -63,4 +70,19 @@ public class BookUserFavorite extends DataEntity<BookUserFavorite> {
         this.bookStudent = bookStudent;
     }
 
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
 }

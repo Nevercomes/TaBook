@@ -12,20 +12,28 @@
         a.title AS "title",
         a.content AS "content",
         a.score AS "score",
-        a.like_num AS "likeNum",
         a.book_root_id AS "bookRootId",
         a.school_id AS "schoolId",
         a.student_id AS "studentId"
+        ( SELECT COUNT (1)
+        FROM book_like_record
+        WHERE del_flag = 0 AND refer_id = a.book_root_id) AS "likeNum"
+    </sql>
+
+    <sql id="bookLongCommentJoinColumns">
+        stu.name AS "bookStudent.name",
+        stu.avatar_url AS "bookStudent.avatarUrl"
     </sql>
 
     <sql id="bookLongCommentJoins">
-
+        LEFT JOIN book_user_info stu ON stu.id = a.student_id
     </sql>
+
 
     <select id="get" resultType="BookLongComment">
         SELECT
         <include refid="bookLongCommentColumns"/>
-        FROM book_like_record a
+        FROM book_comment_long a
         <include refid="bookLongCommentJoins"/>
         WHERE a.id = #{id}
         AND a.del_flag = 0
@@ -47,7 +55,6 @@
             title,
             content,
             score,
-            like_num,
             school_id,
             book_root_id,
             student_id
@@ -62,7 +69,6 @@
             #{title},
             #{content},
             #{score},
-            #{likeNum},
             #{schoolId},
             #{bookRootId},
             #{studentId}
@@ -79,7 +85,6 @@
             title        = #{title},
             content      = #{content},
             score        = #{score},
-            like_num     = #{likeNum},
             school_id    = #{schoolId},
             book_root_id = #{bookRootId},
             student_id   = #{studentId}

@@ -10,14 +10,21 @@
         a.del_flag AS "delFlag",
         a.remarks AS "remarks",
         a.book_comment_id AS "bookCommentId",
-        a.like_num AS "likeNum",
         a.schoold_id As "schoolId",
         a.content AS "content",
-        a.student_id AS "studentId"
+        a.student_id AS "studentId",
+        ( SELECT COUNT (1)
+        FROM book_like_record
+        WHERE del_flag = 0 AND refer_id = a.book_root_id) AS "likeNum"
+    </sql>
+
+    <sql id="bookCommentReplyJoinColumns">
+        stu.name AS "bookStudent.name",
+        stu.avatar_url AS "bookStudent.avatarUrl"
     </sql>
 
     <sql id="bookCommentReplyJoins">
-
+        LEFT JOIN book_user_info stu ON stu.id = a.student_id
     </sql>
 
     <select id="get" resultType="BookCommentReply">

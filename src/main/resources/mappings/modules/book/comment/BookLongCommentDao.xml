@@ -14,7 +14,7 @@
         a.score AS "score",
         a.book_root_id AS "bookRootId",
         a.school_id AS "schoolId",
-        a.student_id AS "studentId"
+        a.student_id AS "studentId",
         ( SELECT COUNT (1)
         FROM book_like_record
         WHERE del_flag = 0 AND refer_id = a.book_root_id) AS "likeNum"
@@ -32,7 +32,8 @@
 
     <select id="get" resultType="BookLongComment">
         SELECT
-        <include refid="bookLongCommentColumns"/>
+        <include refid="bookLongCommentColumns"/>,
+        <include refid="bookLongCommentJoinColumns"/>
         FROM book_comment_long a
         <include refid="bookLongCommentJoins"/>
         WHERE a.id = #{id}
@@ -40,7 +41,23 @@
     </select>
 
     <select id="findList" resultType="BookLongComment">
+        SELECT
+        <include refid="bookLongCommentColumns"/>,
+        <include refid="bookLongCommentJoinColumns"/>
+        FROM book_comment_long a
+        <include refid="bookLongCommentJoins"/>
+        <where>
+            a.del_flag = 0
+            <if test="bookCommentId != null and bookCommentId != ''">
+                AND a.book_comment_id = #{bookCommentId}
+            </if>
+            <if test="schoolId != null and schoolId != ''">
+                AND a.school_id = #{schoolId}
+            </if>
+        </where>
+        <choose>
 
+        </choose>
     </select>
 
     <insert id="insert">

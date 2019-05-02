@@ -14,7 +14,6 @@ public class BookCommentReply extends DataEntity<BookCommentReply> {
 
     private String bookCommentId;
     private String likeNum;
-    private String schoolId;
     private String content;
 
     // 联结数据
@@ -36,14 +35,6 @@ public class BookCommentReply extends DataEntity<BookCommentReply> {
 
     public void setLikeNum(String likeNum) {
         this.likeNum = likeNum;
-    }
-
-    public String getSchoolId() {
-        return schoolId;
-    }
-
-    public void setSchoolId(String schoolId) {
-        this.schoolId = schoolId;
     }
 
     public String getContent() {

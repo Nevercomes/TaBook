@@ -72,35 +72,47 @@
 
 <!--借书广场(tab2)-->
   <view class="goods-container" hidden='{{tab2Hidden}}'>
-    <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+    <view class="goods-box2" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
       <view class="img-box">
-        <image src="../../static/images/home/book1.jpg" class="image" mode="aspectFill" lazy-load="true" />
+        <image src="../../static/images/home/book3.jpg" class="image" mode='aspectFit' />
       </view>
-      <view class="goods-intro">这是书籍信息</view>
-      <view style='display:flex;'>
-        <view class="goods-title">《高等数学》</view>
-        <view class="goods-like">
+      <view class='text-box'>
+        <view class='goods-title'>人类简史</view>
+        <view class='stars'>
+          <image src='{{star1}}' class='img' mode='aspectFit'></image>
+          <image src='{{star2}}' class='img' mode='aspectFit'></image>
+          <image src='{{star3}}' class='img' mode='aspectFit'></image>
+          <image src='{{star4}}' class='img' mode='aspectFit'></image>
+          <image src='{{star5}}' class='img' mode='aspectFit'></image>
+          <view class='text'>{{score}}</view>
+        </view>
+      </view>
+        <!-- <view class="goods-like">
           <image src='../../static/images/home/like.png' class='like-image'></image>
         </view>
-        <view class="like-num" style='color:#e64340;'> 999</view>
-      </view>
+        <view class="like-num" style='color:#e64340;'> 999</view> -->
+      <!-- </view> -->
     </view>
   </view>
 
 <!--借书广场(tab3)-->
   <view class="goods-container" hidden='{{tab3Hidden}}'>
-    <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+    <view class="goods-box3" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
       <view class="img-box">
-        <image src="../../static/images/home/book2.jpg" class="image" mode="aspectFill" lazy-load="true" />
+        <image src="../../static/images/home/book4.jpg" class="image" mode='aspectFit' />
       </view>
-      <view class="goods-name">《高等数学》</view>
-      <view style='display:flex;'>
-        <view class="goods-price">￥998</view>
-        <view class="goods-price" style='color:#aaa;text-decoration:line-through'>￥999</view>
+      <view class='text-box'>
+        <view class='goods-title'>月亮与六便士</view>
+        <view class='stars'>
+          <image src='{{star1}}' class='img' mode='aspectFit'></image>
+          <image src='{{star2}}' class='img' mode='aspectFit'></image>
+          <image src='{{star3}}' class='img' mode='aspectFit'></image>
+          <image src='{{star4}}' class='img' mode='aspectFit'></image>
+          <image src='{{star5}}' class='img' mode='aspectFit'></image>
+          <view class='text'>{{score}}</view>
+        </view>
+        <view class='price'>￥{{price}}</view>
       </view>
     </view>
   </view>
-
-
-
 </view>

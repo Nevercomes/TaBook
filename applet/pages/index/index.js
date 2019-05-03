@@ -55,6 +55,7 @@ Page({
     star4: '../../static/images/home/star.png',
     star5: '../../static/images/home/star.png',
     score:4,
+    price:999,
   },
 
   //事件处理函数

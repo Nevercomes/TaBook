@@ -88,6 +88,65 @@ swiper-item image {
   padding: 24rpx;
   background-color: #F2f2f2;
 }
+.goods-box2{
+  width: 220rpx;
+  height: 350rpx;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5rpx;
+}
+.goods-box2 .img-box{
+  margin-top:5rpx; 
+  width: 240rpx;
+  height: 240rpx;
+  justify-content: center;
+}
+.goods-box2 .img-box .image{
+  width: 240rpx;
+  height: 240rpx;
+}
+.goods-box2 .text-box{
+  width: 220rpx;
+  height: 80rpx;
+}
+.goods-box2 .text-box .goods-title{
+  width: 220rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 30rpx;
+  color:#000;
+  font-weight: bold;
+  padding-left:20rpx; 
+}
+.goods-box2 .text-box .stars{
+  width: 400rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  padding-left: 20rpx;
+}
+.goods-box2 .text-box .stars .img{
+  width: 25rpx;
+  height: 30rpx;
+  padding-right:5rpx; 
+}
+.goods-box2 .text-box .stars .text{
+  font-size: 22rpx;
+  padding-left:10rpx; 
+  color:orange;
+  justify-content: center; 
+}
+
+
+
+
 .goods-box{
   width: 339rpx;
   height: 472rpx;
@@ -95,6 +154,69 @@ swiper-item image {
   overflow: hidden;
   margin-bottom: 24rpx;
   border-radius:5px;
+}
+.goods-box3{
+  width: 220rpx;
+  height: 400rpx;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5rpx;
+}
+.goods-box3 .img-box{
+  margin-top:5rpx; 
+  width: 240rpx;
+  height: 240rpx;
+  justify-content: center;
+}
+.goods-box3 .img-box .image{
+  width: 240rpx;
+  height: 240rpx;
+}
+.goods-box3 .text-box{
+  width: 220rpx;
+  height: 80rpx;
+}
+.goods-box3 .text-box .goods-title{
+  width: 220rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 30rpx;
+  color:#000;
+  font-weight: bold;
+  padding-left:20rpx; 
+}
+.goods-box3 .text-box .price{
+  width: 220rpx;
+  overflow: hidden;
+  font-size: 24rpx;
+  padding: 0rpx 0;
+  color:#e64340;
+  margin-left: 24rpx;
+}
+.goods-box3 .text-box .stars{
+  width: 400rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  padding-left: 20rpx;
+}
+.goods-box3 .text-box .stars .img{
+  width: 25rpx;
+  height: 30rpx;
+  padding-right:5rpx; 
+}
+.goods-box3 .text-box .stars .text{
+  font-size: 22rpx;
+  padding-left:10rpx; 
+  color:orange;
+  justify-content: center; 
 }
 
 .goods-box .img-box{

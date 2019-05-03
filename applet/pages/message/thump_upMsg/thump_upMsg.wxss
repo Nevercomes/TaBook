@@ -1,1 +1,93 @@
 /* pages/message/thump_upMsg/thump_upMsg.wxss */
+page {
+  background-color: #efeff4;
+}
+.thumpUpList {
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 400rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: row;
+  width: 94%;
+  height: 100rpx;
+  background-color: #fff;
+  margin-left: 3%;
+  margin-top: 20rpx;
+}
+
+.img-box {
+  margin-right: 10rpx;
+  }
+
+.nickName {
+  width: 20rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-left: 20rpx;
+}
+
+.time {
+  float: right;
+  position: absolute;
+  right: 60rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.thump-up {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 94%;
+  height: 50rpx;
+  margin-left: 3%;
+  margin-bottom: 5rpx;
+}
+
+.thump-up text {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-left: 10rpx;
+}
+
+.myContent {
+  display: flex;
+  flex-direction: row;
+  background-color: #efeff4;
+  width: 94%;
+  height: 200rpx;
+  margin-left: 3%;
+  margin-bottom: 25rpx;
+}
+
+.content-img {
+  width: 25%;
+}
+
+.content_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  height: 225rpx;
+  padding:0 25rpx ;
+}
+
+.myComment {
+  font-size: 32rpx;
+  height: 140rpx;
+  line-height: 70rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}

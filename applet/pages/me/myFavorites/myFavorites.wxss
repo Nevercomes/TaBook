@@ -78,7 +78,6 @@
 .item2 {
   display: flex;
   justify-content: center;
-
   flex-direction: row;
   width: 94%;
   margin: 3%;

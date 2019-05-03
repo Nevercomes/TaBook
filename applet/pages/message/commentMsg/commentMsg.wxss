@@ -1,1 +1,33 @@
 /* pages/message/commentMsg/commentMsg.wxss */
+@import "../thump_upMsg/thump_upMsg.wxss";
+.longCommentReplyList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 465rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+  margin-top: 30rpx;
+}
+
+.longcomentReplyContent {
+  display: flex;
+  flex-direction: row;
+  font-size: 32rpx;
+  height: 100rpx;
+  line-height: 50rpx;
+  width: 94%;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-bottom: 20rpx;
+}
+.myLongComment {
+  display: flex;
+  flex-direction: row;
+  background-color: #efeff4;
+  width: 94%;
+  height: 200rpx;
+  margin-left: 3%;
+  margin-bottom: 25rpx;
+}
+

@@ -24,7 +24,17 @@
   </view>
   <view class="book-result-box">
   <block wx:for = "{{bookResult}}" wx:key="{{index}}" bindtap="{{bookSelect}}">
-  <view class="book-result" data-name="{{item.name}}" >{{item.name}}</view>
+  <!-- <view class="book-result" data-name="{{item.name}}" >{{item.name}}</view> -->
+  <!-- <view class="book-box">
+  <view class="img-box">
+  <image src="{{item.imgUrl}}"></image>
+  </view>
+  <view class="desc">
+  <view class="name">{{item.name}}</view>
+  <view class="score"></view>
+  <view class="book-detail">{{item.author}}/{{item.press_time}}/{{item.press}}</view>
+  </view>
+  </view> -->
   </block>
   </view>
 </view>

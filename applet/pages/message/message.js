@@ -12,6 +12,21 @@ Page({
    url: 'systemMsg/systemMsg',
  })
   },
+  bindPrivateMsg:function(){
+wx.navigateTo({
+  url: 'privateMsg/privateMsg',
+})
+  },
+  bindThumb_upMsg:function(){
+    wx.navigateTo({
+      url: "thump_upMsg/thump_upMsg",
+    })
+  },
+  bindCommentMsg:function(){
+wx.navigateTo({
+  url: "commentMsg/commentMsg",
+})
+  },
   onReady: function () {
 
   },

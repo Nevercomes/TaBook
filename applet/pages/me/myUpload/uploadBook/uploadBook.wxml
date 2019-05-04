@@ -1,55 +1,67 @@
 <!--pages/me/myUpload/uploadBook/uploadBook.wxml-->
 <view class="content">
-<view class="weui-search-bar"bindtap="toSearchBook">
-  <view class="weui-search-bar__form">
-    <view class="weui-search-bar__box">
-      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-      <input type="text" class="weui-search-bar__input"   disabled="disabled"/>
+  <view class="weui-search-bar" bindtap="toSearchBook">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" disabled="disabled" />
+      </view>
+      <label class="weui-search-bar__label">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索书籍</view>
+      </label>
     </view>
-    <label class="weui-search-bar__label" >
-      <icon class="weui-icon-search" type="search" size="14"></icon>
-      <view class="weui-search-bar__text">搜索书籍</view>
-    </label>
-  </view> 
-</view>
-<view class="tip">
- <text>提示：没有想要的？试试手动输入书籍信息吧！</text>
-</view>
-<view class="upLoad">
-<form bindsubmit="submitBookInfo" bindreset="resetBookInfo">
-    <view class="detail">
-      <block wx:for="{{imgUrlsarr}}" wx:key="{{index}}" class = "block">
-        <image src="{{item}} " data-index='{{index}}' mode="aspecFill" style="width: 20%; height:150rpx;margin-left:4%;margin-bottom:3%"></image>
-        <view class="delete" bindtap="deleteImg" data-index ="{{index}}">
-          <image src="../../../../static/images/me/delete-round.png" ></image>
+  </view>
+  <view class="tip">
+    <text>提示：没有想要的？试试手动输入书籍信息吧！</text>
+  </view>
+  <view class="upLoad">
+    <form bindsubmit="submitBookInfo" bindreset="resetBookInfo">
+      <view class="detail">
+        <block wx:for="{{imgUrlsarr}}" wx:key="{{index}}" class="block">
+          <image src="{{item}} " data-index='{{index}}' mode="aspecFill" style="width: 20%; height:150rpx;margin-left:4%;margin-bottom:3%"></image>
+          <view class="delete" bindtap="deleteImg" data-index="{{index}}">
+            <image src="../../../../static/images/me/delete-round.png"></image>
+          </view>
+        </block>
+        <button bindtap="chooseImage" style=" height:150rpx;width:20%">
+          <image src='../../../../static/images/me/uploadBookImg.png' style="width:100%;height:100%"></image>
+        </button>
+      </view>
+      <view class="detail">
+        <view class="item">
+          <label>书名</label>
+          <input type="text" value="{{inputBookNameVal}}" bindinput="inputBookName"></input>
         </view>
-      </block>
-      <button bindtap="chooseImage" style=" height:150rpx;width:20%">
-        <image src='../../../../static/images/me/uploadBookImg.png' style="width:100%;height:100%"></image>
-      </button>
-    </view>
-    <view class="detail">
-    <view class="item">
-    <label>书名</label>
-    <input type="text" value="{{inputBookNameVal}}" bindinput="inputBookName" ></input>
-    </view>
-    <view class="item">
-    <label>作者</label>
-    <input type="text" value="{{inputAuthoVal}}" bindinput="inputAuthor"></input>
-    </view>
-    <view class="item">
-    <label>出版社</label>
-    <input type="text" value="{{inputPressVal}}" bindinput="inputPress"></input>
-    </view>
-    <view class="item">
-    <label>评分</label>
-    <input type="number" value="{{inputScoreVal}}" bindinput="inputScore"></input>
-    </view>
-  
-    </view>
-    <view class="submit">
-      <button form-type="submit" bindtap="submitBtn" style="margin-bottom:20rpx">确定</button>
-       <button form-type="reset" >重置</button>
-    </view>
-  </form></view>
+        <view class="item">
+          <label>作者</label>
+          <input type="text" value="{{inputAuthoVal}}" bindinput="inputAuthor"></input>
+        </view>
+        <view class="item">
+          <label>出版社</label>
+          <input type="text" value="{{inputPressVal}}" bindinput="inputPress"></input>
+        </view>
+        <view class="item-score">
+          <label class="score-title">评分</label>
+          <view class="score-box" >  
+          <label class="score" wx:for="{{scoreimgUrls}}"  wx:key="{{index}}"  >
+          <image src="{{item.imgUrl}}" style="width:40rpx; height:40rpx;" data-index='{{index}}' bindtap="bindgiveScore"></image>
+          </label>
+          </view>
+        </view>
+        <view class="operation">
+           <label class='label'>操作</label>
+          <radio-group class="radio-group" bindchange="radioChange">
+            <label class="radio" wx:for="{{operations}}">
+              <radio value="{{item.name}}" checked="{{item.checked}}" /> {{item.value}}
+            </label>
+          </radio-group>
+        </view>
+      </view>
+      <view class="submit">
+        <button form-type="submit" bindtap="submitBtn" style="margin-bottom:20rpx">确定</button>
+        <button form-type="reset">重置</button>
+      </view>
+    </form>
+  </view>
 </view>

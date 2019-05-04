@@ -102,8 +102,8 @@ Page({
     var that = this;
     var index = e.currentTarget.dataset.index;
     console.log(index);
-    var array = this.data.books;
-    var array2 = this.data.books2;
+    var array = that.data.books;
+    var array2 = that.data.books2;
     var index2 = array2.length
     wx.showModal({
       title: '提示',

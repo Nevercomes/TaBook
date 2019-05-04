@@ -10,6 +10,7 @@ import java.util.Set;
 
 /**
  * Cache工具类
+ * 主要是对Shiro
  * @author ThinkGem
  * @version 2013-5-29
  */

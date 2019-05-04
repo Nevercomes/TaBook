@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.Date;
 
 /**
- * 以静态变量保存Spring ApplicationContext, 可在任何代码任何地方任何时候取出ApplicaitonContext.
+ * 以静态变量保存Spring ApplicationContext, 可在任何代码任何地方任何时候取出ApplicationContext.
  *
  * @author Zaric
  * @date 2013-5-29 下午1:25:40
@@ -98,6 +98,6 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
      * 检查ApplicationContext不为空.
      */
     private static void assertContextInjected() {
-        Validate.validState(applicationContext != null, "applicaitonContext属性未注入, 请在applicationContext.xml中定义SpringContextHolder.");
+        Validate.validState(applicationContext != null, "applicationContext属性未注入, 请在applicationContext.xml中定义SpringContextHolder.");
     }
 }

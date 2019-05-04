@@ -144,5 +144,5 @@ public class BookConstant {
      * 点赞类型 bookInstance
      */
     public static final String BOOK_LIKE_BOOK_INSTANCE = "4";
-    
+
 }

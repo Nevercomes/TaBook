@@ -1,12 +1,9 @@
 package com.nevercome.tabook.modules.book.service.info;
 
-import com.google.common.collect.Lists;
 import com.nevercome.tabook.common.config.Global;
 import com.nevercome.tabook.common.persistence.Page;
 import com.nevercome.tabook.common.service.CrudService;
-import com.nevercome.tabook.common.utils.StringUtils;
 import com.nevercome.tabook.modules.book.dao.info.BookInfoDao;
-import com.nevercome.tabook.modules.book.entity.favorite.BookUserFavorite;
 import com.nevercome.tabook.modules.book.entity.info.BookInfo;
 import com.nevercome.tabook.modules.book.entity.info.BookInfoClass;
 import com.nevercome.tabook.modules.book.entity.info.BookInfoInstance;
@@ -14,8 +11,6 @@ import com.nevercome.tabook.modules.book.entity.info.BookInfoRoot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -35,7 +30,7 @@ public class BookInfoService extends CrudService<BookInfoDao, BookInfo> {
         BookInfo bookInfo = new BookInfo();
         BookInfoInstance bookInfoInstance = new BookInfoInstance();
         bookInfoInstance.setId(bookInstanceId);
-        bookInfo.setBookInstance(bookInfoInstance);
+        bookInfo.setBookInfoInstance(bookInfoInstance);
         return bookInfoDao.getByBookInstanceId(bookInfo);
     }
 
@@ -43,7 +38,7 @@ public class BookInfoService extends CrudService<BookInfoDao, BookInfo> {
         BookInfo bookInfo = new BookInfo();
         BookInfoClass bookInfoClass = new BookInfoClass();
         bookInfoClass.setImgUrl(bookClassId);
-        bookInfo.setBookClass(bookInfoClass);
+        bookInfo.setBookInfoClass(bookInfoClass);
         return bookInfoDao.getByBookClassId(bookInfo);
     }
 
@@ -51,7 +46,7 @@ public class BookInfoService extends CrudService<BookInfoDao, BookInfo> {
         BookInfo bookInfo = new BookInfo();
         BookInfoRoot bookInfoRoot = new BookInfoRoot();
         bookInfoRoot.setId(bookRootId);
-        bookInfo.setBookRoot(bookInfoRoot);
+        bookInfo.setBookInfoRoot(bookInfoRoot);
         return bookInfoDao.getByBookRootId(bookInfo);
     }
 

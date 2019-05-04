@@ -3,7 +3,7 @@ package com.nevercome.tabook.modules.book.entity.info;
 import com.nevercome.tabook.common.persistence.DataEntity;
 import com.nevercome.tabook.modules.book.entity.info.statistics.BookInfoClassStatistics;
 import com.nevercome.tabook.modules.book.entity.info.statistics.BookInfoRootStatistics;
-import lombok.Data;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 /***
  * BookInfo实体类的聚合
@@ -12,9 +12,9 @@ import lombok.Data;
  */
 public class BookInfo extends DataEntity<BookInfo> {
 
-    private BookInfoRoot bookRoot;
-    private BookInfoClass bookClass;
-    private BookInfoInstance bookInstance;
+    private BookInfoRoot bookInfoRoot;
+    private BookInfoClass bookInfoClass;
+    private BookInfoInstance bookInfoInstance;
 
     private BookInfoClassStatistics bookClassSta;
     private BookInfoRootStatistics bookRootSta;
@@ -25,28 +25,28 @@ public class BookInfo extends DataEntity<BookInfo> {
     private String favoriteStudentId;
 //    search end
 
-    public BookInfoRoot getBookRoot() {
-        return bookRoot;
+    public BookInfoRoot getBookInfoRoot() {
+        return bookInfoRoot;
     }
 
-    public void setBookRoot(BookInfoRoot bookRoot) {
-        this.bookRoot = bookRoot;
+    public void setBookInfoRoot(BookInfoRoot bookInfoRoot) {
+        this.bookInfoRoot = bookInfoRoot;
     }
 
-    public BookInfoClass getBookClass() {
-        return bookClass;
+    public BookInfoClass getBookInfoClass() {
+        return bookInfoClass;
     }
 
-    public void setBookClass(BookInfoClass bookClass) {
-        this.bookClass = bookClass;
+    public void setBookInfoClass(BookInfoClass bookInfoClass) {
+        this.bookInfoClass = bookInfoClass;
     }
 
-    public BookInfoInstance getBookInstance() {
-        return bookInstance;
+    public BookInfoInstance getBookInfoInstance() {
+        return bookInfoInstance;
     }
 
-    public void setBookInstance(BookInfoInstance bookInstance) {
-        this.bookInstance = bookInstance;
+    public void setBookInfoInstance(BookInfoInstance bookInfoInstance) {
+        this.bookInfoInstance = bookInfoInstance;
     }
 
     public BookInfoClassStatistics getBookClassSta() {
@@ -87,5 +87,10 @@ public class BookInfo extends DataEntity<BookInfo> {
 
     public void setFavoriteStudentId(String favoriteStudentId) {
         this.favoriteStudentId = favoriteStudentId;
+    }
+
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this);
     }
 }

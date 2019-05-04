@@ -2,19 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nevercome.tabook.modules.book.dao.info.BookInfoDao">
 
+    <cache type="com.nevercome.tabook.common.persistence.cache.MybatisRedisCache" />
+
+    <!-- 以bookInstance为id的查询字段 -->
     <sql id="bookInfoColumns">
-        a.id AS "bookInstance.id",
-        a.remarks AS "bookInstance.remarks",
-        a.book_class_id AS "bookInstance.bookClassId",
-        a.user_add_id AS "bookInstance.userAddId",
-        a.owner_id AS "bookInstance.ownerId",
-        a.holder_id AS "bookInstance.holderId",
-        a.school_id AS "bookInstance.schoolId",
-        a.campus_id AS "bookInstance.campusId",
-        a.status AS "bookInstance.status",
-        a.like_num AS "bookInstance.likeNum",
-        a.total_borrowed AS "bookInstance.totalBorrowed",
-        a.new_percent AS "bookInstance.newPercent",
+        a.id AS "id",
+        a.id AS "bookInfoInstance.id",
+        a.remarks AS "bookInfoInstance.remarks",
+        a.book_class_id AS "bookInfoInstance.bookClassId",
+        a.user_add_id AS "bookInfoInstance.userAddId",
+        a.owner_id AS "bookInfoInstance.ownerId",
+        a.holder_id AS "bookInfoInstance.holderId",
+        a.school_id AS "bookInfoInstance.schoolId",
+        a.campus_id AS "bookInfoInstance.campusId",
+        a.status AS "bookInfoInstance.status",
+        a.like_num AS "bookInfoInstance.likeNum",
+        a.total_borrowed AS "bookInfoInstance.totalBorrowed",
+        a.new_percent AS "bookInfoInstance.newPercent",
         b.id AS "bookInfoClass.id",
         b.remarks AS "bookInfoClass.remarks",
         b.book_root_id AS "bookInfoClass.bookRootId",
@@ -29,7 +33,6 @@
         c.remarks AS "bookInfoRoot.remarks",
         c.name AS "bookInfoRoot.name",
         c.author AS "bookInfoRoot.author",
-        c.sort_seq AS "bookInfoRoot.sortSeq",
         c.represent_id AS "bookInfoRoot.representId"
     </sql>
 
@@ -38,7 +41,9 @@
         LEFT JOIN book_info_root c ON b.book_root_id = c.id
     </sql>
 
+    <!-- 以bookInfoClass为id的查询字段 -->
     <sql id="bookInfoClassColumns">
+        b.id AS "id",
         b.id AS "bookInfoClass.id",
         b.remarks AS "bookInfoClass.remarks",
         b.book_root_id AS "bookInfoClass.bookRootId",
@@ -53,7 +58,6 @@
         c.remarks AS "bookInfoRoot.remarks",
         c.name AS "bookInfoRoot.name",
         c.author AS "bookInfoRoot.author",
-        c.sort_seq AS "bookInfoRoot.sortSeq",
         c.represent_id AS "bookInfoRoot.representId"
     </sql>
 
@@ -61,7 +65,9 @@
         LEFT JOIN book_info_root c ON b.book_root_id = c.id
     </sql>
 
+    <!-- 以bookRootClass为id的查询字段 -->
     <sql id="bookInfoRootColumns">
+        c.id AS "id",
         b.id AS "bookInfoClass.id",
         b.remarks AS "bookInfoClass.remarks",
         b.book_root_id AS "bookInfoClass.bookRootId",
@@ -76,7 +82,6 @@
         c.remarks AS "bookInfoRoot.remarks",
         c.name AS "bookInfoRoot.name",
         c.author AS "bookInfoRoot.author",
-        c.sort_seq AS "bookInfoRoot.sortSeq",
         c.represent_id AS "bookInfoRoot.representId"
     </sql>
 
@@ -84,10 +89,12 @@
         LEFT JOIN book_info_class b ON c.represent_id = b.id
     </sql>
 
+    <!-- 以bookInfoClass的数据统计字段 -->
     <sql id="bookClassStaColumns">
 
     </sql>
 
+    <!-- 以bookRootClass的数据统计字段 -->
     <sql id="bookRootStaColumns">
 
     </sql>
@@ -96,15 +103,15 @@
 
     </select>
 
-    <select id="getByBookInstanceId" resultType="BookInfo">
+    <select id="getByBookInstanceId" resultType="BookInfo" useCache="true">
         SELECT
         <include refid="bookInfoColumns"/>
         FROM book_instance a
         <include refid="bookInfoJoins"/>
-        WHERE a.id = #{bookInstance.id}
+        WHERE a.id = #{bookInfoInstance.id}
     </select>
 
-    <select id="getByBookClassId" resultType="BookInfo">
+    <select id="getByBookClassId" resultType="BookInfo" useCache="true">
         SELECT
         <include refid="bookInfoClassColumns"/>
         FROM book_info_class b
@@ -112,7 +119,7 @@
         WHERE b.id = #{bookInfoClass.id}
     </select>
 
-    <select id="getByBookRootId" resultType="BookInfo">
+    <select id="getByBookRootId" resultType="BookInfo" useCache="true">
         SELECT
         <include refid="bookInfoRootColumns"/>
         FROM book_info_root c
@@ -120,7 +127,7 @@
         WHERE c.id = #{bookInfoRoot.id}
     </select>
 
-    <select id="findList" resultType="BookInfo">
+    <select id="findList" resultType="BookInfo" useCache="true">
         SELECT
         <include refid="bookInfoColumns"/>
         FROM book_instance a
@@ -138,7 +145,7 @@
         </choose>
     </select>
 
-    <select id="findListRefBookClass" resultType="BookInfo">
+    <select id="findListRefBookClass" resultType="BookInfo" useCache="true">
         SELECT
         <include refid="bookInfoClassColumns"/>
         FROM book_info_list b
@@ -156,7 +163,7 @@
         </choose>
     </select>
 
-    <select id="findListRefBookRoot" resultType="BookInfo">
+    <select id="findListRefBookRoot" resultType="BookInfo" useCache="true">
         SELECT
         <include refid="bookInfoRootColumns"/>
         FROM book_info_list b

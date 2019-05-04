@@ -118,11 +118,6 @@ public class BookInfoAdd extends DataEntity<BookInfoAdd> {
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return ReflectionToStringBuilder.toString(this);
-    }
-
     public List<String> getSortNameList() {
         return sortNameList;
     }
@@ -169,5 +164,10 @@ public class BookInfoAdd extends DataEntity<BookInfoAdd> {
 
     public void setBookInfo(BookInfo bookInfo) {
         this.bookInfo = bookInfo;
+    }
+
+    @Override
+    public String toString() {
+        return ReflectionToStringBuilder.toString(this);
     }
 }

@@ -48,3 +48,9 @@
 1. 完善了bookInfoAdd的逻辑 所有需要用到BookInfo的暂时放一放 （所有的都从数据库去查询肯定是不可能的...这样子速度太慢了，需要很多级的缓存）
 2. 完善了borrowRecord的逻辑
 3. 完善了buyRecord的逻辑
+
+#### 5.4
+**重要更新：**
+1. 添加了对bookInfo的Redis二级缓存
+
+2. 后续将添加对反射方法，在entity级别判断是否需要setBookInfo

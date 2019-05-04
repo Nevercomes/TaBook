@@ -5,16 +5,36 @@ let header = {
   "Cookie": Cookie,
   "content-type": "application/x-www-form-urlencoded"
 }
+var scoreimgUrls = [{
+  'imgUrl': '../../../../static/images/me/star.png'
+}, {
+  'imgUrl': '../../../../static/images/me/star.png'
+}, {
+  'imgUrl': '../../../../static/images/me/star.png'
+}, {
+  'imgUrl': '../../../../static/images/me/star.png'
+}, {
+  'imgUrl': '../../../../static/images/me/star.png'
+}]
 Page({
   data: {
     searchBookVal: "",
     inputShowed: false,
-    inputNameVal:"",
-    inputAuthorVal:"",
-    inputPressVal:"",
-    inputScoreVal:"",
+    inputNameVal: "",
+    inputAuthorVal: "",
+    inputPressVal: "",
+    inputScoreVal: "",
 
-    imgUrlsarr: []
+    imgUrlsarr: [],
+    operations: [{
+      name: 'sellBook',
+      value: "卖书"
+    }, {
+      name: 'borrowBook',
+      value: '借书',
+      checked: 'true'
+    }],
+    scoreimgUrls: scoreimgUrls
   },
   onLoad: function(options) {
 
@@ -28,10 +48,10 @@ Page({
     this.setData({
       searchBookVal: "",
       inputShowed: false,
-      inputBookName:"",
-      inputAuthorVal:"",
-      inputPressVal:"",
-      inputScoreVal:"",
+      inputBookName: "",
+      inputAuthorVal: "",
+      inputPressVal: "",
+      inputScoreVal: "",
     })
   },
   inputTyping: function(e) {
@@ -39,7 +59,7 @@ Page({
       searchBookVal: e.detail.value
     })
   },
-  toSearchBook:function(){
+  toSearchBook: function() {
     wx.navigateTo({
       url: 'searchBook/searchBook',
     })
@@ -69,31 +89,52 @@ Page({
       },
     })
   },
-  inputBookName:function(e){
+  inputBookName: function(e) {
     this.setData({
-      inputBookName:e.detail.value
+      inputBookName: e.detail.value
     })
   },
-  inputAuthor:function(e){
+  inputAuthor: function(e) {
     this.setData({
-      inputAuthorVal:e.detail.value
+      inputAuthorVal: e.detail.value
     })
   },
-  inputPress:function(e){
+  inputPress: function(e) {
     this.setData({
-      inputPressVal:e.detail.value
+      inputPressVal: e.detail.value
     })
   },
-  inputScore:function(e){
-    this.setData({
-      inputScoreVal:e.detail.value
+  bindgiveScore: function(e) {
+    var that = this;
+    var stars = new Array();
+    var star = "";
+    var index = e.currentTarget.dataset.index;
+    var starlength = that.data.scoreimgUrls.length;
+    console.log(index);
+    console.log(that.data.scoreimgUrls)
+    var star1 = '../../../../static/images/me/star.png';
+    var star2 = '../../../../static/images/me/star-a.png';
+    for (var i = 0; i < starlength; i++) {
+      var star = new Object;
+      if (index >= i) {
+        star.imgUrl = star2;
+        stars.push(star);
+      } else {
+        star.imgUrl = star1;
+        stars.push(star);
+      }
+      console.log(star)
+    }
+    that.setData({
+      scoreimgUrls: stars
     })
   },
-  submitBookInfo: function() {
-
+  submitBookInfo: function(e) {
+    var that = this;
+    console.log(e.detail.value);
   },
-  sumbitBtn: function() {
-
+  sumbitBtn: function(e) {
+    
   },
   onReady: function() {
 

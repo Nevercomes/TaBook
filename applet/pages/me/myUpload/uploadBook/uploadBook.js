@@ -51,7 +51,8 @@ Page({
       inputBookName: "",
       inputAuthorVal: "",
       inputPressVal: "",
-      inputScoreVal: "",
+      inputMsgVal:"",
+      score:""
     })
   },
   inputTyping: function(e) {
@@ -104,6 +105,11 @@ Page({
       inputPressVal: e.detail.value
     })
   },
+  inputMsg:function(e){
+    this.setData({
+      inputMsgVal:e.detail.value
+    })
+  },
   bindgiveScore: function(e) {
     var that = this;
     var stars = new Array();
@@ -126,7 +132,8 @@ Page({
       console.log(star)
     }
     that.setData({
-      scoreimgUrls: stars
+      scoreimgUrls: stars,
+      score:2*(index+1)
     })
   },
   submitBookInfo: function(e) {

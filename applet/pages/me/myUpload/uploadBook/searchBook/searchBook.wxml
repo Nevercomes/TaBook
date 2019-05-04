@@ -24,7 +24,7 @@
   </view>
   <view wx:else class="book-result-box">
     <block wx:for="{{bookResult}}" wx:key="{{index}}" bindtap="{{bookSelect}}">
-    <view class="searchList">
+    <view class="searchList" bindtap="toBookInfo">
       <view class="img-box">
         <image src="../../../../../static/images/home/book1.jpg" style="width:200rpx;height:200rpx;" mode="cover"></image>
       </view>
@@ -32,7 +32,7 @@
         <view class="name">{{item.name}}平凡的世界</view>
         <view class="author">{{item.author}}路遥</view>
         <view class="press">{{item.press}}青年出版社</view>
-        <view class="score">{{item.score}}9.2</view>
+        <view class="score">评分：{{item.score}}9.2</view>
       </view>
       </view>
     </block>

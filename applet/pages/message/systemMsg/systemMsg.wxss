@@ -1,1 +1,36 @@
 /* pages/message/systemMsg/systemMsg.wxss */
+page{
+  background-color: #edeff4;
+}
+.systemMsg-box{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 25rpx;
+}
+.time{
+  display: flex;
+  justify-content: center;
+  margin-bottom:10rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+.item{
+  display: flex;
+  flex-direction: row;
+}
+.img-box{
+  margin-left:3%;
+}
+.img-box image{
+  border-radius: 50%;
+}
+.detail{
+  width:65%;
+  border: 1rpx solid #ddd;
+  border-radius: 20rpx;
+  background-color: #fff;
+  font-size: 34rpx;
+  margin-left: 3%;
+  padding: 20rpx;
+}

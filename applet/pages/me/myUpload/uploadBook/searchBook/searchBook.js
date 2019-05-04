@@ -66,6 +66,14 @@ Page({
       bookResult: ['a', 'd','d','d','d','d']
     })
   },
+  toBookInfo:function(){
+wx.navigateTo({
+  url: '../../../../bookInfo/bookInfo',
+  success: function(res) {},
+  fail: function(res) {},
+  complete: function(res) {},
+})
+  },
   onLoad: function(options) {
 
   },

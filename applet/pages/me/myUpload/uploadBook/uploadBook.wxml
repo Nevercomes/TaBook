@@ -41,6 +41,10 @@
           <label>出版社</label>
           <input type="text" value="{{inputPressVal}}" bindinput="inputPress"></input>
         </view>
+        <view class="item">
+        <label>留言</label>
+        <input type="text" value="{{inputMgsVal}}" bindtap="inputMsg"></input>
+        </view>
         <view class="item-score">
           <label class="score-title">评分</label>
           <view class="score-box" >  

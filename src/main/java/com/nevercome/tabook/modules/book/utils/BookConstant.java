@@ -2,6 +2,7 @@ package com.nevercome.tabook.modules.book.utils;
 
 /**
  * Book模块主要常量
+ *
  * @author sun
  */
 public class BookConstant {
@@ -124,4 +125,24 @@ public class BookConstant {
      */
     public static final String BOOK_FAVORITE_COMMENT = "2";
 
+    /**
+     * 点赞类型 短评
+     */
+    public static final String BOOK_LIKE_SHORT_COMMENT = "1";
+
+    /**
+     * 点赞类型 长评
+     */
+    public static final String BOOK_LIKE_LONG_COMMENT = "2";
+
+    /**
+     * 点赞类型 回复
+     */
+    public static final String BOOK_LIKE_COMMENT_REPLY = "3";
+
+    /**
+     * 点赞类型 bookInstance
+     */
+    public static final String BOOK_LIKE_BOOK_INSTANCE = "4";
+    
 }

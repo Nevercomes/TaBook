@@ -89,15 +89,15 @@
             author,
             press,
             `year`,
-            ownerComment,
+            owner_comment,
             type,
             price,
             new_percent,
             student_id
         ) VALUES (
             #{id},
-            #{createBy},
-            #{createBy},
+            #{createBy.id},
+            #{createBy.id},
             #{createTime},
             #{updateTime},
             #{delFlag},
@@ -119,7 +119,7 @@
     <update id="update">
         UPDATE book_info_add
         SET
-        update_by = #{createBy},
+        update_by = #{createBy.id},
         update_time = #{updateTime},
         del_flag = #{delFlag},
         remarks = #{remarks},
@@ -129,7 +129,7 @@
         author        = #{author},
         press         = #{press},
         `year`        = #{year},-->
-        ownerComment = #{ownerComment},
+        owner_comment = #{ownerComment},
         type = #{type},
         price = #{price},
         new_percent = #{newPercent}

@@ -16,7 +16,6 @@
         a.school_id AS "schoolId",
         a.campus_id AS "campusId",
         a.status AS "status",
-        a.like_num AS "likeNum",
         a.total_borrowed AS "totalBorrowed"
     </sql>
 
@@ -25,7 +24,12 @@
     </sql>
 
     <select id="get" resultType="BookInfoInstance">
-
+        SELECT
+        <include refid="bookInstanceColumns"/>
+        FROM book_info_instance a
+        <include refid="bookInstanceJoins"/>
+        WHERE a.del_flag = 0
+        AND a.id = #{id}
     </select>
 
     <select id="findList" resultType="BookInfoInstance">
@@ -37,7 +41,7 @@
     </select>
 
     <insert id="insert">
-        INSERT INTO book_instance (
+        INSERT INTO book_info_instance (
             id,
             create_by,
             update_by,
@@ -46,59 +50,53 @@
             del_flag,
             remarks,
             book_class_id,
-            book_add_id,
+            user_add_id,
             owner_id,
             holder_id,
             school_id,
             campus_id,
             `status`,
-            like_num,
-            total_borrowed,
-            new_percent
+            total_borrowed
         ) VALUES (
             #{id},
-            #{createBy},
-            #{updateBy},
+            #{createBy.id},
+            #{updateBy.id},
             #{createTime},
             #{updateTime},
             #{delFlag},
             #{remarks},
             #{bookClassId},
-            #{bookAddId},
+            #{userAddId},
             #{ownerId},
             #{holderId},
             #{schoolId},
             #{campusId},
             #{status},
-            #{likeNum},
-            #{totalBorrowed},
-            #{newPercent}
+            #{totalBorrowed}
         )
     </insert>
 
     <update id="update">
-        UPDATE book_instance
+        UPDATE book_info_instance
         SET
-            update_by      = #{updateBy},
+            update_by      = #{updateBy.id},
             update_time    = #{updateTime},
             del_flag       = #{delFlag},
             remarks        = #{remarks},
             book_class_id  = #{bookClassId},
-            book_add_id    = #{bookAddId},
+            user_add_id    = #{userAddId},
             owner_id       = #{ownerId},
             holder_id      = #{holderId},
             school_id      = #{schoolId},
             campus_id      = #{campusId},
             `status`       = #{status},
-            like_num       = #{likeNum},
-            total_borrowed = #{totalBorrowed},
-            new_percent    = #{newPercent}
+            total_borrowed = #{totalBorrowed}
         WHERE id = #{id}
     </update>
 
     <update id="delete">
-        UPDATE book_instance
-            SET del_flag = 1
+        UPDATE book_info_instance
+        SET del_flag = 1
         WHERE id = #{id}
     </update>
 

@@ -11,6 +11,7 @@ import com.nevercome.tabook.modules.book.entity.user.BookStudent;
 import com.nevercome.tabook.modules.book.service.info.BookInfoClassService;
 import com.nevercome.tabook.modules.book.service.info.BookInfoRootService;
 import com.nevercome.tabook.modules.book.service.info.BookInstanceService;
+import com.nevercome.tabook.modules.sys.entity.User;
 import com.nevercome.tabook.modules.sys.utils.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,12 +72,13 @@ public class BookInfoAddService extends CrudService<BookInfoAddDao, BookInfoAdd>
             bookInfoAdd.setBookClassId(bookInfoClass.getId());
         } else if (StringUtils.isBlank(bookInfoAdd.getBookInstanceId())) {
             BookInfoInstance bookInfoInstance = new BookInfoInstance();
-            bookInfoInstance.setBookClassId(bookInfoAdd.getBookClassId());
-            BookStudent bookStudent = UserUtils.getUser().getBookStudent();
-            bookInfoInstance.setCampusId(bookStudent.getCampusId());
-            bookInfoInstance.setSchoolId(bookStudent.getSchoolId());
-            bookInfoInstance.setOwnerId(bookStudent.getId());
-            bookInfoInstance.setUserAddId(bookStudent.getId());
+            User user = UserUtils.getUser();
+            bookInfoInstance.setCampusId(user.getCampusId());
+            bookInfoInstance.setSchoolId(user.getSchoolId());
+            bookInfoInstance.setOwnerId(user.getSchoolId());
+            bookInfoAdd.preInsert();
+            super.dao.insert(bookInfoAdd);
+            bookInfoInstance.setUserAddId(bookInfoAdd.getId());
             bookInfoInstance.setTagNameList(bookInfoAdd.getTagNameList());
             bookInfoInstance.setTags(bookInfoAdd.getTags());
             bookInstanceService.save(bookInfoInstance);

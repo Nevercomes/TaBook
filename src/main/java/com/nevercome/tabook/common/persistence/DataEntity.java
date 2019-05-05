@@ -50,9 +50,9 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
         if (StringUtils.isNotBlank(user.getId())){
             this.updateBy = user;
             this.createBy = user;
-            this.studentId = user.getBookStudent().getStudentId();
-            this.schoolId = user.getBookStudent().getSchoolId();
-            this.campusId = user.getBookStudent().getCampusId();
+            this.studentId = user.getStudentId();
+            this.schoolId = user.getSchoolId();
+            this.campusId = user.getCampusId();
         }
         this.updateTime = new Date();
         this.createTime = this.updateTime;

@@ -8,6 +8,21 @@ package com.nevercome.tabook.modules.book.utils;
 public class BookConstant {
 
     /**
+     * 书籍上架类型 借书
+     */
+    public static final String BOOK_SHELF_TYPE_BORROW = "1";
+
+    /**
+     * 书籍上架类型 卖书
+     */
+    public static final String BOOK_SHELF_TYPE_SELL = "2";
+
+    /**
+     * 书籍上架类型 下架
+     */
+    public static final String BOOK_SHELF_TYPE_OUT = "0";
+
+    /**
      * 书籍Root状态 无书 即copyNum为0
      */
     public static final String BOOK_ROOT_STATUS_NOBOOK = "0";

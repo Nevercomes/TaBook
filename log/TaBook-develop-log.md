@@ -57,3 +57,4 @@
 
 #### 5.5
 1. 在CrudService层对BookInfo进行注入
+2. 对bookInfoAddService进行单例测试

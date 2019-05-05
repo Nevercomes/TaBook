@@ -46,7 +46,7 @@ public class BookInfoAddService extends CrudService<BookInfoAddDao, BookInfoAdd>
     @Transactional
     public void save(BookInfoAdd bookInfoAdd) {
         String bookRootId = bookInfoAdd.getBookRootId();
-        String bookClassId = bookInfoAdd.getBookRootId();
+        String bookClassId = bookInfoAdd.getBookClassId();
 
         if (StringUtils.isBlank(bookRootId)) {
             BookInfoRoot bookInfoRoot = new BookInfoRoot();
@@ -70,7 +70,8 @@ public class BookInfoAddService extends CrudService<BookInfoAddDao, BookInfoAdd>
             bookInfoClass.setYear(bookInfoAdd.getYear());
             bookInfoClassService.save(bookInfoClass);
             bookInfoAdd.setBookClassId(bookInfoClass.getId());
-        } else if (StringUtils.isBlank(bookInfoAdd.getBookInstanceId())) {
+        }
+        if (StringUtils.isBlank(bookInfoAdd.getBookInstanceId())) {
             BookInfoInstance bookInfoInstance = new BookInfoInstance();
             User user = UserUtils.getUser();
             bookInfoInstance.setCampusId(user.getCampusId());

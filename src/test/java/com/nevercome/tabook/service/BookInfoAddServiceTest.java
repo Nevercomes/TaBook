@@ -56,7 +56,11 @@ public class BookInfoAddServiceTest extends BaseTest {
      */
     @Test
     public void saveTest1(){
-
+        bookInfoAdd.setBookRootId("01a2d02d741642ad912296bff9317860");
+        bookInfoAdd.setPress("译林出版社");
+        bookInfoAdd.setYear("2010-09");
+        bookInfoAddService.save(bookInfoAdd);
+        System.out.println(bookInfoAdd);
     }
 
     /**

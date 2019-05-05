@@ -25,6 +25,22 @@ public class BookInfo extends DataEntity<BookInfo> {
     private String favoriteStudentId;
 //    search end
 
+
+    public BookInfo() {
+    }
+
+    public BookInfo(BookInfoRoot bookInfoRoot) {
+        this.bookInfoRoot = bookInfoRoot;
+    }
+
+    public BookInfo(BookInfoClass bookInfoClass) {
+        this.bookInfoClass = bookInfoClass;
+    }
+
+    public BookInfo(BookInfoInstance bookInfoInstance) {
+        this.bookInfoInstance = bookInfoInstance;
+    }
+
     public BookInfoRoot getBookInfoRoot() {
         return bookInfoRoot;
     }

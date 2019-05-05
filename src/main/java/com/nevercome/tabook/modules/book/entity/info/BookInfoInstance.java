@@ -32,6 +32,13 @@ public class BookInfoInstance extends DataEntity<BookInfoInstance> {
     // 搜索参数
 
 
+    public BookInfoInstance() {
+    }
+
+    public BookInfoInstance(String id) {
+        super(id);
+    }
+
     public String getBookClassId() {
         return bookClassId;
     }

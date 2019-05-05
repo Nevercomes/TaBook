@@ -54,3 +54,6 @@
 1. 添加了对bookInfo的Redis二级缓存
 
 2. 后续将添加对反射方法，在entity级别判断是否需要setBookInfo
+
+#### 5.5
+1. 在CrudService层对BookInfo进行注入

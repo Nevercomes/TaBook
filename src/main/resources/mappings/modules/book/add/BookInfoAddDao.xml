@@ -17,7 +17,7 @@
         a.year AS "year",
         a.owner_comment AS "ownerComment",
         a.type AS "type",
-        a.price AS "price"
+        a.price AS "price",
         a.new_percent AS "newPercent"
     </sql>
 

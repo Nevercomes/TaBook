@@ -4,7 +4,7 @@
   <view class="messages-box">
     <view class="everyMsg"  bindtap="bindSystemMsg">
       <view class="img-box">
-        <image src="../../static/images/message/systemMsg.png"></image>
+        <image src="../../static/images/message/systemMsg2.png"></image>
       </view>
       <view class="text-box">
         <text>系统通知</text>

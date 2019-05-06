@@ -40,8 +40,8 @@
     <select id="findList" resultType="BookInfoAdd">
         SELECT
         <include refid="bookInfoAddColumns"/>
-        ,
-        <include refid="bookInfoAddListColumns"/>
+        <!--,-->
+        <!--<include refid="bookInfoAddListColumns"/>-->
         FROM book_info_add a
         <include refid="bookInfoAddJoins"/>
         <where>

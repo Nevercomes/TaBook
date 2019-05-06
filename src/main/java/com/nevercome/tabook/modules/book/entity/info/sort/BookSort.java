@@ -7,5 +7,5 @@ import com.nevercome.tabook.common.persistence.DataEntity;
  * @date: 2019/4/26
  */
 public class BookSort extends DataEntity<BookSort> {
-
+    private static final long serialVersionUID = 1L;
 }

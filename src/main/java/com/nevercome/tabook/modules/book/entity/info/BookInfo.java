@@ -12,6 +12,8 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
  */
 public class BookInfo extends DataEntity<BookInfo> {
 
+    private static final long serialVersionUID = 1L;
+
     private BookInfoRoot bookInfoRoot;
     private BookInfoClass bookInfoClass;
     private BookInfoInstance bookInfoInstance;

@@ -11,6 +11,8 @@ import java.util.Date;
 @Data
 public class BookInfoClassStatistics {
 
+    private static final long serialVersionUID = 1L;
+
     private String copyNum; // 副本数目
     private int totalBorrowed; // 累计借阅
     private int totalBought; // 累计买卖

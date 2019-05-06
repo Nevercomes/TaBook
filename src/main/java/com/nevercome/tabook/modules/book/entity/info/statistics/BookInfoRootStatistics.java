@@ -8,6 +8,8 @@ import java.util.Date;
  */
 public class BookInfoRootStatistics {
 
+    private static final long serialVersionUID = 1L;
+
     private int copyNum; // 副本数目
     private int totalBorrowed; // 累计借阅
     private int totalBought; // 累计买卖

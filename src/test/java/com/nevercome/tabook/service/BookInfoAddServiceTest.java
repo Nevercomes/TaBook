@@ -68,12 +68,17 @@ public class BookInfoAddServiceTest extends BaseTest {
      */
     @Test
     public void saveTest2() {
-
+        bookInfoAdd.setName("我的天才女友");
+        bookInfoAdd.setAuthor("[意]埃莱娜·费兰特 ");
+        bookInfoAdd.setPress("双生法术出版社");
+        bookInfoAdd.setYear("2012-09");
+        bookInfoAddService.save(bookInfoAdd);
+        System.out.println(bookInfoAdd);
     }
 
     @Test
     public void listTest() {
-
+        System.out.println(bookInfoAddService.findList(bookInfoAdd).size());
     }
 
 }

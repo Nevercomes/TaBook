@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.nevercome.tabook.modules.book.dao.info.BookInfoDao">
 
-    <cache type="com.nevercome.tabook.common.persistence.cache.MybatisRedisCache" />
+    <cache type="com.nevercome.tabook.common.persistence.cache.MybatisRedisCache"/>
 
     <!-- 以bookInstance为id的查询字段 -->
     <sql id="bookInfoColumns">
@@ -16,7 +16,6 @@
         a.school_id AS "bookInfoInstance.schoolId",
         a.campus_id AS "bookInfoInstance.campusId",
         a.status AS "bookInfoInstance.status",
-        a.total_borrowed AS "bookInfoInstance.totalBorrowed",
         b.id AS "bookInfoClass.id",
         b.remarks AS "bookInfoClass.remarks",
         b.book_root_id AS "bookInfoClass.bookRootId",
@@ -89,12 +88,54 @@
 
     <!-- 以bookInfoClass的数据统计字段 -->
     <sql id="bookClassStaColumns">
-
+        (SELECT COUNT(1)
+         FROM book_info_instance
+         WHERE book_class_id = b.id
+               AND del_flag = 0
+               AND type != '0') AS "bookClassSta.copyNum",
+        ( SELECT COUNT (1)
+        FROM book_borrow_buy
+        WHERE book_instance_id = a.id
+        AND `status` = '5'
+        AND type = '1'
+        AND del_flag = '0') AS "bookClassSta.totalBorrowed",
+        ( SELECT COUNT (1)
+        FROM book_borrow_buy
+        WHERE book_instance_id = a.id
+        AND `status` = '5'
+        AND type = '2'
+        AND del_flag = '0') AS "bookClassSta.totalBought"
     </sql>
 
     <!-- 以bookRootClass的数据统计字段 -->
     <sql id="bookRootStaColumns">
+        (SELECT COUNT(1)
+         FROM book_info_instance
+         WHERE book_class_id = b.id
+               AND b.book_root_id = c.id
+               AND del_flag = 0
+               AND type != '0') AS "bookRootSta.copyNum",
+        ( SELECT COUNT(1)
+        FROM book_borrow_buy
+        WHERE book_instance_id = a.id
+        AND `status` = '5'
+        AND type = '1'
+        AND del_flag = '0') AS "bookRootSta.totalBorrowed",
+        ( SELECT COUNT(1)
+        FROM book_borrow_buy
+        WHERE book_instance_id = a.id
+        AND `status` = '5'
+        AND type = '2'
+        AND del_flag = '0') AS "bookRootSta.totalBought"
+    </sql>
 
+    <sql id="bookInstanceStaColumns">
+        (SELECT COUNT(1)
+         FROM book_borrow_buy
+         WHERE book_instance_id = a.id
+               AND type = '1'
+               AND `status` = '5'
+               AND del_flag = 0) AS "bookInstance.totalBorrowed"
     </sql>
 
     <select id="get" resultType="BookInfo">
@@ -131,7 +172,7 @@
         FROM book_info_instance a
         <include refid="bookInfoJoins"/>
         <where>
-
+              
         </where>
         <choose>
             <when test="page !=null and page.orderBy != null and page.orderBy != ''">

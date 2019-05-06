@@ -15,8 +15,7 @@
         a.holder_id AS "holderId",
         a.school_id AS "schoolId",
         a.campus_id AS "campusId",
-        a.status AS "status",
-        a.total_borrowed AS "totalBorrowed"
+        a.status AS "status"
     </sql>
 
     <sql id="bookInstanceJoins">
@@ -55,8 +54,7 @@
             holder_id,
             school_id,
             campus_id,
-            `status`,
-            total_borrowed
+            `status`
         ) VALUES (
             #{id},
             #{createBy.id},
@@ -71,8 +69,7 @@
             #{holderId},
             #{schoolId},
             #{campusId},
-            #{status},
-            #{totalBorrowed}
+            #{status}
         )
     </insert>
 
@@ -89,8 +86,7 @@
             holder_id      = #{holderId},
             school_id      = #{schoolId},
             campus_id      = #{campusId},
-            `status`       = #{status},
-            total_borrowed = #{totalBorrowed}
+            `status`       = #{status}
         WHERE id = #{id}
     </update>
 

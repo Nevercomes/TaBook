@@ -16,9 +16,7 @@
         a.school_id AS "bookInfoInstance.schoolId",
         a.campus_id AS "bookInfoInstance.campusId",
         a.status AS "bookInfoInstance.status",
-        a.like_num AS "bookInfoInstance.likeNum",
         a.total_borrowed AS "bookInfoInstance.totalBorrowed",
-        a.new_percent AS "bookInfoInstance.newPercent",
         b.id AS "bookInfoClass.id",
         b.remarks AS "bookInfoClass.remarks",
         b.book_root_id AS "bookInfoClass.bookRootId",
@@ -106,7 +104,7 @@
     <select id="getByBookInstanceId" resultType="BookInfo" useCache="true">
         SELECT
         <include refid="bookInfoColumns"/>
-        FROM book_instance a
+        FROM book_info_instance a
         <include refid="bookInfoJoins"/>
         WHERE a.id = #{bookInfoInstance.id}
     </select>
@@ -130,7 +128,7 @@
     <select id="findList" resultType="BookInfo" useCache="true">
         SELECT
         <include refid="bookInfoColumns"/>
-        FROM book_instance a
+        FROM book_info_instance a
         <include refid="bookInfoJoins"/>
         <where>
 
@@ -148,7 +146,7 @@
     <select id="findListRefBookClass" resultType="BookInfo" useCache="true">
         SELECT
         <include refid="bookInfoClassColumns"/>
-        FROM book_info_list b
+        FROM book_info_root b
         <include refid="bookInfoClassJoins"/>
         <where>
 
@@ -166,7 +164,7 @@
     <select id="findListRefBookRoot" resultType="BookInfo" useCache="true">
         SELECT
         <include refid="bookInfoRootColumns"/>
-        FROM book_info_list b
+        FROM book_info_root b
         <include refid="bookInfoRootJoins"/>
         <where>
 

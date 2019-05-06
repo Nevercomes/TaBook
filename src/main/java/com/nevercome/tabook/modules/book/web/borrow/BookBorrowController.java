@@ -41,7 +41,7 @@ public class BookBorrowController extends BaseController {
             bookBorrowRecord.setStatus(BookConstant.BOOK_REQUEST_STATUS_RETURNING);
             bookBorrowRecordService.save(bookBorrowRecord);
         } else {
-            bookBorrowRecord.setRequesterId(UserUtils.getUser().getBookStudent().getId());
+            bookBorrowRecord.setRequesterId(UserUtils.getUser().getStudentId());
             bookBorrowRecordService.save(bookBorrowRecord);
         }
         return new ResponseEntity<>(new Result(), HttpStatus.OK);

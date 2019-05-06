@@ -28,7 +28,7 @@
     <select id="get" resultType="BookBorrowRecord">
         SELECT
         <include refid="bookBorrowRecordColumns"/>
-        FROM book_borrow_buy
+        FROM book_borrow_buy a
         <include refid="bookBorrowRecordJoins"/>
         WHERE a.id = #{id}
         AND a.del_flag = 0
@@ -37,7 +37,7 @@
     <select id="findList" resultType="BookBorrowRecord">
         SELECT
         <include refid="bookBorrowRecordColumns"/>
-        FROM book_borrow_buy
+        FROM book_borrow_buy a
         <include refid="bookBorrowRecordJoins"/>
         <where>
             a.del_flag = 0
@@ -78,15 +78,15 @@
             `status`,
             requester_words,
             requester_words_done,
-            requester_give_socre,
+            requester_give_score,
             owner_words_done,
             owner_give_score,
             cancel,
             type
         ) VALUES (
             #{id},
-            #{createBy},
-            #{updateBy},
+            #{createBy.id},
+            #{updateBy.id},
             #{createTime},
             #{updateTime},
             #{delFlag},
@@ -107,7 +107,7 @@
     <update id="update">
         UPDATE book_borrow_buy
         SET
-            update_by            = #{updateBy},
+            update_by            = #{updateBy.id},
             update_time          = #{updateTime},
             del_flag             = #{delFlag},
             remarks              = #{remarks},
@@ -116,7 +116,7 @@
             `status`             = #{status},
             requester_words      = #{requesterWords},
             requester_words_done = #{requesterWordsDone},
-            requester_give_socre = #{requesterGiveScore},
+            requester_give_score = #{requesterGiveScore},
             owner_words_done     = #{ownerWordsDone},
             owner_give_score     = #{ownerGiveScore},
             cancel               = #{cancel},

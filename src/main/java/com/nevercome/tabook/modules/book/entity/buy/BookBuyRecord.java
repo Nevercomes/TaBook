@@ -30,6 +30,9 @@ public class BookBuyRecord extends DataEntity<BookBuyRecord> {
     private BookInfo bookInfo;
     private BookStudent bookStudent;
 
+    // 查询数据
+    private String ownerId;
+
     public String getRequesterId() {
         return requesterId;
     }
@@ -124,5 +127,13 @@ public class BookBuyRecord extends DataEntity<BookBuyRecord> {
 
     public void setBookStudent(BookStudent bookStudent) {
         this.bookStudent = bookStudent;
+    }
+
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 }

@@ -15,9 +15,9 @@
         a.book_root_id AS "bookRootId",
         a.school_id AS "schoolId",
         a.student_id AS "studentId",
-        ( SELECT COUNT (1)
+        ( SELECT COUNT(1)
         FROM book_like_record
-        WHERE del_flag = 0 AND refer_id = a.book_root_id) AS "likeNum"
+        WHERE del_flag = 0 AND refer_id = a.id) AS "likeNum"
     </sql>
 
     <sql id="bookLongCommentJoinColumns">
@@ -48,9 +48,6 @@
         <include refid="bookLongCommentJoins"/>
         <where>
             a.del_flag = 0
-            <if test="bookCommentId != null and bookCommentId != ''">
-                AND a.book_comment_id = #{bookCommentId}
-            </if>
             <if test="schoolId != null and schoolId != ''">
                 AND a.school_id = #{schoolId}
             </if>

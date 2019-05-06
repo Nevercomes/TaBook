@@ -10,12 +10,11 @@
         a.del_flag AS "delFlag",
         a.remarks AS "remarks",
         a.book_comment_id AS "bookCommentId",
-        a.schoold_id As "schoolId",
         a.content AS "content",
         a.student_id AS "studentId",
-        ( SELECT COUNT (1)
+        ( SELECT COUNT(1)
         FROM book_like_record
-        WHERE del_flag = 0 AND refer_id = a.book_root_id) AS "likeNum"
+        WHERE del_flag = 0 AND refer_id = a.id) AS "likeNum"
     </sql>
 
     <sql id="bookCommentReplyJoinColumns">
@@ -29,15 +28,37 @@
 
     <select id="get" resultType="BookCommentReply">
         SELECT
-        <include refid="bookCommentReplyColumns"/>
-        FROM book_like_record a
+        <include refid="bookCommentReplyColumns"/>,
+        <include refid="bookCommentReplyJoinColumns"/>
+        FROM book_comment_reply a
         <include refid="bookCommentReplyJoins"/>
         WHERE a.id = #{id}
         AND a.del_flag = 0
     </select>
 
     <select id="findList" resultType="BookCommentReply">
-
+        SELECT
+        <include refid="bookCommentReplyColumns"/>,
+        <include refid="bookCommentReplyJoinColumns"/>
+        FROM book_comment_reply a
+        <include refid="bookCommentReplyJoins"/>
+        <where>
+            a.del_flag = 0
+            <if test="bookCommentId != null and bookCommentId != ''">
+                AND a.book_comment_id = #{bookCommentId}
+            </if>
+            <if test="schoolId != null and schoolId != ''">
+                AND stu.schoold_id = #{schoolId}
+            </if>
+        </where>
+        <choose>
+            <when test="page != null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY #{page.orderBy}
+            </when>
+            <otherwise>
+                ORDER BY a.update_time DESC
+            </otherwise>
+        </choose>
     </select>
 
     <insert id="insert">
@@ -50,8 +71,6 @@
             del_flag,
             remarks,
             book_comment_id,
-            like_num,
-            school_id,
             content,
             student_id
         ) VALUES (
@@ -62,9 +81,7 @@
             #{updateTime},
             #{delFlag},
             #{remarks},
-            #{bookCommnetId},
-            #{likeNum},
-            #{schoolId},
+            #{bookCommentId},
             #{content},
             #{studentId}
         )
@@ -78,8 +95,6 @@
             del_flag        = #{delFlag},
             remarks         = #{remarks},
             book_comment_id = #{bookCommentId},
-            like_num        = #{likeNum},
-            school_id       = #{schoolId},
             content         = #{content},
             student_id      = #{studentId}
         WHERE id = #{id}

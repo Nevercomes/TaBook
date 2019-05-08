@@ -1,0 +1,35 @@
+<!--pages/borrow/borrow.wxml-->
+<view class='container'>
+  <view class='book-box'>
+    <view class='img-box'>
+      <image src='../../static/images/home/book1.jpg' class="image" mode="aspectFill" lazy-load="true"></image>
+    </view>
+    <view class='text-box'>
+      <view class="text">书名</view>
+      <view class="text">作者 </view>
+      <view class="text">出版社</view>
+      <view class="text">空闲数</view>
+      <view class="text">累借 </view>
+      <view class="text">评分 </view>
+    </view>
+    <view class='text-box1'>
+      <view class="text">{{bookname}}</view>
+      <view class="text">{{authorname}}</view>
+      <view class="text">{{publishinghouse}}</view>
+      <view class="text">{{freebook}}</view>
+      <view class="text">{{borrowedbook}}</view>
+      <view class="text">{{score}}</view>
+    </view>
+  </view>
+   <view class="weui-cells__title" style="color: #000">留言</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" bindinput="inputs1"/>
+            <view class="weui-textarea-counter">{{currentNum}}/50</view>
+            <i-toast id="toast" />
+          </view>
+         </view>
+    </view>
+    <button class="weui-btn button" type="primary">提交</button>
+</view>

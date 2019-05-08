@@ -1,38 +1,42 @@
-// pages/borrowedlist/borrowedlist.js
+// pages/borrow/borrow.js
+const { $Toast } = require('../../dist/base/index');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    owners: 100,
-    available:3,
-    borrow: [
-      'a',
-      'b',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-    ],
+    bookname: "《高等数学》",
+    authorname: "Alice",
+    publishinghouse: "xx报社",
+    freebook: 1,
+    borrowedbook: 9,
+    score: 9.0,
+    currentNum: 0,
+
   },
 
   //事件处理函数
-  iconClick:function(){
-    wx.navigateTo({
-      url: '../borrow/borrow',
-    })
+  inputs1: function (e) {
+    // 获取输入框的内容
+    var value = e.detail.value;
+    console.log(value);
+    // 获取输入框内容的长度
+    var len = parseInt(value.length);
+    console.log(len);
+    if (len <= 50) {
+      this.setData({
+        currentNum: len
+      })
+    }
+    else {
+      $Toast({
+        content: '最多50字哦~',
+        type: 'warning'
+      });
+      return;
+    }
   },
-
   /**
    * 生命周期函数--监听页面加载
    */

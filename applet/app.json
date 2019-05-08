@@ -27,7 +27,8 @@
     "pages/bookcomment/bookcomment",
     "pages/borrowedlist/borrowedlist",
     "pages/writeReview/writeReview",
-    "pages/iHaveBook/iHaveBook"
+    "pages/iHaveBook/iHaveBook",
+    "pages/borrow/borrow"
   ],
   "window": {
     "backgroundTextStyle": "light",

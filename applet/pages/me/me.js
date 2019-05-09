@@ -60,7 +60,7 @@ Page({
       success: function (res) { }
     })
   },
-  bindMyBorrow:function(){
+   bindMyBorrow:function(){
     wx.navigateTo({
       url: 'myBorrow/myBorrow',
       duration:0

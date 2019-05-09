@@ -1,0 +1,38 @@
+<!--pages/message/message.wxml-->
+<view class="content">
+  <view class="hr"></view>
+  <view class="messages-box">
+    <view class="everyMsg" bindtap='bindSystemMsg'>
+      <view class="img-box">
+        <image src="../../static/images/message/systemMsg2.png"></image>
+      </view>
+      <view class="text-box">
+        <text>系统通知</text>
+      </view>
+    </view>
+    <view class="everyMsg" bindtap='bindPrivateMsg'>
+      <view class="img-box">
+        <image src="../../static/images/message/privateMsg.png"></image>
+      </view>
+      <view class="text-box">
+        <text>私信</text>
+      </view>
+    </view>
+    <view class="everyMsg" bindtap='bindThump_upMsg'>
+      <view class="img-box">
+        <image src="../../static/images/message/thump_upMsg.png"></image>
+      </view>
+      <view class="text-box">
+        <text>收到的赞</text>
+      </view>
+    </view>
+    <view class="everyMsg" bindtap="bindCommentMsg">
+      <view class="img-box">
+        <image src="../../static/images/message/commentMsg.png"></image>
+      </view>
+      <view class="text-box">
+        <text>收到的评论</text>
+      </view>
+    </view>
+  </view>
+</view>

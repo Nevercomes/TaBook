@@ -56,9 +56,16 @@ Page({
     star5: '../../static/images/home/star.png',
     score:4,
     price:999,
+    available:3,
+    total:100,
   },
 
   //事件处理函数
+  iconClick:function(){
+    wx.navigateTo({
+      url: '../borrowedlist/borrowedlist',
+    })
+  },
   toDetailsTap:function(){
     wx.navigateTo({
       url:'../bookInfo/bookInfo'

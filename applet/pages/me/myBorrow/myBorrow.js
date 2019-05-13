@@ -24,7 +24,7 @@ Page({
     disabled: false,
 
   },
-  handleChange: function({
+  handleChange: function ({
     detail
   }) {
     var that = this;
@@ -33,7 +33,7 @@ Page({
       currentTab: detail.key
     })
   },
-  clickTab: function(e) {
+  clickTab: function (e) {
     var that = this;
     if (that.data.currentTab === e.target.dataset.current) {
       return false;
@@ -43,21 +43,21 @@ Page({
       })
     }
   },
-  swiperTab: function(e) {
+  swiperTab: function (e) {
     var that = this;
     console.log(e.detail.value)
     that.setData({
       currentTab: e.detail.value
     })
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
     var that = this
     that.setData({
       totalborrow: that.data.books.length,
       borrowing: that.data.books2.length
     })
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         that.setData({
           clientHeight: res.windowHeight
         });
@@ -66,13 +66,13 @@ Page({
     that.loadBooks();
 
   },
-  loadBooks: function(e) {
+  loadBooks: function (e) {
     var that = this;
     wx.request({
       url: '',
       method: "POST",
       header: header,
-      success: function(res) {
+      success: function (res) {
         var subjects = res.data.subjects;
         console.log(subjects);
         var books = new Array();
@@ -98,17 +98,17 @@ Page({
       }
     })
   },
-  giveBackOperation: function(e) {
+  giveBackOperation: function (e) {
     var that = this;
     var index = e.currentTarget.dataset.index;
     console.log(index);
-    var array = that.data.books;
-    var array2 = that.data.books2;
+    var array = this.data.books;
+    var array2 = this.data.books2;
     var index2 = array2.length
     wx.showModal({
       title: '提示',
       content: '确定要还书吗？',
-      success: function(res) {
+      success: function (res) {
         if (res.confirm) {
           var b = array[index];
           array2.push(b);
@@ -128,26 +128,26 @@ Page({
       }
     })
   },
-  onReady: function() {
+  onReady: function () {
 
   },
-  onShow: function() {
+  onShow: function () {
 
   },
-  onHide: function() {
+  onHide: function () {
 
   },
-  onUnload: function() {
+  onUnload: function () {
 
   },
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

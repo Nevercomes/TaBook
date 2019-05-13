@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "i-button": "../../dist/button/index",
+    "i-tabs": "../../dist/tabs/index",
+    "i-tab": "../../dist/tab/index",
+    "i-panel": "../../dist/panel/index",
+    "i-rate": "../../dist/rate/index",
+    "i-cell-group": "../../dist/cell-group/index",
+    "i-cell": "../../dist/cell/index"
+  }
+}

@@ -61,7 +61,7 @@
       </view>
       <view class='icon-box' bindtap='iconClick'>
         <image src='../../static/images/home/want.png' class="image" mode='aspectFill'></image>
-        <view class='text'>空闲</view>
+        <view class='text'>空闲 {{available}}</view>
       </view>
     </view>
     <view class='comment-box' bindtap="toBookInfoTap">这里是相关评论</view>

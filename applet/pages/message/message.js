@@ -17,7 +17,7 @@ wx.navigateTo({
   url: 'privateMsg/privateMsg',
 })
   },
-  bindThumb_upMsg:function(){
+  bindThump_upMsg:function(){
     wx.navigateTo({
       url: "thump_upMsg/thump_upMsg",
     })

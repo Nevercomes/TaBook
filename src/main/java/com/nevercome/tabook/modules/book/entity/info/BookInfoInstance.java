@@ -18,8 +18,6 @@ public class BookInfoInstance extends DataEntity<BookInfoInstance> {
     private String userAddId; // 添加记录的id
     private String ownerId; // 所有者id
     private String holderId; // 当前持有者id
-    private String schoolId; // 学校id 图书管理的基础(非常重要) 在实际数据中以Office类来体现
-    private String campusId; // 校区id 可能存在 在实际数据中以Office类来体现
     private String status; // 书籍实体的状态 状态参数见BookConstant
     private int totalBorrowed; // 书籍累计借阅
     private int likeNum; // 书籍获赞数
@@ -69,22 +67,6 @@ public class BookInfoInstance extends DataEntity<BookInfoInstance> {
 
     public void setHolderId(String holderId) {
         this.holderId = holderId;
-    }
-
-    public String getSchoolId() {
-        return schoolId;
-    }
-
-    public void setSchoolId(String schoolId) {
-        this.schoolId = schoolId;
-    }
-
-    public String getCampusId() {
-        return campusId;
-    }
-
-    public void setCampusId(String campusId) {
-        this.campusId = campusId;
     }
 
     public String getStatus() {

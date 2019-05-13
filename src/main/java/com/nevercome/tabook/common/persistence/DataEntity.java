@@ -26,7 +26,6 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
 
     protected String studentId;
     protected String schoolId;
-    protected String campusId;
 
     public DataEntity() {
         super();
@@ -52,7 +51,6 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
             this.createBy = user;
             this.studentId = user.getStudentId();
             this.schoolId = user.getSchoolId();
-            this.campusId = user.getCampusId();
         }
         this.updateTime = new Date();
         this.createTime = this.updateTime;
@@ -139,11 +137,4 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
         this.schoolId = schoolId;
     }
 
-    public String getCampusId() {
-        return campusId;
-    }
-
-    public void setCampusId(String campusId) {
-        this.campusId = campusId;
-    }
 }

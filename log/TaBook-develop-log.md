@@ -58,3 +58,7 @@
 #### 5.5
 1. 在CrudService层对BookInfo进行注入
 2. 对bookInfoAddService进行单例测试
+
+#### 5.6
+1.完善了认证之后的逻辑操作
+2.去掉了campusId

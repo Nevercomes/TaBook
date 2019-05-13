@@ -14,7 +14,6 @@
         a.owner_id AS "bookInfoInstance.ownerId",
         a.holder_id AS "bookInfoInstance.holderId",
         a.school_id AS "bookInfoInstance.schoolId",
-        a.campus_id AS "bookInfoInstance.campusId",
         a.status AS "bookInfoInstance.status",
         b.id AS "bookInfoClass.id",
         b.remarks AS "bookInfoClass.remarks",

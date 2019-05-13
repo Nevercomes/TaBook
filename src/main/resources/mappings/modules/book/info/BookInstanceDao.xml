@@ -14,7 +14,6 @@
         a.owner_id AS "ownerId",
         a.holder_id AS "holderId",
         a.school_id AS "schoolId",
-        a.campus_id AS "campusId",
         a.status AS "status"
     </sql>
 
@@ -68,7 +67,6 @@
             #{ownerId},
             #{holderId},
             #{schoolId},
-            #{campusId},
             #{status}
         )
     </insert>
@@ -85,7 +83,6 @@
             owner_id       = #{ownerId},
             holder_id      = #{holderId},
             school_id      = #{schoolId},
-            campus_id      = #{campusId},
             `status`       = #{status}
         WHERE id = #{id}
     </update>

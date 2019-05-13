@@ -27,27 +27,31 @@ public abstract class BaseEntity<T> implements Serializable {
      * 实体编号（唯一标识）
      */
     protected String id;
-
     /**
      * 当前用户
      */
     protected User currentUser;
-
     /**
      * 当前实体分页对象
      */
     protected Page<T> page;
-
     /**
      * 自定义SQL（SQL标识，SQL内容）
      */
     protected Map<String, String> sqlMap;
-
     /**
      * 是否是新记录（默认：false），调用setIsNewRecord()设置新记录，使用自定义ID。
      * 设置为true后强制执行插入语句，ID不会自动生成，需从手动传入。
      */
     protected boolean isNewRecord = false;
+    /**
+     * 插入之前执行方法，子类实现
+     */
+    public abstract void preInsert();
+    /**
+     * 更新之前执行方法，子类实现
+     */
+    public abstract void preUpdate();
 
     public BaseEntity() {
 
@@ -106,15 +110,7 @@ public abstract class BaseEntity<T> implements Serializable {
         this.sqlMap = sqlMap;
     }
 
-    /**
-     * 插入之前执行方法，子类实现
-     */
-    public abstract void preInsert();
 
-    /**
-     * 更新之前执行方法，子类实现
-     */
-    public abstract void preUpdate();
 
     /**
      * 是否是新记录（默认：false），调用setIsNewRecord()设置新记录，使用自定义ID。

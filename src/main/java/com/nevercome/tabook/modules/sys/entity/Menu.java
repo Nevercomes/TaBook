@@ -21,10 +21,7 @@ public class Menu extends DataEntity<Menu> {
     private String parentIds; // 所有父级编号
     private String name; 	// 名称
     private String href; 	// 链接
-    private String target; 	// 目标（ mainFrame、_blank、_self、_parent、_top）
-    private String icon; 	// 图标
     private Integer sort; 	// 排序
-    private String isShow; 	// 是否在菜单中显示（1：显示；0：不显示）
     private String permission; // 权限标识
 
     private String userId;
@@ -32,7 +29,6 @@ public class Menu extends DataEntity<Menu> {
     public Menu(){
         super();
         this.sort = 30;
-        this.isShow = "1";
     }
 
     public Menu(String id){
@@ -76,24 +72,6 @@ public class Menu extends DataEntity<Menu> {
         this.href = href;
     }
 
-    @Length(min=0, max=20)
-    public String getTarget() {
-        return target;
-    }
-
-    public void setTarget(String target) {
-        this.target = target;
-    }
-
-    @Length(min=0, max=100)
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
-    }
-
     @NotNull
     public Integer getSort() {
         return sort;
@@ -101,15 +79,6 @@ public class Menu extends DataEntity<Menu> {
 
     public void setSort(Integer sort) {
         this.sort = sort;
-    }
-
-    @Length(min=1, max=1)
-    public String getIsShow() {
-        return isShow;
-    }
-
-    public void setIsShow(String isShow) {
-        this.isShow = isShow;
     }
 
     @Length(min=0, max=200)
@@ -126,19 +95,19 @@ public class Menu extends DataEntity<Menu> {
     }
 
     @JsonIgnore
-    public static void sortList(List<Menu> list, List<Menu> sourcelist, String parentId, boolean cascade){
-        for (int i=0; i<sourcelist.size(); i++){
-            Menu e = sourcelist.get(i);
+    public static void sortList(List<Menu> list, List<Menu> sourceList, String parentId, boolean cascade){
+        for (int i = 0; i< sourceList.size(); i++){
+            Menu e = sourceList.get(i);
             if (e.getParent()!=null && e.getParent().getId()!=null
                     && e.getParent().getId().equals(parentId)){
                 list.add(e);
                 if (cascade){
                     // 判断是否还有子节点, 有则继续获取子节点
-                    for (int j=0; j<sourcelist.size(); j++){
-                        Menu child = sourcelist.get(j);
+                    for (int j = 0; j< sourceList.size(); j++){
+                        Menu child = sourceList.get(j);
                         if (child.getParent()!=null && child.getParent().getId()!=null
                                 && child.getParent().getId().equals(e.getId())){
-                            sortList(list, sourcelist, e.getId(), true);
+                            sortList(list, sourceList, e.getId(), true);
                             break;
                         }
                     }

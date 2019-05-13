@@ -106,9 +106,9 @@ public class OfficeController extends BaseController {
                 childOffice.setName(DictUtils.getDictLabel(id, "sys_office_common", "未知"));
                 childOffice.setParent(office);
                 childOffice.setArea(office.getArea());
-                childOffice.setType("2");
-                childOffice.setGrade(String.valueOf(Integer.valueOf(office.getGrade())+1));
-                childOffice.setUseable(Global.YES);
+//                childOffice.setType("2");
+//                childOffice.setGrade(String.valueOf(Integer.valueOf(office.getGrade())+1));
+//                childOffice.setUseable(Global.YES);
                 officeService.save(childOffice);
             }
         }
@@ -151,23 +151,23 @@ public class OfficeController extends BaseController {
                                               @RequestParam(required=false) Long grade, @RequestParam(required=false) Boolean isAll, HttpServletResponse response) {
         List<Map<String, Object>> mapList = Lists.newArrayList();
         List<Office> list = officeService.findList(isAll);
-        for (int i=0; i<list.size(); i++){
-            Office e = list.get(i);
-            if ((StringUtils.isBlank(extId) || (extId!=null && !extId.equals(e.getId()) && e.getParentIds().indexOf(","+extId+",")==-1))
-                    && (type == null || (type != null && (type.equals("1") ? type.equals(e.getType()) : true)))
-                    && (grade == null || (grade != null && Integer.parseInt(e.getGrade()) <= grade.intValue()))
-                    && Global.YES.equals(e.getUseable())){
-                Map<String, Object> map = Maps.newHashMap();
-                map.put("id", e.getId());
-                map.put("pId", e.getParentId());
-                map.put("pIds", e.getParentIds());
-                map.put("name", e.getName());
-                if (type != null && "3".equals(type)){
-                    map.put("isParent", true);
-                }
-                mapList.add(map);
-            }
-        }
+//        for (int i=0; i<list.size(); i++){
+//            Office e = list.get(i);
+//            if ((StringUtils.isBlank(extId) || (extId!=null && !extId.equals(e.getId()) && e.getParentIds().indexOf(","+extId+",")==-1))
+//                    && (type == null || (type != null && (type.equals("1") ? type.equals(e.getType()) : true)))
+//                    && (grade == null || (grade != null && Integer.parseInt(e.getGrade()) <= grade.intValue()))
+//                    && Global.YES.equals(e.getUseable())){
+//                Map<String, Object> map = Maps.newHashMap();
+//                map.put("id", e.getId());
+//                map.put("pId", e.getParentId());
+//                map.put("pIds", e.getParentIds());
+//                map.put("name", e.getName());
+//                if (type != null && "3".equals(type)){
+//                    map.put("isParent", true);
+//                }
+//                mapList.add(map);
+//            }
+//        }
         return mapList;
     }
 }

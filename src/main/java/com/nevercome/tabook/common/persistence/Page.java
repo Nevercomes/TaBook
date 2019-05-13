@@ -37,7 +37,7 @@ public class Page<T> {
 
     private List<T> list = new ArrayList<T>();
 
-    private String orderBy = ""; // 标准查询有效， 实例： updatedate desc, name asc
+    private String orderBy = ""; // 标准查询有效， 实例： updateTime desc, name asc
 
     private String funcName = "page"; // 设置点击页码调用的js函数名称，默认为page，在一页有多个分页对象时使用。
 
@@ -463,7 +463,7 @@ public class Page<T> {
     }
 
     /**
-     * 设置查询排序，标准查询有效， 实例： updatedate desc, name asc
+     * 设置查询排序，标准查询有效， 实例： updateTime desc, name asc
      */
     public void setOrderBy(String orderBy) {
         this.orderBy = orderBy;

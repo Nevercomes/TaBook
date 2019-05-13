@@ -24,20 +24,21 @@ import java.util.List;
 public class User extends DataEntity<User> {
 
     private static final long serialVersionUID = 1L;
-    private Office company;	// 归属公司 所属学校
     private Office office;	// 归属部门 所属校区
-    private String loginName;// 登录名
     private String password;// 密码
-    private String no;		// 工号 学号
+
     private String name;	// 姓名
-    private String email;	// 邮箱
+    private String avatarUrl;	// 头像
+    private String intro; // 个签
+    private String qq; // qq
+    private String wx_id; // 微信号
     private String phone;	// 电话
-    private String mobile;	// 手机
+    private String email;	// 邮箱
     private String userType;// 用户类型
+    private String loginName;// 登录名
     private String loginIp;	// 最后登陆IP
     private Date loginDate;	// 最后登陆日期
     private String loginFlag;	// 是否允许登陆
-    private String avatar;	// 头像
 
     // wx applet
     private String openId;
@@ -74,14 +75,6 @@ public class User extends DataEntity<User> {
         this.role = role;
     }
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
     public String getLoginFlag() {
         return loginFlag;
     }
@@ -92,16 +85,6 @@ public class User extends DataEntity<User> {
 
     public String getId() {
         return id;
-    }
-
-    @JsonIgnore
-    @NotNull(message="归属公司不能为空")
-    public Office getCompany() {
-        return company;
-    }
-
-    public void setCompany(Office company) {
-        this.company = company;
     }
 
     @JsonIgnore
@@ -138,15 +121,6 @@ public class User extends DataEntity<User> {
         return name;
     }
 
-    @Length(min=1, max=100, message="工号长度必须介于 1 和 100 之间")
-    public String getNo() {
-        return no;
-    }
-
-    public void setNo(String no) {
-        this.no = no;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -168,15 +142,6 @@ public class User extends DataEntity<User> {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    @Length(min=0, max=200, message="手机长度必须介于 1 和 200 之间")
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
     }
 
     public String getRemarks() {
@@ -324,6 +289,38 @@ public class User extends DataEntity<User> {
 
     public void setBookStudent(BookStudent bookStudent) {
         this.bookStudent = bookStudent;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getWx_id() {
+        return wx_id;
+    }
+
+    public void setWx_id(String wx_id) {
+        this.wx_id = wx_id;
     }
 
     @Override

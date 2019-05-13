@@ -7,17 +7,13 @@
         a.*,
         u.id AS "createBy.id",
         u.name AS "createBy.name",
-        c.name AS "createBy.company.name",
         o.name AS "createBy.office.name"
         FROM sys_log a
         JOIN sys_user u ON u.id = a.create_by
         JOIN sys_office c ON c.id = u.company_id
         JOIN sys_office o ON o.id = u.office_id
-        WHERE a.create_date BETWEEN #{beginDate} AND #{endDate}
+        WHERE a.create_time BETWEEN #{beginDate} AND #{endDate}
         <if test="title != null and title != ''">
-            AND a.title LIKE
-            <if test="dbName == 'oracle'">'%'||#{title}||'%'</if>
-            <if test="dbName == 'mssql'">'%'+#{title}+'%'</if>
             <if test="dbName == 'mysql'">CONCAT('%', #{title}, '%')</if>
         </if>
         <if test="createBy != null and createBy.id != null and createBy.id != ''">
@@ -25,14 +21,12 @@
         </if>
         <if test="requestUri != null and requestUri != ''">
             AND a.request_uri LIKE
-            <if test="dbName == 'oracle'">'%'||#{requestUri}||'%'</if>
-            <if test="dbName == 'mssql'">'%'+#{requestUri}+'%'</if>
             <if test="dbName == 'mysql'">CONCAT('%', #{requestUri}, '%')</if>
         </if>
         <if test="exception != null and exception != ''">
             AND a.type = #{TYPE_EXCEPTION}
         </if>
-        ORDER BY a.create_date DESC
+        ORDER BY a.create_time DESC
     </select>
 
     <insert id="insert">
@@ -41,7 +35,7 @@
             type,
             title,
             create_by,
-            create_date,
+            create_time,
             remote_addr,
             user_agent,
             request_uri,
@@ -53,7 +47,7 @@
             #{type},
             #{title},
             #{createBy.id},
-            #{createDate},
+            #{createTime},
             #{remoteAddr},
             #{userAgent},
             #{requestUri},

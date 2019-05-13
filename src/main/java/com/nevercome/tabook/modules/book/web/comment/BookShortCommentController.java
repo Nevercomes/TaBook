@@ -5,6 +5,7 @@ import com.nevercome.tabook.common.web.BaseController;
 import com.nevercome.tabook.common.web.Result;
 import com.nevercome.tabook.modules.book.entity.comment.BookShortComment;
 import com.nevercome.tabook.modules.book.service.comment.BookShortCommentService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +28,14 @@ public class BookShortCommentController extends BaseController {
     @Autowired
     private BookShortCommentService bookShortCommentService;
 
+    @RequiresPermissions("book:comment:short:edit")
     @RequestMapping(value = "save")
     public ResponseEntity save(BookShortComment bookShortComment) {
         bookShortCommentService.save(bookShortComment);
         return new ResponseEntity<>(new Result(), HttpStatus.OK);
     }
 
+    @RequiresPermissions("book:comment:short:view")
     @RequestMapping(value = "list")
     public ResponseEntity list(HttpServletRequest request, HttpServletResponse response, BookShortComment bookShortComment) {
         Page<BookShortComment> page = bookShortCommentService.findPage(new Page<>(request, response), bookShortComment);

@@ -1,6 +1,5 @@
 package com.nevercome.tabook.common.service;
 
-import com.google.common.collect.Lists;
 import com.nevercome.tabook.common.persistence.BaseEntity;
 import com.nevercome.tabook.common.utils.StringUtils;
 import com.nevercome.tabook.modules.sys.entity.Role;
@@ -8,8 +7,6 @@ import com.nevercome.tabook.modules.sys.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 /**
  * Service基类

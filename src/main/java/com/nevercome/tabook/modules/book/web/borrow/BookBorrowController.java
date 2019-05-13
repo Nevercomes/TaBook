@@ -8,6 +8,7 @@ import com.nevercome.tabook.modules.book.entity.borrow.BookBorrowRecord;
 import com.nevercome.tabook.modules.book.service.borrow.BookBorrowRecordService;
 import com.nevercome.tabook.modules.book.utils.BookConstant;
 import com.nevercome.tabook.modules.sys.utils.UserUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,7 @@ public class BookBorrowController extends BaseController {
      * 1. 借书申请
      * 2. 归还申请
      */
+    @RequiresPermissions("book:borrow:edit")
     @RequestMapping(value = "request")
     public ResponseEntity request(HttpServletRequest request, BookBorrowRecord bookBorrowRecord) {
         String isReturn = request.getParameter("return");
@@ -48,10 +50,12 @@ public class BookBorrowController extends BaseController {
     }
 
     /**
+     * 业务逻辑安全性：confirm必须是书籍所有者才可以操作
      * 确认有两类
      * 1. 借书申请确认
      * 2. 归还申请确认
      */
+    @RequiresPermissions("book:borrow:edit")
     @RequestMapping(value = "confirm")
     public ResponseEntity confirm(HttpServletRequest request, BookBorrowRecord bookBorrowRecord) {
         String status = bookBorrowRecord.getStatus();
@@ -62,6 +66,7 @@ public class BookBorrowController extends BaseController {
     }
 
 
+    @RequiresPermissions("book:borrow:edit")
     @RequestMapping(value = "cancel")
     public ResponseEntity cancel(HttpServletRequest request, BookBorrowRecord bookBorrowRecord) {
         bookBorrowRecord = bookBorrowRecordService.get(bookBorrowRecord);
@@ -73,6 +78,7 @@ public class BookBorrowController extends BaseController {
     /**
      * 展示我的申请（借书）的地方
      */
+    @RequiresPermissions("book:borrow:view")
     @RequestMapping(value = "list")
     public ResponseEntity list(HttpServletRequest request, HttpServletResponse response, BookBorrowRecord bookBorrowRecord) {
         Page<BookBorrowRecord> page = bookBorrowRecordService.findPage(new Page<>(request, response), bookBorrowRecord);

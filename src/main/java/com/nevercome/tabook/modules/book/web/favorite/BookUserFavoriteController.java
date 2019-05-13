@@ -11,6 +11,7 @@ import com.nevercome.tabook.modules.book.service.comment.BookLongCommentService;
 import com.nevercome.tabook.modules.book.service.favorite.BookUserFavoriteService;
 import com.nevercome.tabook.modules.book.service.info.BookInfoService;
 import com.nevercome.tabook.modules.book.utils.BookConstant;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,7 @@ public class BookUserFavoriteController extends BaseController {
     private BookLongCommentService bookLongCommentService;
 
 
+    @RequiresPermissions("book:favorite:edit")
     @RequestMapping(value = "add")
     public ResponseEntity addOrCancel(HttpServletRequest request, BookUserFavorite bookUserFavorite) {
         String cancel = request.getParameter("cancel");
@@ -48,6 +50,7 @@ public class BookUserFavoriteController extends BaseController {
         return new ResponseEntity<>(new Result(), HttpStatus.OK);
     }
 
+    @RequiresPermissions("book:favorite:view")
     @RequestMapping(value = "list")
     public ResponseEntity list(HttpServletRequest request, HttpServletResponse response, BookUserFavorite bookUserFavorite) {
         String type = bookUserFavorite.getType();

@@ -58,9 +58,20 @@ Page({
     price:999,
     available:3,
     total:100,
+    noticeList: [
+      "新功能模块：消息 已经开放，大家赶快去体验吧！",
+      "有借有还可以提升信誉度哦~~",
+      "一大波图书等你来看，你还在等什么？",
+      "每个用户可借阅图书数目有限哦~~",
+    ],
   },
 
   //事件处理函数
+  clickImg: function () {
+    wx.navigateTo({
+      url: '../bookInfo/bookInfo',
+    })
+  },
   iconClick:function(){
     wx.navigateTo({
       url: '../borrowedlist/borrowedlist',

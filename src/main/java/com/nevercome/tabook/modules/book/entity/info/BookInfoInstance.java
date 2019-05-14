@@ -27,6 +27,12 @@ public class BookInfoInstance extends DataEntity<BookInfoInstance> {
 
     // 统计数据
 
+    // 链接数据
+    private String ownerName;
+    private String ownerAvatar;
+    private String addTime;
+    private String ownerComment;
+
     // 搜索参数
 
 
@@ -115,5 +121,37 @@ public class BookInfoInstance extends DataEntity<BookInfoInstance> {
 
     public void setTags(String tags) {
         this.tags = tags;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+
+    public String getOwnerAvatar() {
+        return ownerAvatar;
+    }
+
+    public void setOwnerAvatar(String ownerAvatar) {
+        this.ownerAvatar = ownerAvatar;
+    }
+
+    public String getAddTime() {
+        return addTime;
+    }
+
+    public void setAddTime(String addTime) {
+        this.addTime = addTime;
+    }
+
+    public String getOwnerComment() {
+        return ownerComment;
+    }
+
+    public void setOwnerComment(String ownerComment) {
+        this.ownerComment = ownerComment;
     }
 }

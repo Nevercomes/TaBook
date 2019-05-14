@@ -17,8 +17,16 @@
         a.status AS "status"
     </sql>
 
-    <sql id="bookInstanceJoins">
+    <sql id="bookInstanceJoinColumns">
+        bs.name AS "ownerName",
+        bs.avatarUrl AS "ownerAvatar",
+        ba.create_time AS "addTime",
+        ba.owner_comment AS "ownerComment"
+    </sql>
 
+    <sql id="bookInstanceJoins">
+        INNER JOIN book_user_info bs ON a.owner_id=bs.id
+        INNER JOIN book_info_add ba ON a.user_add_id=ba.id
     </sql>
 
     <select id="get" resultType="BookInfoInstance">
@@ -36,6 +44,31 @@
 
     <select id="findAllList" resultType="BookInfoInstance">
 
+    </select>
+
+    <select id="findBorrowable" resultType="BookInfoInstance">
+        SELECT
+        <include refid="bookInstanceColumns"/>,
+        <include refid="bookInstanceJoinColumns"/>
+        FROM book_info_instance a
+        <include refid="bookInstanceJoins"/>
+        <where>
+            a.del_flag = '0' AND ba.type = '1'
+            <if test="bookClassId != null and bookClassId != ''">
+                AND a.bookClassId = #{bookClassId}
+            </if>
+            <if test="schoolId != null and schoolId != ''">
+                AND bs.school_id = #{schoolId}
+            </if>
+        </where>
+        <choose>
+            <when test="page != null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY ${page.orderBy}
+            </when>
+            <otherwise>
+                ORDER BY a.status, a.create_time DESC
+            </otherwise>
+        </choose>
     </select>
 
     <insert id="insert">
@@ -74,16 +107,16 @@
     <update id="update">
         UPDATE book_info_instance
         SET
-            update_by      = #{updateBy.id},
-            update_time    = #{updateTime},
-            del_flag       = #{delFlag},
-            remarks        = #{remarks},
-            book_class_id  = #{bookClassId},
-            user_add_id    = #{userAddId},
-            owner_id       = #{ownerId},
-            holder_id      = #{holderId},
-            school_id      = #{schoolId},
-            `status`       = #{status}
+            update_by     = #{updateBy.id},
+            update_time   = #{updateTime},
+            del_flag      = #{delFlag},
+            remarks       = #{remarks},
+            book_class_id = #{bookClassId},
+            user_add_id   = #{userAddId},
+            owner_id      = #{ownerId},
+            holder_id     = #{holderId},
+            school_id     = #{schoolId},
+            `status`      = #{status}
         WHERE id = #{id}
     </update>
 

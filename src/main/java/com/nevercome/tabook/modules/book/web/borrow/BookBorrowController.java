@@ -5,7 +5,11 @@ import com.nevercome.tabook.common.persistence.Page;
 import com.nevercome.tabook.common.web.BaseController;
 import com.nevercome.tabook.common.web.Result;
 import com.nevercome.tabook.modules.book.entity.borrow.BookBorrowRecord;
+import com.nevercome.tabook.modules.book.entity.info.BookInfoInstance;
+import com.nevercome.tabook.modules.book.entity.user.BookStudent;
 import com.nevercome.tabook.modules.book.service.borrow.BookBorrowRecordService;
+import com.nevercome.tabook.modules.book.service.info.BookInstanceService;
+import com.nevercome.tabook.modules.book.service.user.BookStudentService;
 import com.nevercome.tabook.modules.book.utils.BookConstant;
 import com.nevercome.tabook.modules.sys.utils.UserUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -28,6 +32,8 @@ public class BookBorrowController extends BaseController {
 
     @Autowired
     private BookBorrowRecordService bookBorrowRecordService;
+    @Autowired
+    private BookInstanceService bookInstanceService;
 
     /**
      * 申请有两类
@@ -85,4 +91,11 @@ public class BookBorrowController extends BaseController {
         return new ResponseEntity<>(new Result(page), HttpStatus.OK);
     }
 
+    @RequiresPermissions("book:borrow:view")
+    @RequestMapping(value = "list/borrowable")
+    public ResponseEntity listBorrowable(HttpServletRequest request, HttpServletResponse response, BookInfoInstance bookInfoInstance) {
+        Page<BookInfoInstance> page = new Page<>(request, response);
+        page = bookInstanceService.findBorrowable(page, bookInfoInstance);
+        return new ResponseEntity<>(new Result(page), HttpStatus.OK);
+    }
 }

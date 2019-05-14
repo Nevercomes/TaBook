@@ -264,7 +264,7 @@ public class User extends DataEntity<User> {
     }
 
     public static boolean isAdmin(String id){
-        return id != null && "1".equals(id);
+        return id != null && "admin@root@nature-parent".equals(id);
     }
 
     public String getOpenId() {

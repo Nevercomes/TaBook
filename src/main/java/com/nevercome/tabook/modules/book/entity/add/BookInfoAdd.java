@@ -28,7 +28,11 @@ public class BookInfoAdd extends DataEntity<BookInfoAdd> {
     private String ownerComment; // 所有者对书籍的评价 也可以是他给借书者的留言
     private String type; // 上架类型 下架0 借书1 卖书2
     private float price; // type=2 表示卖书价格
-    private int newPercent;
+    private int newPercent; // 新旧程度
+
+    private String realImg1; // 实物图1
+    private String realImg2;
+    private String realImg3;
 
     private List<String> sortNameList; // 分类 名
     private String sorts; // 分类的所有id
@@ -164,6 +168,30 @@ public class BookInfoAdd extends DataEntity<BookInfoAdd> {
 
     public void setBookInfo(BookInfo bookInfo) {
         this.bookInfo = bookInfo;
+    }
+
+    public String getRealImg1() {
+        return realImg1;
+    }
+
+    public void setRealImg1(String realImg1) {
+        this.realImg1 = realImg1;
+    }
+
+    public String getRealImg2() {
+        return realImg2;
+    }
+
+    public void setRealImg2(String realImg2) {
+        this.realImg2 = realImg2;
+    }
+
+    public String getRealImg3() {
+        return realImg3;
+    }
+
+    public void setRealImg3(String realImg3) {
+        this.realImg3 = realImg3;
     }
 
     @Override

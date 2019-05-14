@@ -20,8 +20,13 @@
     <sql id="bookInstanceJoinColumns">
         bs.name AS "ownerName",
         bs.avatarUrl AS "ownerAvatar",
-        ba.create_time AS "addTime",
-        ba.owner_comment AS "ownerComment"
+        ba.create_time AS "bookInfoAdd.createTime",
+        ba.owner_comment AS "bookInfoAdd.ownerComment",
+        ba.new_percent AS "bookInfoAdd.new_percent",
+        ba.price AS "bookInfoAdd.price",
+        ba.real_img_1 AS "bookInfoAdd.realImg1",
+        ba.real_img_2 AS "bookInfoAdd.realImg2",
+        ba.real_img_3 AS "bookInfoAdd.realImg3"
     </sql>
 
     <sql id="bookInstanceJoins">
@@ -54,6 +59,31 @@
         <include refid="bookInstanceJoins"/>
         <where>
             a.del_flag = '0' AND ba.type = '1'
+            <if test="bookClassId != null and bookClassId != ''">
+                AND a.bookClassId = #{bookClassId}
+            </if>
+            <if test="schoolId != null and schoolId != ''">
+                AND bs.school_id = #{schoolId}
+            </if>
+        </where>
+        <choose>
+            <when test="page != null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY ${page.orderBy}
+            </when>
+            <otherwise>
+                ORDER BY a.status, a.create_time DESC
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findBuyAble" resultType="BookInfoInstance">
+        SELECT
+        <include refid="bookInstanceColumns"/>,
+        <include refid="bookInstanceJoinColumns"/>
+        FROM book_info_instance a
+        <include refid="bookInstanceJoins"/>
+        <where>
+            a.del_flag = '0' AND ba.type = '2'
             <if test="bookClassId != null and bookClassId != ''">
                 AND a.bookClassId = #{bookClassId}
             </if>

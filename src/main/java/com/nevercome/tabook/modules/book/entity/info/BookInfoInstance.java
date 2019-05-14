@@ -1,6 +1,7 @@
 package com.nevercome.tabook.modules.book.entity.info;
 
 import com.nevercome.tabook.common.persistence.DataEntity;
+import com.nevercome.tabook.modules.book.entity.add.BookInfoAdd;
 import lombok.Data;
 
 import java.util.List;
@@ -19,19 +20,19 @@ public class BookInfoInstance extends DataEntity<BookInfoInstance> {
     private String ownerId; // 所有者id
     private String holderId; // 当前持有者id
     private String status; // 书籍实体的状态 状态参数见BookConstant
-    private int totalBorrowed; // 书籍累计借阅
-    private int likeNum; // 书籍获赞数
-    private int newPercent; // 书籍新旧程度100%表示全新
     private List<String> tagNameList;
     private String tags;
 
     // 统计数据
+    private int totalBorrowed; // 书籍累计借阅
+    private int likeNum; // 书籍获赞数
 
     // 链接数据
     private String ownerName;
     private String ownerAvatar;
-    private String addTime;
-    private String ownerComment;
+
+    private BookInfoAdd bookInfoAdd;
+
 
     // 搜索参数
 
@@ -99,14 +100,6 @@ public class BookInfoInstance extends DataEntity<BookInfoInstance> {
         this.likeNum = likeNum;
     }
 
-    public int getNewPercent() {
-        return newPercent;
-    }
-
-    public void setNewPercent(int newPercent) {
-        this.newPercent = newPercent;
-    }
-
     public List<String> getTagNameList() {
         return tagNameList;
     }
@@ -139,19 +132,11 @@ public class BookInfoInstance extends DataEntity<BookInfoInstance> {
         this.ownerAvatar = ownerAvatar;
     }
 
-    public String getAddTime() {
-        return addTime;
+    public BookInfoAdd getBookInfoAdd() {
+        return bookInfoAdd;
     }
 
-    public void setAddTime(String addTime) {
-        this.addTime = addTime;
-    }
-
-    public String getOwnerComment() {
-        return ownerComment;
-    }
-
-    public void setOwnerComment(String ownerComment) {
-        this.ownerComment = ownerComment;
+    public void setBookInfoAdd(BookInfoAdd bookInfoAdd) {
+        this.bookInfoAdd = bookInfoAdd;
     }
 }

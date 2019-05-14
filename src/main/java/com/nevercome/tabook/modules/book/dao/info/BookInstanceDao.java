@@ -13,4 +13,6 @@ import java.util.List;
 @MyBatisDao
 public interface BookInstanceDao extends CrudDao<BookInfoInstance> {
     List<BookInfoInstance> findBorrowable(BookInfoInstance bookInfoInstance);
+
+    List<BookInfoInstance> findBuyAble(BookInfoInstance bookInfoInstance);
 }

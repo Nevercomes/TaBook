@@ -18,7 +18,11 @@
         a.owner_comment AS "ownerComment",
         a.type AS "type",
         a.price AS "price",
-        a.new_percent AS "newPercent"
+        a.new_percent AS "newPercent",
+        a.real_img_1 AS "realImg1",
+        a.real_img_2 AS "realImg2",
+        a.real_img_3 AS "realImg3",
+        a.student_id
     </sql>
 
     <sql id="bookInfoAddListColumns">
@@ -93,7 +97,10 @@
             type,
             price,
             new_percent,
-            student_id
+            student_id,
+            real_img_1,
+            real_img_2,
+            real_img_3
         ) VALUES (
             #{id},
             #{createBy.id},
@@ -112,7 +119,10 @@
             #{type},
             #{price},
             #{newPercent},
-            #{studentId}
+            #{studentId},
+            #{realImg1},
+            #{realImg2},
+            #{realImg3}
         )
     </insert>
 
@@ -132,7 +142,10 @@
         owner_comment = #{ownerComment},
         type = #{type},
         price = #{price},
-        new_percent = #{newPercent}
+        new_percent = #{newPercent},
+        real_img_1 = #{realImg1},
+        real_img_2 = #{realImg2},
+        real_img_3 = #{realImg3}
         WHERE id = #{id}
     </update>
 

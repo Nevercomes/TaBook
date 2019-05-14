@@ -20,4 +20,10 @@ public class BookInstanceService extends CrudService<BookInstanceDao, BookInfoIn
         page.setList(super.dao.findBorrowable(bookInfoInstance));
         return page;
     }
+
+    public Page<BookInfoInstance> findBuyAble(Page<BookInfoInstance> page, BookInfoInstance bookInfoInstance) {
+        bookInfoInstance.setPage(page);
+        page.setList(super.dao.findBuyAble(bookInfoInstance));
+        return page;
+    }
 }

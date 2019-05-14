@@ -91,9 +91,14 @@ public class BookBorrowController extends BaseController {
         return new ResponseEntity<>(new Result(page), HttpStatus.OK);
     }
 
-    @RequiresPermissions("book:borrow:view")
+    @RequiresPermissions("book:borrowable:view")
     @RequestMapping(value = "list/borrowable")
     public ResponseEntity listBorrowable(HttpServletRequest request, HttpServletResponse response, BookInfoInstance bookInfoInstance) {
+        String schoolId = UserUtils.getUser().getSchoolId();
+        if (schoolId == null) {
+            return new ResponseEntity<>(new Result("请先进行实名认证"), HttpStatus.OK);
+        }
+        bookInfoInstance.setSchoolId(schoolId);
         Page<BookInfoInstance> page = new Page<>(request, response);
         page = bookInstanceService.findBorrowable(page, bookInfoInstance);
         return new ResponseEntity<>(new Result(page), HttpStatus.OK);

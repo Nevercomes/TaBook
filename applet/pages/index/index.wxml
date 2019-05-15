@@ -17,12 +17,23 @@
     </view>
     <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
   </view>
+  <!--提示消息-->
+  <view class='notice'>
+    <image class='notice_icon' src='../../static/images/writeReview/notice.png'></image>
+    <swiper wx:if="{{noticeList}}" class="notice_swiper" vertical="true" autoplay="true" circular="true" interval="3000">
+    <block wx:for="{{noticeList}}"  wx:key="id">
+      <swiper-item>
+        <view class="notice_itemr">{{item}}</view>
+      </swiper-item>
+    </block>
+    </swiper>
+  </view>
 <!--轮播图片--> 
   <view class='swiper-container'>
     <swiper class='swiper-box' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' bindchange='swiperchange' indicator-dots='{{indicatorDots}}' circular='{{cricular}}'>
       <block wx:for="{{imgUrls}}"  wx:key="id">
         <swiper-item style='height:100%;position:relative'>
-          <image src='{{item}}' class="slide-image" mode='aspectFit' ></image>
+          <image src='{{item}}' class="slide-image" mode='aspectFit' bindtap='clickImg' ></image>
         </swiper-item>
       </block>
       </swiper>

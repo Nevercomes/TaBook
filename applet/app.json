@@ -28,7 +28,8 @@
     "pages/borrowedlist/borrowedlist",
     "pages/writeReview/writeReview",
     "pages/iHaveBook/iHaveBook",
-    "pages/borrow/borrow"
+    "pages/borrow/borrow",
+    "pages/buy/buy"
   ],
   "window": {
     "backgroundTextStyle": "light",

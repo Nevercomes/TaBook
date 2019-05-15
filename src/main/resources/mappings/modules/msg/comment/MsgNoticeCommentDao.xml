@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nevercome.tabook.modules.msg.dao.comment.MsgNoticeCommentDao">
+    <sql id="msgNoticeCommentColumns">
+        a.id AS "id",
+        a.create_by AS "createBy.id",
+        a.update_by AS "updateBy.id",
+        a.create_time AS "createTime",
+        a.update_time AS "updateTime",
+        a.del_flag AS "delFlag",
+        a.remarks AS "remarks",
+        a.user_id AS "userId"
+        a.comment_id AS "commentId"
+    </sql>
+
+    <sql id="msgNoticeCommentJoins">
+
+    </sql>
+
+    <select id="get" resultType="MsgNoticeComment">
+
+    </select>
+
+    <select id="findList" resultType="msgNoticeCommentColumns">
+
+    </select>
+
+    <insert id="insert">
+        INSERT INTO msg_notice_comment (
+            id,
+            create_by,
+            update_by,
+            create_time,
+            update_time,
+            del_flag,
+            remarks,
+            user_id,
+            comment_id
+        ) VALUES (
+            #{id},
+            #{createBy.id},
+            #{updateBy.id},
+            #{createTime},
+            #{updateTime},
+            #{delFlag},
+            #{remarks},
+            #{userId},
+            #{commentId}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE msg_notice_comment
+        SET
+            update_by   = #{updateBy.id},
+            update_time = #{updateTime},
+            del_flag    = #{delFlag},
+            remarks     = #{remarks},
+            WHERE id = #{id}
+    </update>
+
+    <update id="delete">
+        UPDATE msg_notice_comment
+        SET del_flag = 1
+        WHERE id = #{id}
+    </update>
+
+</mapper>

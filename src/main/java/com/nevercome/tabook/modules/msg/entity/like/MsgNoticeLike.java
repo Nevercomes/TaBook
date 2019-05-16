@@ -4,9 +4,6 @@ import com.nevercome.tabook.common.persistence.DataEntity;
 import com.nevercome.tabook.modules.book.entity.comment.BookCommentReply;
 import com.nevercome.tabook.modules.book.entity.comment.BookLongComment;
 import com.nevercome.tabook.modules.book.entity.comment.BookShortComment;
-import com.nevercome.tabook.modules.book.entity.info.BookInfo;
-import com.nevercome.tabook.modules.book.entity.user.BookStudent;
-import com.nevercome.tabook.modules.sys.entity.User;
 
 /**
  * @author: sun

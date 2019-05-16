@@ -97,6 +97,7 @@
         WHERE
         user_id = #{userId}
         AND type = #{type}
+        AND read_flag = '0'
     </update>
 
     <update id="updateRead" parameterType="java.lang.String">

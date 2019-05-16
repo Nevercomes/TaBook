@@ -16,7 +16,6 @@ public class BookLongComment extends DataEntity<BookLongComment> {
     private String title;
     private String content;
     private float score;
-    private int likeNum;
     private String schoolId;
     private String bookRootId;
 
@@ -24,6 +23,7 @@ public class BookLongComment extends DataEntity<BookLongComment> {
     // 若需求字段少且固定 可根据客户端显示需求单独设置 在dao层直接查询 而不在service层单独添加
     private BookInfo bookInfo;
     private BookStudent bookStudent;
+    private int likeNum;
 
     // search begin
     private String favoriteStudentId;

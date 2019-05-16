@@ -9,20 +9,50 @@
         a.update_time AS "updateTime",
         a.del_flag AS "delFlag",
         a.remarks AS "remarks",
-        a.user_id AS "userId"
-        a.comment_id AS "commentId"
+        a.user_id AS "userId",
+        a.reply_id AS "replyId",
+        u.name AS "creatorName",
+        u.avatar_url AS "creatorAvatar",
+        bcr.content AS "replyContent",
+        bcr.book_comment_id AS "commentId",
+        bcl.title AS "bookLongComment.title",
+        bcl.content AS "bookLongComment.content"
     </sql>
 
     <sql id="msgNoticeCommentJoins">
-
+        INNER JOIN sys_user u ON u.id = a.create_by
+        INNER JOIN book_comment_reply bcr ON bcr.id = a.reply_id
+        INNER JOIN book_comment_long bcl ON bcl.id = bcr.book_comment_id
     </sql>
 
     <select id="get" resultType="MsgNoticeComment">
-
+        SELECT
+        <include refid="msgNoticeCommentColumns"/>
+        FROM msg_notice_comment a
+        <include refid="msgNoticeCommentJoins "/>
+        WHERE a.del_flag = '0'
+        AND a.id = #{id}
     </select>
 
     <select id="findList" resultType="msgNoticeCommentColumns">
-
+        SELECT
+        <include refid="msgNoticeCommentColumns"/>
+        FROM msg_notice_comment a
+        <include refid="msgNoticeCommentJoins "/>
+        <where>
+            a.del_flag = '0'
+            <if test="userId != null and userId != ''">
+                AND a.user_id = #{userId}
+            </if>
+        </where>
+        <choose>
+            <when test="page != null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY #{page.orderBy}
+            </when>
+            <otherwise>
+                ORDER BY a.create_time DESC
+            </otherwise>
+        </choose>
     </select>
 
     <insert id="insert">
@@ -35,7 +65,7 @@
             del_flag,
             remarks,
             user_id,
-            comment_id
+            reply_id
         ) VALUES (
             #{id},
             #{createBy.id},
@@ -45,7 +75,7 @@
             #{delFlag},
             #{remarks},
             #{userId},
-            #{commentId}
+            #{replyId}
         )
     </insert>
 
@@ -56,7 +86,9 @@
             update_time = #{updateTime},
             del_flag    = #{delFlag},
             remarks     = #{remarks},
-            WHERE id = #{id}
+            user_id     = #{userId},
+            reply_id    = #{replyId}
+        WHERE id = #{id}
     </update>
 
     <update id="delete">

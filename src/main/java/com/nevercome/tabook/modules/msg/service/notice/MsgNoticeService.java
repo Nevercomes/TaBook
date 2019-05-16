@@ -11,4 +11,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class MsgNoticeService extends CrudService<MsgNoticeDao, MsgNotice> {
+
+    public void updateRead(MsgNotice msgNotice) {
+        super.dao.updateRead(msgNotice);
+    }
+
+    public void updateRead(String msgNoticeId) {
+        super.dao.updateRead(msgNoticeId);
+    }
+
 }

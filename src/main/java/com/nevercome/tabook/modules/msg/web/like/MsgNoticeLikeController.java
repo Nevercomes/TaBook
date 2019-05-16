@@ -1,5 +1,6 @@
 package com.nevercome.tabook.modules.msg.web.like;
 
+import com.nevercome.tabook.common.config.Global;
 import com.nevercome.tabook.common.persistence.Page;
 import com.nevercome.tabook.common.web.BaseController;
 import com.nevercome.tabook.common.web.Result;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,6 +40,14 @@ public class MsgNoticeLikeController extends BaseController {
         MsgNoticeLike msgNoticeLike = new MsgNoticeLike();
         msgNoticeLike.setUserId(UserUtils.getUser().getId());
         Page<MsgNoticeLike> page = msgNoticeLikeService.findPage(new Page<>(request, response), msgNoticeLike);
+
+        // 更新操作
+        MsgNotice msgNotice = new MsgNotice();
+        msgNotice.setUserId(UserUtils.getUser().getId());
+        msgNotice.setType(MsgConstant.MSG_NOTICE_TYPE_LIKE);
+        msgNotice.setReadFlag(Global.YES);
+        msgNotice.setReadTime(new Date());
+        msgNoticeService.updateRead(msgNotice);
         return new ResponseEntity<>(new Result(page), HttpStatus.OK);
     }
 

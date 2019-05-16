@@ -2,6 +2,8 @@ package com.nevercome.tabook.modules.msg.entity.notice;
 
 import com.nevercome.tabook.common.persistence.DataEntity;
 
+import java.util.Date;
+
 /**
  * @author: sun
  * @date: 2019/5/14
@@ -11,9 +13,10 @@ public class MsgNotice extends DataEntity<MsgNotice> {
     private static final long serialVersionUID = 1L;
 
     private String msgNoticeId;
+    private String type;
     private String userId;
     private String readFlag;
-    private String readTime;
+    private Date readTime;
 
     public String getMsgNoticeId() {
         return msgNoticeId;
@@ -31,6 +34,14 @@ public class MsgNotice extends DataEntity<MsgNotice> {
         this.userId = userId;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getReadFlag() {
         return readFlag;
     }
@@ -39,11 +50,11 @@ public class MsgNotice extends DataEntity<MsgNotice> {
         this.readFlag = readFlag;
     }
 
-    public String getReadTime() {
+    public Date getReadTime() {
         return readTime;
     }
 
-    public void setReadTime(String readTime) {
+    public void setReadTime(Date readTime) {
         this.readTime = readTime;
     }
 }

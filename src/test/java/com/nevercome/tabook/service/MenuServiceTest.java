@@ -57,8 +57,8 @@ public class MenuServiceTest extends BaseTest {
     @Transactional
     @Rollback(value = false)
     public void saveRoleMenu() {
-        String[] names = {"书籍购买模块查看权限", "书籍购买模块修改权限"};
-        String[] permissions = {"book:buy:view", "book:buy:edit"};
+        String[] names = {"书籍购买模块可购买查看权限", "书籍借阅模块可借阅查看权限"};
+        String[] permissions = {"book:buy_able:view", "book:borrowable:edit"};
         for (int i = 0; i < names.length; i++) {
             menu.setId(IdGen.uuid());
             menu.setName(names[i]);

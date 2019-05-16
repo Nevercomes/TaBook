@@ -1,62 +1,84 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="">
-    <sql id="">
+<mapper namespace="com.nevercome.tabook.modules.msg.dao.sys.MsgNoticeSysDao">
+    <sql id="msgNoticeSysColumns">
         a.id AS "id",
-        a.create_by AS "createBy.id",
-        a.update_by AS "updateBy.id",
         a.create_time AS "createTime",
-        a.update_time AS "updateTime",
         a.del_flag AS "delFlag",
         a.remarks AS "remarks",
+        a.type AS "type",
+        a.content AS "content",
+        a.url AS "url",
+        a.user_id AS "userId"
     </sql>
 
-    <sql id="">
+    <sql id="msgNoticeSysJoins">
 
     </sql>
 
-    <select id="get" resultType="">
+    <select id="get" resultType="MsgNoticeSys">
 
     </select>
 
     <select id="findList" resultType="">
-
+        SELECT
+        <include refid="msgNoticeSysColumns"/>
+        FROM msg_notice_sys a
+        <include refid="msgNoticeSysJoins"/>
+        <where>
+            a.del_flag = '0'
+            <if test="userId != null and userId != ''">
+                AND a.user_id = #{userId}
+            </if>
+        </where>
+        <choose>
+            <when test="page != null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY #{page.orderBy}
+            </when>
+            <otherwise>
+                ORDER BY a.create_time ASC
+            </otherwise>
+        </choose>
     </select>
 
     <insert id="insert">
-        INSERT INTO (
-        id,
-        create_by,
-        update_by,
-        create_time,
-        update_time,
-        del_flag,
-        remarks,
+        INSERT INTO msg_sys_notice (
+            id,
+            create_time,
+            del_flag,
+            remarks,
+            type,
+            content,
+            url,
+            user_id
         ) VALUES (
-        #{id},
-        #{createBy.id},
-        #{updateBy.id},
-        #{createTime},
-        #{updateTime},
-        #{delFlag},
-        #{remarks},
+            #{id},
+            #{createTime},
+            #{delFlag},
+            #{remarks},
+            #{type},
+            #{content},
+            #{url},
+            #{userId}
         )
     </insert>
 
     <update id="update">
-        UPDATE
+        UPDATE msg_sys_notice
         SET
-        update_by = #{updateBy.id},
-        update_time = #{updateTime},
-        del_flag = #{delFlag},
-        remarks = #{remarks},
+            del_flag = #{delFlag},
+            remarks  = #{remarks},
+            type     = #{type},
+            content  = #{content},
+            url      = #{url},
+            user_id  = #{userId}
         WHERE id = #{id}
     </update>
 
     <update id="delete">
-        UPDATE
+        UPDATE msg_sys_notice
         SET del_flag = 1
-        WHERE id=#{id}
+        WHERE id = #{id}
     </update>
 
 </mapper>

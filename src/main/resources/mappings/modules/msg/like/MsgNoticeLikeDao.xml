@@ -9,13 +9,35 @@
         a.update_time AS "updateTime",
         a.del_flag AS "delFlag",
         a.remarks AS "remarks",
-        a.user_id AS "userId",
-        a.type AS "type",
-        a.refer_id AS "referId"
+        a.like_record_id AS "likeRecordId",
+        a.user_id AS "userId"
+    </sql>
+
+    <sql id="msgNoticeLikeJoinColumns">
+        CASE WHEN a.type = #{BOOK_LIKE_SHORT_COMMENT} THEN
+        bsc.content AS "bookShortComment.content"
+        WHEN a.type = #{BOOK_LIKE_LONG_COMMENT} THEN
+        blc.content AS "bookLongComment.content",
+        blc.book_root_id AS "bookLongComment.bookRootId"
+        WHEN a.type = #{BOOK_LIKE_COMMENT_REPLY} THEN
+        bcr.content AS "bookCommentReply.content"
+        WHEN a.type = #{BOOK_LIKE_BOOK_INSTANCE} THEN
+        ( SELECT img_url FROM book_info_class WHERE id=bIns.book_class_id) AS "bookImg",
+        ( SELECT b.name FROM book_info_root b, book_info_class c WHERE c.id=bIns.book_class_id AND b.id=c.book_root_id) AS "bookName",
+        ( SELECT owner_comment FROM book_info_add WHERE id=bIns.book_add_id) AS "ownerComment"
+        END
+        u.id AS "likeCreatorId"
+        u.name AS "likeCreatorNname",
+        u.avatarUrl AS "likeCreatorAavatar"
     </sql>
 
     <sql id="msgNoticeLikeJoins">
-
+        LEFT JOIN book_like_record blr ON a.like_record_id = blr.id
+        LEFT JOIN sys_user u ON u.id=blr.create_by
+        INNER JOIN book_short_comment bsc ON blr.refer_id=bsc.id
+        INNER JOIN book_long_comment blc ON blr.refer_id=blc.id
+        INNER JOIN book_comment_reply bcr ON blr.refer_id=bcr.id
+        INNER JOIN book_info_instance bIns ON blr.refer_id=bIns
     </sql>
 
     <select id="get" resultType="MsgNoticeLike">
@@ -23,7 +45,25 @@
     </select>
 
     <select id="findList" resultType="MsgNoticeLike">
-
+        SELECT
+        <include refid="msgNoticeLikeColumns"/>,
+        <include refid="msgNoticeLikeJoinColumns"/>
+        FROM msg_notice_like a
+        <include refid="msgNoticeLikeJoins"/>
+        <where>
+            a.del_flag = '0'
+            <if test="userId != null and userId != ''">
+                AND a.user_id = #{userId}
+            </if>
+        </where>
+        <choose>
+            <when test="page != null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY #{page.orderBy}
+            </when>
+            <otherwise>
+                ORDER BY a.create_time DESC
+            </otherwise>
+        </choose>
     </select>
 
     <insert id="insert">
@@ -35,9 +75,8 @@
             update_time,
             del_flag,
             remarks,
-            user_id,
-            type,
-            refer_id
+            like_record_id,
+            user_id
         ) VALUES (
             #{id},
             #{createBy.id},
@@ -46,22 +85,20 @@
             #{updateTime},
             #{delFlag},
             #{remarks},
-            #{userId},
-            #{type},
-            #{referId}
+            #{likeRecordId}
+            #{userId}
         )
     </insert>
 
     <update id="update">
         UPDATE msg_notice_like
         SET
-            update_by   = #{updateBy.id},
-            update_time = #{updateTime},
-            del_flag    = #{delFlag},
-            remarks     = #{remarks},
-            user_id     = #{userId},
-            type        = #{type},
-            refer_id    = #{referId}
+            update_by      = #{updateBy.id},
+            update_time    = #{updateTime},
+            del_flag       = #{delFlag},
+            remarks        = #{remarks},
+            user_id        = #{userId},
+            like_record_id = #{likeRecordId}
         WHERE id = #{id}
     </update>
 

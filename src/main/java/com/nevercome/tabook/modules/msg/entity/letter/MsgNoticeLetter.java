@@ -13,6 +13,7 @@ public class MsgNoticeLetter  extends DataEntity<MsgNoticeLetter> {
     private String receiveUserId;
     private String title;
     private String content;
+    private String avatarUrl;
 
     public String getReceiveUserId() {
         return receiveUserId;
@@ -36,5 +37,14 @@ public class MsgNoticeLetter  extends DataEntity<MsgNoticeLetter> {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 }

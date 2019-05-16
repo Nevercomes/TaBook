@@ -1,62 +1,117 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="">
-    <sql id="">
+<mapper namespace="com.nevercome.tabook.modules.msg.dao.notice.MsgNoticeDao">
+    <sql id="msgNoticeColumns">
         a.id AS "id",
-        a.create_by AS "createBy.id",
-        a.update_by AS "updateBy.id",
-        a.create_time AS "createTime",
-        a.update_time AS "updateTime",
         a.del_flag AS "delFlag",
-        a.remarks AS "remarks",
+        a.create_time AS createTime,
+        msg_notice_id AS "msgNoticeId",
+        user_id AS "userId",
+        read_flag AS "readFlag",
+        read_time AS "readTime",
+        type AS "type"
     </sql>
 
-    <sql id="">
+    <sql id="msgNoticeJoins">
 
     </sql>
 
-    <select id="get" resultType="">
+    <select id="get" resultType="MsgNotice">
 
     </select>
 
-    <select id="findList" resultType="">
-
+    <select id="findList" resultType="MsgNotice">
+        SELECT
+        <include refid="msgNoticeColumns"/>
+        FROM msg_notice a
+        <include refid="msgNoticeJoins"/>
+        <where>
+            a.del_flag = '0'
+            <if test="msgNoticeId != null and msgNoticeId != ''">
+                AND a.msg_notice_id = #{msgNoticeId}
+            </if>
+            <if test="userId != null and userId != ''">
+                AND a.user_id = #{userId}
+            </if>
+            <if test="type != null and type != ''">
+                AND a.type = #{type}
+            </if>
+        </where>
+        <choose>
+            <when test="page != null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY #{pgae.orderBy}
+            </when>
+            <otherwise>
+                ORDER BY a.create_time DESC
+            </otherwise>
+        </choose>
     </select>
 
     <insert id="insert">
-        INSERT INTO (
-        id,
-        create_by,
-        update_by,
-        create_time,
-        update_time,
-        del_flag,
-        remarks,
+        INSERT INTO msg_notice (
+            id,
+            del_flag,
+            create_time,
+            msg_notice_id,
+            user_id,
+            read_flag,
+            read_time,
+            type
         ) VALUES (
-        #{id},
-        #{createBy.id},
-        #{updateBy.id},
-        #{createTime},
-        #{updateTime},
-        #{delFlag},
-        #{remarks},
+            #{id},
+            #{delFlag},
+            #{createTime},
+            #{msgNoticeId}
+            #{userId},
+            #{readFlag},
+            #{readTime},
+            #{type}
         )
     </insert>
 
     <update id="update">
-        UPDATE
+        UPDATE msg_notice
         SET
-        update_by = #{updateBy.id},
-        update_time = #{updateTime},
-        del_flag = #{delFlag},
-        remarks = #{remarks},
+            del_flag      = #{delFlag},
+            create_time   = #{createTime},
+            msg_notice_id = #{msgNoticeId},
+            user_id       = #{userId},
+            read_flag     = #{readFlag},
+            read_time     = #{readTime},
+            type          = #{type}
         WHERE id = #{id}
     </update>
 
+    <update id="updateRead">
+        <!--<foreach collection="list" item="item" separator=";">
+            update msg_notice
+            SET
+            read_flag = #{item.readFlag},
+            read_time = #{item.readTime}
+            where id = ${item.id}
+        </foreach>-->
+        UPDATE msg_notice
+        SET
+        read_flag = #{readFlag},
+        read_time = #{readTime}
+        WHERE
+        user_id = #{userId}
+        AND type = #{type}
+    </update>
+
+    <update id="updateRead" parameterType="java.lang.String">
+        UPDATE msg_notice
+        SET
+            read_flag = '1',
+            read_time = now()
+        WHERE
+            msg_notice_id = #{msgNoticeId}
+    </update>
+
     <update id="delete">
-        UPDATE
+        UPDATE msg_notice
         SET del_flag = 1
-        WHERE id=#{id}
+        WHERE id = #{id}
     </update>
 
 </mapper>

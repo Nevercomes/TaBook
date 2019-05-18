@@ -1,6 +1,6 @@
 
 <view class="listsProcessing">
-  <block wx:for="{{handlings}}" wx:key="{{index}}" wx:for-item="{{item}}">
+  <block wx:for="{{myhandlings}}" wx:key="{{index}}" wx:for-item="{{item}}">
     <view class="handlingInfo">
       <view class="desc">
       <image src="{{userInfo.avatarUrl}}" mode="cover"></image>

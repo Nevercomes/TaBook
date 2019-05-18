@@ -1,18 +1,18 @@
 
 <view class="listsProcessing">
-  <block wx:for="{{handlings}}" wx:key="{{index}}" wx:for-item="{{item}}">
+  <block wx:for="{{handlings}}" wx:key="{{index}}" >
     <view class="handlingInfo">
       <view class="desc">
-        <image src="../../../static/images/me/avatar.png"></image>
+        <image src="{{avatarUrl}}" ></image>
       </view>
       <view class="desc2" >
         <view class="desc3">
-        <view class="nickname"> {{userInfo.nickname}}</view>
-        <view class="school">{{school}}</view>
+        <view class="nickname"> {{item.nickName}}</view>
+        <view class="school">{{item.school}}</view>
         </view>
         <view class="desc3">
-        <view class="name">{{name}}</view>
-        <view class="operation" bindtap="handlethis" ><button hover-class='hover'data-index='{{index}}' disabled='{{disabled}}'>{{operationOther}}</button></view>
+        <view class="name">{{item.name}}</view>
+        <view class="operation" bindtap="handlethis" ><button hover-class='hover'data-index='{{index}}' disabled='{{disabled}}'>{{item.operationOther}}</button></view>
         </view>
       </view>
     </view>

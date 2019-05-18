@@ -1,12 +1,26 @@
 // pages/me/applicationCentre/applicationCentre.js
+var handlings = [ {
+  "avatarUrl":"../../../static/images/me/avatar.png",
+   "nickName": "Daisy",
+    "school": "中南大学",
+    "name": "平凡的世界",
+    "operationOther": "待处理",
+}, {
+    "avatarUrl": "../../../static/images/me/avatar.png",
+    "nickName": "Daisy",
+    "school": "中南大学",
+    "name": "平凡的世界",
+    "operationOther": "待处理",
+  }]
 const app = getApp()
 Page({
   data: {
+    handlings:handlings,
     processing:0,
     pending:0,
     myTotalApplication:0,
     currentTab:0,
-    handlings:['a','b','c','d','e','d','d','d'],
+    myhandlings:['a','b','c','d','e','d','d','d'],
     school:"中南大学",
     name:"平凡的世界",
     operationOther:"待处理",
@@ -28,6 +42,20 @@ Page({
         userInfo:app.globalData.userInfo
       })
     }
+    wx.request({
+      url: '',
+      header:header,
+      data:{
+        handlings:[],
+        myhandlings:[]
+      },
+      success:res=>{
+        that.setData({
+          handlethis:res.data.handlethis,
+          myhandlings:res.data.myhandlings
+        })
+      }
+    })
   },
 
   clickTab:function(e){

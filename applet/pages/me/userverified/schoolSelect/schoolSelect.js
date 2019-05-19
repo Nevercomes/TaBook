@@ -15,10 +15,23 @@ Page({
 
   },
   onLoad: function (options) {
-    if (this.data.schoolResults == null) {
-      this.setData({
+    var that = this;
+    wx.request({
+      url: '',
+      header:header,
+      data:{
+        schools:[]
+      },
+      success:res=>{
+        that.setData({
+          schools:res.data.schools
+        })
+      }
+    })
+    if (that.data.schoolResults == null) {
+      that.setData({
         schoolType: options.schoolType,
-        schoolResults: this.data.schoos
+        schoolResults: that.data.schoos
       })
     }
 

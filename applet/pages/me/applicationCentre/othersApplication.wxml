@@ -3,7 +3,7 @@
   <block wx:for="{{handlings}}" wx:key="{{index}}" >
     <view class="handlingInfo">
       <view class="desc">
-        <image src="{{avatarUrl}}" ></image>
+        <image src="{{item.avatarUrl}}" ></image>
       </view>
       <view class="desc2" >
         <view class="desc3">

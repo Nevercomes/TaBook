@@ -31,6 +31,9 @@ Page({
       success: function(res) {
         console.log("message已提交")
         that.setData({})
+      },
+      fail:function(){
+        console.log("message未成功提交")
       }
     })
 

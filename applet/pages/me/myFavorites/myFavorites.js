@@ -71,11 +71,10 @@ Page({
     wx.request({
       url: '',
       header:header,
-      method:"POST",
       data:{
         books:[]
       },
-      success(res){
+      success:res=>{
         console.log(res.detail.value)
         var books = res.data.books;
         for(var i = 0;i<books.length;i++){

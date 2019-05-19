@@ -24,13 +24,14 @@ Page({
     inputAuthorVal: "",
     inputPressVal: "",
     inputScoreVal: "",
-
+    score:"",
+    operation:"",
     imgUrlsarr: [],
     operations: [{
-      name: 'sellBook',
+      name: '卖书',
       value: "卖书"
     }, {
-      name: 'borrowBook',
+      name: '借书',
       value: '借书',
       checked: 'true'
     }],
@@ -52,7 +53,8 @@ Page({
       inputAuthorVal: "",
       inputPressVal: "",
       inputMsgVal:"",
-      score:""
+      score:"",
+      getScoreVal:""
     })
   },
   inputTyping: function(e) {
@@ -83,7 +85,6 @@ Page({
       sourceType: ['album', 'camera'],
       success: function(res) {
         console.log(res.tempFilePaths);
-
         that.setData({
           imgUrlsarr: that.data.imgUrlsarr.concat(res.tempFilePaths)
         })
@@ -92,7 +93,7 @@ Page({
   },
   inputBookName: function(e) {
     this.setData({
-      inputBookName: e.detail.value
+      inputNameVal: e.detail.value
     })
   },
   inputAuthor: function(e) {
@@ -133,15 +134,38 @@ Page({
     }
     that.setData({
       scoreimgUrls: stars,
-      score:2*(index+1)
+      getScoreVal:2*(index+1)
     })
   },
   submitBookInfo: function(e) {
     var that = this;
     console.log(e.detail.value);
+    console.log(that.data.score)
+    console.log(that.data.operation)
+    console.log(that.data.imgUrlsarr)
+    wx.request({
+      url: '',
+      header: header,
+      method: "POST",
+      data: {
+        name: e.detail.value.inputNameVal,
+        author: e.detail.value.inputAuthorVal,
+        press: e.detail.value.inputPressVal,
+        msg: e.detail.value.inputMsgVal,
+        score: that.data.score,
+        operation:that.data.operation
+      },
+      success: function () {
+        console.log("发生了提交事件")
+      }
+    })
   },
-  sumbitBtn: function(e) {
-    
+  radioChange:function(e){
+var that = this;
+that.setData({
+  operation:e.detail.value,
+  getOperationVal:e.detail.value
+})
   },
   onReady: function() {
 

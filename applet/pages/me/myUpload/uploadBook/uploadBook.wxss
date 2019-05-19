@@ -90,3 +90,8 @@ page {
   display: flex;
   flex-direction: row;
 }
+.scorebox{
+  //display: flex;
+  
+  
+}

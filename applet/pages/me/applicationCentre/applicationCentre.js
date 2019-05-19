@@ -50,9 +50,31 @@ Page({
         myhandlings:[]
       },
       success:res=>{
+        var handlings = res.data.handlings;
+        var myhandlings = res.data.myhandlings;
+        for(var i = 0;i<handlings.length;i++){
+          var subject =handlings[i];
+          var handing = new Object;
+          handing.avatarUrl = subject.avatarUrl;
+          handing.nickName = subject.nickName;
+          handing.name = subject.name;
+          handing.school = subject.school;
+          handing.operationOther = subject.operationOther
+          handlings.push(handing);
+        }
+        for(var i = 0;i<myhandlings.length;i++){
+          var subject = myhandlings[i];
+          var myhanding = new Object;
+          myhanding.avatarUrl = subject.avatarUrl;
+          myhanding.nickName = subject.nickName;
+          myhanding.name = subject.name;
+          myhanding.school = subject.school;
+          myhanding.operationMy = subject.operationMy;
+          myhanding.push(handing);
+        }
         that.setData({
-          handlethis:res.data.handlethis,
-          myhandlings:res.data.myhandlings
+          handlings:handlings,
+          myhandlings:myhandlings
         })
       }
     })

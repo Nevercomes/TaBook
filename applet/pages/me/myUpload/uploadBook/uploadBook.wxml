@@ -31,22 +31,23 @@
       <view class="detail">
         <view class="item">
           <label>书名</label>
-          <input type="text" value="{{inputBookNameVal}}" bindinput="inputBookName"></input>
+          <input type="text"  name ="name" value="{{inputNameVal}}" bindinput="inputBookName"></input>
         </view>
         <view class="item">
           <label>作者</label>
-          <input type="text" value="{{inputAuthoVal}}" bindinput="inputAuthor"></input>
+          <input type="text" name = "author" value="{{inputAuthoVal}}" bindinput="inputAuthor"></input>
         </view>
         <view class="item">
           <label>出版社</label>
-          <input type="text" value="{{inputPressVal}}" bindinput="inputPress"></input>
+          <input type="text" name = "press" value="{{inputPressVal}}" bindinput="inputPress"></input>
         </view>
         <view class="item">
         <label>留言</label>
-        <input type="text" value="{{inputMgsVal}}" bindtap="inputMsg"></input>
+        <input type="text" name = "msg" value="{{inputMgsVal}}" bindtap="inputMsg"></input>
         </view>
         <view class="item-score">
-          <label class="score-title">评分</label>
+          <label class="score-title" name = "score">评分</label>
+          <input name = "score" value="{{getScoreVal}}" hidden="true" class='scorebox' disabled='true'></input>
           <view class="score-box" >  
           <label class="score" wx:for="{{scoreimgUrls}}"  wx:key="{{index}}"  >
           <image src="{{item.imgUrl}}" style="width:40rpx; height:40rpx;" data-index='{{index}}' bindtap="bindgiveScore"></image>
@@ -54,16 +55,19 @@
           </view>
         </view>
         <view class="operation">
-           <label class='label'>操作</label>
-          <radio-group class="radio-group" bindchange="radioChange">
+           <label class='label' name = "operaiton">操作</label>
+           <input name = "operation" value="{{getOperationVal}}" hidden="true" class='scorebox' disabled='true'></input>
+            <radio-group class="radio-group" bindchange="radioChange">
             <label class="radio" wx:for="{{operations}}">
               <radio value="{{item.name}}" checked="{{item.checked}}" /> {{item.value}}
             </label>
           </radio-group>
+
+         
         </view>
       </view>
       <view class="submit">
-        <button form-type="submit" bindtap="submitBtn" style="margin-bottom:20rpx">确定</button>
+        <button form-type="submit"  style="margin-bottom:20rpx">确定</button>
         <button form-type="reset">重置</button>
       </view>
     </form>

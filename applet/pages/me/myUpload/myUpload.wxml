@@ -7,7 +7,7 @@
     <block wx:for="books" wx:for-index="{{index}}" wx:key="{{index}}">
       <view class='bookInfo'>
         <view class="desc">图书题目：{{item.name}}</view>
-        <view class="desc">作者{{item.name}}</view>
+        <view class="desc">作者{{item.author}}</view>
         <view class="desc">出版社：{{item.press}}</view>
         <view class="desc">价格：{{item.price}}</view>
         <view class="desc">上传时间：{{item.upLoadTime}}</view>
@@ -23,7 +23,6 @@
             <view class="select_one" data-operation="上架借书" bindtap="mySelect"data-index="{{index}}">上架借书</view>
             <view class="select_one" data-operation="上架买书" bindtap="mySelect"data-index="{{index}}">上架买书</view>
             <view class="select_one" data-operation="下架" bindtap="mySelect"data-index="{{index}}">下架</view>
-
           </view>
         </view>
         <view class="change">

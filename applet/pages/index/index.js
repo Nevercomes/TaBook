@@ -154,9 +154,24 @@ Page({
       tab3Hidden: false,
     })
   },
-
+  loadBookInfo:function(e){
+    var that = this;
+    wx.request({
+      url: 'http://localhost:8080/tabook/a/login',
+      header: header,
+      method:"POST",
+      date:{
+        //数据？？？？？？？？？？？
+        books:[]
+      },
+      success(res){
+        console.log(res.data)
+      }  
+    })
+  },
 
   onLoad: function () {
+    loadBookInfo();
     // console.log(this.data.score);
     if(this.data.score < 1) {
       this.setData({

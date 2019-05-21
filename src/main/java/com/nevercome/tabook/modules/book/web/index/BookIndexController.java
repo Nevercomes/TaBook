@@ -1,8 +1,12 @@
 package com.nevercome.tabook.modules.book.web.index;
 
+import com.nevercome.tabook.common.persistence.Page;
 import com.nevercome.tabook.common.web.BaseController;
 import com.nevercome.tabook.common.web.Result;
+import com.nevercome.tabook.modules.book.entity.comment.BookLongComment;
+import com.nevercome.tabook.modules.book.entity.index.BookIndexComment;
 import com.nevercome.tabook.modules.book.entity.index.BookIndexHead;
+import com.nevercome.tabook.modules.book.entity.info.BookInfo;
 import com.nevercome.tabook.modules.book.service.index.BookIndexBorrowService;
 import com.nevercome.tabook.modules.book.service.index.BookIndexBuyService;
 import com.nevercome.tabook.modules.book.service.index.BookIndexCommentService;
@@ -14,6 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -42,9 +48,9 @@ public class BookIndexController extends BaseController {
 
     @RequiresPermissions("user")
     @RequestMapping(value = "comment/list")
-    public ResponseEntity listComment() {
-
-        return new ResponseEntity<>(new Result(), HttpStatus.OK);
+    public ResponseEntity listComment(HttpServletRequest request, HttpServletResponse response, BookIndexComment bookIndexComment) {
+        Page<BookIndexComment> page = bookIndexCommentService.findPage(new Page<>(request, response), bookIndexComment);
+        return new ResponseEntity<>(new Result(page), HttpStatus.OK);
     }
 
     @RequiresPermissions("user")

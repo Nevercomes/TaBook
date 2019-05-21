@@ -11,4 +11,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SpreadRequestRecordService extends CrudService<SpreadRequestRecordDao, SpreadRequestRecord> {
+
+    public void updateStatus(SpreadRequestRecord spreadRequestRecord) {
+        super.dao.updateStatus(spreadRequestRecord);
+    }
+
 }

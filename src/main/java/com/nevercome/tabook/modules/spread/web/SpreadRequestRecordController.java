@@ -22,9 +22,9 @@ public class SpreadRequestRecordController extends BaseController {
     @Autowired
     private SpreadRequestRecordService spreadRequestRecordService;
 
-    @RequestMapping(value = "save")
 //    @RequiresPermissions("spread:request:edit")
-    private ResponseEntity save(SpreadRequestRecord spreadRequestRecord) {
+    @RequestMapping(value = "save")
+    public ResponseEntity save(SpreadRequestRecord spreadRequestRecord) {
         spreadRequestRecord.setOrgId(UserUtils.getUser().getStudentId());
         spreadRequestRecordService.save(spreadRequestRecord);
         return new ResponseEntity<>(new Result(), HttpStatus.OK);

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nevercome.tabook.modules.spread.dao.SpreadRequestRecordDao">
+    <sql id="spreadRequestRecordColumns">
+        a.id AS "id",
+        a.create_by AS "createBy.id",
+        a.update_by AS "updateBy.id",
+        a.create_time AS "createTime",
+        a.update_time AS "updateTime",
+        a.del_flag AS "delFlag",
+        a.remarks AS "remarks",
+        a.org_id AS "orgId",
+        a.content AS "content",
+        a.spread_url,
+        a.spread_img,
+        a.start_time,
+        a.expire_time,
+        a.status
+    </sql>
+
+    <sql id="spreadRequestRecordJoins">
+
+    </sql>
+
+    <select id="get" resultType="SpreadRequestRecord">
+
+    </select>
+
+    <select id="findList" resultType="SpreadRequestRecord">
+
+    </select>
+
+    <insert id="insert">
+        INSERT INTO spread_request_record (
+            id,
+            create_by,
+            update_by,
+            create_time,
+            update_time,
+            del_flag,
+            remarks,
+            org_id,
+            title,
+            content,
+            spread_img,
+            spread_url,
+            start_time,
+            expire_time,
+            `status`
+        ) VALUES (
+            #{id},
+            #{createBy.id},
+            #{updateBy.id},
+            #{createTime},
+            #{updateTime},
+            #{delFlag},
+            #{remarks},
+            #{orgId},
+            #{title},
+            #{content},
+            #{spreadImg},
+            #{spreadUrl},
+            #{startTime},
+            #{expireTime},
+            #{status}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE spread_request_record
+        SET
+            update_by   = #{updateBy.id},
+            update_time = #{updateTime},
+            del_flag    = #{delFlag},
+            remarks     = #{remarks},
+            title       = #{title},
+            content     = #{content},
+            spread_img  = #{spreadImg},
+            spread_url  = #{spreadUrl},
+            start_time  = #{startTime},
+            expire_time = #{expireTime},
+            `status`    = #{status}
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateStatus">
+        UPDATE spread_request_record
+        SET
+            update_by   = #{updateBy.id},
+            update_time = #{updateTime},
+            remarks     = #{remarks},
+            `status`    = #{status}
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete">
+        UPDATE spread_request_record
+        SET del_flag = 1
+        WHERE id = #{id}
+    </update>
+
+</mapper>

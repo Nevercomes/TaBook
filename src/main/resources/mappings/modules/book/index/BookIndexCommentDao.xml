@@ -3,10 +3,10 @@
 <mapper namespace="com.nevercome.tabook.modules.book.dao.index.BookIndexCommentDao">
 
     <sql id="commentColumns">
-        a.id AS "bookCommentId",
-        a.title,
-        a.content_digest,
-        a.cover
+        c.id AS "bookCommentId",
+        c.title,
+        c.content_digest,
+        c.cover
     </sql>
 
     <sql id="studentColumns">
@@ -19,13 +19,14 @@
     <sql id="statisticsColumns">
         (SELECT COUNT(1)
          FROM book_like_record t
-         WHERE t.refer_id = a.id AND t.del_flag = '0') AS "likeNum",
-        ( SELECT COUNT(1) FROM book_comment_reply t WHERE t.book_comment_id = a.id AND t.del_flag = '0') AS "replyNum"
+         WHERE t.refer_id = c.id AND t.del_flag = '0') AS "likeNum",
+        (SELECT COUNT(1) FROM book_comment_reply t WHERE t.book_comment_id = c.id AND t.del_flag = '0') AS "replyNum"
     </sql>
 
     <sql id="bookIndexCommentJoins">
-        INNER JOIN book_user_info stu ON stu.id = a.student_id
-        INNER JOIN sys_user u ON u.id = stu.user_id
+        INNER JOIN book_comment_long c ON c.id = a.book_comment_id
+        INNER JOIN sys_user u ON u.id = a.user_id
+        INNER JOIN book_user_info stu ON stu.id = c.student_id
     </sql>
 
     <select id="findList" resultType="BookIndexComment">
@@ -33,10 +34,13 @@
         <include refid="commentColumns"/>,
         <include refid="studentColumns"/>,
         <include refid="statisticsColumns"/>
-        FROM book_comment_long a
+        FROM queue_book_comment a
         <include refid="bookIndexCommentJoins"/>
         <where>
             a.del_flag = '0'
+            AND a.status = '1'
+            AND a.expire_time &lt; now()
+            AND a.user_id = #{currentUser.id}
         </where>
         <choose>
             <when test="page != null and page.orderBy != null and page.orderBy != ''">

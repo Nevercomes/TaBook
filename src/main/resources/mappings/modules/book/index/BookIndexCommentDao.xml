@@ -11,7 +11,7 @@
 
     <sql id="studentColumns">
         u.name AS "authorName",
-        u.avatarUrl AS "authorAvatar",
+        u.avatar_url AS "authorAvatar",
         stu.id AS "studentId",
         stu.school_name AS "schoolName"
     </sql>
@@ -19,13 +19,13 @@
     <sql id="statisticsColumns">
         (SELECT COUNT(1)
          FROM book_like_record t
-         WHERE t.refre_id = a.id AND t.del_flag = '0') AS "likeNum",
+         WHERE t.refer_id = a.id AND t.del_flag = '0') AS "likeNum",
         ( SELECT COUNT(1) FROM book_comment_reply t WHERE t.book_comment_id = a.id AND t.del_flag = '0') AS "replyNum"
     </sql>
 
     <sql id="bookIndexCommentJoins">
         INNER JOIN book_user_info stu ON stu.id = a.student_id
-        INNER JOIN sys_user ON u.id = stu.user_id
+        INNER JOIN sys_user u ON u.id = stu.user_id
     </sql>
 
     <select id="findList" resultType="BookIndexComment">

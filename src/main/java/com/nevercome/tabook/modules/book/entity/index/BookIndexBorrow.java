@@ -13,8 +13,9 @@ import java.util.Date;
  * 首页借书推荐的实体类
  * @author sun
  */
-@Data
 public class BookIndexBorrow extends DataEntity<BookIndexBorrow> {
+
+    private static final long serialVersionUID = 1L;
 
     // 持久化数据
     private String bookInstanceId;
@@ -26,4 +27,52 @@ public class BookIndexBorrow extends DataEntity<BookIndexBorrow> {
     // 若需求字段少且固定 可根据客户端显示需求单独设置 在dao层直接查询 而不在service层单独添加
     private BookInfo bookInfo;
     private BookStudent bookStudent;
+
+    public String getBookInstanceId() {
+        return bookInstanceId;
+    }
+
+    public void setBookInstanceId(String bookInstanceId) {
+        this.bookInstanceId = bookInstanceId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getExpiredTime() {
+        return expiredTime;
+    }
+
+    public void setExpiredTime(Date expiredTime) {
+        this.expiredTime = expiredTime;
+    }
+
+    public BigDecimal getSort() {
+        return sort;
+    }
+
+    public void setSort(BigDecimal sort) {
+        this.sort = sort;
+    }
+
+    public BookInfo getBookInfo() {
+        return bookInfo;
+    }
+
+    public void setBookInfo(BookInfo bookInfo) {
+        this.bookInfo = bookInfo;
+    }
+
+    public BookStudent getBookStudent() {
+        return bookStudent;
+    }
+
+    public void setBookStudent(BookStudent bookStudent) {
+        this.bookStudent = bookStudent;
+    }
 }

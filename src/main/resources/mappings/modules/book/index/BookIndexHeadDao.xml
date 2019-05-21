@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nevercome.tabook.modules.book.dao.index.BookIndexHeadDao">
+    <sql id="bookIndexHeadColumns">
+        a.id AS "id",
+        a.create_by AS "createBy.id",
+        a.update_by AS "updateBy.id",
+        a.create_time AS "createTime",
+        a.update_time AS "updateTime",
+        a.del_flag AS "delFlag",
+        a.remarks AS "remarks",
+        a.type AS "type",
+        a.book_class_id AS "bookClassId",
+        a.book_comment_id AS "bookCommentId",
+        a.spread_url AS "spreadUrl",
+        a.status AS "status",
+        a.start_time AS "startTime",
+        a.expire_time AS "expireTime",
+        a.img_url AS "img_url",
+        a.sort AS "sort"
+    </sql>
+
+    <sql id="bookIndexHeadJoins">
+
+    </sql>
+
+    <select id="get" resultType="BookIndexHead">
+
+    </select>
+
+    <select id="findList" resultType="BookIndexHead">
+        SELECT
+        <include refid="bookIndexHeadColumns"/>
+        FROM book_index_head a
+        <include refid="bookIndexHeadJoins"/>
+        <where>
+            a.del_flag = '0'
+            AND a.status = '1'
+            AND a.start_time &gt; now()
+            AND a.expire_time &lt; now()
+        </where>
+        ORDER BY a.sort,a.create_time DESC LIMIT 10
+    </select>
+
+    <insert id="insert">
+        INSERT INTO book_index_head (
+            id,
+            create_by,
+            update_by,
+            create_time,
+            update_time,
+            del_flag,
+            remarks,
+            type,
+            book_class_id,
+            book_comment_id,
+            spread_url,
+            `status`,
+            start_time,
+            expire_time,
+            img_url,
+            sort
+        ) VALUES (
+            #{id},
+            #{createBy.id},
+            #{updateBy.id},
+            #{createTime},
+            #{updateTime},
+            #{delFlag},
+            #{remarks},
+            #{type},
+            #{bookClassId},
+            #{bookCommentId},
+            #{spreadUrl},
+            #{status},
+            #{startTime},
+            #{expireTime},
+            #{imgUrl},
+            #{sort}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE book_index_head
+        SET
+            update_by   = #{updateBy.id},
+            update_time = #{updateTime},
+            del_flag    = #{delFlag},
+            remarks     = #{remarks},
+            spread_url  = #{spreadUrl},
+            `status`    = #{status},
+            start_time  = #{startTime},
+            expire_time = #{expireTime},
+            img_url     = #{imgUrl},
+            sort        = #{sort}
+        WHERE id = #{id}
+    </update>
+
+    <update id="delete">
+        UPDATE book_index_head
+        SET del_flag = 1
+        WHERE id = #{id}
+    </update>
+
+</mapper>

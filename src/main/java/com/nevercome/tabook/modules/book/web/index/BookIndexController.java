@@ -41,28 +41,28 @@ public class BookIndexController extends BaseController {
     @Autowired
     private BookIndexHeadService bookIndexHeadService;
 
-    @RequiresPermissions("user")
+//    @RequiresPermissions("user")
     @RequestMapping(value = "head/list")
     public ResponseEntity listHead() {
         List<BookIndexHead> list = bookIndexHeadService.findList(new BookIndexHead());
         return new ResponseEntity<>(new Result(list), HttpStatus.OK);
     }
 
-    @RequiresPermissions("user")
+//    @RequiresPermissions("user")
     @RequestMapping(value = "comment/list")
     public ResponseEntity listComment(HttpServletRequest request, HttpServletResponse response, BookIndexComment bookIndexComment) {
         Page<BookIndexComment> page = bookIndexCommentService.findPage(new Page<>(request, response), bookIndexComment);
         return new ResponseEntity<>(new Result(page), HttpStatus.OK);
     }
 
-    @RequiresPermissions("user")
+//    @RequiresPermissions("user")
     @RequestMapping(value = "borrow/list")
     public ResponseEntity listBorrow(HttpServletRequest request, HttpServletResponse response, BookIndexBorrow bookIndexBorrow) {
         Page<BookIndexBorrow> page = bookIndexBorrowService.findPage(new Page<>(request, response), bookIndexBorrow);
         return new ResponseEntity<>(new Result(page), HttpStatus.OK);
     }
 
-    @RequiresPermissions("user")
+//    @RequiresPermissions("user")
     @RequestMapping(value = "buy/list")
     public ResponseEntity listBuy(HttpServletRequest request, HttpServletResponse response, BookIndexBuy bookIndexBuy) {
         Page<BookIndexBuy> page = bookIndexBuyService.findPage(new Page<>(request, response), bookIndexBuy);

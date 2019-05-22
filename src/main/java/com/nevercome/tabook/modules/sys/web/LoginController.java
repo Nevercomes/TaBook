@@ -73,60 +73,10 @@ public class LoginController extends BaseController {
         System.err.println(user);
         if ("0".equals(user.getInit())) {
             user.setName(name);
-            // 头像应该被保存在本地
-            // 1. 根据Url下载头像
-            // 2. 将头像保存在本地
-            // 3. 生成头像的Url连接
-            // 4. 存入这个新的Url连接
-            if(StringUtils.isNotBlank(avatarUrl)) {
-                OkHttpClient okHttpClient = new OkHttpClient();
-                Request okRequest = new Request.Builder().url(avatarUrl).build();
-//                Call call = okHttpClient.newCall(okRequest);
-                Call call = okHttpClient.newCall(okRequest);
-                try {
-                    Response okResponse = call.execute();
-                    InputStream inputStream = okResponse.body().byteStream();
-                    String baseDir = FileUtils.path(Global.getUserFilesBaseDir() + Global.USERFILES_BASE_URL + "avatar/");
-                    String uuId = IdGen.uuid();
-                    File file = new File(baseDir + uuId) ;
-                    FileOutputStream fos = new FileOutputStream(file);
-                    try {
-                        fos.write(readInputStream(inputStream));
-                        fos.flush();
-                        user.setAvatarUrl(baseDir + uuId);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-//                okHttpClient.newCall(okRequest).enqueue(new Callback() {
-//
-//                    @Override
-//                    public void onFailure(Call call, IOException e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onResponse(Call call, Response okResponse) throws IOException {
-//                        InputStream inputStream = okResponse.body().byteStream();
-//                        String baseDir = FileUtils.path(Global.getUserFilesBaseDir() + Global.USERFILES_BASE_URL + "avatar/");
-//                        String uuId = IdGen.uuid();
-//                        File file = new File(baseDir + uuId) ;
-//                        FileOutputStream fos = new FileOutputStream(file);
-//                        try {
-//                            fos.write(readInputStream(inputStream));
-//                            fos.flush();
-//                            user.setAvatarUrl(baseDir + uuId);
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//                        fos.close();
-//                    }
-//                });
+            if (StringUtils.isNotBlank(avatarUrl)) {
+//                avatarUrl = saveImage(avatarUrl);
             }
-//            user.setAvatarUrl(avatarUrl);
+            user.setAvatarUrl(avatarUrl);
             userDao.updateWxInfo(user);
         }
         return new ResponseEntity<>(new Result(), HttpStatus.OK);
@@ -180,6 +130,60 @@ public class LoginController extends BaseController {
         }
         inStream.close();
         return outStream.toByteArray();
+    }
+
+    private String saveImage(String avatarUrl) {
+        // 头像应该被保存在本地
+        // 1. 根据Url下载头像
+        // 2. 将头像保存在本地
+        // 3. 生成头像的Url连接
+        // 4. 存入这个新的Url连接
+        OkHttpClient okHttpClient = new OkHttpClient();
+        Request okRequest = new Request.Builder().url(avatarUrl).build();
+//                Call call = okHttpClient.newCall(okRequest);
+        Call call = okHttpClient.newCall(okRequest);
+        try {
+            Response okResponse = call.execute();
+            InputStream inputStream = okResponse.body().byteStream();
+            String baseDir = FileUtils.path(Global.getUserFilesBaseDir() + Global.USERFILES_BASE_URL + "avatar/");
+            String uuId = IdGen.uuid();
+            File file = new File(baseDir + uuId);
+            FileOutputStream fos = new FileOutputStream(file);
+            try {
+                fos.write(readInputStream(inputStream));
+                fos.flush();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//                okHttpClient.newCall(okRequest).enqueue(new Callback() {
+//
+//                    @Override
+//                    public void onFailure(Call call, IOException e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onResponse(Call call, Response okResponse) throws IOException {
+//                        InputStream inputStream = okResponse.body().byteStream();
+//                        String baseDir = FileUtils.path(Global.getUserFilesBaseDir() + Global.USERFILES_BASE_URL + "avatar/");
+//                        String uuId = IdGen.uuid();
+//                        File file = new File(baseDir + uuId) ;
+//                        FileOutputStream fos = new FileOutputStream(file);
+//                        try {
+//                            fos.write(readInputStream(inputStream));
+//                            fos.flush();
+//                            user.setAvatarUrl(baseDir + uuId);
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                        fos.close();
+//                    }
+//                });
+        return avatarUrl;
     }
 
 }

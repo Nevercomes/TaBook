@@ -82,30 +82,49 @@ public class LoginController extends BaseController {
                 OkHttpClient okHttpClient = new OkHttpClient();
                 Request okRequest = new Request.Builder().url(avatarUrl).build();
 //                Call call = okHttpClient.newCall(okRequest);
-                okHttpClient.newCall(okRequest).enqueue(new Callback() {
-
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-
+                Call call = okHttpClient.newCall(okRequest);
+                try {
+                    Response okResponse = call.execute();
+                    InputStream inputStream = okResponse.body().byteStream();
+                    String baseDir = FileUtils.path(Global.getUserFilesBaseDir() + Global.USERFILES_BASE_URL + "avatar/");
+                    String uuId = IdGen.uuid();
+                    File file = new File(baseDir + uuId) ;
+                    FileOutputStream fos = new FileOutputStream(file);
+                    try {
+                        fos.write(readInputStream(inputStream));
+                        fos.flush();
+                        user.setAvatarUrl(baseDir + uuId);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-
-                    @Override
-                    public void onResponse(Call call, Response okResponse) throws IOException {
-                        InputStream inputStream = okResponse.body().byteStream();
-                        String baseDir = FileUtils.path(Global.getUserFilesBaseDir() + Global.USERFILES_BASE_URL + "avatar/");
-                        String uuId = IdGen.uuid();
-                        File file = new File(baseDir + uuId) ;
-                        FileOutputStream fos = new FileOutputStream(file);
-                        try {
-                            fos.write(readInputStream(inputStream));
-                            fos.flush();
-                            user.setAvatarUrl(baseDir + uuId);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        fos.close();
-                    }
-                });
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+//                okHttpClient.newCall(okRequest).enqueue(new Callback() {
+//
+//                    @Override
+//                    public void onFailure(Call call, IOException e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onResponse(Call call, Response okResponse) throws IOException {
+//                        InputStream inputStream = okResponse.body().byteStream();
+//                        String baseDir = FileUtils.path(Global.getUserFilesBaseDir() + Global.USERFILES_BASE_URL + "avatar/");
+//                        String uuId = IdGen.uuid();
+//                        File file = new File(baseDir + uuId) ;
+//                        FileOutputStream fos = new FileOutputStream(file);
+//                        try {
+//                            fos.write(readInputStream(inputStream));
+//                            fos.flush();
+//                            user.setAvatarUrl(baseDir + uuId);
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                        fos.close();
+//                    }
+//                });
             }
 //            user.setAvatarUrl(avatarUrl);
             userDao.updateWxInfo(user);

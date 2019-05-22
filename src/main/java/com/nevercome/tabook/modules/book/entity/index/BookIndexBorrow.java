@@ -17,62 +17,124 @@ public class BookIndexBorrow extends DataEntity<BookIndexBorrow> {
 
     private static final long serialVersionUID = 1L;
 
-    // 持久化数据
-    private String bookInstanceId;
-    private String status; // 是否处于显示状态 显示1（默认） 不显示0
-    private Date expiredTime; // 设置的失效时间
-    private BigDecimal sort; // 可能存在的排序
+    // book
+    private String bookRootId;
+    private String bookClassId;
+    private String name;
+    private String imgUrl;
+    private String author;
+    private String translator;
+    private String year;
+    private String press;
+    private String intro;
+    private String score;
+    private String totalBorrowed;
 
-    // 联结数据
-    // 若需求字段少且固定 可根据客户端显示需求单独设置 在dao层直接查询 而不在service层单独添加
-    private BookInfo bookInfo;
-    private BookStudent bookStudent;
+    // statistics
+    private String copyNum;
+    private String freeNum;
 
-    public String getBookInstanceId() {
-        return bookInstanceId;
+    public String getBookRootId() {
+        return bookRootId;
     }
 
-    public void setBookInstanceId(String bookInstanceId) {
-        this.bookInstanceId = bookInstanceId;
+    public void setBookRootId(String bookRootId) {
+        this.bookRootId = bookRootId;
     }
 
-    public String getStatus() {
-        return status;
+    public String getBookClassId() {
+        return bookClassId;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setBookClassId(String bookClassId) {
+        this.bookClassId = bookClassId;
     }
 
-    public Date getExpiredTime() {
-        return expiredTime;
+    public String getName() {
+        return name;
     }
 
-    public void setExpiredTime(Date expiredTime) {
-        this.expiredTime = expiredTime;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public BigDecimal getSort() {
-        return sort;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setSort(BigDecimal sort) {
-        this.sort = sort;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
-    public BookInfo getBookInfo() {
-        return bookInfo;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setBookInfo(BookInfo bookInfo) {
-        this.bookInfo = bookInfo;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public BookStudent getBookStudent() {
-        return bookStudent;
+    public String getTranslator() {
+        return translator;
     }
 
-    public void setBookStudent(BookStudent bookStudent) {
-        this.bookStudent = bookStudent;
+    public void setTranslator(String translator) {
+        this.translator = translator;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getPress() {
+        return press;
+    }
+
+    public void setPress(String press) {
+        this.press = press;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
+
+    public String getCopyNum() {
+        return copyNum;
+    }
+
+    public void setCopyNum(String copyNum) {
+        this.copyNum = copyNum;
+    }
+
+    public String getFreeNum() {
+        return freeNum;
+    }
+
+    public void setFreeNum(String freeNum) {
+        this.freeNum = freeNum;
+    }
+
+    public String getTotalBorrowed() {
+        return totalBorrowed;
+    }
+
+    public void setTotalBorrowed(String totalBorrowed) {
+        this.totalBorrowed = totalBorrowed;
     }
 }

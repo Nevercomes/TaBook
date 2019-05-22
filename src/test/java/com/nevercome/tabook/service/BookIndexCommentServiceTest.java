@@ -5,7 +5,6 @@ import com.nevercome.tabook.modules.book.entity.index.BookIndexComment;
 import com.nevercome.tabook.modules.book.service.index.BookIndexCommentService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author: sun

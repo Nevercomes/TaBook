@@ -4,6 +4,7 @@ import com.nevercome.tabook.common.persistence.Page;
 import com.nevercome.tabook.common.web.BaseController;
 import com.nevercome.tabook.common.web.Result;
 import com.nevercome.tabook.modules.book.entity.comment.BookLongComment;
+import com.nevercome.tabook.modules.book.entity.index.BookIndexBorrow;
 import com.nevercome.tabook.modules.book.entity.index.BookIndexComment;
 import com.nevercome.tabook.modules.book.entity.index.BookIndexHead;
 import com.nevercome.tabook.modules.book.entity.info.BookInfo;
@@ -55,9 +56,9 @@ public class BookIndexController extends BaseController {
 
     @RequiresPermissions("user")
     @RequestMapping(value = "borrow/list")
-    public ResponseEntity listBorrow() {
-
-        return new ResponseEntity<>(new Result(), HttpStatus.OK);
+    public ResponseEntity listBorrow(HttpServletRequest request, HttpServletResponse response, BookIndexBorrow bookIndexBorrow) {
+        Page<BookIndexBorrow> page = bookIndexBorrowService.findPage(new Page<>(request, response), bookIndexBorrow);
+        return new ResponseEntity<>(new Result(page), HttpStatus.OK);
     }
 
     @RequiresPermissions("user")

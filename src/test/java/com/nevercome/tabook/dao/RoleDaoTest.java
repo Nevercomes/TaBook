@@ -1,5 +1,6 @@
-package com.nevercome.tabook;
+package com.nevercome.tabook.dao;
 
+import com.nevercome.tabook.BaseTest;
 import com.nevercome.tabook.modules.sys.dao.RoleDao;
 import com.nevercome.tabook.modules.sys.entity.Role;
 import org.junit.Before;

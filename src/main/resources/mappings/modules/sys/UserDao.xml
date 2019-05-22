@@ -4,7 +4,7 @@
 
     <sql id="userColumns">
         a.id,
-        a.school_id AS "office.id"
+        a.school_id AS "office.id",
         a.login_name,
         a.password,
         a.name,
@@ -30,7 +30,7 @@
         oa.id AS "office.area.id",
         oa.name AS "office.area.name",
         oa.parent_id AS "office.area.parent.id",
-        oa.parent_ids AS "office.area.parentIds",
+        oa.parent_ids AS "office.area.parentIds"
         <!-- ,
         r.id AS "roleList.id",
         r.office_id AS "roleList.office.id",
@@ -41,14 +41,14 @@
     </sql>
 
     <sql id="userJoins">
-        LEFT JOIN sys_office c ON c.id = a.company_id
-        LEFT JOIN sys_area ca ON ca.id = c.area_id
-        LEFT JOIN sys_office o ON o.id = a.office_id
+        <!--LEFT JOIN sys_office c ON c.id = a.company_id
+        LEFT JOIN sys_area ca ON ca.id = c.area_id-->
+        LEFT JOIN sys_office o ON o.id = a.school_id
         LEFT JOIN sys_area oa ON oa.id = o.area_id
-        LEFT JOIN sys_user cu ON cu.id = c.primary_person
-        LEFT JOIN sys_user cu2 ON cu2.id = c.deputy_person
-        LEFT JOIN sys_user ou ON ou.id = o.primary_person
-        LEFT JOIN sys_user ou2 ON ou2.id = o.deputy_person
+        <!--LEFT JOIN sys_user cu ON cu.id = c.primary_person
+        LEFT JOIN sys_user cu2 ON cu2.id = c.deputy_person-->
+        <!--LEFT JOIN sys_user ou ON ou.id = o.primary_person
+        LEFT JOIN sys_user ou2 ON ou2.id = o.deputy_person-->
         <!--
         LEFT JOIN sys_user_role ur ON ur.user_id = a.id
         LEFT JOIN sys_role r ON r.id = ur.role_id -->
@@ -86,12 +86,12 @@
             JOIN sys_user_role ur ON ur.user_id = a.id AND ur.role_id = #{role.id}
         </if>
         WHERE a.del_flag = #{DEL_FLAG_NORMAL}
-        <if test="company != null and company.id != null and company.id != ''">
+        <!--<if test="company != null and company.id != null and company.id != ''">
             AND (c.id = #{company.id} OR c.parent_ids LIKE
             <if test="dbName == 'oracle'">'%,'||#{company.id}||',%')</if>
             <if test="dbName == 'mssql'">'%,'+#{company.id}+',%')</if>
             <if test="dbName == 'mysql'">CONCAT('%,', #{company.id}, ',%'))</if>
-        </if>
+        </if>-->
         <if test="office != null and office.id != null and office.id != ''">
             AND (o.id = #{office.id} OR o.parent_ids LIKE
             <if test="dbName == 'oracle'">'%,'||#{office.id}||',%')</if>
@@ -134,7 +134,7 @@
             a.login_name
         FROM sys_user a
         WHERE a.del_flag = #{DEL_FLAG_NORMAL}
-              AND a.office_id = #{office.id}
+              AND a.school_id = #{office.id}
         ORDER BY a.name
     </select>
 

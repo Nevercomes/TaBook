@@ -4,21 +4,21 @@
 
     <sql id="userColumns">
         a.id,
-        a.office_id AS "office.id",
+        a.school_id AS "office.id"
         a.login_name,
         a.password,
         a.name,
         a.email,
         a.intro,
         a.qq,
-        a.wx_id
+        a.wx_id,
         a.phone,
         a.user_type,
         a.login_ip,
-        a.login_date,
+        a.login_time,
         a.remarks,
         a.login_flag,
-        a.avatarUrl,
+        a.avatar_url,
         a.create_by AS "createBy.id",
         a.create_time,
         a.update_by AS "updateBy.id",
@@ -159,7 +159,7 @@
     <insert id="insert">
         INSERT INTO sys_user (
             id,
-            office_id,
+            school_id,
             login_name,
             password,
             name,
@@ -167,7 +167,7 @@
             qq,
             intro,
             wx_id,
-            avatarUrl,
+            avatar_url,
             phone,
             user_type,
             create_by,
@@ -204,8 +204,7 @@
     <update id="update">
         UPDATE sys_user
         SET
-            company_id  = #{company.id},
-            office_id   = #{office.id},
+            school_id   = #{office.id},
             login_name  = #{loginName},
             password    = #{password},
             name        = #{name},
@@ -213,7 +212,7 @@
             qq          = #{qq},
             intro       = #{intro},
             wx_id       = #{wxId},
-            avatarUrl   = #{avatarUrl},
+            avatar_url   = #{avatarUrl},
             phone       = #{phone},
             user_type   = #{userType},
             update_by   = #{updateBy.id},
@@ -249,7 +248,7 @@
             qq          = #{qq},
             intro       = #{intro},
             wx_id       = #{wxId},
-            avatarUrl   = #{avatarUrl},
+            avatar_url   = #{avatarUrl},
             phone       = #{phone},
             update_by   = #{updateBy.id},
             update_time = #{updateTime},
@@ -270,7 +269,7 @@
         UPDATE sys_user
         SET
             login_ip   = #{loginIp},
-            login_Date = #{loginDate}
+            login_time = #{loginTime}
         WHERE id = #{id}
     </update>
 

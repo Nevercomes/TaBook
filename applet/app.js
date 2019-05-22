@@ -24,7 +24,7 @@ App({
               code: res.code
             },
             success(res) {
-              // 获取sessionId 存入全部变量中 在后续所有的请求中带入sessionId
+              // 获取sessionId 存入全局变量中 在后续所有的请求中带入sessionId
               console.log(res.data)
               if (res && res.data && res.data.data) {
                 //保存Cookie到Storage

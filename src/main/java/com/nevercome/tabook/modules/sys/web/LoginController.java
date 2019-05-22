@@ -5,6 +5,7 @@ import com.nevercome.tabook.common.security.shiro.session.JedisSessionDAO;
 import com.nevercome.tabook.common.utils.CacheUtils;
 import com.nevercome.tabook.common.web.BaseController;
 import com.nevercome.tabook.common.web.Result;
+import com.nevercome.tabook.modules.sys.dao.UserDao;
 import com.nevercome.tabook.modules.sys.entity.User;
 import com.nevercome.tabook.modules.sys.security.SystemAuthorizingRealm;
 import com.nevercome.tabook.modules.sys.service.SystemService;
@@ -36,6 +37,8 @@ public class LoginController extends BaseController {
     private JedisSessionDAO sessionDAO;
     @Autowired
     private SystemService systemService;
+    @Autowired
+    private UserDao userDao;
 
     /**
      * 获取applet的code 调用微信接口获取openId session_key unionId
@@ -53,6 +56,19 @@ public class LoginController extends BaseController {
         } else {
             return new ResponseEntity<>(new Result(HttpStatus.BAD_REQUEST, Result.RESULT_FAIL, "登录异常，请稍后重试！"), HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @RequiresPermissions("user")
+    @RequestMapping(value = "${adminPath}/uploadWxInfo")
+    public ResponseEntity uploadWxInfo(HttpServletRequest request) {
+        String name = request.getParameter("nickName");
+        String avatarUrl = request.getParameter("avatarUrl");
+        User user = UserUtils.getUser();
+        user.setName(name);
+        // 头像应该被保存在本地
+        user.setAvatarUrl(avatarUrl);
+        userDao.updateWxInfo(user);
+        return new ResponseEntity<>(new Result(), HttpStatus.OK);
     }
 
     /**

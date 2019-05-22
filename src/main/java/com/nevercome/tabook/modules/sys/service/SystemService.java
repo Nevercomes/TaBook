@@ -94,13 +94,14 @@ public class SystemService extends BaseService implements InitializingBean {
             String resJson = okResponse.body().string();
             Code2SessionResponse response = (Code2SessionResponse) JsonMapper.fromJsonString(resJson, Code2SessionResponse.class);
             System.err.println(resJson);
+            System.err.println(response);
 
             if (!response.getErrcode().equals("0")) { // 不为0为错误
                 throw new AuthenticationException("code2session failed：" + response.getErrmsg());
             } else {
                 // 判断用户是否存在
                 User user = getUserByLoginName(response.getOpenid());
-                if (user != null) {
+                if (user != null && StringUtils.isNotBlank(user.getId())) {
                     return user;
                 } else {
                     return retrieveUser(response.getOpenid(), response.getSession_key());
@@ -169,7 +170,7 @@ public class SystemService extends BaseService implements InitializingBean {
      * @return
      */
     public User getUserByLoginName(String loginName) {
-        return UserUtils.getByLoginName(loginName);
+        return userDao.getByLoginName(new User(null, loginName));
     }
 
     public Page<User> findUser(Page<User> page, User user) {
@@ -507,12 +508,18 @@ public class SystemService extends BaseService implements InitializingBean {
      * @param openId
      * @return
      */
-    public User retrieveUser(String openId, String sessionKey) {
+    private User retrieveUser(String openId, String sessionKey) {
         User user = new User();
         user.setId(IdGen.uuid());
         user.setLoginName(openId);
-        user.setOpenId(openId);
-        user.setSessionKey(sessionKey);
+        user.setCreateBy(new User("system"));
+        user.setUpdateBy(new User("system"));
+        user.setCreateTime(new Date());
+        user.setUpdateTime(new Date());
+        // 会由登陆提交用户信息来更新
+        user.setName("tempName-@@@");
+        user.setAvatarUrl("tempAvatar");
+        userDao.insert(user);
         return user;
     }
 

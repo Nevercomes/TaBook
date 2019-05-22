@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nevercome.tabook.modules.book.dao.index.BookIndexBuyDao">
+    <sql id="bookColumns">
+        a.book_instance_id,
+        bAdd.name,
+        bAdd.real_img_1 AS "imgUrl",
+        bAdd.author,
+        bAdd.translator,
+        bAdd.press,
+        bAdd.year,
+        bAdd.price,
+        bAdd.new_percent,
+        bAdd.owner_comment
+    </sql>
+
+    <sql id="bookIndexBuyJoins">
+        INNER JOIN book_info_instance bIns ON bIns.id = a.book_instance_id
+        INNER JOIN book_info_add bAdd ON bAdd.id = bIns.user_add_id
+    </sql>
+
+    <select id="findList" resultType="BookIndexBuy">
+        SELECT
+        <include refid="bookColumns"/>
+        FROM queue_book_buy a
+        <include refid="bookIndexBuyJoins"/>
+        <where>
+            a.del_flag = '0'
+            AND a.status = '1'
+            AND a.expire_time &lt; now()
+            AND a.user_id = #{currentUser.id}
+            AND bAdd.type = '2'
+        </where>
+        <choose>
+            <when test="page != null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY #{page.orderBy}
+            </when>
+            <otherwise>
+                ORDER BY a.create_time DESC
+            </otherwise>
+        </choose>
+    </select>
+
+</mapper>

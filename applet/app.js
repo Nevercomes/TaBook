@@ -30,6 +30,22 @@ App({
                 //保存Cookie到Storage
                 let session = "tabook-shiro-session=" + res.data.data + "; Path=/; HttpOnly"
                 wx.setStorageSync('Cookie', session);
+                //向服务器发送一个hello world'数据包'
+                //不知道有什么作用，但是以后应该会起作用，可以拿来干点什么事情
+                wx.request({
+                  url: 'http://localhost:8080/tabook/a/index',
+                  method: 'POST',
+                  header: {
+                    'Cookie': wx.getStorageSync('Cookie'),
+                    'content-type': 'application/x-www-form-urlencoded'
+                  },
+                  data: {
+                    data: 'Hello world!'
+                  },
+                  success(res) {
+                    console.log(res.data)
+                  }
+                })
               }
             }
           })
@@ -47,6 +63,21 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
+              // 将res.userInfo 中的昵称和头像url传递给后台
+              wx.request({
+                url: 'http://localhost:8080/tabook/a/uploadWxInfo',
+                method: 'POST',
+                header: { 
+                  'Cookie': wx.getStorageSync('Cookie'),
+                  'content-type': 'application/x-www-form-urlencoded' },
+                data: {
+                    nickName: res.userInfo.nickName,
+                    avatarUrl: res.userInfo.avatarUrl
+                },
+                success: res => {
+                    console.log(res);
+                }
+              })
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {

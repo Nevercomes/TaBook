@@ -14,7 +14,7 @@
         a.phone,
         a.user_type,
         a.login_ip,
-        a.login_time,
+        a.login_date,
         a.remarks,
         a.login_flag,
         a.avatar_url,
@@ -235,7 +235,7 @@
         </foreach>
     </insert>
 
-    <!-- 更新用户信息  -->
+    <!-- 更新用户信息 -->
     <update id="updateUserInfo">
         UPDATE sys_user
         SET
@@ -248,6 +248,15 @@
             update_by   = #{updateBy.id},
             update_time = #{updateTime},
             remarks     = #{remarks}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 更新初始化的微信昵称和头像 -->
+    <update id="updateWxInfo">
+        UPDATE sys_user
+        SET
+            name        = #{name},
+            avatar_url   = #{avatarUrl}
         WHERE id = #{id}
     </update>
 
@@ -264,7 +273,7 @@
         UPDATE sys_user
         SET
             login_ip   = #{loginIp},
-            login_time = #{loginTime}
+            login_date = #{loginDate}
         WHERE id = #{id}
     </update>
 

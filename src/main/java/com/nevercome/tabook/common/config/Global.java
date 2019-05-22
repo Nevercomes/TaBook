@@ -207,6 +207,7 @@ public class Global {
         if (StringUtils.isBlank(dir)){
             try {
                 dir = ServletContextFactory.getServletContext().getRealPath("/");
+                System.out.println(dir);
             } catch (Exception e) {
                 return "";
             }

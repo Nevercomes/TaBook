@@ -70,7 +70,7 @@ public class LoginController extends BaseController {
         String name = request.getParameter("nickName");
         String avatarUrl = request.getParameter("avatarUrl");
         User user = UserUtils.getUser();
-        System.out.println(user);
+        System.err.println(user);
         if ("0".equals(user.getInit())) {
             user.setName(name);
             // 头像应该被保存在本地

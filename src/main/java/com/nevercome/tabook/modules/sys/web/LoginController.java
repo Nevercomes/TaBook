@@ -1,8 +1,12 @@
 package com.nevercome.tabook.modules.sys.web;
 
 import com.google.common.collect.Maps;
+import com.nevercome.tabook.common.config.Global;
 import com.nevercome.tabook.common.security.shiro.session.JedisSessionDAO;
 import com.nevercome.tabook.common.utils.CacheUtils;
+import com.nevercome.tabook.common.utils.FileUtils;
+import com.nevercome.tabook.common.utils.IdGen;
+import com.nevercome.tabook.common.utils.StringUtils;
 import com.nevercome.tabook.common.web.BaseController;
 import com.nevercome.tabook.common.web.Result;
 import com.nevercome.tabook.modules.sys.dao.UserDao;
@@ -10,6 +14,7 @@ import com.nevercome.tabook.modules.sys.entity.User;
 import com.nevercome.tabook.modules.sys.security.SystemAuthorizingRealm;
 import com.nevercome.tabook.modules.sys.service.SystemService;
 import com.nevercome.tabook.modules.sys.utils.UserUtils;
+import okhttp3.*;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -22,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.Map;
 
 /**
@@ -64,10 +70,46 @@ public class LoginController extends BaseController {
         String name = request.getParameter("nickName");
         String avatarUrl = request.getParameter("avatarUrl");
         User user = UserUtils.getUser();
-        user.setName(name);
-        // 头像应该被保存在本地
-        user.setAvatarUrl(avatarUrl);
-        userDao.updateWxInfo(user);
+        System.out.println(user);
+        if ("0".equals(user.getInit())) {
+            user.setName(name);
+            // 头像应该被保存在本地
+            // 1. 根据Url下载头像
+            // 2. 将头像保存在本地
+            // 3. 生成头像的Url连接
+            // 4. 存入这个新的Url连接
+            if(StringUtils.isNotBlank(avatarUrl)) {
+                OkHttpClient okHttpClient = new OkHttpClient();
+                Request okRequest = new Request.Builder().url(avatarUrl).build();
+//                Call call = okHttpClient.newCall(okRequest);
+                okHttpClient.newCall(okRequest).enqueue(new Callback() {
+
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response okResponse) throws IOException {
+                        InputStream inputStream = okResponse.body().byteStream();
+                        String baseDir = FileUtils.path(Global.getUserFilesBaseDir() + Global.USERFILES_BASE_URL + "avatar/");
+                        String uuId = IdGen.uuid();
+                        File file = new File(baseDir + uuId) ;
+                        FileOutputStream fos = new FileOutputStream(file);
+                        try {
+                            fos.write(readInputStream(inputStream));
+                            fos.flush();
+                            user.setAvatarUrl(baseDir + uuId);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        fos.close();
+                    }
+                });
+            }
+//            user.setAvatarUrl(avatarUrl);
+            userDao.updateWxInfo(user);
+        }
         return new ResponseEntity<>(new Result(), HttpStatus.OK);
     }
 
@@ -108,6 +150,17 @@ public class LoginController extends BaseController {
             loginFailMap.remove(username);
         }
         return loginFailNum >= 3;
+    }
+
+    private byte[] readInputStream(InputStream inStream) throws Exception {
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        int len = 0;
+        while ((len = inStream.read(buffer)) != -1) {
+            outStream.write(buffer, 0, len);
+        }
+        inStream.close();
+        return outStream.toByteArray();
     }
 
 }

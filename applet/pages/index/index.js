@@ -117,7 +117,7 @@ Page({
     })
   },
   
-  toBookInfoTap: function () {
+  toBookInfoTap: function (e) {
     wx.navigateTo({
       url: '../bookInfo/bookInfo',
       duration: 0

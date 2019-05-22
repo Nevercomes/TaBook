@@ -29,7 +29,8 @@
         oa.id AS "office.area.id",
         oa.name AS "office.area.name",
         oa.parent_id AS "office.area.parent.id",
-        oa.parent_ids AS "office.area.parentIds"
+        oa.parent_ids AS "office.area.parentIds",
+        a.init AS "init"
         <!-- ,
         r.id AS "roleList.id",
         r.office_id AS "roleList.office.id",
@@ -208,7 +209,7 @@
             email       = #{email},
             qq          = #{qq},
             intro       = #{intro},
-            avatar_url   = #{avatarUrl},
+            avatar_url  = #{avatarUrl},
             phone       = #{phone},
             user_type   = #{userType},
             update_by   = #{updateBy.id},
@@ -243,7 +244,7 @@
             email       = #{email},
             qq          = #{qq},
             intro       = #{intro},
-            avatar_url   = #{avatarUrl},
+            avatar_url  = #{avatarUrl},
             phone       = #{phone},
             update_by   = #{updateBy.id},
             update_time = #{updateTime},
@@ -255,8 +256,9 @@
     <update id="updateWxInfo">
         UPDATE sys_user
         SET
-            name        = #{name},
-            avatar_url   = #{avatarUrl}
+            name       = #{name},
+            avatar_url = #{avatarUrl},
+            init       = '1'
         WHERE id = #{id}
     </update>
 

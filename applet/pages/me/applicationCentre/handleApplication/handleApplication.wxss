@@ -10,8 +10,8 @@
   display: flex;
   width: 100%;
   justify-content: center;
-  height: 88rpx;
-  line-height: 88rpx;
+  height: 80rpx;
+  line-height: 80rpx;
   align-items: center;
 }
 .td{
@@ -46,8 +46,8 @@
   display: block;
   justify-content: center;
   color: #000;
-  height: 88rpx;
-  max-height: 88rpx;
+  height: 80rpx;
+  max-height: 80rpx;
   max-width: 75%;
   align-items: center;
 }
@@ -55,8 +55,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30rpx;
-  margin-bottom: 20rpx;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
 }
 .operation text{
   font-size: 34rpx;
@@ -80,7 +80,7 @@
   width: 75%;
   border: 1rpx solid #ddd;
   border-radius: 10rpx;
-  height: 200rpx;
+  height:180rpx;
   font-size: 34rpx;
   margin-left: 5%;
 }

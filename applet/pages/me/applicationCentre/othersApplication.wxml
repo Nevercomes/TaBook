@@ -1,19 +1,20 @@
-
 <view class="listsProcessing">
-  <block wx:for="{{handlings}}" wx:key="{{index}}" >
+  <block wx:for="{{handlings}}" wx:key="{{index}}">
     <view class="handlingInfo">
       <view class="desc">
-        <image src="{{item.avatarUrl}}" ></image>
+        <image src="{{item.avatarUrl}}"></image>
       </view>
-      <view class="desc2" >
-        <view class="desc3">
+      <view class="desc3">
         <view class="nickname"> {{item.nickName}}</view>
         <view class="school">{{item.school}}</view>
+        <view class="name">《{{item.name}}》</view>
+      </view>
+      <view class="desc3">
+        <view class="time">{{item.time}}</view>
+        <view class="operation" bindtap="handlethis">
+          <button data-index='{{index}}' disabled='{{disabled}}'>{{item.operationOther}}</button>
         </view>
-        <view class="desc3">
-        <view class="name">{{item.name}}</view>
-        <view class="operation" bindtap="handlethis" ><button hover-class='hover'data-index='{{index}}' disabled='{{disabled}}'>{{item.operationOther}}</button></view>
-        </view>
+        <view class="type">{{item.type}}买书</view>
       </view>
     </view>
   </block>

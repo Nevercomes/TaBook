@@ -1,19 +1,21 @@
-
 <view class="listsProcessing">
-  <block wx:for="{{myhandlings}}" wx:key="{{index}}" wx:for-item="{{item}}">
+  <block wx:for="{{myhandlings}}" wx:key="{{index}}">
     <view class="handlingInfo">
       <view class="desc">
-      <image src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <!-- <image src="../../../static/images/me/avatar.png"></image> -->
+        <image src="{{userInfo.avatarUrl}}" mode="cover"></image>
       </view>
-      <view class="desc2" >
-        <view class="desc3">
+      <view class="desc3">
         <view class="nickname"> {{userInfo.nickName}}</view>
-        <view class="school">{{school}}</view>
+        <view class="school">{{itme.school}}中南大学</view>
+        <view class="name">{{itme.name}}《平凡的世界》</view>
+      </view>
+      <view class="desc3">
+        <view class="time">{{item.time}}</view>
+        <view class="operation">
+          <button>{{item.operationMy}}</button>
         </view>
-        <view class="desc3">
-        <view class="name">{{name}}</view>
-        <view class="operation"><button hover-class='hover'>{{operationMy}}</button></view>
+        <view class="revoke">
+          <button data-index="{{index}}" bindtap="revokeOp">{{item.type}}</button>
         </view>
       </view>
     </view>

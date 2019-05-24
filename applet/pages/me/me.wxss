@@ -44,11 +44,17 @@ page{
 
 .userinfo-nickname {
   color: #5e5e5e;
+  font-size: 36rpx;
+
 }
 
 .credit-grades {
   font-size: 26rpx;
-  margin-left: 200rpx;
+  margin-left: 120rpx;
+}
+.userverified-box{
+  display: flex;
+  flex-direction: row;
 }
 
 .userverified {
@@ -75,6 +81,17 @@ selfSignature{
   width: 40rpx;
   height: 40rpx;
   margin-left: 20rpx;
+}
+.homepage{
+position: absolute;
+float: right;
+right: 40rpx;
+
+}
+.homepage text{
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-top: -20rpx;
 }
 
 .Tools {

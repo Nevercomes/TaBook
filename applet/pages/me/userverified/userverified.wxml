@@ -42,14 +42,14 @@
         </view>
       </view>
       <view class='hr'></view>
-      <view class='item'>
+      <!-- <view class='item'>
         <view class='name'>
           <text>联系方式</text>
         </view>
-        <view>
+        <view>`
           <input name="phone" value="{{inputPhoneVal}}" bindinput="inputTypingPhone" cursor="2" type="text"></input>
         </view>
-      </view>
+      </view> -->
       <view class='btn'>
         <button class='submit' form-type='submit'>确定</button>
         <button class='reset' form-type='reset'>重置</button>

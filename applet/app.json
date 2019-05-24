@@ -9,6 +9,7 @@
     "pages/message/commentMsg/commentMsgDetail/commentMsgDetail",
     "pages/message/thump_upMsg/thump_upMsg",
     "pages/me/me",
+    "pages/me/editSelfInfo/editSelfInfo",
     "pages/me/userverified/userverified",
     "pages/me/userverified/schoolSelect/schoolSelect",
     "pages/me/myBorrow/myBorrow",

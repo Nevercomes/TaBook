@@ -3,20 +3,28 @@
   <view class='user'>
     <view class="userinfo">
       <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
-      <image src="{{avatarUrl}}" style="width: 132rpx;height:132rpx;"
-></image>
-       </button>
+        <image src="{{avatarUrl}}" style="width: 132rpx;height:132rpx;"></image>
+      </button>
       <block wx:else>
         <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       </block>
     </view>
     <view class='userdesc'>
-      <text class="userinfo-nickname">{{nickName}}</text>
-      <text class='credit-grades'>信用分：{{userCreditPoints}}分</text>
-      <view class='userverified'>
-        <text class='user-verified' wx:if="{{!hasVerified}}" bindtap='bindUserVerified'>{{verifiedStatus }}未认证，点我实名认证</text>
-        <text class='user-verified' wx:else="{{hasVerified}}">已实名认证</text>
+      <view>
+        <text class="userinfo-nickname">{{nickName}}</text>
+        <text class='credit-grades'>信用分：{{userCreditPoints}}分</text>
       </view>
+      <view class="userverified-box">
+        <view class='userverified'>
+          <text class='user-verified' wx:if="{{!hasVerified}}" bindtap='bindUserVerified'>{{verifiedStatus }}未认证，点我实名认证</text>
+          <text class='user-verified' wx:else="{{hasVerified}}">已实名认证</text>
+        </view>
+        <view class="homepage" bindtap="toEditselfInfo">
+          <text>个人主页</text>
+          <image src="../../static/images/me/arrow_right.png" style="width:32rpx; height:32rpx;"></image>
+        </view>
+      </view>
+
       <view class="usermotto" bindtap="bindselfSignature">
         <text class='selfSignature' hidden='{{showselfSignature}}'>个性签名：</text>
         <text class="user-motto">{{motto}}</text>

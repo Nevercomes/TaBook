@@ -160,6 +160,12 @@ wx.request({
       url: 'userMotto/userMotto',
     })
   },
+  toEditselfInfo:function(){
+    var that = this;
+    wx.navigateTo({
+      url: 'editSelfInfo/editSelfInfo',
+    })
+  },
   onReady: function () {
 
   },

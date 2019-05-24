@@ -146,11 +146,11 @@ Page({
           console.log(index)
           var myhandings = that.data.myhandings;
           console.log(myhandings);
-          // myhandings.splice(index, 1);
-          // that.setData({
-          //   myhandings:myhandings
-          // })
-          console.log('用户点击确定')
+          myhandings.splice(index, 1);
+          that.setData({
+            myhandings:myhandings
+          })
+          console.log('撤销成功')
         } else if (res.cancel) {
           console.log('用户点击取消')
         }

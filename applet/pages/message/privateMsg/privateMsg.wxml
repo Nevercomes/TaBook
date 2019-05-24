@@ -1,18 +1,19 @@
 <!--pages/message/privateMsg/privateMsg.wxml-->
 <view class="content">
   <block wx:for="{{privateMsgs}}" wx:key="{{index}}">
-    <view class="privateMsg-box" bindtap="toPrivateMsgDetai">
+    <view class="privateMsg-box" bindtap="toPrivateMsgDetai" bindlongtap="deleteMsg" data-status="{{item.status}}" data-index="{{index}}" >
       <view class="avatar-box">
         <image src="{{item.avatarUrl}}" style="width:88rpx;height:88rpx"></image>
       </view>
       <view class="right">
         <view class="userinfo-box">
           <view class="nickname">{{item.nickName}}</view>
-          <view class="readMark" hidden='{{showReadMark}}'></view>
           <view class="time">{{item.time}}</view>
         </view>
         <view class="detail-box">
           <text class="detail">{{item.content}}</text>
+          <text wx:if="{{item.status==1}}" class="read_show"></text>
+          <text wx:else ="{{item.status==0}}" class="read_hide"></text>
         </view>
       </view>
     </view>

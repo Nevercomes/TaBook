@@ -3,8 +3,9 @@
 page {
   background-color: #edeff4;
 }
-.content{
-  border-top:  0.1rpx solid #ddd;
+
+.content {
+  border-top: 0.1rpx solid #ddd;
 }
 
 .privateMsg-box {
@@ -41,14 +42,7 @@ page {
 
 .nickname {
   size: 36rpx;
-}
-.readMark{
-  margin-left: 250rpx;
-  margin-top: 30rpx;
-  background-color: #f00;
-  border-radius: 50%;
-  width: 13rpx;
-  height: 13rpx;
+  font-weight: bold;
 }
 
 .time {
@@ -61,6 +55,8 @@ page {
 }
 
 .detail-box {
+  display: flex;
+  flex-direction: row;
   height: 60rpx;
   width: 90%;
 }
@@ -76,4 +72,25 @@ page {
   color: #999;
   height: 40rpx;
   line-height: 40rpx;
+}
+
+.read_show {
+  position: absolute;
+  float: right;
+  right: 20rpx;
+  width: 15rpx;
+  height: 15rpx;
+  background-color: #f00;
+  border-radius: 50%;
+}
+
+.read_hide {
+  display: none;
+  position: absolute;
+  float: right;
+  right: 20rpx;
+  width: 15rpx;
+  height: 15rpx;
+  background-color: #f00;
+  border-radius: 50%;
 }

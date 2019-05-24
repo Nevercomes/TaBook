@@ -6,82 +6,107 @@ let header = {
   "content-type": "application/x-www-form-urlencoded"
 }
 var privateMsgs = [{
-  avatarUrl:"../../../static/images/me/avatar.png",
-  nickName:"Daisy",
-  time:"2019-04-24",
-  content:"你好呀，我想要我想要向你借与《平凡的世界》可以吗？"
-},
-  {
     avatarUrl: "../../../static/images/me/avatar.png",
     nickName: "Daisy",
     time: "2019-04-24",
-    content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？"
+    content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？",
+    status: "1"
   },
   {
     avatarUrl: "../../../static/images/me/avatar.png",
     nickName: "Daisy",
     time: "2019-04-24",
-    content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？"
+    content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？", 
+    status: "1"
+
   },
   {
     avatarUrl: "../../../static/images/me/avatar.png",
     nickName: "Daisy",
     time: "2019-04-24",
-    content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？"
-  },]
+    content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？",
+    status: "1"
+  },
+  {
+    avatarUrl: "../../../static/images/me/avatar.png",
+    nickName: "Daisy",
+    time: "2019-04-24",
+    content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？",
+    status: "1"
+  },
+]
 Page({
   data: {
-    privateMsgs:privateMsgs,
-   // privateMsgs:['a','s','s','s','s']
-    showReadMark:false
-
+    privateMsgs: privateMsgs,
   },
-
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this;
     wx.request({
       url: '',
-      header:header,
-      data:{
-        privateMsgs:[]
+      header: header,
+      data: {
+        privateMsgs: []
       },
-      success(res){
+      success(res) {
         that.setData({
-          privateMsgs:privateMsgs
+          privateMsgs: privateMsgs
         })
       }
     })
   },
-  toPrivateMsgDetai:function(e){
+  toPrivateMsgDetai: function(e) {
+    var that = this;
+    var index = e.currentTarget.dataset.index
+    var status = "privateMsgs["+index+"].status"
+    console.log(status)
+    that.setData({
+     [status]:0,
+    })
+    console.log(that.data.privateMsgs)
+    wx.request({
+      url: '',
+      header: header,
+      method: "POST",
+      data: {
+        status: status
+      },
+      success(res){
+        console.log(res.data)
+      }
+    })
     wx.navigateTo({
       url: 'privateMsgDetail/privateMsgDetail',
-      duration:0
+      duration: 0
     })
   },
-  onReady: function () {
+
+  onReady: function() {
 
   },
-  onShow: function () {
+  onShow: function() {
 
   },
-
-  onHide: function () {
-
-  },
-
-  onUnload: function () {
+  deleteMsg: function(e) {
+    var that = this;
 
   },
-
-  onPullDownRefresh: function () {
+  onHide: function() {
 
   },
 
-  onReachBottom: function () {
+  onUnload: function() {
 
   },
 
-  onShareAppMessage: function () {
+  onPullDownRefresh: function() {
+
+  },
+
+  onReachBottom: function() {
+
+  },
+
+  onShareAppMessage: function() {
 
   }
 })

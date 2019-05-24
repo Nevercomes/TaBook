@@ -6,6 +6,7 @@
     "pages/message/privateMsg/privateMsg",
     "pages/message/privateMsg/privateMsgDetail/privateMsgDetail",
     "pages/message/commentMsg/commentMsg",
+    "pages/message/commentMsg/commentMsgDetail/commentMsgDetail",
     "pages/message/thump_upMsg/thump_upMsg",
     "pages/me/me",
     "pages/me/userverified/userverified",

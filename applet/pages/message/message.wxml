@@ -8,6 +8,8 @@
       </view>
       <view class="text-box">
         <text>系统通知</text>
+        <text  wx:if="{{status1==1 }}" class="read_show"></text>
+        <text wx:else="{{status1==0}}" class="read_hide"></text>
       </view>
     </view>
     <view class="everyMsg" bindtap='bindPrivateMsg'>
@@ -16,6 +18,8 @@
       </view>
       <view class="text-box">
         <text>私信</text>
+        <text  wx:if="{{status2==1 }}" class="read_show"></text>
+        <text wx:else="{{status2==0}}" class="read_hide"></text>
       </view>
     </view>
     <view class="everyMsg" bindtap='bindThump_upMsg'>
@@ -24,6 +28,8 @@
       </view>
       <view class="text-box">
         <text>收到的赞</text>
+        <text  wx:if="{{status3==1 }}" class="read_show"></text>
+        <text wx:else="{{status3==0}}" class="read_hide"></text>
       </view>
     </view>
     <view class="everyMsg" bindtap="bindCommentMsg">
@@ -32,6 +38,8 @@
       </view>
       <view class="text-box">
         <text>收到的评论</text>
+        <text  wx:if="{{status4==1 }}" class="read_show"></text>
+        <text wx:else="{{status4==0}}" class="read_hide"></text>
       </view>
     </view>
   </view>

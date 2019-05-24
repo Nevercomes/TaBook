@@ -1,14 +1,18 @@
 <!--pages/message/privateMsg/privateMsg.wxml-->
 <view class="content">
   <block wx:for="{{privateMsgs}}" wx:key="{{index}}">
-    <view class="privateMsg-box">
-      <view class="time">23：08{{item.time}}</view>
-      <view class="item">
-        <view class="img-box">
-          <image src="../../../static/images/message/systemMsg2.png" style="width:88rpx ;height:88rpx"></image>
+    <view class="privateMsg-box" bindtap="toPrivateMsgDetai">
+      <view class="avatar-box">
+        <image src="{{item.avatarUrl}}" style="width:88rpx;height:88rpx"></image>
+      </view>
+      <view class="right">
+        <view class="userinfo-box">
+          <view class="nickname">{{item.nickName}}</view>
+          <view class="readMark" hidden='{{showReadMark}}'></view>
+          <view class="time">{{item.time}}</view>
         </view>
-        <view class="detail">
-          <text>您借阅的书籍《平凡的世界》就快要到期了，到期时间为2019年3月31日，请及时归还书籍哦！{{item.text}}</text>
+        <view class="detail-box">
+          <text class="detail">{{item.content}}</text>
         </view>
       </view>
     </view>

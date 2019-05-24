@@ -8,7 +8,7 @@
           <image src="../../../static/images/message/systemMsg2.png" style="width:88rpx ;height:88rpx"></image>
         </view>
         <view class="detail">
-          <text>您借阅的书籍《平凡的世界》就快要到期了，到期时间为2019年3月31日，请及时归还书籍哦！{{item.text}}</text>
+          <text>{{item.content}}您借阅的书籍《平凡的世界》就快要到期了，到期时间为2019年3月31日，请及时归还书籍哦！{{item.text}}</text>
         </view>
       </view>
     </view>

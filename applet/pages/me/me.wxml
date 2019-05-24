@@ -14,7 +14,7 @@
       <text class="userinfo-nickname">{{nickName}}</text>
       <text class='credit-grades'>信用分：{{userCreditPoints}}分</text>
       <view class='userverified'>
-        <text class='user-verified' wx:if="{{!hasVerified}}" bindtap='bindUserVerified'>未认证，点我实名认证</text>
+        <text class='user-verified' wx:if="{{!hasVerified}}" bindtap='bindUserVerified'>{{verifiedStatus }}未认证，点我实名认证</text>
         <text class='user-verified' wx:else="{{hasVerified}}">已实名认证</text>
       </view>
       <view class="usermotto" bindtap="bindselfSignature">

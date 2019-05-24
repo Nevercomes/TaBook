@@ -22,6 +22,7 @@
   font-size: 30rpx;
   height: 100rpx;
   line-height: 70rpx;
+  padding-left: 10rpx;
 }
 .button-box{
   width: 90%;
@@ -31,7 +32,7 @@
 .button-box button{
   font-size: 36rpx;
   border-radius: 10rpx;
-  background-color: lightgreen;
+  background-color: rgb(22, 199, 22);
   color: white;
   height: 88rpx;
 }

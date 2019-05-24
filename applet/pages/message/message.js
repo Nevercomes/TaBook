@@ -1,11 +1,28 @@
 // pages/message/message.js
 Page({
   data: {
+    text:""
 
   },
 
   onLoad: function (options) {
-
+    wx.setTabBarBadge({
+      index: 1,
+      text: text
+    })
+  },
+  loadMsgItem:function(){
+    var that = this;
+    wx.request({
+      url: '',
+      method:"GET",
+      data:{
+        msgs:[]
+      },
+      success(res){
+        
+      },
+    })
   },
   bindSystemMsg:function(){
  wx.navigateTo({

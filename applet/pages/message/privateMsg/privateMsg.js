@@ -5,9 +5,35 @@ let header = {
   "Cookie": Cookie,
   "content-type": "application/x-www-form-urlencoded"
 }
+var privateMsgs = [{
+  avatarUrl:"../../../static/images/me/avatar.png",
+  nickName:"Daisy",
+  time:"2019-04-24",
+  content:"你好呀，我想要我想要向你借与《平凡的世界》可以吗？"
+},
+  {
+    avatarUrl: "../../../static/images/me/avatar.png",
+    nickName: "Daisy",
+    time: "2019-04-24",
+    content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？"
+  },
+  {
+    avatarUrl: "../../../static/images/me/avatar.png",
+    nickName: "Daisy",
+    time: "2019-04-24",
+    content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？"
+  },
+  {
+    avatarUrl: "../../../static/images/me/avatar.png",
+    nickName: "Daisy",
+    time: "2019-04-24",
+    content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？"
+  },]
 Page({
   data: {
-    privateMsgs:['a','s','s','s','s']
+    privateMsgs:privateMsgs,
+   // privateMsgs:['a','s','s','s','s']
+    showReadMark:false
 
   },
 
@@ -24,6 +50,12 @@ Page({
           privateMsgs:privateMsgs
         })
       }
+    })
+  },
+  toPrivateMsgDetai:function(e){
+    wx.navigateTo({
+      url: 'privateMsgDetail/privateMsgDetail',
+      duration:0
     })
   },
   onReady: function () {

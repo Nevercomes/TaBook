@@ -4,6 +4,7 @@
     "pages/message/message",
     "pages/message/systemMsg/systemMsg",
     "pages/message/privateMsg/privateMsg",
+    "pages/message/privateMsg/privateMsgDetail/privateMsgDetail",
     "pages/message/commentMsg/commentMsg",
     "pages/message/thump_upMsg/thump_upMsg",
     "pages/me/me",

@@ -6,7 +6,8 @@ Page({
   },
 
   onLoad: function (options) {
-
+    var that = this;
+    
   },
   onReady: function () {
 

@@ -4,9 +4,12 @@
     "pages/message/message",
     "pages/message/systemMsg/systemMsg",
     "pages/message/privateMsg/privateMsg",
+    "pages/message/privateMsg/privateMsgDetail/privateMsgDetail",
     "pages/message/commentMsg/commentMsg",
+    "pages/message/commentMsg/commentMsgDetail/commentMsgDetail",
     "pages/message/thump_upMsg/thump_upMsg",
     "pages/me/me",
+    "pages/me/editSelfInfo/editSelfInfo",
     "pages/me/userverified/userverified",
     "pages/me/userverified/schoolSelect/schoolSelect",
     "pages/me/myBorrow/myBorrow",
@@ -29,7 +32,8 @@
     "pages/writeReview/writeReview",
     "pages/iHaveBook/iHaveBook",
     "pages/borrow/borrow",
-    "pages/buy/buy"
+    "pages/buy/buy",
+    "pages/longComment/longComment"
   ],
   "window": {
     "backgroundTextStyle": "light",

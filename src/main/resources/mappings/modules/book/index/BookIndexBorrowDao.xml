@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nevercome.tabook.modules.book.dao.index.BookIndexBorrowDao">
+
+    <sql id="bookColumns">
+        a.book_root_id AS "bookRootId",
+        bRoot.represent_id AS "bookClassId",
+        bRoot.name,
+        bRoot.author,
+        bRoot.total_borrowed,
+        bClass.translator,
+        bClass.year,
+        bClass.intro,
+        bClass.press,
+        bClass.score,
+        bClass.img_url
+    </sql>
+
+    <sql id="statisticsColumns">
+        (SELECT COUNT(1) FROM book_info_instance t1
+            INNER JOIN book_info_class t2 ON t1.book_class_id = t2.id
+            <!--INNER JOIN book_info_add t3 ON t3.id = t1.book_add_id-->
+        WHERE t2.book_root_id = a.book_root_id AND t1.del_flag = '0' AND t1.status != '-1') AS "copyNum",
+        (SELECT COUNT(1) FROM book_info_instance t1
+        INNER JOIN book_info_class t2 ON t1.book_class_id = t2.id
+        <!--INNER JOIN book_info_add t3 ON t3.id = t1.book_add_id-->
+        WHERE t2.book_root_id = a.book_root_id AND t1.del_flag = '0' AND t1.status = '0') AS "freeNum"
+    </sql>
+
+    <sql id="bookIndexBorrowJoins">
+        INNER JOIN book_info_root bRoot ON bRoot.id = a.book_root_id
+        INNER JOIN book_info_class bClass ON bClass.id = bRoot.represent_id
+    </sql>
+
+    <select id="findList" resultType="BookIndexBorrow">
+        SELECT
+        <include refid="bookColumns"/>,
+        <include refid="statisticsColumns"/>
+        FROM queue_book_borrow a
+        <include refid="bookIndexBorrowJoins"/>
+        <where>
+            a.del_flag = '0'
+            AND a.status = '1'
+            AND a.expire_time &lt; now()
+            AND a.user_id = #{currentUser.id}
+        </where>
+        <choose>
+            <when test="page != null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY #{page.orderBy}
+            </when>
+            <otherwise>
+                ORDER BY a.create_time DESC
+            </otherwise>
+        </choose>
+    </select>
+
+</mapper>

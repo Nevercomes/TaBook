@@ -82,23 +82,23 @@
         WHERE id = #{id}
     </update>
 
-    <update id="updateRead">
-        <!--<foreach collection="list" item="item" separator=";">
-            update msg_notice
-            SET
-            read_flag = #{item.readFlag},
-            read_time = #{item.readTime}
-            where id = ${item.id}
-        </foreach>-->
-        UPDATE msg_notice
-        SET
-        read_flag = #{readFlag},
-        read_time = #{readTime}
-        WHERE
-        user_id = #{userId}
-        AND type = #{type}
-        AND read_flag = '0'
-    </update>
+    <!--<update id="updateRead">-->
+        <!--&lt;!&ndash;<foreach collection="list" item="item" separator=";">-->
+            <!--update msg_notice-->
+            <!--SET-->
+            <!--read_flag = #{item.readFlag},-->
+            <!--read_time = #{item.readTime}-->
+            <!--where id = ${item.id}-->
+        <!--</foreach>&ndash;&gt;-->
+        <!--UPDATE msg_notice-->
+        <!--SET-->
+        <!--read_flag = #{readFlag},-->
+        <!--read_time = #{readTime}-->
+        <!--WHERE-->
+        <!--user_id = #{userId}-->
+        <!--AND type = #{type}-->
+        <!--AND read_flag = '0'-->
+    <!--</update>-->
 
     <update id="updateRead" parameterType="java.lang.String">
         UPDATE msg_notice

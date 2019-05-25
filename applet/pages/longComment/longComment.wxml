@@ -1,0 +1,26 @@
+<!--pages/longComment/longComment.wxml-->
+<view class="longcomment-box">
+  <view class="title">
+    <text>{{title}}</text>
+  </view>
+  <view class="userinfo-box">
+    <view class="nickname-time-box">
+    <view class="avatarUrl-box">
+    <image src="{{avatarUrl}}" style="width:88rpx ;height:88rpx"></image>
+    </view>
+    <view class="nickname">
+      <text>{{nickName}}</text>
+    </view>
+    <view class="comment">
+    <text>评论</text>
+    </view>
+    <view class="name" bindtap="tobookInfo">{{name}}</view>
+    <view class="time">
+      <text>{{time}}</text>
+    </view>
+    </view>
+  </view>
+  <view class="longcommentDetail">
+    <text>{{longcomment}}</text>
+  </view>
+</view>

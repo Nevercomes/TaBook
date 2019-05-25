@@ -1,0 +1,27 @@
+<!--pages/message/privateMsg/privateMsgDetail/privateMsgDetail.wxml-->
+<!-- <view class="content">
+<view class="top"></view>
+<view class='avatar-box'>
+<image src="{{avatarUrl}}" style="width:88rpx; height:88rpx;"></image>
+</view>
+<view>
+<view class="nickname">{{nickName}}Daisy</view>
+<view class="time">{{time}}2019-05-26</view>
+</view>
+<view class="detail">{{detail}}</view>
+</view> -->
+<view class="content">
+  <block wx:for="{{userMsgs}}" wx:key="{{index}}">
+    <view class="systemMsg-box">
+      <view class="time">{{item.time}}</view>
+      <view class="item">
+        <view class="img-box">
+          <image src="{{item.avatarUrl}}" style="width:88rpx ;height:88rpx"></image>
+        </view>
+        <view class="detail">
+          <text>{{item.detail}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

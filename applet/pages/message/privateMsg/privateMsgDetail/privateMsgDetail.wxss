@@ -1,0 +1,2 @@
+/* pages/message/privateMsg/privateMsgDetail/privateMsgDetail.wxss */
+@import "../../systemMsg/systemMsg.wxss";

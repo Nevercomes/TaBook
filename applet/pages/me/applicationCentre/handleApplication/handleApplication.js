@@ -8,6 +8,9 @@ let header = {
 var list = [{
     "title": "申请者",
     "text": "Daisy"
+}, {
+    "title": "申请类型",
+    "text": "买书"
   },
   {
     "title": "学校",

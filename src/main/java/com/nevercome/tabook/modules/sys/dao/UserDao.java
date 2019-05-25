@@ -73,4 +73,6 @@ public interface UserDao extends CrudDao<User> {
      * @return
      */
     User findByOpenId(String openid);
+
+    void updateWxInfo(User user);
 }

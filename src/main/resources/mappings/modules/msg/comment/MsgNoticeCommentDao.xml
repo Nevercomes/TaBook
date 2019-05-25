@@ -29,16 +29,16 @@
         SELECT
         <include refid="msgNoticeCommentColumns"/>
         FROM msg_notice_comment a
-        <include refid="msgNoticeCommentJoins "/>
+        <include refid="msgNoticeCommentJoins"/>
         WHERE a.del_flag = '0'
         AND a.id = #{id}
     </select>
 
-    <select id="findList" resultType="msgNoticeCommentColumns">
+    <select id="findList" resultType="MsgNoticeComment">
         SELECT
         <include refid="msgNoticeCommentColumns"/>
         FROM msg_notice_comment a
-        <include refid="msgNoticeCommentJoins "/>
+        <include refid="msgNoticeCommentJoins"/>
         <where>
             a.del_flag = '0'
             <if test="userId != null and userId != ''">

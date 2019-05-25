@@ -16,16 +16,19 @@ public class BookIndexBuy extends DataEntity<BookIndexBuy> {
 
     private static final long serialVersionUID = 1L;
 
-    // 持久化数据
+    // book
     private String bookInstanceId;
-    private String status; // 是否处于显示状态 显示1（默认） 不显示0
-    private Date expiredTime; // 设置的失效时间
-    private BigDecimal sort; // 可能存在的排序
+    private String name;
+    private String imgUrl; // 实物图
+    private String author;
+    private String translator;
+    private String year;
+    private String press;
+    private String ownerComment;
 
-    // 联结数据
-    // 若需求字段少且固定 可根据客户端显示需求单独设置 在dao层直接查询 而不在service层单独添加
-    private BookInfo bookInfo;
-    private BookStudent bookStudent;
+    // buy
+    private float price;
+    private String newPercent;
 
     public String getBookInstanceId() {
         return bookInstanceId;
@@ -35,43 +38,75 @@ public class BookIndexBuy extends DataEntity<BookIndexBuy> {
         this.bookInstanceId = bookInstanceId;
     }
 
-    public String getStatus() {
-        return status;
+    public String getName() {
+        return name;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Date getExpiredTime() {
-        return expiredTime;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public void setExpiredTime(Date expiredTime) {
-        this.expiredTime = expiredTime;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
-    public BigDecimal getSort() {
-        return sort;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setSort(BigDecimal sort) {
-        this.sort = sort;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public BookInfo getBookInfo() {
-        return bookInfo;
+    public String getTranslator() {
+        return translator;
     }
 
-    public void setBookInfo(BookInfo bookInfo) {
-        this.bookInfo = bookInfo;
+    public void setTranslator(String translator) {
+        this.translator = translator;
     }
 
-    public BookStudent getBookStudent() {
-        return bookStudent;
+    public String getYear() {
+        return year;
     }
 
-    public void setBookStudent(BookStudent bookStudent) {
-        this.bookStudent = bookStudent;
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getPress() {
+        return press;
+    }
+
+    public void setPress(String press) {
+        this.press = press;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public String getNewPercent() {
+        return newPercent;
+    }
+
+    public void setNewPercent(String newPercent) {
+        this.newPercent = newPercent;
+    }
+
+    public String getOwnerComment() {
+        return ownerComment;
+    }
+
+    public void setOwnerComment(String ownerComment) {
+        this.ownerComment = ownerComment;
     }
 }

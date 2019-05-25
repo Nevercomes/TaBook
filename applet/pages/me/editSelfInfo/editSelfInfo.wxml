@@ -1,0 +1,33 @@
+<!--pages/me/editSelfInfo/editSelfInfo.wxml-->
+<view class="content">
+<form bindsubmit='submitForm'>
+  <view class="avatar-box"bindtap="uploadAvatar">
+    <image src="{{avatarUrl}}" style="width:150rpx;height:150rpx; "></image>
+    <!-- <image class="camera" src='../../../static/images/me/camera.png' style="width:48rpx; height:48rpx;"></image> -->
+  </view>
+  <view class="nickname">
+    <view class="label">昵称</view>
+    <view class="img-box">
+      <image src="../../../static/images/me/nickName.png" style="width:64rpx; height:64rpx"></image>
+      <input name="nickname" value="{{inputNickNameVal}}" bindinput="inputNickName"></input>
+    </view>
+  </view>
+  <view class="motto">
+    <view class='label'>一句话描述</view>
+    <view class="img-box">
+      <image src='../../../static/images/me/motto2.png' style="width:64rpx; height:64rpx;"></image>
+      <input name="motto" value="{{inputMottoVal}}" bindinput="inputMotto"></input>
+    </view>
+  </view>
+  <view class="phone">
+    <view class="label">联系方式</view>
+    <view class="img-box">
+      <image src="../../../static/images/me/phone.png" style="width:64rpx; height:64rpx"></image>
+      <input name="phone" value="{{inputPhoneVal}}" bindinput="inputPhone" placeholder="QQ号/微信号/邮箱"></input>
+    </view>
+  </view>
+  <view class="btn-box">
+  <button form-type="submit">确定提交</button>
+  </view>
+  </form>
+</view>

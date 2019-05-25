@@ -1,7 +1,8 @@
 // pages/me/userMotto/userMotto.js
 Page({
   data: {
-    inputMottoVal:""
+    inputMottoVal:"",
+    motto:""
   },
 
   onLoad: function (options) {
@@ -17,6 +18,11 @@ Page({
     var that = this;
     wx.request({
       url: '',
+      header:header,
+      method:"POST",
+      data:{
+        motto:inputMottoVal
+      }
     })
 
   },

@@ -1,38 +1,64 @@
 /* pages/message/message.wxss */
-page{
+
+page {
   background-color: #efeff4;
 }
-.hr{
+
+.hr {
   border: 0.5rpx solid #ccc;
 }
-.message-box{
-display: flex;
-flex-direction: column;
-margin-top: 20rpx;
+
+.message-box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
 }
-.everyMsg{
-display: flex;
-flex-direction: row;
-width: 100%;
-height: 150rpx;
-border-bottom: 1rpx solid #ccc;
-background-color: #fff;
+
+.everyMsg {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 150rpx;
+  border-bottom: 1rpx solid #ccc;
+  background-color: #fff;
 }
-.img-box{
+
+.img-box {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 35%;
 }
-.img-box image{
-  
-  width:100rpx;
+
+.img-box image {
+  width: 100rpx;
   height: 100rpx;
 }
-.text-box{
-display: flex;
+
+.text-box {
+  display: flex;
   align-items: center;
   width: 65%;
   font-size: 36rpx;
   font-weight: bold;
+}
+
+.read_show {
+  display: flex;
+  width: 15rpx;
+  height: 15rpx;
+  margin-top: -30rpx;
+  margin-left: 5rpx;
+  background-color: #f00;
+  border-radius: 50%;
+}
+
+.read_hide {
+  display: none;
+  width: 15rpx;
+  height: 15rpx;
+  margin-top: -30rpx;
+  margin-left: 5rpx;
+  background-color: #f00;
+  border-radius: 50%;
 }

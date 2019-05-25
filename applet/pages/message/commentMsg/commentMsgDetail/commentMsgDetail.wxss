@@ -1,0 +1,78 @@
+/* pages/message/commentMsg/commentMsgDetail/commentMsgDetail.wxss */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #efeff4;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 120rpx;
+  background-color: #fff;
+}
+
+.avatar-box {
+  margin: 22rpx;
+  border-radius: 50%;
+}
+
+.nickname {
+  margin-top: 30rpx;
+  size: 36rpx;
+  font-weight: bold;
+}
+
+.time {
+  position: absolute;
+  float: right;
+  right: 50rpx;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 40rpx;
+}
+
+.longcomentReplyContent {
+  width: 91%;
+  margin-left: 3%;
+  margin-bottom: 20rpx;
+  margin-top: 10rpx;
+  border: 0.5rpx solid #ddd;
+  border-radius: 10rpx;
+}
+
+.longcomentReplyContent {
+  font-size: 32rpx;
+  line-height: 60rpx;
+  padding: 10rpx;
+}
+
+.myLongComment {
+  display: flex;
+  flex-direction: row;
+  background-color: #efeff4;
+  width: 94%;
+  height: 200rpx;
+  margin-left: 3%;
+  margin-bottom: 25rpx;
+}
+
+.coment_info {
+  margin: 20rpx;
+}
+
+.coment_info text {
+  font-size: 32rpx;
+  height: 160rpx;
+  line-height: 80rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}

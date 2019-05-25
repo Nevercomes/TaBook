@@ -1,0 +1,21 @@
+<!--pages/message/commentMsg/commentMsgDetail/commentMsgDetail.wxml-->
+<view class="content">
+  <view class="userinfo">
+    <view class="avatar-box">
+      <image src="{{avatarUrl}}" style="width:88rpx;height:88rpx" mode="cover"></image>
+    </view>
+    <view class="nickname">{{nickName}}</view>
+    <view class="time">{{time}}</view>
+  </view>
+</view>
+<view class="longcomentReplyContent">
+  <text>{{detail}}</text>
+</view>
+<view class="myLongComment">
+  <view class="content_img">
+    <image src="{{bookUrl}}"style="width:200rpx;height:200rpx;"></image>
+  </view>
+  <view class="coment_info">
+    <text>{{myComment}}</text>
+  </view>
+</view>

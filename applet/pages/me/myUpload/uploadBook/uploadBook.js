@@ -24,8 +24,13 @@ Page({
     inputAuthorVal: "",
     inputPressVal: "",
     inputScoreVal: "",
-    score:"",
-    operation:"",
+    inputPriceVal: "",
+    inputPressYearVal:"",
+    hidePrice: true,
+    score: "",
+    operation: "",
+    bottom:40,
+    addBookImg:"添加图片",
     imgUrlsarr: [],
     operations: [{
       name: '卖书',
@@ -52,9 +57,9 @@ Page({
       inputBookName: "",
       inputAuthorVal: "",
       inputPressVal: "",
-      inputMsgVal:"",
-      score:"",
-      getScoreVal:""
+      inputMsgVal: "",
+      score: "",
+      getScoreVal: ""
     })
   },
   inputTyping: function(e) {
@@ -106,9 +111,19 @@ Page({
       inputPressVal: e.detail.value
     })
   },
-  inputMsg:function(e){
+  inputPressYear:function(e){
     this.setData({
-      inputMsgVal:e.detail.value
+      inputPressYearVal:e.detail.value
+    })
+  },
+  inputMsg: function(e) {
+    this.setData({
+      inputMsgVal: e.detail.value
+    })
+  },
+  inputPrice: function(e) {
+    this.setData({
+      inputPriceVal: e.detail.value
     })
   },
   bindgiveScore: function(e) {
@@ -134,7 +149,7 @@ Page({
     }
     that.setData({
       scoreimgUrls: stars,
-      getScoreVal:2*(index+1)
+      getScoreVal: 2 * (index + 1)
     })
   },
   submitBookInfo: function(e) {
@@ -153,19 +168,43 @@ Page({
         press: e.detail.value.inputPressVal,
         msg: e.detail.value.inputMsgVal,
         score: that.data.score,
-        operation:that.data.operation
+        operation: that.data.operation,
+        price: e.detail.value.inputPriceVal,
+        pressYear:e.detail.value.inputPressYearVal
       },
-      success: function () {
-        console.log("发生了提交事件")
+      success(res) {
+        wx.showToast({
+          title: '上传成功',
+        })
+        console.log(res.data)
+      },
+      fail(res){
+        wx.showToast({
+          title: '上传成功',
+        })
+        console.log(res.data)
       }
     })
   },
-  radioChange:function(e){
-var that = this;
-that.setData({
-  operation:e.detail.value,
-  getOperationVal:e.detail.value
-})
+  radioChange: function(e) {
+    var that = this;
+    that.setData({
+      operation: e.detail.value,
+      getOperationVal: e.detail.value
+    })
+    if(e.detail.value=="卖书"){
+      that.setData({
+        hidePrice:false,
+        bottom:0
+      })
+    }else{
+      that.setData({
+        hidePrice:true,
+        bottom:40
+      })
+    }
+    console.log(e.detail.value)
+   
   },
   onReady: function() {
 

@@ -191,7 +191,7 @@ Page({
     })
   },
   
-  toBookInfoTap: function () {
+  toBookInfoTap: function (e) {
     wx.navigateTo({
       url: '../bookInfo/bookInfo',
       duration: 0
@@ -229,18 +229,33 @@ Page({
     })
   },
   loadBookInfo:function(e){
-    var that = this;
+    // var that = this;
+    // wx.request({
+    //   url: 'http://localhost:8080/tabook/a/login',
+    //   header: header,
+    //   method:"POST",
+    //   date:{
+    //     //数据？？？？？？？？？？？
+    //     books:[]
+    //   },
+    //   success(res){
+    //     console.log(res.data)
+    //   }  
+    // })
     wx.request({
-      url: 'http://localhost:8080/tabook/a/login',
+      url: 'http://localhost:8080/tabook/a/book/index/borrow/list',
       header: header,
-      method:"POST",
-      date:{
-        //数据？？？？？？？？？？？
-        books:[]
+      method: "GET",
+      
+      data: {
+        // data: 'Hello world!'
       },
-      success(res){
+      success(res) {
         console.log(res.data)
-      }  
+      },
+      fail(xhr) {
+        // console.log(xhr.msg)
+      }
     })
   },
 
@@ -253,7 +268,7 @@ Page({
         star2: '../../static/images/home/star.png',
         star3: '../../static/images/home/star.png',
         star4: '../../static/images/home/star.png',
-        star5: '../../static/images/home/star。png',
+        star5: '../../static/images/home/star.png',
       })
     }
     else if (this.data.score < 2) {

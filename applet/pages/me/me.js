@@ -9,7 +9,7 @@ var util = require("../../utils/util.js")
 Page({
   data: {
     avatarUrl:"../../static/images/me/avatar.png",
-    nickName:" ",
+    nickName:"立即登录 ",
     motto: '快来描述一下你自己吧！',
     userInfo: {},
     hasUserInfo: false,
@@ -64,7 +64,7 @@ Page({
               photo:res.data.avatarUrl,
               time:util.formatDate(new Date())
             },
-            success:function(){
+            success:function(res){
               console.log("suceess")
             },
             fail:function(){
@@ -74,7 +74,24 @@ Page({
         },
       })
     }
-
+    //初始加载个性签名
+wx.request({
+  url: '',
+  header:header,
+  data:{
+    motto:""
+  },
+  success:function(res){
+  that.setData({
+    motto:res.data.motto
+  })
+  },
+  fail:function(res){
+    that.setData({
+      motto:motto
+    })
+  }
+})
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -141,6 +158,12 @@ Page({
   bindselfSignature:function(){
     wx.navigateTo({
       url: 'userMotto/userMotto',
+    })
+  },
+  toEditselfInfo:function(){
+    var that = this;
+    wx.navigateTo({
+      url: 'editSelfInfo/editSelfInfo',
     })
   },
   onReady: function () {

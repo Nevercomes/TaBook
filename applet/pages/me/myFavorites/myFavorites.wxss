@@ -60,6 +60,7 @@
   height: 60rpx;
   font-size: 34rpx;
 }
+
 .time {
   width: 40%;
   height: 60rpx;
@@ -70,11 +71,17 @@
 .bookIntro {
   width: 100%;
   font-size: 30rpx;
- margin: 0 20rpx 40rpx 20rpx;
+  margin: 0 20rpx 40rpx 20rpx;
   height: 100rpx;
   line-height: 50rpx;
   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
 }
+
 .item2 {
   display: flex;
   justify-content: center;
@@ -86,59 +93,84 @@
   background-color: #fff;
 }
 
-.img-box{
+.img-box {
   width: 30%;
 }
-.userInfo-avatar{
-  width: 128rpx;
-  height: 128rpx;
-  border-radius: 50%;
-  margin-left: 20rpx;
-  margin-top: 40rpx;
+
+.commentList {
+  width: 100%;
+  height: 100%;
 }
-.userinfo-comment-box{
+
+.comments {
+  display: flex;
+  flex-direction: row;
+  width: 94%;
+  height: 250rpx;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+
+.bookUrl image {
+  border-radius: 5rpx;
+}
+
+.right {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width:70%;
-}
-.userinfo{
-  display: flex;
-  flex-direction: row;
-}
-.nickname{
-  width: 60%;
-  font-size: 34rpx;
-  font-weight: bold;
-
-}
-.bookname{
-  font-size: 34rpx;
-  font-weight: bold;
+  height: 300rpx;
 }
 
-.commentIntro{
+.title {
+  height: 50rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: blue;
+  margin-left: 20rpx;
+  margin-top: 15rpx;
+}
+
+.nickname {
+  height: 40rpx;
   font-size: 30rpx;
-  height: 100rpx;
-  line-height: 50rpx;
-  overflow: hidden;
+  color: #999;
+  margin-left: 20rpx;
+  margin-top: 5rpx;
 }
-.likes{
+
+.longcomment {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+  font-size: 30rpx;
+  height: 120rpx;
+  line-height: 60rpx;
+  margin-left: 20rpx;
+}
+
+.likes {
   display: flex;
   flex-direction: row;
+  height: 40rpx;
+  margin-left: 20rpx;
 }
-.likeImg{
+
+.likeImg {
   padding-right: 10rpx;
 }
-.like{
+
+.like {
   width: 40rpx;
   height: 40rpx;
 }
-.likeCount{
+
+.likeCount {
   font-size: 28rpx;
   color: #999;
   padding-top: 6rpx;
 }
-
-
-

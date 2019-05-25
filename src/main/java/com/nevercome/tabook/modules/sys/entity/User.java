@@ -39,6 +39,7 @@ public class User extends DataEntity<User> {
     private String loginIp;	// 最后登陆IP
     private Date loginDate;	// 最后登陆日期
     private String loginFlag;	// 是否允许登陆
+    private String init; // 是否初始化了微信的基本用户信息
 
     // wx applet
     private String openId;
@@ -328,4 +329,11 @@ public class User extends DataEntity<User> {
         return ReflectionToStringBuilder.toString(this);
     }
 
+    public String getInit() {
+        return init;
+    }
+
+    public void setInit(String init) {
+        this.init = init;
+    }
 }

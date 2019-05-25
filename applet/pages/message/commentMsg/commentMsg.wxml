@@ -1,17 +1,16 @@
 <!--pages/message/commentMsg/commentMsg.wxml-->
 <view class="content">
   <block wx:for="{{comments}}" wx:key="{{index}}">
-    <view class="longCommentReplyList">
+    <view class="longCommentReplyList" bindtap="toCommentMsgDetail">
       <view class="userInfo">
         <view class="img-box">
-          <image src="../../../static/images/me/avatar.png" style="width:88rpx ;height:88rpx" mode="cover"></image>
+          <image src="{{item.avatarUrl}}" style="width:88rpx ;height:88rpx" mode="cover"></image>
         </view>
-        <view class="nickName">Daisy{{item.nickName}}</view>
-        <view class="time">2019-05-03{{item.time}}</view>
+        <view class="nickName">{{item.nickName}}</view>
+        <view class="time">{{item.time}}</view>
       </view>
       <view class="longcomentReplyContent">
-        <text>《金粉世家》这部堪比红楼梦的著作，其中金燕西对于冷清秋的离去真的没有没有一丝的留恋吗？
-</text>
+        <text>{{item.detail}}</text>
       </view>
       <view class="myLongComment">
         <view class="content_img">

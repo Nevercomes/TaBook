@@ -54,7 +54,8 @@
 <view class='goods-container'  hidden='{{tab2Hidden}}'>
   <view class='goods-box1' wx:for-items="{{goods}}" wx:key="{{index}}" data-id="{{item.id}}">
   <view class="img-box" bindtap="toBookInfoTap">
-    <image src='../../static/images/home/book2.jpg' class="image" mode="aspectFit" ></image>
+    <!-- <image src='../../static/images/home/book2.jpg' class="image" mode="aspectFit" ></image> -->
+    <image src='{{imgUrl}}' class="image" mode="aspectFit" ></image>
   </view>
   <view class='body-box'>
     <view class='text-box'>
@@ -68,14 +69,16 @@
           <image src='{{star5}}' class='img' mode='aspectFit'></image>
           <view class='text'>{{score}}</view>
         </view>
-        <view class='goods-intro1'>Tom/2019/xxx出版社</view>
+        <!-- <view class='goods-intro1'>Tom/2019/xxx出版社</view> -->
+        <view class='goods-intro1'>{{author}}/{{year}}/{{press}}</view>
       </view>
       <view class='icon-box' bindtap='iconClick'>
         <image src='../../static/images/home/want.png' class="image" mode='aspectFill'></image>
-        <view class='text'>空闲 {{available}}</view>
+        <view class='text'>空闲 {{freeNum}}</view>
       </view>
     </view>
-    <view class='comment-box' bindtap="toBookInfoTap">这里是相关评论</view>
+    <!-- <view class='comment-box' bindtap="toBookInfoTap">这里是相关评论</view> -->
+    <view class='comment-box' bindtap="toBookInfoTap">{{intro}}</view>
   </view>
   </view>
 </view>

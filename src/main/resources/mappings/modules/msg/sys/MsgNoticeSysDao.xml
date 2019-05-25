@@ -20,7 +20,7 @@
 
     </select>
 
-    <select id="findList" resultType="">
+    <select id="findList" resultType="MsgNoticeSys">
         SELECT
         <include refid="msgNoticeSysColumns"/>
         FROM msg_notice_sys a

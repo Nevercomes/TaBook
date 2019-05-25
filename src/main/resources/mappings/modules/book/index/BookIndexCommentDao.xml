@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nevercome.tabook.modules.book.dao.index.BookIndexCommentDao">
+
+    <sql id="commentColumns">
+        c.id AS "bookCommentId",
+        c.title,
+        c.content_digest,
+        c.cover
+    </sql>
+
+    <sql id="studentColumns">
+        u.name AS "authorName",
+        u.avatar_url AS "authorAvatar",
+        stu.id AS "studentId",
+        stu.school_name AS "schoolName"
+    </sql>
+
+    <sql id="statisticsColumns">
+        (SELECT COUNT(1)
+         FROM book_like_record t
+         WHERE t.refer_id = c.id AND t.del_flag = '0') AS "likeNum",
+        (SELECT COUNT(1) FROM book_comment_reply t WHERE t.book_comment_id = c.id AND t.del_flag = '0') AS "replyNum"
+    </sql>
+
+    <sql id="bookIndexCommentJoins">
+        INNER JOIN book_comment_long c ON c.id = a.book_comment_id
+        INNER JOIN sys_user u ON u.id = a.user_id
+        INNER JOIN book_user_info stu ON stu.id = c.student_id
+    </sql>
+
+    <select id="findList" resultType="BookIndexComment">
+        SELECT
+        <include refid="commentColumns"/>,
+        <include refid="studentColumns"/>,
+        <include refid="statisticsColumns"/>
+        FROM queue_book_comment a
+        <include refid="bookIndexCommentJoins"/>
+        <where>
+            a.del_flag = '0'
+            AND a.status = '1'
+            AND a.expire_time &lt; now()
+            AND a.user_id = #{currentUser.id}
+        </where>
+        <choose>
+            <when test="page != null and page.orderBy != null and page.orderBy != ''">
+                ORDER BY #{page.orderBy}
+            </when>
+            <otherwise>
+                ORDER BY a.create_time DESC
+            </otherwise>
+        </choose>
+    </select>
+
+</mapper>

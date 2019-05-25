@@ -17,57 +17,73 @@
   </view>
   <view class="upLoad">
     <form bindsubmit="submitBookInfo" bindreset="resetBookInfo">
-      <view class="detail">
-        <block wx:for="{{imgUrlsarr}}" wx:key="{{index}}" class="block">
+      <!-- <view class="detail" bindtap="chooseImage">
+        <view> class="uploadImg">上传图片{{uploadImg}}</view>
+      </view> -->
+      <!-- <view class="detail" hidden="{{hideupload}}">
+        <!-- <button class='uploadImg' bindtap="chooseImage" style="width:20%;height:150rpx">上传图片</button> -->
+      <!-- <block wx:for="{{imgUrlsarr}}" wx:key="{{index}}" class="block">
           <image src="{{item}} " data-index='{{index}}' mode="aspecFill" style="width: 20%; height:150rpx;margin-left:4%;margin-bottom:3%"></image>
           <view class="delete" bindtap="deleteImg" data-index="{{index}}">
             <image src="../../../../static/images/me/delete-round.png"></image>
           </view>
         </block>
-        <button bindtap="chooseImage" style=" height:150rpx;width:20%">
+
+        <!-- <button bindtap="chooseImage" style=" height:150rpx;width:20%">
           <image src='../../../../static/images/me/uploadBookImg.png' style="width:100%;height:100%"></image>
-        </button>
-      </view>
+        </button> -->
+      <!-- </view> -->
       <view class="detail">
         <view class="item">
           <label>书名</label>
-          <input type="text"  name ="name" value="{{inputNameVal}}" bindinput="inputBookName"></input>
+          <input type="text" name="name" value="{{inputNameVal}}" bindinput="inputBookName"></input>
         </view>
         <view class="item">
           <label>作者</label>
-          <input type="text" name = "author" value="{{inputAuthoVal}}" bindinput="inputAuthor"></input>
+          <input type="text" name="author" value="{{inputAuthoVal}}" bindinput="inputAuthor"></input>
         </view>
         <view class="item">
           <label>出版社</label>
-          <input type="text" name = "press" value="{{inputPressVal}}" bindinput="inputPress"></input>
+          <input type="text" name="press" value="{{inputPressVal}}" bindinput="inputPress"></input>
         </view>
         <view class="item">
-        <label>留言</label>
-        <input type="text" name = "msg" value="{{inputMgsVal}}" bindtap="inputMsg"></input>
+          <label>出版年份</label>
+          <input type="number" name="pressYear" value="{{inputPressYearVal}}" bindinput="inputPressYear"></input>
+        </view>
+        <view class="item">
+          <label>留言</label>
+          <input type="text" name="msg" value="{{inputMgsVal}}" bindtap="inputMsg"></input>
         </view>
         <view class="item-score">
-          <label class="score-title" name = "score">新旧程度</label>
-          <input name = "score" value="{{getScoreVal}}" hidden="true" class='scorebox' disabled='true'></input>
-          <view class="score-box" >  
-          <label class="score" wx:for="{{scoreimgUrls}}"  wx:key="{{index}}"  >
-          <image src="{{item.imgUrl}}" style="width:40rpx; height:40rpx;" data-index='{{index}}' bindtap="bindgiveScore"></image>
-          </label>
+          <label class="score-title" name="score">新旧程度</label>
+          <input name="score" value="{{getScoreVal}}" hidden="true" class='scorebox' disabled='true'></input>
+          <view class="score-box">
+            <label class="score" wx:for="{{scoreimgUrls}}" wx:key="{{index}}">
+              <image src="{{item.imgUrl}}" style="width:40rpx; height:40rpx;" data-index='{{index}}' bindtap="bindgiveScore"></image>
+            </label>
           </view>
         </view>
-        <view class="operation">
-           <label class='label' name = "operaiton">操作</label>
-           <input name = "operation" value="{{getOperationVal}}" hidden="true" class='scorebox' disabled='true'></input>
-            <radio-group class="radio-group" bindchange="radioChange">
+        <view class="operation" style="margin-bottom:{{bottom}}rpx;">
+          <label class='label' name="operaiton">操作</label>
+          <input name="operation" value="{{getOperationVal}}" hidden="true" class='scorebox' disabled='true'></input>
+          <radio-group class="radio-group" bindchange="radioChange">
             <label class="radio" wx:for="{{operations}}">
               <radio value="{{item.name}}" checked="{{item.checked}}" /> {{item.value}}
             </label>
           </radio-group>
-
-         
+        </view>
+        <view class="item" hidden="{{hidePrice}}" style="margin-bottom:40rpx">
+          <label>价格</label>
+          <input type="number" name="price" value="{{inputPriceVal}}" bindinput="inputPrice"></input>
         </view>
       </view>
+      <!-- <view class="addbookImg">
+        <view class="addbookimg">{{addBookImg}}</view>
+        <view class="bookImg">
+        </view>
+      </view> -->
       <view class="submit">
-        <button form-type="submit"  style="margin-bottom:20rpx">确定</button>
+        <button form-type="submit" style="margin-bottom:20rpx">确定</button>
         <button form-type="reset">重置</button>
       </view>
     </form>

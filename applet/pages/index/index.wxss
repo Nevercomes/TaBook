@@ -659,3 +659,36 @@ swiper-item image {
   height: 80rpx;
   line-height: 80rpx;
 }
+.goods-box1 .tab1-box{
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  display: flex;
+  flex-direction: column;
+  padding-bottom:10rpx; 
+
+}
+
+.textView{
+ display: -webkit-box;
+ word-break: break-all;
+ text-overflow: ellipsis;
+ font-size: 30rpx;
+ overflow: hidden;
+ -webkit-box-orient: vertical;
+ -webkit-line-clamp:2;
+ color: #757171;
+ font-family:microsoft yahei;
+}
+
+.goods-box1 .tab1-box .user1{
+  font-size: 28rpx;
+  padding-left:20rpx; 
+  color: #757171;
+  font-family:microsoft yahei;
+}
+.goods-box1 .tab1-box .title1{
+  font-family:microsoft yahei;
+  font-size: 32rpx;
+  font-weight: bold;
+  padding-top: 10rpx; 
+}

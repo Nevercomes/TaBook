@@ -5,7 +5,7 @@
     <view class="weui-search-bar__form">
       <view class="weui-search-bar__box">
         <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-        <input type="text " class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" confirm-type="search" bindconfirm='toSearch' />
+        <input type="text " class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="wxSearchInput" bindconfirm="wxSearchConfirm" confirm-type="search" />
         <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
           <icon type="clear" size="14"></icon>
         </view>
@@ -45,13 +45,13 @@
   </view>
 <!--tabs选项卡--> 
 <i-tabs current="{{ currentTab }}" color="#00FF99" bindchange="handleChange">
-    <i-tab key="tab1" title="每日推荐" bindtap="tab1Click"></i-tab>
+    <i-tab key="tab1" title="书评推荐" bindtap="tab1Click"></i-tab>
     <i-tab key="tab2" title="借书广场" bindtap="tab2Click"></i-tab>
     <i-tab key="tab3" title="买书广场" bindtap="tab3Click"></i-tab>
 </i-tabs>
 
-<!--每日推荐(tab1)-->
-<view class='goods-container'  hidden='{{tab1Hidden}}'>
+<!--每日推荐(tab2)-->
+<view class='goods-container'  hidden='{{tab2Hidden}}'>
   <view class='goods-box1' wx:for-items="{{goods}}" wx:key="{{index}}" data-id="{{item.id}}">
   <view class="img-box" bindtap="toBookInfoTap">
     <image src='../../static/images/home/book2.jpg' class="image" mode="aspectFit" ></image>
@@ -81,7 +81,7 @@
 </view>
 
 
-<!--借书广场(tab2)-->
+<!-- 借书广场(tab2)
   <view class="goods-container" hidden='{{tab2Hidden}}'>
     <view class="goods-box2" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
       <view class="img-box">
@@ -98,16 +98,11 @@
           <view class='text'>{{score}}</view>
         </view>
       </view>
-        <!-- <view class="goods-like">
-          <image src='../../static/images/home/like.png' class='like-image'></image>
-        </view>
-        <view class="like-num" style='color:#e64340;'> 999</view> -->
-      <!-- </view> -->
     </view>
-  </view>
+  </view> -->
 
 <!--借书广场(tab3)-->
-  <view class="goods-container" hidden='{{tab3Hidden}}'>
+<view class="goods-container" hidden='{{tab3Hidden}}'>
     <view class="goods-box3" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
       <view class="img-box">
         <image src="../../static/images/home/book4.jpg" class="image" mode='aspectFit' />
@@ -125,5 +120,23 @@
         <view class='price'>￥{{price}}</view>
       </view>
     </view>
-  </view>
+</view>
+  
+<!--书评推荐(tab1)-->
+<view class="goods-container" hidden='{{tab1Hidden}}'>
+    <view class='goods-box1' wx:for-items="{{list1}}" wx:key="{{index}}" data-id="{{item.id}}">
+    <view class='tab1-box'>
+      <view class='title1'>
+       {{item.title}}
+      </view>
+      <view class='user1'>
+        {{item.username}}
+      </view>
+      <view class='commet1'>
+        <view class='textView'>{{item.content}}</view>
+      </view>
+    </view>
+    </view>
+</view>
+  
 </view>

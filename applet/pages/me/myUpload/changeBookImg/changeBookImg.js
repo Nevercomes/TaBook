@@ -23,7 +23,6 @@ Page({
       sourceType: ['album', 'camera'],
       success: function(res) {
         console.log(res.tempFilePaths);
-
         that.setData({
           imgUrlsarr: that.data.imgUrlsarr.concat(res.tempFilePaths)
         })

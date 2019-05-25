@@ -46,7 +46,7 @@
         <input type="text" name = "msg" value="{{inputMgsVal}}" bindtap="inputMsg"></input>
         </view>
         <view class="item-score">
-          <label class="score-title" name = "score">评分</label>
+          <label class="score-title" name = "score">新旧程度</label>
           <input name = "score" value="{{getScoreVal}}" hidden="true" class='scorebox' disabled='true'></input>
           <view class="score-box" >  
           <label class="score" wx:for="{{scoreimgUrls}}"  wx:key="{{index}}"  >

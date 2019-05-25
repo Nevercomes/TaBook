@@ -10,49 +10,55 @@ var books = [{
   "time": "2019-04-20",
   "bookIntro": "这是一个平凡的世界,一群平凡的人却成就了不平凡的人生",
 }, {
-    "name": "平凡的世界",
-    "time": "2019-04-20",
-    "bookIntro": "这是一个平凡的世界,一群平凡的人却成就了不平凡的人生",
-  }, {
-    "name": "平凡的世界",
-    "time": "2019-04-20",
-    "bookIntro": "这是一个平凡的世界,一群平凡的人却成就了不平凡的人生,",
-  }, {
-    "name": "平凡的世界",
-    "time": "2019-04-20",
-    "bookIntro": "这是一个平凡的世界,一群平凡的人却成就了不平凡的人生,",
-  }];
-  var comments =  [{
-    "nickname":"Daisy",
-    "time":"2019-04-21",
-    "name":"金粉世家",
-    "commentIntro":"Aliquam vitae felis a massa ultrices tincidunt. Aliquam aliquam iaculis risus sed maximus.",
-    "likeCounts":100
-  }, {
-      "nickname": "Daisy",
-      "time": "2019-04-21",
-      "name": "金粉世家",
-      "commentIntro": "Aliquam vitae felis a massa ultrices tincidunt. Aliquam aliquam iaculis risus sed maximus.",
-      "likeCounts": 100
-    }, {
-      "nickname": "Daisy",
-      "time": "2019-04-21",
-      "name": "金粉世家",
-      "commentIntro": "Aliquam vitae felis a massa ultrices tincidunt. Aliquam aliquam iaculis risus sed maximus.",
-      "likeCounts": 100
-    }, {
-      "nickname": "Daisy",
-      "time": "2019-04-21",
-      "name": "金粉世家",
-      "commentIntro": "Aliquam vitae felis a massa ultrices tincidunt. Aliquam aliquam iaculis risus sed maximus.",
-      "likeCounts": 100
-    }]
+  "name": "平凡的世界",
+  "time": "2019-04-20",
+  "bookIntro": "这是一个平凡的世界,一群平凡的人却成就了不平凡的人生",
+}, {
+  "name": "平凡的世界",
+  "time": "2019-04-20",
+  "bookIntro": "这是一个平凡的世界,一群平凡的人却成就了不平凡的人生,",
+}, {
+  "name": "平凡的世界",
+  "time": "2019-04-20",
+  "bookIntro": "这是一个平凡的世界,一群平凡的人却成就了不平凡的人生,",
+}];
+var comments = [{
+  "bookUrl": "../../../static/images/home/book2.jpg",
+  "title": "平凡的世界，不平凡的人生",
+  "nickName": "Daisy",
+  "time": "2019-04-21",
+  "name": "金粉世家",
+  "longcomment": "Aliquam vitae felis a massa ultrices tincidunt. Aliquam aliquam iaculis risus sed maximus.",
+  "likeCounts": 100
+}, {
+  "bookUrl": "../../../static/images/home/book2.jpg",
+  "title": "平凡的世界，不平凡的人生",
+  "nickName": "Daisy",
+  "time": "2019-04-21",
+  "name": "金粉世家",
+  "longcomment": "Aliquam vitae felis a massa ultrices tincidunt. Aliquam aliquam iaculis risus sed maximus.",
+  "likeCounts": 100
+}, {
+  "bookUrl": "../../../static/images/home/book2.jpg",
+  "title": "平凡的世界，不平凡的人生",
+  "nickName": "Daisy",
+  "time": "2019-04-21",
+  "name": "金粉世家",
+  "longcomment": "Aliquam vitae felis a massa ultrices tincidunt. Aliquam aliquam iaculis risus sed maximus.",
+  "likeCounts": 100
+}, {
+  "nickname": "Daisy",
+  "time": "2019-04-21",
+  "name": "金粉世家",
+  "commentIntro": "Aliquam vitae felis a massa ultrices tincidunt. Aliquam aliquam iaculis risus sed maximus.",
+  "likeCounts": 100
+}]
 Page({
 
   data: {
     currentTab: 0,
     books: books,
-    comments:comments
+    comments: comments
   },
   onLoad: function(options) {
     var that = this
@@ -63,21 +69,21 @@ Page({
         });
       }
     })
-  loadBooks();
-  loadComments();
+    loadBooks();
+    loadComments();
   },
-  loadBooks:function(e){
+  loadBooks: function(e) {
     var that = this;
     wx.request({
       url: '',
-      header:header,
-      data:{
-        books:[]
+      header: header,
+      data: {
+        books: []
       },
-      success:res=>{
+      success: res => {
         console.log(res.detail.value)
         var books = res.data.books;
-        for(var i = 0;i<books.length;i++){
+        for (var i = 0; i < books.length; i++) {
           var subject = books[i];
           var book = new Object;
           book.name = subject.name;
@@ -86,23 +92,23 @@ Page({
           books.push(book);
         }
         that.setData({
-          books:books
+          books: books
         })
-      },           
+      },
     })
   },
-  loadComments:function(e){
+  loadComments: function(e) {
     var that = this;
     wx.request({
       url: '',
-      method:"POST",
-      header:header,
-      data:{
-        comments:[]
+      method: "POST",
+      header: header,
+      data: {
+        comments: []
       },
-      success(res){
+      success(res) {
         var subjects = res.data.comments;
-        for(var i = 0;i<subject.length;i++){
+        for (var i = 0; i < subject.length; i++) {
           var subject = subjects[i];
           var comment = new Object;
           comment.time = subject.time;
@@ -112,10 +118,10 @@ Page({
           comments.push(comment);
         }
         that.setData({
-          comments:comments
+          comments: comments
         })
       },
-      
+
     })
 
   },
@@ -137,18 +143,26 @@ Page({
       currentTab: e.detail.value
     })
   },
-  toBookDetail:function(){
+  toBookDetail: function() {
     wx.navigateTo({
       url: '../../bookInfo/bookInfo',
-      duration:0
+      duration: 0
     })
 
   },
-  commentDetail:function(){
+  commentDetail: function() {
     wx.navigateTo({
       url: '',
-      duration:0
+      duration: 0
     })
+  },
+  tolongCommentDetail:function(){
+wx.navigateTo({
+  url: '../../longComment/longComment',
+  success: function(res) {},
+  fail: function(res) {},
+  complete: function(res) {},
+})
   },
   onReady: function() {
 

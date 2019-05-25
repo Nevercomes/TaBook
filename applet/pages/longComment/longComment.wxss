@@ -1,0 +1,59 @@
+/* pages/longComment/longComment.wxss */
+.longcomment-box{
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  width: 100%;
+  border-top: 1rpx solid #ddd;
+}
+.title{
+margin-left:60rpx;
+margin-top: 20rpx;
+font-size: 36rpx;
+font-weight: bold;
+}
+.avatarUrl-box{
+  margin-left: 20rpx;
+}
+.avatarUrl-box image{
+  border: 50%
+}
+.nickname-time-box{
+  display: flex;
+  flex-direction: row;
+  margin-left: 30rpx;
+  margin-top: 10rpx;
+  
+}
+.nickname{
+  margin-left: 20rpx;
+  margin-top: 28rpx;
+  font-size: 30rpx;
+  color: blue;
+}
+.comment{
+  margin-top: 28rpx;
+  font-size: 30rpx;
+  color: #999;
+}
+.name{
+  margin-top: 28rpx;
+  font-size: 30rpx;
+  color: blue;
+}
+.time{
+  margin-top: 29rpx;
+  position: absolute;
+  float: right;
+  right: 50rpx;
+  font-size: 28rpx;
+  color: #999;
+  
+}
+ 
+.longcommentDetail{
+  font-size: 32rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  margin-top: 10rpx;
+}

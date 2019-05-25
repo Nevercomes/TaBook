@@ -1,25 +1,25 @@
 <view class="commentList">
   <block wx:for="{{comments}}" wx:key="{{index}}">
-    <view class="item2" bindtap="commentDetail">
-      <view class="img-box">
-        <image class="userInfo-avatar" src="../../../static/images/me/avatar.png" mode='cover'></image>
+    <view class="comments" bindtap="tolongCommentDetail">
+      <view class="bookUrl-box">
+        <image src="{{item.bookUrl}}" style="width:250rpx;height:250rpx"></image>
       </view>
-      <view class="userinfo-comment-box">
-        <view class="userinfo">
-          <view class="nickname">{{item.nickname}}</view>
-          <view class="time">{{item.time}}</view>
+      <view class="right">
+        <view class="title">
+          <text>{{item.title}}</text>
         </view>
-        <view class="bookname">{{item.name}}</view>
-        <view class="commentIntro">
-          {{item.commentIntro}}
+        <view class="nickname">
+          <text>{{item.nickName}}评论《{{item.name}}》</text>
         </view>
-        <view class="likes">
+        <view class="longcomment">
+          <text>{{item.longcomment}}</text>
+        </view>
+        <!-- <view class="likes">
           <view class="likeImg">
-            <image src="../../../static/images/home/like.png" class="like"></image>
+            <image src='../../../static/images/home/like.png' class="like"></image>
           </view>
           <view class="likeCount">{{item.likeCounts}}</view>
-        </view>
-
+        </view> -->
       </view>
     </view>
   </block>

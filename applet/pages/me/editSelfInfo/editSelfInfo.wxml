@@ -1,8 +1,9 @@
 <!--pages/me/editSelfInfo/editSelfInfo.wxml-->
 <view class="content">
-<form bindsubmit='sumbitForm'>
-  <view class="avatar-box">
-    <image src="{{avatarUrl}}" style="width:150rpx;height:150rpx;"></image>
+<form bindsubmit='submitForm'>
+  <view class="avatar-box"bindtap="uploadAvatar">
+    <image src="{{avatarUrl}}" style="width:150rpx;height:150rpx; "></image>
+    <!-- <image class="camera" src='../../../static/images/me/camera.png' style="width:48rpx; height:48rpx;"></image> -->
   </view>
   <view class="nickname">
     <view class="label">昵称</view>
@@ -26,7 +27,7 @@
     </view>
   </view>
   <view class="btn-box">
-  <button form-type="sumbit">确定提交</button>
+  <button form-type="submit">确定提交</button>
   </view>
   </form>
 </view>

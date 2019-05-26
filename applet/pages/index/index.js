@@ -16,7 +16,6 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     inputShowed:false,//是否显示搜索框
     inputVal:"",//搜索框内容
-
     autoplay:true,
     interval:3000,
     duration: 1000,
@@ -49,14 +48,7 @@ Page({
     tab1Hidden:false,
     tab2Hidden:true,
     tab3Hidden:true,
-    star1: '../../static/images/home/star.png',
-    star2: '../../static/images/home/star.png',
-    star3: '../../static/images/home/star.png',
-    star4: '../../static/images/home/star.png',
-    star5: '../../static/images/home/star.png',
-    score:4,
     price:999,
-    available:3,
     total:100,
     list:[],//接受搜索的内容
     wxSearchData:'',
@@ -108,7 +100,84 @@ Page({
         content: '分享这本传记之前，我一直担心遇到情怀党和八卦党。所谓情怀党，就是看书只能看到各种让人泪流满面的东西；所谓八卦党，就是总是喜欢钻历史边角，找点在餐桌上的谈资。褚时健这个人的人生经历呢，又似乎特别符合这两种需求，所以我还挺担心。但我想说，如果按上面两种方式读这本《褚时健传》，绝对是一种浪费。'
       }
     ],
-
+    list2:[
+      {
+        title: '傲慢与偏见',
+        author:'简·奥斯汀',
+        score:4,
+        press:'青海人民出版社',
+        freeNum:3,
+        imgUrl:'../../static/images/home/book2.jpg',
+        star1: '../../static/images/home/star.png',
+        star2: '../../static/images/home/star.png',
+        star3: '../../static/images/home/star.png',
+        star4: '../../static/images/home/star.png',
+        star5: '../../static/images/home/star.png',
+        intro:'小说描写了小乡绅班纳特五个待字闺中的千金，主角是二女儿伊丽莎白。她在舞会上认识了达西，但是耳闻他为人傲慢，一直对他心生排斥，经历一番周折，伊丽莎白解除了对达西的偏见，达西也放下傲慢，有情人终成眷属。这部作品以日常生活为素材，以反当时社会上流行的感伤小说的内容和矫揉造作的写作方法，生动地反映了18世纪末到19世纪初处于保守和闭塞状态下的英国乡镇生活和世态人情。并多次被改编成电影和电视剧。',
+      },
+      {
+        title: '月亮与六便士',
+        author: '毛姆',
+        score: 5,
+        press: '上海译文出版社',
+        freeNum: 6,
+        imgUrl: '../../static/images/home/book4.jpg',
+        star1: '../../static/images/home/star.png',
+        star2: '../../static/images/home/star.png',
+        star3: '../../static/images/home/star.png',
+        star4: '../../static/images/home/star.png',
+        star5: '../../static/images/home/star.png',
+        intro: '贫穷的纠缠，病魔的折磨他毫不在意，只是后悔从来没有光顾过他的意识。作品表现了天才、个性与物质文明以及现代婚姻、家庭生活之间的矛盾，有着广阔的生命视角，用散发着消毒水味道的手术刀对皮囊包裹下的人性进行了犀利地解剖，混合着看客讪笑的幽默和残忍的目光。',
+      },
+      {
+        title: '人类简史',
+        author: '尤瓦尔·赫拉利',
+        score: 5,
+        press: '中信出版集团',
+        freeNum: 1,
+        imgUrl: '../../static/images/home/book3.jpg',
+        star1: '../../static/images/home/star.png',
+        star2: '../../static/images/home/star.png',
+        star3: '../../static/images/home/star.png',
+        star4: '../../static/images/home/star.png',
+        star5: '../../static/images/home/star.png',
+        intro: '十万年前，地球上至少有六个人种，但为何今天只剩下我们这一种（智人）？十万年前智人（homosapiens）只是非洲角落的一个毫不起眼的族群，对地球上的生态系影响力和萤火虫、猩猩或水母差不了多少。为何这个物种最终成为地球的主宰？智人究竟是如何导致其他人种和巨型哺乳类动物的灭绝？金钱和宗教从何而来，又为何会产生？人类创建的帝国为何一个个衰亡复又兴起，而且少数民族竟能统治远比自己庞大的族群？为什么地球上几乎每一个社会都有男尊女卑的观念？为何一神教成为最广为接受的宗教？科学和资本主义又是如何成为现代最重要的信条？我们真的了解自己吗？我们过得更加快乐吗？',
+      },
+      {
+        title: '北平杂记',
+        author: '齐如山',
+        score: 4,
+        press: '当代中国出版社',
+        freeNum: 7,
+        imgUrl: '../../static/images/home/book5.jpg',
+        star1: '../../static/images/home/star.png',
+        star2: '../../static/images/home/star.png',
+        star3: '../../static/images/home/star.png',
+        star4: '../../static/images/home/star.png',
+        star5: '../../static/images/home/star.png',
+        intro: '对故乡故土顾望不已，对故事故人思恋未了。暮年的齐如山细致地勾勒出一幅生动、温婉的古都风物长卷。他像是穿着长袍坐在四合院里，槐花香弥漫着，他一口京腔娓娓讲述着这个令他挚念如斯的城市的种种。古都的大气，民俗的朴厚，前清的逸闻……其言至浅，其情至深，不禁使人追忆着这座古都的前世今生，感慨系之，恍然如梦……',
+      },
+    ],
+    list3:[
+      {
+        title: '数据库系统概念',
+        author: 'S.Sudarshan',
+        price:32,
+        period:'1年',
+        press: '机械工业出版社',
+        imgUrl: '../../static/images/home/sell1.jpg',
+        intro: '本书是数据库系统方面的经典教材之一，其内容由浅入深，既包含数据库系统基本概念，又反映数据库技术新进展。它被国际上许多著名大学所采用，包括斯坦福大学、耶鲁大学、得克萨斯大学、康奈尔大学、伊利诺伊大学等。我国也有多所大学采用本书作为本科生和研究生数据库课程的教材和主要教学参考书，收到了良好的效果。',
+      },
+      {
+        title: '数据结构与算法分析',
+        author: 'Mark Allen Weis',
+        price: 30,
+        period: '1年',
+        press: '机械工业出版社',
+        imgUrl: '../../static/images/home/sell3.jpg',
+        intro: '本书是数据库系统方面的经典教材之一，其内容由浅入深，既包含数据库系统基本概念，又反映数据库技术新进展。它被国际上许多著名大学所采用，包括斯坦福大学、耶鲁大学、得克萨斯大学、康奈尔大学、伊利诺伊大学等。我国也有多所大学采用本书作为本科生和研究生数据库课程的教材和主要教学参考书，收到了良好的效果。',
+      },
+    ],
   },
 
   //事件处理函数
@@ -262,6 +331,7 @@ Page({
   onLoad: function () {
     // loadBookInfo();
     // console.log(this.data.score);
+
     if(this.data.score < 1) {
       this.setData({
         star1: '../../static/images/home/star.png',
@@ -315,7 +385,6 @@ Page({
       star4: '../../static/images/home/star-a.png',
       star5: '../../static/images/home/star-a.png',
       })
-      
     }
   },
   onReady: function () {

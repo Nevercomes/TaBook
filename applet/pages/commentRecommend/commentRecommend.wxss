@@ -230,7 +230,7 @@
   height: 200rpx;
   overflow: hidden;
 }
-<<<<<<< HEAD
+/* <<<<<<< HEAD
 .goods-box1 .img-box image{
    width: 180rpx;
    height: 200rpx;
@@ -373,7 +373,7 @@
   overflow: hidden;
   border-radius:5px;
   flex-direction: row;
-=======
+======= */
 
 .goods-box1 .img-box image {
   width: 180rpx;
@@ -444,5 +444,5 @@ margin-top: 10rpx;
   font-size: 30rpx;
   color: #999;
   margin-right: 40rpx;
->>>>>>> 62588a74506bc209ce14708f9365d2e4c2a3b485
+/* >>>>>>> 62588a74506bc209ce14708f9365d2e4c2a3b485 */
 }

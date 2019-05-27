@@ -52,7 +52,7 @@
       </view>
     </view>
 
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD -->
 
 
   <view class='content'>
@@ -84,13 +84,13 @@
             </view>
           </view>
         </view>
-=======
+<!-- =======
     <view class='content'>
       <text>{{content}}</text>
     </view>
     <view class='comment-box'>
       <view class='comment' wx:for-items="{{list}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap='clickComment'>
->>>>>>> 62588a74506bc209ce14708f9365d2e4c2a3b485
+>>>>>>> 62588a74506bc209ce14708f9365d2e4c2a3b485 -->
       </view>
     </view>
     <view class="comment">
@@ -113,12 +113,12 @@
         </view>
       </view>
   </view>
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD -->
 
 
   </view>
   
 </view>
-=======
+<!-- =======
 </view>
->>>>>>> 62588a74506bc209ce14708f9365d2e4c2a3b485
+>>>>>>> 62588a74506bc209ce14708f9365d2e4c2a3b485 -->

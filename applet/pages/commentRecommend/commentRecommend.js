@@ -34,7 +34,7 @@ Page({
       star4: '../../static/images/home/star-a.png',
       star5: '../../static/images/home/star.png',
       intro: '开篇便写陈清扬找王二证明她不是破鞋：“我在山下14队，她在山上15队。有一天她从山上下来，和我讨论她不是破鞋的问题”，但王二偏要说陈清扬是破鞋，“所谓破鞋，乃是一个指称，大家说你是破鞋，你就是破鞋，没什么道理可讲。大家说你偷了汉，你就是偷了汉，这也没什么道理可讲”。然后，王二解释陈清扬被称为破鞋的原因：“大家都认为，结了婚的女人不偷汉，就该面色黝黑，乳房下垂；而你脸不黑而且白，乳房不下垂而且高耸，所以你是破鞋。假如你不想当破鞋，就要把脸弄黑，把乳房弄下垂，以后别人就不说你是破鞋。当然，这样很吃亏，假如你不想吃亏，就该去偷汉子来。这样你自己也认为自己是个破鞋。别人没有义务先弄明白你是否偷汉再决定是否管你叫破鞋。你倒有义务叫别人无法叫你破鞋。”后来陈清扬又下山找王二，因为传闻她和王二在搞破鞋，她要王二给出他们清白无辜的证明。而王二倒倾向于证明自己的不无辜。后来，王二以“伟大的友谊”之名和陈清扬搞起了“破鞋”，然后出逃，离开了农场，先是到后山，后来又驻扎在章风山。半年后，在陈清扬的建议下，他们又主动回到农场， “出斗争差”，写交代材料，如此，直到“文革”结束。',
-<<<<<<< HEAD
+// <<<<<<< HEAD
     },
   ],
   list1:[
@@ -57,48 +57,48 @@ Page({
         content: "就这么活着，每一天都是黄金时代"
       }
     ],
-=======
-    }, ],
-    list1: [{
+// =======
+//     }, ],
+//     list1: [{
 
-    }],
->>>>>>> 62588a74506bc209ce14708f9365d2e4c2a3b485
+//     }],
+// >>>>>>> 62588a74506bc209ce14708f9365d2e4c2a3b485
   },
   /**
    * 生命周期函数--监听页面加载
    */
-<<<<<<< HEAD
+// <<<<<<< HEAD
   iconClick: function () {
     wx.navigateTo({
       url: '../borrowedlist/borrowedlist',
     })
   },
   onLoad: function (options) {
-=======
-  toBookInfoTap: function() {
-    wx.navigateTo({
-      url: '../bookInfo/bookInfo',
-    })
-  },
-  commentSuccess: function() {
-    wx.showToast({
-      title: '评论成功',
-      icon: "success",
-      duration: 3000
-    })
-    this.setData({
-      nickName:"Sun",
-      commentContent: this.data.inputcommentVal,
-      showafterClickSure: false
-    })
-  },
-  inputcomment: function(e) {
-    this.setData({
-      inputcommentVal: e.detail.value
-    })
-  },
-  onLoad: function(options) {
->>>>>>> 62588a74506bc209ce14708f9365d2e4c2a3b485
+// =======
+//   toBookInfoTap: function() {
+//     wx.navigateTo({
+//       url: '../bookInfo/bookInfo',
+//     })
+//   },
+//   commentSuccess: function() {
+//     wx.showToast({
+//       title: '评论成功',
+//       icon: "success",
+//       duration: 3000
+//     })
+//     this.setData({
+//       nickName:"Sun",
+//       commentContent: this.data.inputcommentVal,
+//       showafterClickSure: false
+//     })
+//   },
+//   inputcomment: function(e) {
+//     this.setData({
+//       inputcommentVal: e.detail.value
+//     })
+//   },
+//   onLoad: function(options) {
+// >>>>>>> 62588a74506bc209ce14708f9365d2e4c2a3b485
 
   },
 

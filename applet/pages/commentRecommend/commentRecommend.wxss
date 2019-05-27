@@ -230,7 +230,7 @@
   height: 200rpx;
   overflow: hidden;
 }
-<<<<<<< HEAD
+/* <<<<<<< HEAD */
 .goods-box1 .img-box image{
    width: 180rpx;
    height: 200rpx;
@@ -373,23 +373,17 @@
   overflow: hidden;
   border-radius:5px;
   flex-direction: row;
-=======
+/* =======
 
 .goods-box1 .img-box image {
   width: 180rpx;
   height: 200rpx;
 }
 
-/* .comment{
-  position: fixed;
-  bottom: 20rpx;
-} */
-
 .comment {
   display: flex;
   flex-direction: row;
   align-content: center;
-  /* margin-top: 20rpx; */
   margin-bottom: 50rpx;
   height: 100rpx;
 }
@@ -434,15 +428,10 @@ margin-left: 40rpx;
 margin-right: 20rpx;
 margin-top: 10rpx;
 }
-/* .avatar-box image{
-  border-radius: 50%;
-  margin-top: 30rpx;
-  margin-left: 40rpx;
-  margin-right: 20rpx;
-} */
+
 .commentcontent text{
   font-size: 30rpx;
   color: #999;
   margin-right: 40rpx;
->>>>>>> 62588a74506bc209ce14708f9365d2e4c2a3b485
+>>>>>>> 62588a74506bc209ce14708f9365d2e4c2a3b485 */
 }

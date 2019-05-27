@@ -63,6 +63,12 @@
             </label>
           </view>
         </view>
+        <view class="item">
+        <label>上传图片</label>
+        <input disabled="true" bindtap="chooseImage">
+        
+        </input>
+        </view>
         <view class="operation" style="margin-bottom:{{bottom}}rpx;">
           <label class='label' name="operaiton">操作</label>
           <input name="operation" value="{{getOperationVal}}" hidden="true" class='scorebox' disabled='true'></input>

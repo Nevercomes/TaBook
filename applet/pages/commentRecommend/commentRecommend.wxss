@@ -12,13 +12,41 @@
 .main-box .title{
   font-size: 40rpx;
   font-family: 'microsoft yahei';
+  font-weight: bold;
 }
 .main-box .author-box{
   display: flex;
   flex-direction: row;
 }
 .main-box .author-box .author-body{
-  
+  margin-left: 10rpx;
+}
+.main-box .author-box .author-body .author-name{
+  font-family:'microsoft yahei';
+  font-size:36rpx;
+  color:#757171;
+}
+.main-box .author-box .author-body .detail{
+  display: flex;
+  flex-direction: row;
+}
+.main-box .author-box .author-body .detail .time{
+  font-family:'microsoft yahei';
+  font-size:24rpx;
+  color:#757171;
+}
+.main-box .author-box .author-body .detail .stars{
+  margin-left: 20rpx;
+  width: 400rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+}
+.main-box .author-box .author-body .detail .stars .img{
+  width: 30rpx;
+  height: 35rpx;
+  padding-right:5rpx; 
 }
 .userinfo-avatar { 
   width: 68rpx;

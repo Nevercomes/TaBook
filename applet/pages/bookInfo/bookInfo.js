@@ -15,16 +15,16 @@ Page({
       userInfo: {},
       userComments: [
       {
-          userAvatar: '../../static/images/me/avatar1.jpg',
-          username: "MerIce",
+          userAvatar: '../../static/images/me/avatar2.jpg',
+          username: "MrIce",
           createTime: "2019-05-18",
           content: "黑色而幽默，特立而独行"
       },
       {
-        userAvatar: '../../static/images/me/avatar1.jpg',
-        username: "MerIce",
+        userAvatar: '../../static/images/me/avatar.png',
+        username: "Daisy",
         createTime: "2019-05-18",
-        content: "黑色而幽默，特立而独行"
+        content: "就这么活着，每一天都是黄金时代"
       }
     ],
     borrowableList: [
@@ -35,10 +35,10 @@ Page({
           content: "喜欢你会喜欢这本书"
       },
       {
-          userAvatar: '../../static/images/me/avatar1.jpg',
-          username: "MerIce",
-          createTime: "2019-05-18",
-          content: "黑色而幽默，特立而独行"
+          userAvatar: '../../static/images/me/avatar3.png',
+          username: "西瓜",
+          createTime: "2019-05-21",
+          content: "一把独立思考的匕首，扎进时代荒谬的肺中"
       }
     ]
   },

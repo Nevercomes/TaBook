@@ -16,8 +16,10 @@ Page({
       givebackTime: "323",
       operation: "我要还书"
     }],
-    books: ['a', 'b', 'c', 'd', 'e'],
-    books2: ['a', 'b', 'c', 'd', 'e'],
+    // books: ['a', 'b', 'c', 'd', 'e'],
+    // books2: ['a', 'b', 'c', 'd', 'e'],
+    books: ['a'],
+    // books2: ['a'],
     totalborrow: 0,
     borrowing: 0,
     currentTab: 0,

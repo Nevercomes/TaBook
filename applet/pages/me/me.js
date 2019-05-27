@@ -15,7 +15,7 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     hasVerified: false,
-    userCreditPoints: 0,
+    userCreditPoints: 100,
     showEditMotto:false,
     showselfSignature:true
   },

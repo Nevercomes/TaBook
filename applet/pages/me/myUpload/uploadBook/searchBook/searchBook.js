@@ -63,7 +63,7 @@ Page({
 
   startSearch: function() {
     this.setData({
-      bookResult: ['a', 'd','d','d','d','d']
+      bookResult: ['a']
     })
   },
   toBookInfo:function(){

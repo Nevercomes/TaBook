@@ -22,7 +22,7 @@
   <view class="phone">
     <view class="label">联系方式</view>
     <view class="img-box">
-      <image src="../../../static/images/me/phone.png" style="width:64rpx; height:64rpx"></image>
+      <image src="../../../static/images/me/phone.jpg" style="width:64rpx; height:64rpx"></image>
       <input name="phone" value="{{inputPhoneVal}}" bindinput="inputPhone" placeholder="QQ号/微信号/邮箱"></input>
     </view>
   </view>

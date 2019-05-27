@@ -17,7 +17,7 @@
         <view class=''></view>
         <view bindtap='bindShowMsg' class=''>  
         <text class='operation'>{{operation}} </text>
-        <image src='../../../static/images/me/select.png' style="height:40rpx;width:40rpx"></image>
+        <image src='../../../static/images/me/select.jpg' style="height:40rpx;width:40rpx"></image>
         </view>
           <view class="select_box" wx:if="{{select}}" >
             <view class="select_one" data-operation="上架借书" bindtap="mySelect"data-index="{{index}}">上架借书</view>
@@ -34,6 +34,6 @@
     </block>
   </view>
   <view class="add-wrap"hover-class="plus-hover" bindtap="uploadBook">
-  <image src="../../../static/images/me/add.png "></image>
+  <image src="../../../static/images/me/add.jpg "></image>
 </view>
 </view>

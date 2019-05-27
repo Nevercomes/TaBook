@@ -8,14 +8,15 @@ var handlings = [
 //   "operationOther": "待处理",
 //   "time": "2019-05-24"
 // }, 
-{
-  "avatarUrl": "../../../static/images/me/avatar.png",
-  "nickName": "Daisy",
-  "school": "中南大学",
-  "name": "平凡的世界",
-  "operationOther": "待处理",
-  "time": "2019-05-22",
-}];
+// {
+//   "avatarUrl": "../../../static/images/me/avatar.png",
+//   "nickName": "Daisy",
+//   "school": "中南大学",
+//   "name": "平凡的世界",
+//   "operationOther": "待处理",
+//   "time": "2019-05-22",
+// }
+];
 
 var myhandlings = [{
   "school": "中南大学",
@@ -43,13 +44,13 @@ Page({
     handlings: handlings,
     processing: 0,
     pending: 0,
-    myTotalApplication: 0,
+    myTotalApplication: 1,
     currentTab: 0,
     myhandlings: [{
       "school": "中南大学",
-      "name": "黄金时代",
+      "name": "《黄金时代》",
       "operationMy": "未处理",
-      "time": "2019-05-21",
+      "time": "2019-05-22",
       "type": "撤销"
     }, 
     // {

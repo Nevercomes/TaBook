@@ -7,7 +7,7 @@
       <view class="desc3">
         <view class="nickname"> {{userInfo.nickName}}</view>
         <view class="school">{{itme.school}}中南大学</view>
-        <view class="name">{{itme.name}}《平凡的世界》</view>
+        <view class="name">{{itme.name}}《黄金时代》</view>
       </view>
       <view class="desc3">
         <view class="time">{{item.time}}</view>

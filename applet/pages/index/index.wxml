@@ -132,7 +132,7 @@
        {{item.title}}
       </view>
       <view class='user1'>
-        {{item.username}}
+        {{item.username}} {{item.createTime}} {{item.commentBook}}
       </view>
       <view class='commet1'>
         <view class='textView'>{{item.content}}</view>

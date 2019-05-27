@@ -7,7 +7,7 @@ Page({
   data: {
     title:'就这么活着，每一天都是黄金时代',
     author:'Daisy',
-    head:'../../static/images/home/like.png',
+    head:'../../static/images/me/avatar.png',
     time:'2019-5-20',
     star1: '../../static/images/home/star-a.png',
     star2: '../../static/images/home/star-a.png',
@@ -21,9 +21,9 @@ Page({
     {
       title: '黄金时代',
       author: '王小波',
-      score: 8,
+      score: 8.9,
       press: '中国社会科学出版社',
-      freeNum: 3,
+      freeNum: 1,
       imgUrl: '../../static/images/home/book6.jpg',
       star1: '../../static/images/home/star-a.png',
       star2: '../../static/images/home/star-a.png',

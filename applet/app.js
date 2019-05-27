@@ -5,6 +5,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    wx.setStorageSync('a', 'true');
 
     // 登录
     wx.login({
@@ -91,6 +92,7 @@ App({
   },
   globalData: {
     userInfo: null,
+    a:'true',
     // 默认的请求头
     Cookie: "tabook-shiro-session="
   }

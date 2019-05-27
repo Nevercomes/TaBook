@@ -61,7 +61,7 @@
   <view class='comment-container'>
   <view class='book-comment'>
       <view class='comment-head'>
-        <view class='comment-head1'>书籍评价</view>
+        <view class='comment-head1'>文章评论</view>
         <view class='comment-head2' bindtap='more_click1'>查看更多</view>
       </view>
       <view class='comment-body'>
@@ -99,7 +99,7 @@
         <input type="text" value="{{inputcommentVal}}" name="comment " placeholder="说点什么吧..." bindinput='inputcomment'></input>
       </view>
       <view class="sure ">
-        <button bindtap="commentSuccess" form-type='submit'>确定</button>
+        <button class="weui-btn button" bindtap="commentSuccess" form-type='submit'>确定</button>
         <i-toast id="toast" />
       </view>
       

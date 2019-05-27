@@ -13,7 +13,7 @@ Page({
     title: '就这么活着，每一天都是黄金时代',
     author: 'Daisy',
     head: '../../static/images/me/avatar.png',
-    time: '2019-5-20',
+    time: '2019-05-22',
     star1: '../../static/images/home/star-a.png',
     star2: '../../static/images/home/star-a.png',
     star3: '../../static/images/home/star-a.png',
@@ -48,14 +48,14 @@ Page({
         userAvatar: '../../static/images/me/avatar2.jpg',
         username: "MrIce",
         createTime: "2019-05-24",
-        content: "黑色而幽默，特立而独行"
+        content: "书评写的很有特色"
 
       },
       {
         userAvatar: '../../static/images/me/avatar.png',
         username: "Daisy",
         createTime: "2019-05-25",
-        content: "就这么活着，每一天都是黄金时代"
+        content: "个人的一点看法"
       }
     ],
     // =======
@@ -92,25 +92,41 @@ Page({
   //   })
   // },
   commentSuccess: function () {
-    wx.showModal({
-      title: '提示',
-      content: '请进行实名认证',
-      success: function (res) {
-        if (res.confirm) {
-          console.log("确定")
-          // $Toast({
-          //   content: '评论成功',
-          //   icon: 'success'
-          // })
-          wx.navigateTo({
-            url: '../me/userverified/userverified',
-          })
+    console.log(this.data.a)
+    var a = wx.getStorageSync('a');
+    console.log(a)
+    if(a == 'true') {
+      // this.setData({
+      //   a:false,
+      // })
+      wx.setStorageSync('a', false);
+      wx.showModal({
+        title: '提示',
+        content: '请进行实名认证',
+        success: function (res) {
+          if (res.confirm) {
+            console.log("确定")
+            // $Toast({
+            //   content: '评论成功',
+            //   icon: 'success'
+            // })
+            wx.navigateTo({
+              url: '../me/userverified/userverified',
+            })
+          }
+          else if (res.cancel) {
+            console.log("取消")
+          }
         }
-        else if (res.cancel) {
-          console.log("取消")
-        }
-      }
-    })
+      })
+    }
+    else{
+      $Toast({
+        content: '评论成功',
+        icon: 'success'
+      });
+    }
+    
   },
   inputcomment: function (e) {
     this.setData({
@@ -118,6 +134,7 @@ Page({
     })
   },
   onLoad: function (options) {
+    
   },
 
   /**

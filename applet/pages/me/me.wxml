@@ -17,8 +17,8 @@
       </view>
       <view class="userverified-box">
         <view class='userverified'>
-          <text class='user-verified' wx:if="{{!hasVerified}}" bindtap='bindUserVerified'>{{verifiedStatus }}未认证，点我实名认证</text>
-          <text class='user-verified' wx:else="{{hasVerified}}">已实名认证</text>
+          <text class='user-verified' wx:if="{{hasVerified}}" bindtap='bindUserVerified'>{{verifiedStatus }}未认证，点我实名认证</text>
+          <text class='user-verified' wx:else="{{!hasVerified}}">已实名认证</text>
         </view>
         <view class="homepage" bindtap="toEditselfInfo">
           <text>个人主页</text>

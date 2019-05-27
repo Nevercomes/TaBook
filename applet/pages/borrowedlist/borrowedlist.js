@@ -5,25 +5,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-    owners: 100,
-    available:3,
-    borrow: [
-      'a',
-      'b',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-      'c',
-    ],
+    owners: 3,
+    available:1,
+    borrowableList: [
+      {
+          userAvatar: "../../static/images/me/avatar.png",
+          username: "Daicy",
+          comment: "就这么活着，每一天都是黄金时代",
+          status: "空闲",
+          returnTime: "等待借阅...",
+          statusImg: "../../static/images/borrowList/borrow.png"
+
+      },
+      {
+          userAvatar: "../../static/images/me/avatar3.png",
+          username: "西瓜",
+          comment: "一把思考的匕首，扎进时代荒谬的肺中",
+          status: "外借",
+          returnTime: "归还时间: 2019-06-21",
+          statusImg: "../../static/images/borrowList/unborrow.png"
+      },
+      {
+          userAvatar: "../../static/images/me/avatar1.jpg",
+          username: "利威尔一米九",
+          comment: "首先，它很有趣",
+          status: "外借",
+          returnTime: "归还时间: 2019-06-19",
+          statusImg: "../../static/images/borrowList/unborrow.png"
+      }
+    ]
   },
 
   //事件处理函数

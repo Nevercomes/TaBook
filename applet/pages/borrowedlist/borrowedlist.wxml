@@ -6,22 +6,23 @@
         拥有人数 {{owners}}本   空闲 {{available}}本
       </view>
     </view>
-    <view class='goods-box1' wx:for-items="{{borrow}}" wx:key="{{index}}" data-id="{{item.id}}">
+    <view class='goods-box1' wx:for-items="{{borrowableList}}" wx:key="{{index}}" data-id="{{item.id}}">
   <view class="img-box" bindtap="toBookInfoTap">
-    <image src='../../static/images/home/book1.jpg' class="image"  mode="aspectFill" lazy-load="true" ></image>
+    <image src='{{item.userAvatar}}' class="image"  mode="aspectFill" lazy-load="true" ></image>
   </view>
   <view class='body-box'>
     <view class='text-box'>
       <view class='detail-box' bindtap="toBookInfoTap">
-        <view class="goods-title">Username</view>
-        <view class='goods-intro1'>  2019-01-01</view>
+        <view class="goods-title">{{item.username}}</view>
+        <view class='goods-intro1'>{{item.comment}}</view>
       </view>
       <view class='icon-box' bindtap='iconClick'>
-        <image src='../../static/images/borrowList/borrow.png' class="image" mode='aspectFill'></image>
-        <view class='text'>借书</view>
+        <!-- <image src='../../static/images/borrowList/borrow.png' class="image" mode='aspectFill'></image> -->
+        <image src='{{item.statusImg}}' class="image" mode='aspectFill'></image>
+        <view class='text'>{{item.status}}</view>
       </view>
     </view>
-    <view class='comment-box' bindtap="toBookInfoTap">这里是相关评论</view>
+    <view class='comment-box' bindtap="toBookInfoTap">{{item.returnTime}}</view>
   </view>
   </view>
 

@@ -19,6 +19,7 @@ Page({
           username: "MrIce",
           createTime: "2019-05-18",
           content: "黑色而幽默，特立而独行"
+          
       },
       {
         userAvatar: '../../static/images/me/avatar.png',
@@ -38,7 +39,7 @@ Page({
           userAvatar: '../../static/images/me/avatar3.png',
           username: "西瓜",
           createTime: "2019-05-21",
-          content: "一把独立思考的匕首，扎进时代荒谬的肺中"
+          content: "一把思考的匕首，扎进时代荒谬的肺中"
       }
     ]
   },

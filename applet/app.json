@@ -31,10 +31,10 @@
     "pages/borrowedlist/borrowedlist",
     "pages/writeReview/writeReview",
     "pages/iHaveBook/iHaveBook",
-    "pages/borrow/borrow",
     "pages/buy/buy",
     "pages/longComment/longComment",
-    "pages/commentRecommend/commentRecommend"
+    "pages/commentRecommend/commentRecommend",
+    "pages/borrowing/borrowing"
   ],
   "window": {
     "backgroundTextStyle": "light",

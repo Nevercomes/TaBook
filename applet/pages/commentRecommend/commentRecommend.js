@@ -38,10 +38,30 @@ Page({
       
     }
   ],
+    userComments: [
+      {
+        userAvatar: '../../static/images/me/avatar2.jpg',
+        username: "MrIce",
+        createTime: "2019-05-24",
+        content: "黑色而幽默，特立而独行"
+
+      },
+      {
+        userAvatar: '../../static/images/me/avatar.png',
+        username: "Daisy",
+        createTime: "2019-05-25",
+        content: "就这么活着，每一天都是黄金时代"
+      }
+    ],
   },
   /**
    * 生命周期函数--监听页面加载
    */
+  iconClick: function () {
+    wx.navigateTo({
+      url: '../borrowedlist/borrowedlist',
+    })
+  },
   onLoad: function (options) {
 
   },

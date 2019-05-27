@@ -57,13 +57,39 @@
 
 
   <view class='content'>
-      <text>{{content}}</text>
-    </view>
-    <view class='comment-box'>
-      <view class='comment' wx:for-items="{{list}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap='clickComment'>
-        
+    <text>{{content}}</text>
+  </view>
+  <view class='comment-container'>
+  <view class='book-comment'>
+      <view class='comment-head'>
+        <view class='comment-head1'>书籍评价</view>
+        <view class='comment-head2' bindtap='more_click1'>查看更多</view>
+      </view>
+      <view class='comment-body'>
+        <view class='comment-box' wx:for-items="{{userComments}}" wx:key="{{index}}" data-id="{{item.id}}">
+          <view class='img-box'>
+            <!-- <image class="userinfo-avatar" src='../../static/images/home/book1.jpg' mode="cover"> -->
+            <image class="userinfo-avatar" src='{{item.userAvatar}}' mode="cover">
+            </image>
+          </view>
+          <view class='text-box'>
+            <view class='text-box1'>
+              <!-- <view class='username'>MrIce</view> -->
+              <!-- <view class='time'>2019-5-18</view> -->
+              <view class='username'>{{item.username}}</view>
+              <view class='time'>{{item.createTime}}</view>
+            </view>
+            <view class='text-box2'>
+              <!-- <view class='comment'>一把独立思考的匕首，扎进时代荒谬的肺中。</view> -->
+              <view class='comment'>{{item.content}}</view>
+            </view>
+          </view>
+        </view>
       </view>
     </view>
+  </view>
+
+
   </view>
   
 </view>

@@ -39,7 +39,7 @@ Page({
   //事件处理函数
   iconClick:function(){
     wx.navigateTo({
-      url: '../borrow/borrow',
+      url: '../borrowing/borrowing',
     })
   },
 

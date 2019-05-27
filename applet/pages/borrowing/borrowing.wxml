@@ -1,0 +1,46 @@
+<!--pages/borrowing/borrowing.wxml-->
+<view class='container'>
+  <view class='info-box'>
+    <view class='user-info'>
+      <view class='user-head'>
+        <view class='img'>
+          <image class="userinfo-avatar" src='{{head}}' mode="cover"></image>
+        </view>
+        <view class='user-detail'>
+          <view class='username'>{{username}}</view>
+          <view class='credit'>信誉积分：{{credit}}</view>
+        </view>
+      </view>
+      
+      <view class='sign'>个性签名:\t\t\t{{sign}}</view>
+    </view>
+    <view class='book-info'>
+      <view class='book-name'>书籍名称：{{bookName}}</view>
+      <view class='book-author'>作者：{{bookAuthor}}</view>
+      <view class='book-publish'>出版 {{bookPublish}}</view>
+      <view class='new'>新旧程度：{{period}}</view>
+      <view class='message-left'>留言：{{message}}</view>
+    </view>
+    <view class='book-img'>
+      <image src='../../static/images/home/cover_meitu_1.jpg' class='img'></image>
+      <image src='../../static/images/home/content_meitu_2.jpg' class='img'></image>
+      <image src='../../static/images/me/avatar.png' class='img'></image>
+    </view>
+  </view>
+
+
+
+  <view class="weui-cells__title" style="color: #000">留言</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="请输入文本" style="height: 3.3em"  bindinput='inputs'/>
+          <view class="weui-textarea-counter">{{currentNum}}/50</view>
+          <i-toast id="toast" />
+        </view>
+      </view>
+  </view>
+
+  <button class="weui-btn button" type="primary" bindtap='btnClick'>确定</button>
+    <i-toast id="toast" />
+</view>

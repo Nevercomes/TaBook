@@ -1,0 +1,60 @@
+/* pages/borrowing/borrowing.wxss */
+.container {
+  background-color: #fff;
+  min-height: 100%;
+  display: block;
+}
+.userinfo-avatar { 
+  width: 128rpx;
+  height: 128rpx;
+  margin: 10rpx;
+  border-radius: 50%;
+}
+.info-box{
+  display: flex;
+  flex-direction: column;
+  margin: 10rpx 40rpx 10rpx 40rpx;
+}
+.info-box .user-info{
+  display: flex;
+  flex-direction: column;
+}
+.info-box .user-info .user-head{
+  display: flex;
+  flex-direction: row;
+}
+.info-box .user-info .user-head .user-detail{
+  display: flex;
+  flex-direction: column;
+}
+.info-box .user-info .user-head .user-detail .username{
+  font-family:'microsoft yahei';
+  font-size:42rpx;
+  color:#757171;
+}
+.info-box .user-info .user-head .user-detail .credit{
+  font-family:'microsoft yahei';
+  font-size:36rpx;
+  color:#757171;
+}
+.info-box .user-info .sign{
+  font-family:'microsoft yahei';
+  font-size:36rpx;
+  color:#757171;
+}
+
+.info-box .book-info{
+  font-family:'microsoft yahei';
+  font-size:42rpx;
+}
+
+.info-box .book-img{
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+}
+.info-box .book-img .img{
+ 
+  height: 200rpx;
+  margin-right: 10rpx;
+}

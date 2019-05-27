@@ -30,7 +30,7 @@
     <view class='comment-container'>
       <view class='book-intro'>
         <view class='intro-head'>图书简介</view>
-        <view class='intro-body'>在这组系列作品里面，名叫“王二”的男主人公处于恐怖和荒谬的环境，遭到各种不公正待遇，但他却摆脱了传统文化人的悲愤心态，创造出一种反抗和超越的方式：既然不能证明自己无辜，便倾向于证明自己不无辜。于是他以性爱作为对抗外部世界的最后据点，将性爱表现得既放浪形骸又纯洁</view>
+        <view class='intro-body'>在这组系列作品里面，名叫“王二”的男主人公处于恐怖和荒谬的环境，遭到各种不公正待遇，但他却摆脱了传统文化人的悲愤心态，创造出一种反抗和超越的方式。他以性爱作为对抗外部世界的最后据点，将性爱表现得既放浪形骸又纯洁</view>
       </view>
       <view class='book-comment'>
         <view class='comment-head'>
@@ -38,43 +38,46 @@
           <view class='comment-head2' bindtap='more_click1'>查看更多</view>
         </view>
         <view class='comment-body'>
-          <view class='comment-box' wx:for-items="{{usercomment}}">
+          <view class='comment-box' wx:for-items="{{userComments}}" wx:key="{{index}}" data-id="{{item.id}}">
             <view class='img-box'>
-              <image class="userinfo-avatar" src='../../static/images/home/book1.jpg' mode="cover">
+              <!-- <image class="userinfo-avatar" src='../../static/images/home/book1.jpg' mode="cover"> -->
+              <image class="userinfo-avatar" src='{{item.userAvatar}}' mode="cover">
               </image>
             </view>
             <view class='text-box'>
               <view class='text-box1'>
-                <view class='username'>MrIce</view>
-                <view class='time'>2019-5-18</view>
+                <!-- <view class='username'>MrIce</view> -->
+                <!-- <view class='time'>2019-5-18</view> -->
+                <view class='username'>{{item.username}}</view>
+                <view class='time'>{{item.createTime}}</view>
               </view>
               <view class='text-box2'>
-                <view class='comment'>黑色而幽默，特立而独行，一把独立思考的匕首，扎进时代荒谬的肺中。</view>
+                <!-- <view class='comment'>一把独立思考的匕首，扎进时代荒谬的肺中。</view> -->
+                <view class='comment'>{{item.content}}</view>
               </view>
-             
-              
             </view>
           </view>
         </view>
       </view>
+
       <view class='borrowed-list'>
         <view class='list-head'>
           <view class='list-head1'>借阅列表</view>
           <view class='list-head2' bindtap='more_click2'>查看更多</view>
         </view>
          <view class='comment-body'>
-          <view class='comment-box' wx:for-items="{{usercomment}}">
+          <view class='comment-box' wx:for-items="{{borrowableList}}" wx:key="{{index}}" data-id="{{item.id}}">
             <view class='img-box'>
-              <image class="userinfo-avatar" src='../../static/images/home/book1.jpg' mode="cover">
+              <image class="userinfo-avatar" src='{{item.userAvatar}}' mode="cover">
               </image>
             </view>
             <view class='text-box'>
               <view class='text-box1'>
-                <view class='username'>username</view>
-                <view class='time'>2019-1-11</view>
+                <view class='username'>{{item.username}}</view>
+                <view class='time'>{{item.createTime}}</view>
               </view>
               <view class='text-box2'>
-                <view class='comment'>这里是评论</view>
+                <view class='comment'>{{item.content}}</view>
               </view>
             </view>
           </view>

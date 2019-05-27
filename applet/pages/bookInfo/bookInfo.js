@@ -13,10 +13,34 @@ Page({
       borrowedbook:1,
       score:9.2,
       userInfo: {},
-      usercomment: [
-      'a',
-      'b',
+      userComents: [
+      {
+          userAvatar: '../../static/images/me/avatar1.jpg',
+          username: "MerIce",
+          createTime: "2019-05-18",
+          content: "黑色而幽默，特立而独行"
+      },
+      {
+        userAvatar: '../../static/images/me/avatar1.jpg',
+        username: "MerIce",
+        createTime: "2019-05-18",
+        content: "黑色而幽默，特立而独行"
+      }
     ],
+    borrowableList: [
+      {
+          userAvatar: '../../static/images/me/avatar.jpg',
+          username: "Daisy",
+          createTime: "2019-05-19",
+          content: "喜欢你会喜欢这本书"
+      },
+      {
+          userAvatar: '../../static/images/me/avatar1.jpg',
+          username: "MerIce",
+          createTime: "2019-05-18",
+          content: "黑色而幽默，特立而独行"
+      }
+    ]
   },
 
   //事件处理函数

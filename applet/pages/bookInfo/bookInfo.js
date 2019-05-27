@@ -13,7 +13,7 @@ Page({
       borrowedbook:1,
       score:9.2,
       userInfo: {},
-      userComents: [
+      userComments: [
       {
           userAvatar: '../../static/images/me/avatar1.jpg',
           username: "MerIce",
@@ -29,7 +29,7 @@ Page({
     ],
     borrowableList: [
       {
-          userAvatar: '../../static/images/me/avatar.jpg',
+          userAvatar: '../../static/images/me/avatar.png',
           username: "Daisy",
           createTime: "2019-05-19",
           content: "喜欢你会喜欢这本书"

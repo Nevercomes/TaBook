@@ -336,61 +336,65 @@ Page({
   onLoad: function () {
     // loadBookInfo();
     // console.log(this.data.score);
+    console.log(this.data.list2[1].score);
+    for(var index in this.data.list2){
+      if (this.data.list2[index].score<1) {
+        this.setData({
+          ["list2[" + index + "].star1"]: '../../static/images/home/star.png',
+          ["list2[" + index + "].star2"]: '../../static/images/home/star.png',
+          ["list2[" + index + "].star3"]: '../../static/images/home/star.png',
+          ["list2[" + index + "].star4"]: '../../static/images/home/star.png',
+          ["list2[" + index + "].star5"]: '../../static/images/home/star.png',
+        })
+      }
+      else if (this.data.list2[index].score < 2) {
+        this.setData({
+          ["list2[" + index + "].star1"]: '../../static/images/home/star-a.png',
+          ["list2[" + index + "].star2"]: '../../static/images/home/star.png',
+          ["list2[" + index + "].star3"]: '../../static/images/home/star.png',
+          ["list2[" + index + "].star4"]: '../../static/images/home/star.png',
+          ["list2[" + index + "].star5"]: '../../static/images/home/star.png',
+        })
+      }
+      else if (this.data.list2[index].score < 3) {
+        this.setData({
+          ["list2[" + index + "].star1"]: '../../static/images/home/star-a.png',
+          ["list2[" + index + "].star2"]: '../../static/images/home/star-a.png',
+          ["list2[" + index + "].star3"]: '../../static/images/home/star.png',
+          ["list2[" + index + "].star4"]: '../../static/images/home/star.png',
+          ["list2[" + index + "].star5"]: '../../static/images/home/star.png',
+        })
+      }
+      else if (this.data.list2[index].score < 4) {
+        this.setData({
+          ["list2[" + index + "].star1"]: '../../static/images/home/star-a.png',
+          ["list2[" + index + "].star2"]: '../../static/images/home/star-a.png',
+          ["list2[" + index + "].star3"]: '../../static/images/home/star-a.png',
+          ["list2[" + index + "].star4"]: '../../static/images/home/star.png',
+          ["list2[" + index + "].star5"]: '../../static/images/home/star.png',
+        })
+      }
+      else if (this.data.list2[index].score < 5) {
+        this.setData({
+          ["list2[" + index + "].star1"]: '../../static/images/home/star-a.png',
+          ["list2[" + index + "].star2"]: '../../static/images/home/star-a.png',
+          ["list2[" + index + "].star3"]: '../../static/images/home/star-a.png',
+          ["list2[" + index + "].star4"]: '../../static/images/home/star-a.png',
+          ["list2[" + index + "].star5"]: '../../static/images/home/star.png',
+        })
+      }
+      else if (this.data.list2[index].score =5) {
+        this.setData({
+          ["list2[" + index + "].star1"]: '../../static/images/home/star-a.png',
+          ["list2[" + index + "].star2"]: '../../static/images/home/star-a.png',
+          ["list2[" + index + "].star3"]: '../../static/images/home/star-a.png',
+          ["list2[" + index + "].star4"]: '../../static/images/home/star-a.png',
+          ["list2[" + index + "].star5"]: '../../static/images/home/star-a.png',
+        })
+      }
+    }
 
-    if(this.data.score < 1) {
-      this.setData({
-        star1: '../../static/images/home/star.png',
-        star2: '../../static/images/home/star.png',
-        star3: '../../static/images/home/star.png',
-        star4: '../../static/images/home/star.png',
-        star5: '../../static/images/home/star.png',
-      })
-    }
-    else if (this.data.score < 2) {
-      this.setData({
-        star1: '../../static/images/home/star-a.png',
-        star2: '../../static/images/home/star.png',
-        star3: '../../static/images/home/star.png',
-        star4: '../../static/images/home/star.png',
-        star5: '../../static/images/home/star.png',
-      })
-    }
-    else if (this.data.score < 3) {
-      this.setData({
-        star1: '../../static/images/home/star-a.png',
-        star2: '../../static/images/home/star-a.png',
-        star3: '../../static/images/home/star.png',
-        star4: '../../static/images/home/star.png',
-        star5: '../../static/images/home/star.png',
-      })
-    }
-    else if (this.data.score < 4) {
-      this.setData({
-        star1: '../../static/images/home/star-a.png',
-        star2: '../../static/images/home/star-a.png',
-        star3: '../../static/images/home/star-a.png',
-        star4: '../../static/images/home/star.png',
-        star5: '../../static/images/home/star.png',
-      })
-    }
-    else if (this.data.score < 5) {
-      this.setData({
-        star1: '../../static/images/home/star-a.png',
-        star2: '../../static/images/home/star-a.png',
-        star3: '../../static/images/home/star-a.png',
-        star4: '../../static/images/home/star-a.png',
-        star5: '../../static/images/home/star.png',
-      })
-    }
-    else if (this.data.score == 5) {
-      this.setData({
-      star1: '../../static/images/home/star-a.png',
-      star2: '../../static/images/home/star-a.png',
-      star3: '../../static/images/home/star-a.png',
-      star4: '../../static/images/home/star-a.png',
-      star5: '../../static/images/home/star-a.png',
-      })
-    }
+    
   },
   onReady: function () {
   },

@@ -100,6 +100,7 @@
       </view>
       <view class="sure ">
         <button bindtap="commentSuccess" form-type='submit'>确定</button>
+        <i-toast id="toast" />
       </view>
       
     </view>

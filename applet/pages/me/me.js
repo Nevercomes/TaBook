@@ -26,13 +26,10 @@ Page({
   },
 
   onLoad: function (options) {
-    var that = this; 
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
-        hasUserInfo: true,
-        nickName:userInfo.nickName,
-        avatarUrl:userInfo.avatarUrl
+        hasUserInfo: true
       })
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -50,57 +47,18 @@ Page({
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
-            hasUserInfo: true,   
-            nickName:res.userInfo.nickName       
+            hasUserInfo: true
           })
-          var name ,photo,time;
-          console.log(util.formatDate(new Date()))
-          wx.request({
-            url: '',
-            header:header,
-            method:"POST",
-            data:{
-              name:res.data.nickName,
-              photo:res.data.avatarUrl,
-              time:util.formatDate(new Date())
-            },
-            success:function(res){
-              console.log("suceess")
-            },
-            fail:function(){
-              console.log("fail")
-            }
-          })
-        },
+        }
       })
     }
-    //初始加载个性签名
-wx.request({
-  url: '',
-  header:header,
-  data:{
-    motto:""
-  },
-  success:function(res){
-  that.setData({
-    motto:res.data.motto
-  })
-  },
-  fail:function(res){
-    that.setData({
-      motto:motto
-    })
-  }
-})
   },
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
-      hasUserInfo: true,
-      nickName: e.detail.userInfo.nickName,
-      avatarUrl:e.detail.userInfo.avatarUrl
+      hasUserInfo: true
     })
   },
   bindUserVerified: function (e) {

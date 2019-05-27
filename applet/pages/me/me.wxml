@@ -3,7 +3,8 @@
   <view class='user'>
     <view class="userinfo">
       <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
-        <image src="{{avatarUrl}}" style="width: 132rpx;height:132rpx;"></image>
+        <image src='../../static/images/me/avatar0.png' style="width: 132rpx;height:132rpx;"></image>
+       
       </button>
       <block wx:else>
         <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
@@ -11,7 +12,7 @@
     </view>
     <view class='userdesc'>
       <view>
-        <text class="userinfo-nickname">{{nickName}}</text>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
         <text class='credit-grades'>信用分：{{userCreditPoints}}分</text>
       </view>
       <view class="userverified-box">

@@ -7,8 +7,8 @@ let header = {
 }
 var userMsgs = [{
   avatarUrl: "../../../../static/images/me/avatar.png",
-  time: "16:10",
-  detail: "你好呀，我想要我想要向你借与《平凡的世界》可以吗?"
+  time: "15:10",
+  detail: "你好呀，这周周六（5.25)下午两点半在世纪楼前门，我把《黄金时代》交给你可以吗？"
 }]
 Page({
   data: {

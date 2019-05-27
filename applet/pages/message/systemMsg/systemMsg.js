@@ -2,7 +2,8 @@
 Page({
 
   data: {
-    systemMsgs: ['a', 'd', 'a', 'd', 'a', 'd']
+    // systemMsgs: ['a', 'd', 'a', 'd', 'a', 'd']
+    systemMsgs: ['a']
   },
 
   onLoad: function (options) {

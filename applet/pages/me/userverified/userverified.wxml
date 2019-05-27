@@ -14,7 +14,7 @@
         </view>
       </view>
       <view class='hr'></view>
-      <view class='item'>
+      <!-- <view class='item'>
         <view class='name'>
           <text>身份证号</text>
         </view>
@@ -22,7 +22,7 @@
           <input name="idcard" value="{{inputIdVal}}" bindinput="inputTypingId" cursor='2' type='idcard'></input>
         </view>
       </view>
-      <view class='hr'></view>
+      <view class='hr'></view> -->
       <view class='item' bindtap="bindSchoolSelect">
         <view class='name'>
           <text>学校</text>

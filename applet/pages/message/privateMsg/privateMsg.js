@@ -8,32 +8,32 @@ let header = {
 var privateMsgs = [{
     avatarUrl: "../../../static/images/me/avatar.png",
     nickName: "Daisy",
-    time: "2019-04-24",
-    content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？",
+    time: "2019-05-22",
+    content: "你好呀，这周周六（5.25)下午两点半在世纪楼前门，我把《黄金时代》交给你可以吗？",
     status: "1"
-  },
-  {
-    avatarUrl: "../../../static/images/me/avatar.png",
-    nickName: "Daisy",
-    time: "2019-04-24",
-    content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？", 
-    status: "1"
+  }
+  // {
+  //   avatarUrl: "../../../static/images/me/avatar.png",
+  //   nickName: "Daisy",
+  //   time: "2019-04-24",
+  //   content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？", 
+  //   status: "1"
 
-  },
-  {
-    avatarUrl: "../../../static/images/me/avatar.png",
-    nickName: "Daisy",
-    time: "2019-04-24",
-    content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？",
-    status: "1"
-  },
-  {
-    avatarUrl: "../../../static/images/me/avatar.png",
-    nickName: "Daisy",
-    time: "2019-04-24",
-    content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？",
-    status: "1"
-  },
+  // },
+  // {
+  //   avatarUrl: "../../../static/images/me/avatar.png",
+  //   nickName: "Daisy",
+  //   time: "2019-04-24",
+  //   content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？",
+  //   status: "1"
+  // },
+  // {
+  //   avatarUrl: "../../../static/images/me/avatar.png",
+  //   nickName: "Daisy",
+  //   time: "2019-04-24",
+  //   content: "你好呀，我想要我想要向你借与《平凡的世界》可以吗？",
+  //   status: "1"
+  // },
 ]
 Page({
   data: {

@@ -20,7 +20,7 @@ var comments=[{
 Page({
   data: {
     //comments: ['d', 'd', 'd', 'd', 'd'],
-    comments:comments
+    // comments:comments
 
   },
 toCommentMsgDetail:function(){

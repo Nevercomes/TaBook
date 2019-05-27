@@ -8,7 +8,7 @@ let header = {
 }
 Page({
   data: {
-   favorites:['a','d','d','d','d']
+  //  favorites:['a','d','d','d','d']
   },
   onLoad: function (options) {
     wx.request({

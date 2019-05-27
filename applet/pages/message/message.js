@@ -13,8 +13,10 @@ Page({
     commentreadMark: false,
     status1: 1,
     status2: 1,
-    status3: 1,
-    status4: 1
+    // status3: 1,
+    // status4: 1
+    status3: 0,
+    status4: 0
   },
   onLoad: function(options) {
 

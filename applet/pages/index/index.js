@@ -210,6 +210,11 @@ Page({
       })
     }
   },
+  clickRecommend: function () {
+    wx.navigateTo({
+      url: '../commentRecommend/commentRecommend',
+    })
+  },
   clickImg: function () {
     wx.navigateTo({
       url: '../bookInfo/bookInfo',

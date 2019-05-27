@@ -126,7 +126,7 @@
   
 <!--书评推荐(tab1)-->
 <view class="goods-container" hidden='{{tab1Hidden}}'>
-    <view class='goods-box1' wx:for-items="{{list1}}" wx:key="{{index}}" data-id="{{item.id}}">
+    <view class='goods-box1' wx:for-items="{{list1}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap='clickRecommend'>
     <view class='tab1-box'>
       <view class='title1'>
        {{item.title}}

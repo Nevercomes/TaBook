@@ -1,0 +1,35 @@
+<!--pages/commentRecommend/commentRecommend.wxml-->
+<view class="container">
+  <view class='main-box'>
+    <view class='title'>
+      {{title}}
+    </view>
+    <view class='author-box'>
+      <view class='author-head'>
+        <image class="userinfo-avatar" src='{{head}}' mode="cover"></image>
+      </view>
+      <view class='author-body'>
+        <view class='author-name'>{{author}} 的书评</view>
+        <view class='detail'>
+          <view class='time'>{{time}}</view>
+          <view class='stars'>
+          <image src='{{star1}}' class='img' mode='aspectFit'></image>
+          <image src='{{star2}}' class='img' mode='aspectFit'></image>
+          <image src='{{star3}}' class='img' mode='aspectFit'></image>
+          <image src='{{star4}}' class='img' mode='aspectFit'></image>
+          <image src='{{star5}}' class='img' mode='aspectFit'></image>
+        </view>
+        </view>
+      </view>
+    </view>
+    <view class='content'>
+      <text>{{content}}</text>
+    </view>
+    <view class='comment-box'>
+      <view class='comment' wx:for-items="{{list}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap='clickComment'>
+        
+      </view>
+    </view>
+  </view>
+  
+</view>

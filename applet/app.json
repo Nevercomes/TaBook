@@ -33,7 +33,8 @@
     "pages/iHaveBook/iHaveBook",
     "pages/borrow/borrow",
     "pages/buy/buy",
-    "pages/longComment/longComment"
+    "pages/longComment/longComment",
+    "pages/commentRecommend/commentRecommend"
   ],
   "window": {
     "backgroundTextStyle": "light",

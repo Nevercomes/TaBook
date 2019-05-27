@@ -13,57 +13,70 @@
         <view class='detail'>
           <view class='time'>{{time}}</view>
           <view class='stars'>
-          <image src='{{star1}}' class='img' mode='aspectFit'></image>
-          <image src='{{star2}}' class='img' mode='aspectFit'></image>
-          <image src='{{star3}}' class='img' mode='aspectFit'></image>
-          <image src='{{star4}}' class='img' mode='aspectFit'></image>
-          <image src='{{star5}}' class='img' mode='aspectFit'></image>
-        </view>
+            <image src='{{star1}}' class='img' mode='aspectFit'></image>
+            <image src='{{star2}}' class='img' mode='aspectFit'></image>
+            <image src='{{star3}}' class='img' mode='aspectFit'></image>
+            <image src='{{star4}}' class='img' mode='aspectFit'></image>
+            <image src='{{star5}}' class='img' mode='aspectFit'></image>
+          </view>
         </view>
       </view>
     </view>
 
-  <view class='goods-box1' wx:for-items="{{list}}" wx:key="{{index}}" data-id="{{item.id}}">
-  <view class="img-box" bindtap="toBookInfoTap">
-    <image src='{{item.imgUrl}}' class="image" mode="aspectFit" ></image>
-  </view>
-  <view class='body-box'>
-    <view class='text-box'>
-      <view class='detail-box' bindtap="toBookInfoTap">
-        <view class="goods-title">{{item.title}}</view>
-        <view class='stars'>
-          <image src='{{item.star1}}' class='img' mode='aspectFit'></image>
-          <image src='{{item.star2}}' class='img' mode='aspectFit'></image>
-          <image src='{{item.star3}}' class='img' mode='aspectFit'></image>
-          <image src='{{item.star4}}' class='img' mode='aspectFit'></image>
-          <image src='{{item.star5}}' class='img' mode='aspectFit'></image>
-          <view class='text'>{{item.score}}</view>
-        </view>
-        <!-- <view class='goods-intro1'>Tom/2019/xxx出版社</view> -->
-        <view class='goods-intro1'>{{item.author}}/{{item.press}}</view>
+    <view class='goods-box1' wx:for-items="{{list}}" wx:key="{{index}}" data-id="{{item.id}}">
+      <view class="img-box" bindtap="toBookInfoTap">
+        <image src='{{item.imgUrl}}' class="image" mode="aspectFit"></image>
       </view>
-      <view class='icon-box' bindtap='iconClick'>
-        <image src='../../static/images/home/want.png' class="image" mode='aspectFill'></image>
-        <view class='text'>空闲 {{item.freeNum}}</view>
+      <view class='body-box'>
+        <view class='text-box'>
+          <view class='detail-box' bindtap="toBookInfoTap">
+            <view class="goods-title">{{item.title}}</view>
+            <view class='stars'>
+              <image src='{{item.star1}}' class='img' mode='aspectFit'></image>
+              <image src='{{item.star2}}' class='img' mode='aspectFit'></image>
+              <image src='{{item.star3}}' class='img' mode='aspectFit'></image>
+              <image src='{{item.star4}}' class='img' mode='aspectFit'></image>
+              <image src='{{item.star5}}' class='img' mode='aspectFit'></image>
+              <view class='text'>{{item.score}}</view>
+            </view>
+            <!-- <view class='goods-intro1'>Tom/2019/xxx出版社</view> -->
+            <view class='goods-intro1'>{{item.author}}/{{item.press}}</view>
+          </view>
+          <view class='icon-box' bindtap='iconClick'>
+            <image src='../../static/images/home/want.png' class="image" mode='aspectFill'></image>
+            <view class='text'>空闲 {{item.freeNum}}</view>
+          </view>
+        </view>
+        <!-- <view class='comment-box' bindtap="toBookInfoTap">这里是相关评论</view> -->
+        <view class='comment-box' bindtap="toBookInfoTap">{{item.intro}}</view>
       </view>
     </view>
-    <!-- <view class='comment-box' bindtap="toBookInfoTap">这里是相关评论</view> -->
-    <view class='comment-box' bindtap="toBookInfoTap">{{item.intro}}</view>
-  </view>
-  </view>
 
-
-
-
-
-  <view class='content'>
+    <view class='content'>
       <text>{{content}}</text>
     </view>
     <view class='comment-box'>
       <view class='comment' wx:for-items="{{list}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap='clickComment'>
-        
       </view>
     </view>
+    <view class="comment">
+      <view class="text">评论</view>
+      <view class="commentInput">
+        <input type="text" value="{{inputcommentVal}}" name="comment " placeholder="说点什么吧..." bindinput='inputcomment'></input>
+      </view>
+      <view class="sure ">
+        <button bindtap="commentSuccess" form-type='submit'>确定</button>
+      </view>
+      
+    </view>
+    <view class="commentdetail" hidden="{{showafterClickSure}}">
+        <view class="nickName">{{nickName}}:</view>
+        <!-- <view class="avatar-box">
+      <image src="../../static/images/home/avatar1.png" style="width:88 rpx;height:88rpx; "></image> -->
+        <!-- </view> -->
+        <view class="commentcontent">
+          <text>{{commentContent}}</text>
+        </view>
+      </view>
   </view>
-  
 </view>

@@ -1,41 +1,50 @@
 /* pages/commentRecommend/commentRecommend.wxss */
+
 .container {
   background-color: #fff;
   min-height: 100%;
   display: block;
 }
+
 .main-box {
   margin: 10rpx 40rpx 0 40rpx;
   display: flex;
   flex-direction: column;
 }
-.main-box .title{
+
+.main-box .title {
   font-size: 40rpx;
   font-family: 'microsoft yahei';
   font-weight: bold;
 }
-.main-box .author-box{
+
+.main-box .author-box {
   display: flex;
   flex-direction: row;
 }
-.main-box .author-box .author-body{
+
+.main-box .author-box .author-body {
   margin-left: 10rpx;
 }
-.main-box .author-box .author-body .author-name{
-  font-family:'microsoft yahei';
-  font-size:36rpx;
-  color:#757171;
+
+.main-box .author-box .author-body .author-name {
+  font-family: 'microsoft yahei';
+  font-size: 36rpx;
+  color: #757171;
 }
-.main-box .author-box .author-body .detail{
+
+.main-box .author-box .author-body .detail {
   display: flex;
   flex-direction: row;
 }
-.main-box .author-box .author-body .detail .time{
-  font-family:'microsoft yahei';
-  font-size:24rpx;
-  color:#757171;
+
+.main-box .author-box .author-body .detail .time {
+  font-family: 'microsoft yahei';
+  font-size: 24rpx;
+  color: #757171;
 }
-.main-box .author-box .author-body .detail .stars{
+
+.main-box .author-box .author-body .detail .stars {
   margin-left: 20rpx;
   width: 400rpx;
   white-space: nowrap;
@@ -43,69 +52,78 @@
   display: flex;
   flex-direction: row;
 }
-.main-box .author-box .author-body .detail .stars .img{
+
+.main-box .author-box .author-body .detail .stars .img {
   width: 30rpx;
   height: 35rpx;
-  padding-right:5rpx; 
+  padding-right: 5rpx;
 }
-.userinfo-avatar { 
+
+.userinfo-avatar {
   width: 68rpx;
   height: 68rpx;
   margin: 10rpx;
   border-radius: 50%;
 }
 
-.goods-container{
+.goods-container {
   display: flex;
-  justify-content: space-between;  
-  flex-wrap:wrap;
+  justify-content: space-between;
+  flex-wrap: wrap;
   box-sizing: content-box;
   padding: 24rpx;
-  background-color: #F2f2f2;
+  background-color: #f2f2f2;
 }
-.goods-box1{
+
+.goods-box1 {
   background-color: #fff;
   overflow: hidden;
   margin-bottom: 5rpx;
   display: flex;
   flex-direction: row;
 }
-.goods-box1 .tab1-box .user1{
+
+.goods-box1 .tab1-box .user1 {
   font-size: 28rpx;
-  padding-left:20rpx; 
+  padding-left: 20rpx;
   color: #757171;
-  font-family:microsoft yahei;
+  font-family: microsoft yahei;
 }
-.goods-box1 .tab1-box .title1{
-  font-family:microsoft yahei;
+
+.goods-box1 .tab1-box .title1 {
+  font-family: microsoft yahei;
   font-size: 32rpx;
   font-weight: bold;
-  padding-top: 10rpx; 
+  padding-top: 10rpx;
 }
-.goods-box1 .tab1-box{
+
+.goods-box1 .tab1-box {
   margin-left: 20rpx;
   margin-right: 20rpx;
   display: flex;
   flex-direction: column;
-  padding-bottom:10rpx; 
+  padding-bottom: 10rpx;
 }
-.goods-box1 .img-box{
+
+.goods-box1 .img-box {
   width: 160rpx;
   height: 200rpx;
   overflow: hidden;
 }
-.goods-box1 .body-box{
-  width:500rpx;
-  height:250rpx;
+
+.goods-box1 .body-box {
+  width: 500rpx;
+  height: 250rpx;
   display: flex;
   margin-left: 24rpx;
   flex-direction: column;
 }
-.goods-box1 .body-box .comment-box{
+
+.goods-box1 .body-box .comment-box {
   width: 480rpx;
-  height:80rpx;
-  background-color: #F2f2f2;
-  font-size:24rpx; 
+  height: 80rpx;
+  background-color: #f2f2f2;
+  font-size: 24rpx;
   border-radius: 5rpx;
   padding-left: 20rpx;
   display: -webkit-box;
@@ -113,38 +131,44 @@
   text-overflow: ellipsis;
   overflow: hidden;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp:2;
+  -webkit-line-clamp: 2;
   color: #757171;
-  font-family:microsoft yahei;
+  font-family: microsoft yahei;
 }
-.goods-box1 .body-box .text-box{
+
+.goods-box1 .body-box .text-box {
   width: 500rpx;
   overflow: hidden;
   display: flex;
   flex-direction: row;
 }
+
 .goods-box1  .body-box .text-box .icon-box {
   margin-top: 25rpx;
   width: 100rpx;
   height: 100rpx;
-  padding-left:40rpx; 
+  padding-left: 40rpx;
   border-left: solid 1px #f2f2f2;
 }
-.goods-box1 .body-box .text-box .icon-box .image{
+
+.goods-box1 .body-box .text-box .icon-box .image {
   width: 55rpx;
   height: 55rpx;
-  justify-content: center; 
+  justify-content: center;
 }
-.goods-box1 .body-box .text-box .icon-box .text{
+
+.goods-box1 .body-box .text-box .icon-box .text {
   font-size: 24rpx;
-  color:orange;
-  justify-content: center; 
+  color: orange;
+  justify-content: center;
 }
-.goods-box1 .body-box .text-box .icon-box .text3{
+
+.goods-box1 .body-box .text-box .icon-box .text3 {
   font-size: 24rpx;
-  color:red;
-  justify-content: center; 
+  color: red;
+  justify-content: center;
 }
+
 .goods-box1  .body-box .text-box .detail-box {
   width: 400rpx;
   height: 150rpx;
@@ -152,57 +176,128 @@
   display: flex;
   flex-direction: column;
 }
-.goods-box1  .body-box .text-box .detail-box .goods-intro1{
+
+.goods-box1  .body-box .text-box .detail-box .goods-intro1 {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   font-size: 24rpx;
-  color:#000;
+  color: #000;
   display: -webkit-box;
   word-break: break-all;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp:2;
-  font-family:microsoft yahei;
+  -webkit-line-clamp: 2;
+  font-family: microsoft yahei;
 }
-.goods-box1  .body-box .text-box .detail-box .stars{
+
+.goods-box1  .body-box .text-box .detail-box .stars {
   width: 400rpx;
   white-space: nowrap;
   overflow: hidden;
   display: flex;
   flex-direction: row;
 }
-.goods-box1  .body-box .text-box .detail-box .stars .img{
+
+.goods-box1  .body-box .text-box .detail-box .stars .img {
   width: 30rpx;
   height: 35rpx;
-  padding-right:5rpx; 
-}
-.goods-box1  .body-box .text-box .detail-box .stars .text{
-  font-size: 24rpx;
-  padding-left:10rpx; 
-  color:orange;
-  justify-content: center; 
+  padding-right: 5rpx;
 }
 
-.goods-box1 .body-box .text-box .detail-box .goods-title{
+.goods-box1  .body-box .text-box .detail-box .stars .text {
+  font-size: 24rpx;
+  padding-left: 10rpx;
+  color: orange;
+  justify-content: center;
+}
+
+.goods-box1 .body-box .text-box .detail-box .goods-title {
   overflow: hidden;
   font-size: 36rpx;
   font-weight: bold;
   padding: 6rpx 0;
-  color:#000;
- display: -webkit-box;
- word-break: break-all;
- text-overflow: ellipsis;
- -webkit-box-orient: vertical;
- -webkit-line-clamp:2;
- font-family:microsoft yahei;
- 
+  color: #000;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-family: microsoft yahei;
 }
-.goods-box1 .img-box{
+
+.goods-box1 .img-box {
   width: 160rpx;
   height: 200rpx;
   overflow: hidden;
 }
-.goods-box1 .img-box image{
-   width: 180rpx;
-   height: 200rpx;
+
+.goods-box1 .img-box image {
+  width: 180rpx;
+  height: 200rpx;
+}
+
+/* .comment{
+  position: fixed;
+  bottom: 20rpx;
+} */
+
+.comment {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  /* margin-top: 20rpx; */
+  margin-bottom: 50rpx;
+  height: 100rpx;
+}
+
+.text {
+  font-size: 32rpx;
+  color: blue;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 10rpx;
+}
+
+.comment input {
+  font-size: 32rpx;
+  border-radius: 10rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border: 1rpx solid #ddd;
+  margin-right: 30rpx;
+  padding-left: 10rpx;
+}
+
+button::after {
+  display: none;
+}
+
+.sure button {
+  font-size: 32rpx;
+  color: white;
+  height: 70rpx;
+  background-color: rgb(40, 220, 226);
+}
+.commentdetail{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+.nickName{
+font-size: 30rpx;
+color: blue;
+margin-left: 40rpx;
+margin-right: 20rpx;
+margin-top: 10rpx;
+}
+/* .avatar-box image{
+  border-radius: 50%;
+  margin-top: 30rpx;
+  margin-left: 40rpx;
+  margin-right: 20rpx;
+} */
+.commentcontent text{
+  font-size: 30rpx;
+  color: #999;
+  margin-right: 40rpx;
 }

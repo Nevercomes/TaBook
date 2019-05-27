@@ -58,45 +58,7 @@ Page({
       inputStudentNumVal,
       inputPhoneVal
     } = e.detail.value;
-    if (e.detail.value.name.length == 0 || e.detail.value.idcard.length == 0 || e.detail.value.school.length == 0 || e.detail.value.studentNumber.length == 0 || e.detail.value.phone == 0) {
-    //   $Toast({
-    //     content: '数据不能为空',
-    //     type: 'warning'
-    //   });
-    //   return;
-    // }
-      wx.showToast({
-        title: "数据不能为空",
-        icon: "warning",
-        duration: 3000
-      })
-      setTimeout(function () {
-        wx.hideToast()
-      }, 2000)}
-     else {
-      wx.request({
-        url: '',
-        header: header,
-        method: "POST",
-        data: {
-          //e.detail.value
-          name: e.detail.value.name,
-          school: e.detail.value.school,
-          idcard: e.detail.value.idcard,
-          studentNumber: e.detail.value.studentNumber,
-          phone: e.detail.value.phone
-        },
-        
-        success: function (res) {
-          console.log(res.data)
-          if (res.data.status == 0) {
-            wx.showToast({
-              title: "认证失败",
-              icon: "loading",
-              duration: 1500
-            })
-          } else {
-            var pages = getCurrentPages();
+    var pages = getCurrentPages();
             var prePage = pages[pages.length - 2];
             prePage.setData({
               hasVerified: true
@@ -104,12 +66,59 @@ Page({
             wx.showToast({
               title: "认证成功",
               icon: "success",
-              duration: 1000
+              duration: 3000
             })
-          }
-        }
-      })
-    }
+    // if (e.detail.value.name.length == 0 || e.detail.value.idcard.length == 0 || e.detail.value.school.length == 0 || e.detail.value.studentNumber.length == 0 || e.detail.value.phone == 0) {
+    //   wx.showToast({
+    //     title: "数据不能为空",
+    //     icon: "warning",
+    //     duration: 3000
+    //   })
+    //   setTimeout(function () {
+    //     wx.hideToast()
+    //   }, 2000)}
+    //  else {
+    //    wx.showToast({
+    //      title: "认证成功",
+    //      icon: "success",
+    //      duration: 2000
+    //    })
+    //   wx.request({
+    //     url: '',
+    //     header: header,
+    //     method: "POST",
+    //     data: {
+    //       //e.detail.value
+    //       name: e.detail.value.name,
+    //       school: e.detail.value.school,
+    //       idcard: e.detail.value.idcard,
+    //       studentNumber: e.detail.value.studentNumber,
+    //       phone: e.detail.value.phone
+    //     },
+        
+    //     success: function (res) {
+    //       console.log(res.data)
+    //       if (res.data.status == 0) {
+    //         wx.showToast({
+    //           title: "认证失败",
+    //           icon: "loading",
+    //           duration: 1500
+    //         })
+    //       } else {
+    //         var pages = getCurrentPages();
+    //         var prePage = pages[pages.length - 2];
+    //         prePage.setData({
+    //           hasVerified: true
+    //         })    
+    //         wx.showToast({
+    //           title: "认证成功",
+    //           icon: "success",
+    //           duration: 1000
+    //         })
+    //       }
+    //     }
+    //   })
+    // }
   },
   resetFormInfo: function (e) {
     let {

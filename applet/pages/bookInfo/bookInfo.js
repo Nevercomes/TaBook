@@ -6,12 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-      bookname:"《高等数学》",
-      authorname:"Alice",
-      publishinghouse:"xx报社",
+      bookname:"《黄金时代》",
+      authorname:"王小波",
+      publishinghouse:"花城出版社",
       freebook:1,
-      borrowedbook:9,
-      score:9.0,
+      borrowedbook:1,
+      score:9.2,
       userInfo: {},
       usercomment: [
       'a',

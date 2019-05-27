@@ -1,32 +1,37 @@
 // pages/me/applicationCentre/applicationCentre.js
-var handlings = [{
+var handlings = [
+//   {
+//   "avatarUrl": "../../../static/images/me/avatar.png",
+//   "nickName": "Daisy",
+//   "school": "中南大学",
+//   "name": "平凡的世界",
+//   "operationOther": "待处理",
+//   "time": "2019-05-24"
+// }, 
+{
   "avatarUrl": "../../../static/images/me/avatar.png",
   "nickName": "Daisy",
   "school": "中南大学",
   "name": "平凡的世界",
   "operationOther": "待处理",
-  "time": "2019-05-24"
-}, {
-  "avatarUrl": "../../../static/images/me/avatar.png",
-  "nickName": "Daisy",
-  "school": "中南大学",
-  "name": "平凡的世界",
-  "operationOther": "待处理",
-  "time": "2019-05-24",
+  "time": "2019-05-22",
 }];
+
 var myhandlings = [{
   "school": "中南大学",
-  "name": "平凡的世界",
+  "name": "黄金时代",
   "operationMy": "未处理",
   "time": "2019-05-24",
   "type": "撤销"
-}, {
-  "school": "中南大学",
-  "name": "平凡的世界",
-  "operationMy": "未处理",
-  "time": "2019-05-24",
-  "type": "撤销"
-}, ]
+}, 
+// {
+//   "school": "中南大学",
+//   "name": "平凡的世界",
+//   "operationMy": "未处理",
+//   "time": "2019-05-24",
+//   "type": "撤销"
+// }, 
+]
 const app = getApp()
 const Cookie = wx.getStorageSync('Cookie');
 let header = {
@@ -42,17 +47,19 @@ Page({
     currentTab: 0,
     myhandlings: [{
       "school": "中南大学",
-      "name": "平凡的世界",
+      "name": "黄金时代",
       "operationMy": "未处理",
-      "time": "2019-05-24",
+      "time": "2019-05-21",
       "type": "撤销"
-    }, {
-      "school": "中南大学",
-      "name": "平凡的世界",
-      "operationMy": "未处理",
-      "time": "2019-05-24",
-      "type": "撤销"
-    }],
+    }, 
+    // {
+    //   "school": "中南大学",
+    //   "name": "平凡的世界",
+    //   "operationMy": "未处理",
+    //   "time": "2019-05-24",
+    //   "type": "撤销"
+    // }
+    ],
     operationOther: "待处理",
     operationMy: "未处理",
     disabled: false,

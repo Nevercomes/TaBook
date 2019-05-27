@@ -2,6 +2,31 @@
 <view class="content">
   <block wx:for="{{systemMsgs}}" wx:key="{{index}}">
     <view class="systemMsg-box">
+      <view class="time">2019-05-20 9:21{{item.time}}</view>
+      <view class="item">
+        <view class="img-box">
+          <image src="../../../static/images/message/systemMsg2.png" style="width:88rpx ;height:88rpx"></image>
+        </view>
+        <view class="detail">
+          <!-- <text>{{item.content}}您借阅的书籍《平凡的世界》就快要到期了，到期时间为2019年3月31日，请及时归还书籍哦！{{item.text}}</text> -->
+          <text>{{item.content}}您收藏的《哈利波特》有多余的空闲书籍啦！</text>
+        </view>
+      </view>
+    </view>
+    <view class="systemMsg-box">
+      <view class="time">2019-05-22 12:00{{item.time}}</view>
+      <view class="item">
+        <view class="img-box">
+          <image src="../../../static/images/message/systemMsg2.png" style="width:88rpx ;height:88rpx"></image>
+        </view>
+        <view class="detail">
+          <!-- <text>{{item.content}}您借阅的书籍《平凡的世界》就快要到期了，到期时间为2019年3月31日，请及时归还书籍哦！{{item.text}}</text> -->
+          <text>{{item.content}}“论‘拿来主义’，鲁迅读书交流会”，他书书友会第一期于2019-05-26周日下午三点铁道校区世纪楼A302举行，等待你的参与！详情点击主页推广查看...</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="systemMsg-box">
       <view class="time">15:04{{item.time}}</view>
       <view class="item">
         <view class="img-box">

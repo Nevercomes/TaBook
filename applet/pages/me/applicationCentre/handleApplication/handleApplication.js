@@ -8,7 +8,8 @@ let header = {
 var list = [{
     "title": "申请者",
     "text": "Daisy"
-}, {
+}, 
+{
     "title": "申请类型",
     "text": "买书"
   },
@@ -18,24 +19,24 @@ var list = [{
   },
   {
     "title": "信誉分",
-    "text": "600"
+    "text": "480"
   },{
     "title": "累计借书",
-    "text": "3"
+    "text": "5"
   },
   {
     "title": "累计买书",
-    "text": "3"
+    "text": "1"
   }, {
     "title": "累计上传",
-    "text": "3"
+    "text": "6"
   },
   {
     "title": "联系方式",
-    "text": "2332323"
+    "text": "15957118156"
   }, {
     "title": "留言",
-    "text": "喜欢这本书"
+    "text": "还想看读书笔记(●'◡'●)"
   }
 ]
 Page({

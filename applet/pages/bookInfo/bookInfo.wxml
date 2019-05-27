@@ -2,7 +2,7 @@
 <view class="container">
   <view class='book-box'>
     <view class='img-box'>
-      <image src='../../static/images/home/book1.jpg' class="image" mode="aspectFill" lazy-load="true"></image>
+      <image src='../../static/images/home/hjsd.jpg' class="image" mode="aspectFill" lazy-load="true"></image>
     </view>
     <view class='text-box'>
       <view class="text">书名</view>
@@ -30,7 +30,7 @@
     <view class='comment-container'>
       <view class='book-intro'>
         <view class='intro-head'>图书简介</view>
-        <view class='intro-body'>这里是图书简介</view>
+        <view class='intro-body'>在这组系列作品里面，名叫“王二”的男主人公处于恐怖和荒谬的环境，遭到各种不公正待遇，但他却摆脱了传统文化人的悲愤心态，创造出一种反抗和超越的方式：既然不能证明自己无辜，便倾向于证明自己不无辜。于是他以性爱作为对抗外部世界的最后据点，将性爱表现得既放浪形骸又纯洁</view>
       </view>
       <view class='book-comment'>
         <view class='comment-head'>
@@ -45,11 +45,11 @@
             </view>
             <view class='text-box'>
               <view class='text-box1'>
-                <view class='username'>username</view>
-                <view class='time'>2019-1-11</view>
+                <view class='username'>MrIce</view>
+                <view class='time'>2019-5-18</view>
               </view>
               <view class='text-box2'>
-                <view class='comment'>这里是评论</view>
+                <view class='comment'>黑色而幽默，特立而独行，一把独立思考的匕首，扎进时代荒谬的肺中。</view>
               </view>
              
               

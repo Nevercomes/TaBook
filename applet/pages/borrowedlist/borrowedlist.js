@@ -23,7 +23,7 @@ Page({
           comment: "一把思考的匕首，扎进时代荒谬的肺中",
           status: "外借",
           returnTime: "归还时间: 2019-06-21",
-          statusImg: "../../static/images/borrowList/unborrow.png"
+          statusImg: "../../static/images/borrowList/unBorrow.png"
       },
       {
           userAvatar: "../../static/images/me/avatar1.jpg",
@@ -31,7 +31,7 @@ Page({
           comment: "首先，它很有趣",
           status: "外借",
           returnTime: "归还时间: 2019-06-19",
-          statusImg: "../../static/images/borrowList/unborrow.png"
+          statusImg: "../../static/images/borrowList/unBorrow.png"
       }
     ]
   },

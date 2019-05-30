@@ -33,7 +33,7 @@ Page({
           userAvatar: '../../static/images/me/avatar.png',
           username: "Daisy",
           createTime: "2019-05-19",
-          content: "喜欢你会喜欢这本书"
+          content: "希望你会喜欢这本书"
       },
       {
           userAvatar: '../../static/images/me/avatar3.png',

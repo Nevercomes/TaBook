@@ -27,7 +27,7 @@
     </view>
 
     <view class="systemMsg-box">
-      <view class="time">15:04{{item.time}}</view>
+      <view class="time">7:01{{item.time}}</view>
       <view class="item">
         <view class="img-box">
           <image src="../../../static/images/message/systemMsg2.png" style="width:88rpx ;height:88rpx"></image>

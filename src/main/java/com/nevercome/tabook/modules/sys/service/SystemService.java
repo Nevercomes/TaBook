@@ -96,16 +96,23 @@ public class SystemService extends BaseService implements InitializingBean {
             System.err.println(resJson);
             System.err.println(response);
 
-            if (!response.getErrcode().equals("0")) { // 不为0为错误
-                throw new AuthenticationException("code2session failed：" + response.getErrmsg());
+//            if (!response.getErrcode().equals("0")) { // 不为0为错误
+//                throw new AuthenticationException("code2session failed：" + response.getErrmsg());
+//            } else {
+//                // 判断用户是否存在
+//                User user = getUserByLoginName(response.getOpenid());
+//                if (user != null && StringUtils.isNotBlank(user.getId())) {
+//                    return user;
+//                } else {
+//                    return retrieveUser(response.getOpenid(), response.getSession_key());
+//                }
+//            }
+            // 直接创建用户
+            User user = getUserByLoginName(IdGen.uuid());
+            if (user != null && StringUtils.isNotBlank(user.getId())) {
+                return user;
             } else {
-                // 判断用户是否存在
-                User user = getUserByLoginName(response.getOpenid());
-                if (user != null && StringUtils.isNotBlank(user.getId())) {
-                    return user;
-                } else {
-                    return retrieveUser(response.getOpenid(), response.getSession_key());
-                }
+                return retrieveUser(response.getOpenid(), response.getSession_key());
             }
         } catch (IOException e) {
             e.printStackTrace();

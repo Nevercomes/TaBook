@@ -13,7 +13,6 @@
         a.user_add_id AS "userAddId",
         a.owner_id AS "ownerId",
         a.holder_id AS "holderId",
-        a.school_id AS "schoolId",
         a.status AS "status"
     </sql>
 
@@ -114,8 +113,6 @@
             user_add_id,
             owner_id,
             holder_id,
-            school_id,
-            campus_id,
             `status`
         ) VALUES (
             #{id},
@@ -129,7 +126,6 @@
             #{userAddId},
             #{ownerId},
             #{holderId},
-            #{schoolId},
             #{status}
         )
     </insert>

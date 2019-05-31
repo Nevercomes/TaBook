@@ -47,7 +47,7 @@ import java.util.List;
  * @version 2013-12-05
  */
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class SystemService extends BaseService implements InitializingBean {
 
     public static final String HASH_ALGORITHM = "SHA-1";
@@ -112,7 +112,8 @@ public class SystemService extends BaseService implements InitializingBean {
             if (user != null && StringUtils.isNotBlank(user.getId())) {
                 return user;
             } else {
-                return retrieveUser(response.getOpenid(), response.getSession_key());
+//                return retrieveUser(response.getOpenid(), response.getSession_key());
+                return retrieveUser(IdGen.uuid(), "");
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -40,7 +40,7 @@ public class BookBorrowController extends BaseController {
      * 1. 借书申请
      * 2. 归还申请
      */
-    @RequiresPermissions("book:borrow:edit")
+//    @RequiresPermissions("book:borrow:edit")
     @RequestMapping(value = "request")
     public ResponseEntity request(HttpServletRequest request, BookBorrowRecord bookBorrowRecord) {
         String isReturn = request.getParameter("return");
@@ -61,7 +61,7 @@ public class BookBorrowController extends BaseController {
      * 1. 借书申请确认
      * 2. 归还申请确认
      */
-    @RequiresPermissions("book:borrow:edit")
+//    @RequiresPermissions("book:borrow:edit")
     @RequestMapping(value = "confirm")
     public ResponseEntity confirm(HttpServletRequest request, BookBorrowRecord bookBorrowRecord) {
         String status = bookBorrowRecord.getStatus();
@@ -72,7 +72,7 @@ public class BookBorrowController extends BaseController {
     }
 
 
-    @RequiresPermissions("book:borrow:edit")
+//    @RequiresPermissions("book:borrow:edit")
     @RequestMapping(value = "cancel")
     public ResponseEntity cancel(HttpServletRequest request, BookBorrowRecord bookBorrowRecord) {
         bookBorrowRecord = bookBorrowRecordService.get(bookBorrowRecord);
@@ -84,14 +84,14 @@ public class BookBorrowController extends BaseController {
     /**
      * 展示我的申请（借书）的地方
      */
-    @RequiresPermissions("book:borrow:view")
+//    @RequiresPermissions("book:borrow:view")
     @RequestMapping(value = "list")
     public ResponseEntity list(HttpServletRequest request, HttpServletResponse response, BookBorrowRecord bookBorrowRecord) {
         Page<BookBorrowRecord> page = bookBorrowRecordService.findPage(new Page<>(request, response), bookBorrowRecord);
         return new ResponseEntity<>(new Result(page), HttpStatus.OK);
     }
 
-    @RequiresPermissions("book:borrowable:view")
+//    @RequiresPermissions("book:borrowable:view")
     @RequestMapping(value = "list/borrowable")
     public ResponseEntity listBorrowable(HttpServletRequest request, HttpServletResponse response, BookInfoInstance bookInfoInstance) {
         String schoolId = UserUtils.getUser().getSchoolId();

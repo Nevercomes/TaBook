@@ -37,7 +37,7 @@ public class BookUserFavoriteController extends BaseController {
     private BookLongCommentService bookLongCommentService;
 
 
-    @RequiresPermissions("book:favorite:edit")
+//    @RequiresPermissions("book:favorite:edit")
     @RequestMapping(value = "add")
     public ResponseEntity addOrCancel(HttpServletRequest request, BookUserFavorite bookUserFavorite) {
         String cancel = request.getParameter("cancel");
@@ -50,7 +50,7 @@ public class BookUserFavoriteController extends BaseController {
         return new ResponseEntity<>(new Result(), HttpStatus.OK);
     }
 
-    @RequiresPermissions("book:favorite:view")
+//    @RequiresPermissions("book:favorite:view")
     @RequestMapping(value = "list")
     public ResponseEntity list(HttpServletRequest request, HttpServletResponse response, BookUserFavorite bookUserFavorite) {
         String type = bookUserFavorite.getType();

@@ -28,14 +28,14 @@ public class BookShortCommentController extends BaseController {
     @Autowired
     private BookShortCommentService bookShortCommentService;
 
-    @RequiresPermissions("book:comment:short:edit")
+//    @RequiresPermissions("book:comment:short:edit")
     @RequestMapping(value = "save")
     public ResponseEntity save(BookShortComment bookShortComment) {
         bookShortCommentService.save(bookShortComment);
         return new ResponseEntity<>(new Result(), HttpStatus.OK);
     }
 
-    @RequiresPermissions("book:comment:short:view")
+//    @RequiresPermissions("book:comment:short:view")
     @RequestMapping(value = "list")
     public ResponseEntity list(HttpServletRequest request, HttpServletResponse response, BookShortComment bookShortComment) {
         Page<BookShortComment> page = bookShortCommentService.findPage(new Page<>(request, response), bookShortComment);

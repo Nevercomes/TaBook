@@ -64,7 +64,7 @@ public class LoginController extends BaseController {
         }
     }
 
-    @RequiresPermissions("user")
+//    @RequiresPermissions("user")
     @RequestMapping(value = "${adminPath}/uploadWxInfo")
     public ResponseEntity uploadWxInfo(HttpServletRequest request) {
         String name = request.getParameter("nickName");
@@ -85,7 +85,7 @@ public class LoginController extends BaseController {
     /**
      * 认证测试类
      */
-    @RequiresPermissions("user")
+//    @RequiresPermissions("user")
     @RequestMapping(value = "${adminPath}/index")
     public ResponseEntity index(HttpServletRequest request, HttpServletResponse response) {
         return new ResponseEntity<>(new Result("hello"), HttpStatus.OK);

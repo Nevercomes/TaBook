@@ -38,7 +38,7 @@ public class BookBuyController extends BaseController {
     /**
      * 买书申请
      */
-    @RequiresPermissions("book:buy:edit")
+//    @RequiresPermissions("book:buy:edit")
     @RequestMapping(value = "request")
     public ResponseEntity request(HttpServletRequest request, BookBuyRecord bookBuyRecord) {
         bookBuyRecord.setRequesterId(UserUtils.getUser().getBookStudent().getId());
@@ -50,7 +50,7 @@ public class BookBuyController extends BaseController {
      * 业务逻辑安全性：confirm必须是书籍所有者才可以操作
      * 申请确认
      */
-    @RequiresPermissions("book:buy:edit")
+//    @RequiresPermissions("book:buy:edit")
     @RequestMapping(value = "confirm")
     public ResponseEntity confirm(HttpServletRequest request, BookBuyRecord bookBuyRecord) {
         String status = bookBuyRecord.getStatus();
@@ -61,7 +61,7 @@ public class BookBuyController extends BaseController {
     }
 
 
-    @RequiresPermissions("book:buy:edit")
+//    @RequiresPermissions("book:buy:edit")
     @RequestMapping(value = "cancel")
     public ResponseEntity cancel(HttpServletRequest request, BookBuyRecord bookBuyRecord) {
         bookBuyRecord = bookBuyRecordService.get(bookBuyRecord);
@@ -73,7 +73,7 @@ public class BookBuyController extends BaseController {
     /**
      * 展示我的申请（买书）的地方
      */
-    @RequiresPermissions("book:buy:view")
+//    @RequiresPermissions("book:buy:view")
     @RequestMapping(value = "list")
     public ResponseEntity list(HttpServletRequest request, HttpServletResponse response, BookBuyRecord bookBuyRecord) {
         Page<BookBuyRecord> page = bookBuyRecordService.findPage(new Page<>(request, response), bookBuyRecord);
@@ -81,7 +81,7 @@ public class BookBuyController extends BaseController {
     }
 
 
-    @RequiresPermissions("book:buy_able:view")
+//    @RequiresPermissions("book:buy_able:view")
     @RequestMapping(value = "list/borrowable")
     public ResponseEntity listBorrowable(HttpServletRequest request, HttpServletResponse response, BookInfoInstance bookInfoInstance) {
         String schoolId = UserUtils.getUser().getSchoolId();

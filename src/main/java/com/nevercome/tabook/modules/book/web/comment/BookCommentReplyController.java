@@ -22,21 +22,21 @@ public class BookCommentReplyController extends BaseController {
     @Autowired
     private BookCommentReplyService bookCommentReplyService;
 
-    @RequiresPermissions("book:comment:reply:edit")
+//    @RequiresPermissions("book:comment:reply:edit")
     @RequestMapping(value = "save")
     public ResponseEntity save(BookCommentReply bookCommentReply) {
         bookCommentReplyService.save(bookCommentReply);
         return new ResponseEntity<>(new Result(bookCommentReply), HttpStatus.OK);
     }
 
-    @RequiresPermissions("book:comment:reply:view")
+//    @RequiresPermissions("book:comment:reply:view")
     @RequestMapping(value = "get")
     public ResponseEntity get(BookCommentReply bookCommentReply) {
         bookCommentReply = bookCommentReplyService.get(bookCommentReply);
         return new ResponseEntity<>(new Result(bookCommentReply), HttpStatus.OK);
     }
 
-    @RequiresPermissions("book:comment:reply:view")
+//    @RequiresPermissions("book:comment:reply:view")
     @RequestMapping(value = "list")
     public ResponseEntity list(BookCommentReply bookCommentReply) {
         bookCommentReply = bookCommentReplyService.get(bookCommentReply);

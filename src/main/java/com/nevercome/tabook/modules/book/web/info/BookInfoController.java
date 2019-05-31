@@ -33,7 +33,7 @@ public class BookInfoController extends BaseController {
     @Autowired
     private BookInfoService bookInfoService;
 
-    @RequiresPermissions("book:info:view")
+//    @RequiresPermissions("book:info:view")
     @RequestMapping(value = "get")
     public ResponseEntity get(HttpServletRequest request) {
 
@@ -57,7 +57,7 @@ public class BookInfoController extends BaseController {
         return new ResponseEntity<>(new Result(bookInfo), HttpStatus.OK);
     }
 
-    @RequiresPermissions("book:info:view")
+//    @RequiresPermissions("book:info:view")
     @RequestMapping(value = "list")
     public ResponseEntity list(HttpServletRequest request, HttpServletResponse response, BookInfo bookInfo) {
         Page<BookInfo> page = bookInfoService.findPage(new Page<>(request, response), bookInfo);

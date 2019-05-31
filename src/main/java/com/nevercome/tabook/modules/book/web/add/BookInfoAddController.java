@@ -31,14 +31,14 @@ public class BookInfoAddController extends BaseController {
     @Autowired
     private BookInfoAddService bookInfoAddService;
 
-    @RequiresPermissions("book:add:view")
+//    @RequiresPermissions("book:add:view")
     @RequestMapping(value = "get")
     public ResponseEntity get(BookInfoAdd bookInfoAdd) {
         bookInfoAdd = bookInfoAddService.get(bookInfoAdd);
         return new ResponseEntity<>(new Result(bookInfoAdd), HttpStatus.OK);
     }
 
-    @RequiresPermissions("book:add:edit")
+//    @RequiresPermissions("book:add:edit")
     @RequestMapping(value = "save")
     public ResponseEntity save(BookInfoAdd bookInfoAdd) {
         bookInfoAddService.save(bookInfoAdd);
@@ -48,7 +48,7 @@ public class BookInfoAddController extends BaseController {
     /**
      * 我的 - 上传的书籍的显示
      */
-    @RequiresPermissions("book:add:view")
+//    @RequiresPermissions("book:add:view")
     @RequestMapping(value = "list")
     public ResponseEntity list(HttpServletRequest request, HttpServletResponse response, BookInfoAdd bookInfoAdd) {
         BookStudent student = UserUtils.getUser().getBookStudent();

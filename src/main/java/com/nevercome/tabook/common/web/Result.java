@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
  * @author: sun
  * @date: 2019/4/4
  */
-@Data
+//@Data
 public class Result {
 
     private HttpStatus status;

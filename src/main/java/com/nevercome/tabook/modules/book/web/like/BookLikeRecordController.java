@@ -22,14 +22,14 @@ public class BookLikeRecordController extends BaseController {
     @Autowired
     private BookLikeRecordService bookLikeRecordService;
 
-    @RequiresPermissions("book:like:edit")
+//    @RequiresPermissions("book:like:edit")
     @RequestMapping(value = "save")
     public ResponseEntity save(BookLikeRecord bookLikeRecord){
         bookLikeRecordService.save(bookLikeRecord);
         return new ResponseEntity<>(new Result(), HttpStatus.OK);
     }
 
-    @RequiresPermissions("book:like:edit")
+//    @RequiresPermissions("book:like:edit")
     @RequestMapping(value = "delete")
     public ResponseEntity delete(BookLikeRecord bookLikeRecord){
         bookLikeRecordService.delete(bookLikeRecord);

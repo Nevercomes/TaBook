@@ -22,14 +22,14 @@ public class BookLongCommentController extends BaseController {
     @Autowired
     private BookLongCommentService bookLongCommentService;
 
-    @RequiresPermissions("book:comment:long:edit")
+//    @RequiresPermissions("book:comment:long:edit")
     @RequestMapping(value = "save")
     public ResponseEntity save(BookLongComment bookLongComment) {
         bookLongCommentService.save(bookLongComment);
         return new ResponseEntity<>(new Result(), HttpStatus.OK);
     }
 
-    @RequiresPermissions("book:comment:long:view")
+//    @RequiresPermissions("book:comment:long:view")
     @RequestMapping(value = "get")
     public ResponseEntity get(BookLongComment bookLongComment) {
         bookLongComment = bookLongCommentService.get(bookLongComment);

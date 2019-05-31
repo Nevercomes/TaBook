@@ -45,21 +45,21 @@ public class OfficeController extends BaseController {
         }
     }
 
-    @RequiresPermissions("sys:office:view")
+//    @RequiresPermissions("sys:office:view")
     @RequestMapping(value = {""})
     public String index(Office office, Model model) {
 //        model.addAttribute("list", officeService.findAll());
         return "modules/sys/officeIndex";
     }
 
-    @RequiresPermissions("sys:office:view")
+//    @RequiresPermissions("sys:office:view")
     @RequestMapping(value = {"list"})
     public String list(Office office, Model model) {
         model.addAttribute("list", officeService.findList(office));
         return "modules/sys/officeList";
     }
 
-    @RequiresPermissions("sys:office:view")
+//    @RequiresPermissions("sys:office:view")
     @RequestMapping(value = "form")
     public String form(Office office, Model model) {
         User user = UserUtils.getUser();
@@ -87,7 +87,7 @@ public class OfficeController extends BaseController {
         return "modules/sys/officeForm";
     }
 
-    @RequiresPermissions("sys:office:edit")
+//    @RequiresPermissions("sys:office:edit")
     @RequestMapping(value = "save")
     public String save(Office office, Model model, RedirectAttributes redirectAttributes) {
         if(Global.isDemoMode()){
@@ -118,7 +118,7 @@ public class OfficeController extends BaseController {
         return "redirect:" + adminPath + "/sys/office/list?id="+id+"&parentIds="+office.getParentIds();
     }
 
-    @RequiresPermissions("sys:office:edit")
+//    @RequiresPermissions("sys:office:edit")
     @RequestMapping(value = "delete")
     public String delete(Office office, RedirectAttributes redirectAttributes) {
         if(Global.isDemoMode()){
@@ -144,7 +144,7 @@ public class OfficeController extends BaseController {
      * @param response
      * @return
      */
-    @RequiresPermissions("user")
+//    @RequiresPermissions("user")
     @ResponseBody
     @RequestMapping(value = "treeData")
     public List<Map<String, Object>> treeData(@RequestParam(required=false) String extId, @RequestParam(required=false) String type,

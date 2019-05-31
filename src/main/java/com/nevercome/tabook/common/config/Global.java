@@ -1,6 +1,6 @@
 package com.nevercome.tabook.common.config;
 
-import com.ckfinder.connector.ServletContextFactory;
+//import com.ckfinder.connector.ServletContextFactory;
 import com.google.common.collect.Maps;
 import com.nevercome.tabook.common.utils.PropertiesLoader;
 import com.nevercome.tabook.common.utils.StringUtils;
@@ -204,17 +204,17 @@ public class Global {
      */
     public static String getUserFilesBaseDir() {
         String dir = getConfig("userfiles.basedir");
-        if (StringUtils.isBlank(dir)){
-            try {
-                dir = ServletContextFactory.getServletContext().getRealPath("/");
-                System.out.println(dir);
-            } catch (Exception e) {
-                return "";
-            }
-        }
-        if(!dir.endsWith("/")) {
-            dir += "/";
-        }
+//        if (StringUtils.isBlank(dir)){
+//            try {
+//                dir = ServletContextFactory.getServletContext().getRealPath("/");
+//                System.out.println(dir);
+//            } catch (Exception e) {
+//                return "";
+//            }
+//        }
+//        if(!dir.endsWith("/")) {
+//            dir += "/";
+//        }
 //		System.out.println("userfiles.basedir: " + dir);
         return dir;
     }
